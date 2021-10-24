@@ -31,7 +31,7 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
     )
 
     @Test
-    fun `실행 성공 테스트`() = runBlocking {
+    override fun `실행 성공 테스트`() = runBlocking {
         // given
         val useCase = GetRestaurantListUseCase(repository, coroutineRule.testDispatcher)
         whenever(repository.getRestaurantList())
@@ -52,7 +52,7 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
     }
 
     @Test
-    fun `실행 실패 테스트`() = runBlocking {
+    override fun `실행 실패 테스트`() = runBlocking {
         // given
         val useCase = GetRestaurantListUseCase(repository, coroutineRule.testDispatcher)
 
