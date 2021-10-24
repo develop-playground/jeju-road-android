@@ -1,12 +1,78 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.32"
+    ext {
+        versions = [
+                kotlin_version = "1.5.21",
+                viewmodel_version = '2.3.1',
+                livedata_version = '2.3.1',
+                recyclerview_version = '1.2.1',
+                recyclerview_selection_version = '1.1.0',
+                glide_version = '4.11.0',
+                retrofit2_version = '2.9.0',
+                gson_version = '2.8.7',
+                okhttp3_version = '4.8.1',
+                viewpager2_version = '1.0.0',
+                room_version = '2.3.0',
+                coroutine_version = '1.5.0',
+                activity_ktx_version = '1.3.1',
+                fragment_ktx_version = '1.3.6',
+                koin_version = '2.2.3',
+        ]
+
+        networkDependencies = [
+                gson                 : "com.google.code.gson:gson:$gson_version",
+                retrofit             : "com.squareup.retrofit2:retrofit:$retrofit2_version",
+                retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$retrofit2_version",
+                okhttp3              : "com.squareup.okhttp3:logging-interceptor:$okhttp3_version",
+        ]
+
+        jetpackDependencies = [
+                activity : "androidx.activity:activity-ktx:$activity_ktx_version",
+                fragment : "androidx.fragment:fragment-ktx:$fragment_ktx_version",
+                viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version",
+                livedata : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version",
+                room     : "androidx.room:room-runtime:$room_version",
+                room_ktx : "androidx.room:room-ktx:$room_version",
+        ]
+
+        koinDependencies = [
+                koin_core                : "io.insert-koin:koin-core:$koin_version",
+                koin_core_ext            : "io.insert-koin:koin-core-ext:$koin_version",
+                koin_test                : "io.insert-koin:koin-test:$koin_version",
+
+                koin_android             : "io.insert-koin:koin-android:$koin_version",
+                koin_android_scope       : "io.insert-koin:koin-android-scope:$koin_version",
+                koin_android_viewmodel   : "io.insert-koin:koin-android-viewmodel:$koin_version",
+                koin_android_ext         : "io.insert-koin:koin-android-ext:$koin_version",
+
+                koin_androidx            : "io.insert-koin:koin-androidx-scope:$koin_version",
+                koin_androidx_viewmodel  : "io.insert-koin:koin-androidx-viewmodel:$koin_version",
+                koin_androidx_fragment   : "io.insert-koin:koin-androidx-fragment:$koin_version",
+                koin_androidx_workmanager: "io.insert-koin:koin-androidx-workmanager:$koin_version",
+                koin_androidx_ext        : "io.insert-koin:koin-androidx-ext:$koin_version",
+        ]
+
+        androidxDependencies = [
+                recyclerView          : "androidx.recyclerview:recyclerview:$recyclerview_version",
+                recyclerView_selection: "androidx.recyclerview:recyclerview-selection:$recyclerview_selection_version",
+        ]
+
+        coroutineDependencies = [
+                coroutine_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version",
+                coroutine_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+        ]
+
+        utilDependencies = [
+                glide: "com.github.bumptech.glide:glide:$glide_version",
+        ]
+    }
+
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
+        classpath "com.android.tools.build:gradle:4.1.3"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -17,7 +83,8 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 
