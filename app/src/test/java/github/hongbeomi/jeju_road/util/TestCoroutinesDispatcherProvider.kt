@@ -1,6 +1,5 @@
-package github.hongbeomi.jeju_road
+package github.hongbeomi.jeju_road.util
 
-import github.hongbeomi.jeju_road.util.CoroutinesDispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
