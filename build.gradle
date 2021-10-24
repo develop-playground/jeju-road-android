@@ -65,6 +65,10 @@ buildscript {
         utilDependencies = [
                 glide: "com.github.bumptech.glide:glide:$glide_version",
         ]
+
+        testDependencies = [
+                coroutine_test   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
+        ]
     }
 
     repositories {

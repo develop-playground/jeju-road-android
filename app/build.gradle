@@ -60,4 +60,6 @@ dependencies {
     implementation utilDependencies.values()
     implementation koinDependencies.values()
     implementation androidxDependencies.values()
+
+    testImplementation testDependencies.values()
 }
