@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -15,6 +16,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BASE_URL', '"https://localhost:8080/api"'
     }
 
     buildTypes {
@@ -30,10 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    kapt {
+        correctErrorTypes = true
+        generateStubs = true
+    }
 
-    dataBinding {
-        //noinspection DataBindingWithoutKapt
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
 }
 
