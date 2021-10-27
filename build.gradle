@@ -2,7 +2,7 @@
 buildscript {
     ext {
         versions = [
-                kotlin_version = "1.5.21",
+                kotlin_version = "1.5.0",
                 viewmodel_version = '2.3.1',
                 livedata_version = '2.3.1',
                 recyclerview_version = '1.2.1',
