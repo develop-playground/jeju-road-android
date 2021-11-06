@@ -2,16 +2,16 @@ package github.hongbeomi.jeju_road.domain.usecase
 
 import github.hongbeomi.jeju_road.data.repository.RestaurantRepository
 import github.hongbeomi.jeju_road.domain.model.Information
-import github.hongbeomi.jeju_road.domain.model.Restaurant
+import github.hongbeomi.jeju_road.domain.model.Restaurants
 import kotlinx.coroutines.CoroutineDispatcher
 
 class GetRestaurantListUseCase(
     private val restaurantRepository: RestaurantRepository,
     ioDispatcher: CoroutineDispatcher
-): NonParamCoroutineUseCase<Restaurant>(ioDispatcher) {
+): NonParamCoroutineUseCase<Restaurants>(ioDispatcher) {
 
-    override suspend fun execute(): Restaurant {
-        return Restaurant(
+    override suspend fun execute(): Restaurants {
+        return Restaurants(
             restaurantRepository.getRestaurantList().informationList.map {
                 Information(
                     id = it.id,
