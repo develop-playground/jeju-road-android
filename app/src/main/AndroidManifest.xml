@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="github.hongbeomi.jeju_road">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:name="github.hongbeomi.JejuRoadApp"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
