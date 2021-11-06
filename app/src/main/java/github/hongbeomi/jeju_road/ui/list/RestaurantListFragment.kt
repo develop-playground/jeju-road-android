@@ -15,7 +15,7 @@ class RestaurantListFragment: BaseFragment<FragmentRestaurantListBinding>(
 
     private val viewModel by viewModel<RestaurantListViewModel>()
     private val loadingEventViewModel by sharedViewModel<LoadingEventViewModel>()
-    private val adapter by lazy { RestaurantListRecyclerAdapter() }
+    private val adapter by lazy { RestaurantListAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
