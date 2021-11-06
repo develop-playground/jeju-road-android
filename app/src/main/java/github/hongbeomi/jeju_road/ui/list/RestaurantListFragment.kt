@@ -12,14 +12,23 @@ class RestaurantListFragment: BaseFragment<FragmentRestaurantListBinding>(
 ) {
 
     private val viewModel by viewModel<RestaurantListViewModel>()
+    private val adapter by lazy { RestaurantListRecyclerAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpView()
         viewModel.restaurantList.observe {
-
+            it.data?.let { restaurants ->
+                adapter.submitList(restaurants.informationList)
+            }
         }
+    }
 
+    fun setUpView() {
+        binding {
+            recyclerViewRestaurantList.adapter = adapter
+        }
     }
 
     companion object {

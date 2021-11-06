@@ -65,13 +65,17 @@ buildscript {
         ]
 
         utilDependencies = [
-                glide: "com.github.bumptech.glide:glide:$glide_version",
+                glide : "com.github.bumptech.glide:glide:$glide_version"
         ]
 
         testDependencies = [
                 coroutine_test   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version",
                 mockito          : "org.mockito.kotlin:mockito-kotlin:$mockito_version",
                 json_test        : "org.json:json:$json_test_version"
+        ]
+
+        kaptDependencies = [
+                glideCompiler: "com.github.bumptech.glide:compiler:${glide_version}"
         ]
     }
 
