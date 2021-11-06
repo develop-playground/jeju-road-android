@@ -2,6 +2,10 @@ package github.hongbeomi.jeju_road.ui.base
 
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.core.view.doOnAttach
+import androidx.core.view.doOnDetach
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +23,18 @@ abstract class BaseListAdapter<ITEM>(
     }
 
     abstract inner class BaseViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
+
+        protected var lifecycleOwner: LifecycleOwner? = null
+
+        init {
+            rootView.doOnAttach {
+                lifecycleOwner = it.findViewTreeLifecycleOwner()
+            }
+            rootView.doOnDetach {
+                lifecycleOwner = null
+            }
+        }
+
         abstract fun bind(data: ITEM)
     }
 
