@@ -2,7 +2,9 @@ package github.hongbeomi.jeju_road.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import github.hongbeomi.jeju_road.R
 import github.hongbeomi.jeju_road.databinding.ItemRestaurantListBinding
 import github.hongbeomi.jeju_road.domain.model.Information
 
@@ -13,7 +15,12 @@ class RestaurantListRecyclerAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemRestaurantListBinding.inflate(LayoutInflater.from(parent.context))
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_restaurant_list,
+                parent,
+                false
+            )
         )
     }
 

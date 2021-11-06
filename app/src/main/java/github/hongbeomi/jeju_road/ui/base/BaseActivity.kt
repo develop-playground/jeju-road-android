@@ -5,6 +5,8 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LiveData
+import github.hongbeomi.jeju_road.util.Event
 
 abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCompatActivity(layoutId) {
 
@@ -19,6 +21,14 @@ abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCo
 
     protected fun binding(action: B.() -> Unit) {
         binding.run(action)
+    }
+
+    protected infix fun <T> LiveData<T>.observe(action: (T) -> Unit) {
+        observe(this@BaseActivity, action)
+    }
+
+    protected infix fun <T> LiveData<Event<T>>.eventObserve(action: (T) -> Unit) {
+        observe(this@BaseActivity, { it.get(action) })
     }
 
 }

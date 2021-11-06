@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -12,18 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="8dp">
-
-        <TextView
-            android:id="@+id/textView_item_restaurant_list_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{information.id}"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView_item_restaurant_list_name"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/textView_item_restaurant_list_name"
@@ -32,9 +22,21 @@
             android:text="@{information.name}"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/textView_item_restaurant_list_id"
+            tools:text="한밭대 떡볶이"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/textView_item_restaurant_list_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{information.id}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="id id id id id id id id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_name" />
+
 
         <TextView
             android:id="@+id/textView_item_restaurant_list_category"
@@ -42,6 +44,7 @@
             android:layout_height="wrap_content"
             android:text="@{information.category.toString()}"
             android:textSize="14sp"
+            tools:text="레스토랑, 커피"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_id" />
 
@@ -51,6 +54,7 @@
             android:layout_height="wrap_content"
             android:text="@{information.address}"
             android:textSize="14sp"
+            tools:text="한밭대학교"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_category"/>
 
@@ -60,13 +64,14 @@
             android:layout_height="wrap_content"
             android:text="@{information.introduction}"
             android:textSize="12sp"
+            tools:text="수요 미식회에 소개된 따끈한 맛집"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_address"/>
 
         <ImageView
             android:id="@+id/textView_item_restaurant_list_image"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             bind:imageUrl="@{information.image}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
