@@ -20,7 +20,7 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
         message = "test",
         informationList = listOf(
             InformationData(
-                id = "1",
+                id = 1,
                 name = "맛집",
                 category = listOf("category"),
                 address = "한밭대학교",
@@ -47,7 +47,7 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
 
         assertEquals(1, successResult.data.informationList.size)
 
-        assertEquals("1", successResult.data.informationList[0].id)
+        assertEquals(1L, successResult.data.informationList[0].id)
         assertEquals("맛집", successResult.data.informationList[0].name)
     }
 

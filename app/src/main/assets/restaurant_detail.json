@@ -3,14 +3,14 @@
   "message": "요청이 성공적으로 완료되었습니다.",
   "information": [
     {
-      "id": "ba2b8d48-6b65-4916-b485-67e658136c4e",
+      "id": 1,
       "name": "떡볶이",
       "images": [
         "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733."
       ],
       "menus": [
         {
-          "id": "cq8e8d48-6b65-4916-b485-67e6581363sa",
+          "id": 10,
           "name": "아무튼 떡볶이",
           "image": "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
           "price": 9000

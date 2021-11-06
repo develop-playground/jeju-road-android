@@ -1,7 +1,7 @@
 package github.hongbeomi.jeju_road.data.model
 
 data class DetailInformationData (
-    val id: String,
+    val id: Long,
     val name: String,
     val images: List<String>,
     val menus: List<MenuData>,
