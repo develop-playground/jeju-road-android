@@ -65,7 +65,7 @@
             android:layout_width="0dp"
             android:layout_height="96dp"
             android:layout_marginStart="16dp"
-            android:background="@android:color/black"
+            android:scaleType="center"
             bind:imageUrl="@{information.image}"
             app:layout_constraintDimensionRatio="h,4:3"
             app:layout_constraintEnd_toEndOf="parent"
