@@ -10,7 +10,7 @@ data class Information(
 ) {
 
     fun formatCategoryAndAddress(): String {
-        return formatCategory() + "·" + address
+        return formatCategory() + " · " + address
     }
 
     private fun formatCategory(): String {
