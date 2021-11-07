@@ -2,6 +2,9 @@ package github.hongbeomi.jeju_road.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.doOnLayout
+import androidx.core.view.doOnNextLayout
+import androidx.core.view.updateLayoutParams
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import github.hongbeomi.jeju_road.R
@@ -27,8 +30,10 @@ class RestaurantListAdapter : BaseListAdapter<Information>(
 
     inner class ViewHolder(private val binding: ItemRestaurantListBinding) : BaseViewHolder(binding.root) {
         override fun bind(data: Information) {
-            binding.information = data
-            binding.executePendingBindings()
+            binding.apply {
+                information = data
+                executePendingBindings()
+            }
         }
     }
 
