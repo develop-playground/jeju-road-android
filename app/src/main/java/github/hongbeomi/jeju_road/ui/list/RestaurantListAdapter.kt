@@ -11,6 +11,7 @@ import github.hongbeomi.jeju_road.R
 import github.hongbeomi.jeju_road.databinding.ItemRestaurantListBinding
 import github.hongbeomi.jeju_road.domain.model.Information
 import github.hongbeomi.jeju_road.ui.base.BaseListAdapter
+import github.hongbeomi.jeju_road.util.RoundRectOutlineProvider
 
 class RestaurantListAdapter : BaseListAdapter<Information>(
     R.layout.item_restaurant_list,
@@ -32,6 +33,9 @@ class RestaurantListAdapter : BaseListAdapter<Information>(
         override fun bind(data: Information) {
             binding.apply {
                 information = data
+                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider(
+                    root.resources.getDimension(R.dimen.dp_8)
+                )
                 executePendingBindings()
             }
         }
