@@ -3,7 +3,7 @@
   "message": "요청이 성공적으로 완료되었습니다.",
   "information": [
     {
-      "id": "ba2b8d48-6b65-4916-b485-67e658136c4e",
+      "id": 1,
       "name": "한밭대 떡볶이",
       "category": ["restaurant", "caffe"],
       "address": "한밭대학교",
@@ -11,7 +11,7 @@
       "introduction": "'수요미식회'에 방영된, 따끈한 떡볶이 요리로 해장하기 좋은 음식점"
     },
     {
-      "id": "ba2b8d48-6b65-4916-b485-67e658136c4a",
+      "id": 2,
       "name": "한밭대 떡볶이",
       "category": ["restaurant", "caffe"],
       "address": "한밭대학교",
@@ -19,7 +19,7 @@
       "introduction": "'수요미식회'에 방영된, 따끈한 떡볶이 요리로 해장하기 좋은 음식점"
     },
     {
-      "id": "ba2b8d48-6b65-4916-b485-67e658136c4b",
+      "id": 3,
       "name": "한밭대 떡볶이",
       "category": ["restaurant", "caffe"],
       "address": "한밭대학교",
@@ -27,7 +27,7 @@
       "introduction": "'수요미식회'에 방영된, 따끈한 떡볶이 요리로 해장하기 좋은 음식점"
     },
     {
-      "id": "ba2b8d48-6b65-4916-b485-67e658136c4c",
+      "id": 4,
       "name": "한밭대 떡볶이",
       "category": ["restaurant", "caffe"],
       "address": "한밭대학교",
