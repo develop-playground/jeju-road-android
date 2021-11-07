@@ -23,13 +23,20 @@ class RestaurantListFragment: BaseFragment<FragmentRestaurantListBinding>(
 
         viewModel.restaurantList.observe {
             loadingEventViewModel.setLoadingState(it) { restaurants ->
+                binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                 adapter.submitList(restaurants.informationList)
             }
         }
     }
 
     private fun setUpView() {
-        binding.recyclerViewRestaurantList.adapter = adapter
+        binding {
+            recyclerViewRestaurantList.adapter = adapter
+
+            swipeRefreshLayoutRestaurantList.setOnRefreshListener {
+                viewModel.fetchRestaurantList()
+            }
+        }
     }
 
     companion object {

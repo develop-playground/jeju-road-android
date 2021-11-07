@@ -2,9 +2,6 @@ package github.hongbeomi.jeju_road.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.doOnLayout
-import androidx.core.view.doOnNextLayout
-import androidx.core.view.updateLayoutParams
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import github.hongbeomi.jeju_road.R
