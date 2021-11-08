@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">jeju-road</string>
+    <string name="text_main_toolbar_title">제주 맛집</string>
 </resources>

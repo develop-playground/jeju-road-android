@@ -1,8 +1,6 @@
 package github.hongbeomi.jeju_road.domain.usecase
 
 import github.hongbeomi.jeju_road.BaseTest
-import github.hongbeomi.jeju_road.util.MainCoroutineRule
-import org.junit.Rule
 import org.junit.Test
 
 abstract class BaseUseCaseTest: BaseTest() {

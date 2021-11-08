@@ -2,9 +2,11 @@ package github.hongbeomi.jeju_road.ui.list
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
 import github.hongbeomi.jeju_road.R
 import github.hongbeomi.jeju_road.databinding.FragmentRestaurantListBinding
 import github.hongbeomi.jeju_road.ui.base.BaseFragment
+import github.hongbeomi.jeju_road.ui.component.VerticalDividerItemDecoration
 import github.hongbeomi.jeju_road.ui.loading.LoadingEventViewModel
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -23,13 +25,23 @@ class RestaurantListFragment: BaseFragment<FragmentRestaurantListBinding>(
 
         viewModel.restaurantList.observe {
             loadingEventViewModel.setLoadingState(it) { restaurants ->
+                binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                 adapter.submitList(restaurants.informationList)
             }
         }
     }
 
     private fun setUpView() {
-        binding.recyclerViewRestaurantList.adapter = adapter
+        binding {
+            recyclerViewRestaurantList.apply {
+                adapter = this@RestaurantListFragment.adapter
+                addItemDecoration(VerticalDividerItemDecoration(requireContext()))
+            }
+
+            swipeRefreshLayoutRestaurantList.setOnRefreshListener {
+                viewModel.fetchRestaurantList()
+            }
+        }
     }
 
     companion object {

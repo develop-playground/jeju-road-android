@@ -13,67 +13,65 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textView_item_restaurant_list_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout_item_restaurant_list_area"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{information.name}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            tools:text="한밭대 떡볶이"
+            android:orientation="vertical"
+            app:layout_constraintVertical_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/imageView_item_restaurant_list_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/textView_item_restaurant_list_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(information.id)}"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            tools:text="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_name" />
+            <TextView
+                android:id="@+id/textView_item_restaurant_list_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{information.name}"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="한밭대 떡볶이"/>
 
+            <TextView
+                android:id="@+id/textView_item_restaurant_list_introduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{information.introduction}"
+                android:textSize="14sp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="수요 미식회에 소개된 따끈한 맛집 수요 미식회에 소개된 따끈한 맛집 수요 미식회에 소개된 따끈한 맛집 수요 미식회에 소개된 따끈한 맛집" />
 
-        <TextView
-            android:id="@+id/textView_item_restaurant_list_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{information.category.toString()}"
-            android:textSize="14sp"
-            tools:text="레스토랑, 커피"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_id" />
+            <TextView
+                android:id="@+id/textView_item_restaurant_list_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{information.formatCategoryAndAddress()}"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                tools:text="레스토랑/커피·한밭대학교"/>
 
-        <TextView
-            android:id="@+id/textView_item_restaurant_list_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{information.address}"
-            android:textSize="14sp"
-            tools:text="한밭대학교"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_category"/>
-
-        <TextView
-            android:id="@+id/textView_item_restaurant_list_introduction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{information.introduction}"
-            android:textSize="12sp"
-            tools:text="수요 미식회에 소개된 따끈한 맛집"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_list_address"/>
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/textView_item_restaurant_list_image"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:id="@+id/imageView_item_restaurant_list_image"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
+            android:scaleType="center"
             bind:imageUrl="@{information.image}"
+            app:layout_constraintDimensionRatio="h,4:3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/linearLayout_item_restaurant_list_area"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

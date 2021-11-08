@@ -7,4 +7,14 @@ data class Information(
     val address: String,
     val image: String,
     val introduction: String
-)
+) {
+
+    fun formatCategoryAndAddress(): String {
+        return formatCategory() + " · " + address
+    }
+
+    private fun formatCategory(): String {
+        return category.joinToString(separator = "/")
+    }
+
+}

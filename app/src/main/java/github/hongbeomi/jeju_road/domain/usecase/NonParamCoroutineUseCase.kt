@@ -1,8 +1,8 @@
 package github.hongbeomi.jeju_road.domain.usecase
 
 import android.util.Log
-import kotlinx.coroutines.CoroutineDispatcher
 import github.hongbeomi.jeju_road.util.Result
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
 abstract class NonParamCoroutineUseCase<R>(private val coroutineDispatcher: CoroutineDispatcher) {

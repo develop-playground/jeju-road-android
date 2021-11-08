@@ -1,9 +1,9 @@
 package github.hongbeomi.jeju_road.domain.usecase
 
 import android.util.Log
+import github.hongbeomi.jeju_road.util.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import github.hongbeomi.jeju_road.util.Result
 
 abstract class CoroutineUseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
 
