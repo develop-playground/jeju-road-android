@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "github.hongbeomi.jeju_road"
+        applicationId "github.dev_playground.jeju_road"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
