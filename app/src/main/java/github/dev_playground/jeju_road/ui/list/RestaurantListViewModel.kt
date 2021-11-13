@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import github.dev_playground.jeju_road.domain.model.Information
 import github.dev_playground.jeju_road.domain.model.Restaurants
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
+import github.dev_playground.jeju_road.util.Event
 import github.dev_playground.jeju_road.util.UiState
 import github.dev_playground.jeju_road.util.toUiState
 import kotlinx.coroutines.launch
@@ -17,12 +19,19 @@ class RestaurantListViewModel(
     private val _restaurantList: MutableLiveData<UiState<Restaurants>> = MutableLiveData<UiState<Restaurants>>(UiState.loading())
     val restaurantList: LiveData<UiState<Restaurants>> = _restaurantList
 
+    private val _onRestaurantListClickEvent =  MutableLiveData<Event<Information>>()
+    val onRestaurantListClickEvent: LiveData<Event<Information>> = _onRestaurantListClickEvent
+
     init {
         fetchRestaurantList()
     }
 
     fun fetchRestaurantList() = viewModelScope.launch {
         _restaurantList.value = getRestaurantListUseCase.invoke().toUiState()
+    }
+
+    fun callOnRestaurantClickEvent(data: Information) {
+        _onRestaurantListClickEvent.value = Event(data)
     }
 
 }

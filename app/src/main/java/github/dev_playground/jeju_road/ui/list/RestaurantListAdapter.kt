@@ -10,7 +10,7 @@ import github.dev_playground.jeju_road.domain.model.Information
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 
-class RestaurantListAdapter : BaseListAdapter<Information>(
+class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAdapter<Information>(
     R.layout.item_restaurant_list,
     DIFF_CALLBACK
 ) {
@@ -34,6 +34,12 @@ class RestaurantListAdapter : BaseListAdapter<Information>(
                     root.resources.getDimension(R.dimen.dp_8)
                 )
                 executePendingBindings()
+
+                constraintLayoutItemRestaurantListArea.setOnClickListener {
+                    getItem(bindingAdapterPosition)?.let {
+                        viewModel.callOnRestaurantClickEvent(data)
+                    }
+                }
             }
         }
     }
