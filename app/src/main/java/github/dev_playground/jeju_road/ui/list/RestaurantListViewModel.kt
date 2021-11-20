@@ -19,8 +19,8 @@ class RestaurantListViewModel(
     private val _restaurantList: MutableLiveData<UiState<Restaurants>> = MutableLiveData<UiState<Restaurants>>(UiState.loading())
     val restaurantList: LiveData<UiState<Restaurants>> = _restaurantList
 
-    private val _onRestaurantListClickEvent =  MutableLiveData<Event<Information>>()
-    val onRestaurantListClickEvent: LiveData<Event<Information>> = _onRestaurantListClickEvent
+    private val _onRestaurantClickEvent =  MutableLiveData<Event<Information>>()
+    val onRestaurantClickEvent: LiveData<Event<Information>> = _onRestaurantClickEvent
 
     init {
         fetchRestaurantList()
@@ -31,7 +31,7 @@ class RestaurantListViewModel(
     }
 
     fun callOnRestaurantClickEvent(data: Information) {
-        _onRestaurantListClickEvent.value = Event(data)
+        _onRestaurantClickEvent.value = Event(data)
     }
 
 }

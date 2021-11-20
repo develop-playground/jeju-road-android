@@ -32,7 +32,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 }
             }
 
-            onRestaurantListClickEvent.eventObserve {
+            onRestaurantClickEvent.eventObserve {
                 val intent = Intent(activity, RestaurantPageActivity::class.java)
                 intent.putExtra(RESTAURANT_INFO, it)
                 startActivity(intent)
