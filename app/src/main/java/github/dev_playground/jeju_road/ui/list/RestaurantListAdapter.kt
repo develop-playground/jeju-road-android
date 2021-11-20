@@ -25,7 +25,8 @@ class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAd
         )
     }
 
-    inner class ViewHolder(private val binding: ItemRestaurantListBinding) : BaseViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemRestaurantListBinding) :
+        BaseViewHolder(binding.root) {
 
         init {
             binding.constraintLayoutItemRestaurantListArea.setOnClickListener {
@@ -46,8 +47,11 @@ class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAd
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
-            override fun areItemsTheSame(oldItem: Information, newItem: Information) = oldItem.id == newItem.id
-            override fun areContentsTheSame(oldItem: Information, newItem: Information) = oldItem == newItem
+            override fun areItemsTheSame(oldItem: Information, newItem: Information) =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: Information, newItem: Information) =
+                oldItem == newItem
         }
     }
 

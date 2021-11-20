@@ -10,15 +10,15 @@
     </data>
 
     <LinearLayout
-        android:layout_width="@dimen/dp_136"
+        android:layout_width="@dimen/dp_160"
         android:layout_height="wrap_content"
         android:padding="@dimen/dp_8"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView_item_restaurant_content_menu"
-            android:layout_width="@dimen/dp_120"
-            android:layout_height="@dimen/dp_120"
+            android:layout_width="@dimen/dp_144"
+            android:layout_height="@dimen/dp_144"
             bind:imageUrl="@{menu.image}"/>
 
         <TextView
@@ -27,7 +27,7 @@
             android:text="@{menu.name}"
             android:textColor="@color/black"
             android:fontFamily="sans-serif-medium"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:layout_marginTop="@dimen/dp_16"
             tools:text="몸국"/>
 
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dp_4"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:text="메뉴 설명 프로퍼티 추가 요망" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_marginTop="@dimen/dp_4"
             android:textColor="@color/black"
             android:fontFamily="sans-serif-medium"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:text="@{menu.formatPrice()}"
             tools:text="9,000원" />
 

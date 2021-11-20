@@ -17,6 +17,7 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
     }
 
     private val viewModel by viewModel<RestaurantPageViewModel>()
+    private lateinit var adapter: RestaurantPageListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,21 +25,22 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
 
         val restaurantInfo = intent.getSerializableExtra(KEY_RESTAURANT_INFO) as Information
 
-        binding {
-            name = restaurantInfo.name
-            address = restaurantInfo.address
-            introduction = restaurantInfo.introduction
-        }
+        setRecyclerView()
 
         viewModel.apply {
             id.value = restaurantInfo.id
 
             restaurantDetail.observe {
                 loadingEventViewModel.setLoadingState(it) { detail ->
-                    binding.information = detail.information
+                    adapter.setDetailInformation(detail.information)
                 }
             }
         }
+    }
+
+    fun setRecyclerView() {
+        adapter = RestaurantPageListAdapter()
+        binding.recyclerViewRestaurantPage.adapter = adapter
     }
 
 }

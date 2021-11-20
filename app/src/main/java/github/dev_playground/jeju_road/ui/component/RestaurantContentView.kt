@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewpager2.widget.ViewPager2
 import github.dev_playground.jeju_road.R
+import github.dev_playground.jeju_road.data.model.DetailInformation
 import github.dev_playground.jeju_road.data.model.Menu
 import github.dev_playground.jeju_road.databinding.ItemRestaurantContentImageBinding
 import github.dev_playground.jeju_road.databinding.ItemRestaurantContentMenuBinding
@@ -26,6 +27,20 @@ constructor(
 
     override fun getLayoutId() = R.layout.view_restaurant_content
 
+    init {
+        binding.apply {
+            viewPager2RestaurantContent.outlineProvider = RoundRectOutlineProvider()
+            frameLayoutRestaurantContentImageCount.outlineProvider = RoundRectOutlineProvider(R.dimen.dp_16)
+        }
+    }
+
+    fun setContentInformation(information: DetailInformation) {
+        setTitle(information.name)
+        setIntroduction(information.introduction)
+        setContentImageList(information.images)
+        setMenuList(information.menus)
+    }
+
     fun setTitle(title: String) {
         binding.textViewRestaurantContentTitle.text = title
     }
@@ -39,12 +54,12 @@ constructor(
             adapter = ContentImageListAdapter().apply {
                 submitList(images)
             }
-            binding.textViewRestaurantContentImageCount.text = "0/${images.size}"
+            binding.textViewRestaurantContentImageCount.text = "0 / ${images.size}"
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    binding.textViewRestaurantContentImageCount.text = "$position/${images.size}"
+                    binding.textViewRestaurantContentImageCount.text = "$position / ${images.size}"
                 }
             })
         }
@@ -73,12 +88,16 @@ constructor(
 
             init {
                 binding.imageViewItemRestaurantContent.setOnClickListener {
+                    // TODO: 11/21/21 클릭 시 이미지 전체화면
                     binding.root.context.showShort("url :: ${getItem(bindingAdapterPosition)}")
                 }
             }
 
             override fun bind(data: String) {
-                binding.url = data
+                binding.apply {
+                    url = data
+                    executePendingBindings()
+                }
             }
 
         }
