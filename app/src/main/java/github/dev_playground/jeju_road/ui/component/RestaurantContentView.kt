@@ -8,9 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewpager2.widget.ViewPager2
 import github.dev_playground.jeju_road.R
+import github.dev_playground.jeju_road.data.model.Menu
 import github.dev_playground.jeju_road.databinding.ItemRestaurantContentImageBinding
+import github.dev_playground.jeju_road.databinding.ItemRestaurantContentMenuBinding
 import github.dev_playground.jeju_road.databinding.ViewRestaurantContentBinding
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
+import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 import github.dev_playground.jeju_road.util.showShort
 
 class RestaurantContentView
@@ -47,7 +50,13 @@ constructor(
         }
     }
 
-    inner class ContentImageListAdapter : BaseListAdapter<String>(DIFF_CALLBACK) {
+    fun setMenuList(menus: List<Menu>) {
+        binding.recyclerViewRestaurantContentMenu.adapter = ContentMenuListAdapter().apply {
+            submitList(menus)
+        }
+    }
+
+    inner class ContentImageListAdapter : BaseListAdapter<String>(IMAGE_DIFF_CALLBACK) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
             return ImagePagerViewHolder(
@@ -60,7 +69,7 @@ constructor(
             )
         }
 
-        inner class ImagePagerViewHolder(val binding: ItemRestaurantContentImageBinding) : BaseViewHolder(binding.root) {
+        private inner class ImagePagerViewHolder(val binding: ItemRestaurantContentImageBinding) : BaseViewHolder(binding.root) {
 
             init {
                 binding.imageViewItemRestaurantContent.setOnClickListener {
@@ -76,10 +85,49 @@ constructor(
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
+        private val IMAGE_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
             override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
             override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
         }
+        private val MENU_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Menu>() {
+            override fun areItemsTheSame(oldItem: Menu, newItem: Menu) = oldItem.id == newItem.id
+            override fun areContentsTheSame(oldItem: Menu, newItem: Menu) = oldItem == newItem
+        }
+    }
+
+    inner class ContentMenuListAdapter: BaseListAdapter<Menu>(MENU_DIFF_CALLBACK) {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+            return  ContentMenuViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.item_restaurant_content_menu,
+                    parent,
+                    false
+                )
+            )
+        }
+
+        private inner class  ContentMenuViewHolder(
+            val binding: ItemRestaurantContentMenuBinding
+        ): BaseViewHolder(binding.root) {
+
+            init {
+                binding.imageViewItemRestaurantContentMenu.setOnClickListener {
+                    // TODO: 11/21/21 이미지 클릭 시 전체화면으로 보여주기
+                }
+            }
+
+            override fun bind(data: Menu) {
+                binding.apply {
+                    imageViewItemRestaurantContentMenu.outlineProvider = RoundRectOutlineProvider()
+                    menu = data
+                    executePendingBindings()
+                }
+            }
+
+        }
+
     }
 
 }

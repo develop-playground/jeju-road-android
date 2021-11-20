@@ -38,9 +38,7 @@ class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAd
         override fun bind(data: Information) {
             binding.apply {
                 information = data
-                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider(
-                    root.resources.getDimension(R.dimen.dp_8)
-                )
+                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider()
                 executePendingBindings()
             }
         }
