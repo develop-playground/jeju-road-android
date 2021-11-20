@@ -14,34 +14,32 @@ import org.mockito.kotlin.whenever
 
 class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
 
-    private val repository : RestaurantRepository = mock()
+    private val repository: RestaurantRepository = mock()
     private val id = 1L
     private val restaurantDetail = RestaurantDetail(
         message = "test",
-        detailInformationList = listOf(
-            DetailInformation(
-                id = 1L,
-                name = "떡볶이",
-                images = listOf("대충 이미지 URL"),
-                menus = listOf(
-                    Menu(
-                        id = 2L,
-                        name = "아무튼 떡볶이",
-                        image = "image url",
-                        price = 9000
-                    )
-                ),
-                howToGo = "한밭대에서 1분",
-                address = "한밭대학교 학하서로",
-                servingTime = listOf(
-                    ServingTimeData(
-                        dayOfWeek = "??",
-                        serving = "???"
-                    )
-                ),
-                introduction = "대충 소개글",
-                tips = listOf("팁팁")
-            )
+        information = DetailInformation(
+            id = 1L,
+            name = "떡볶이",
+            images = listOf("대충 이미지 URL"),
+            menus = listOf(
+                Menu(
+                    id = 2L,
+                    name = "아무튼 떡볶이",
+                    image = "image url",
+                    price = 9000
+                )
+            ),
+            howToGo = "한밭대에서 1분",
+            address = "한밭대학교 학하서로",
+            servingTime = listOf(
+                ServingTimeData(
+                    dayOfWeek = "??",
+                    serving = "???"
+                )
+            ),
+            introduction = "대충 소개글",
+            tips = listOf("팁팁")
         )
     )
 
@@ -56,14 +54,15 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
         val result = useCase.invoke(id)
 
         // then
-        MatcherAssert.assertThat(result, CoreMatchers.`is`(IsInstanceOf(Result.Success::class.java)))
+        MatcherAssert.assertThat(
+            result,
+            CoreMatchers.`is`(IsInstanceOf(Result.Success::class.java))
+        )
 
-        val successResult  = result as Result.Success
+        val successResult = result as Result.Success
 
-        Assert.assertEquals(1, successResult.data.detailInformationList.size)
-
-        Assert.assertEquals(1L, successResult.data.detailInformationList[0].id)
-        Assert.assertEquals("떡볶이", successResult.data.detailInformationList[0].name)
+        Assert.assertEquals(1L, successResult.data.information.id)
+        Assert.assertEquals("떡볶이", successResult.data.information.name)
     }
 
     @Test
@@ -80,7 +79,7 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
         // then
         MatcherAssert.assertThat(result, CoreMatchers.`is`(IsInstanceOf(Result.Error::class.java)))
 
-        val errorResult  = result as Result.Error
+        val errorResult = result as Result.Error
         Assert.assertEquals("Test", errorResult.exception.message)
     }
 

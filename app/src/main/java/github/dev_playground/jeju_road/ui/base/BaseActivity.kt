@@ -21,7 +21,7 @@ abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCo
 
     protected val binding: B by lazy { DataBindingUtil.setContentView<B>(this, layoutId) }
 
-    private val loadingEventViewModel by viewModel<LoadingEventViewModel>()
+    protected val loadingEventViewModel by viewModel<LoadingEventViewModel>()
     private lateinit var loadingView: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
