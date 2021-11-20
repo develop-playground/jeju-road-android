@@ -23,5 +23,5 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
             information = restaurantInfo
         }
     }
-    
+
 }
