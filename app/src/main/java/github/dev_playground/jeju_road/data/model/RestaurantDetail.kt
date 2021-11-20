@@ -2,8 +2,8 @@ package github.dev_playground.jeju_road.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RestaurantDetailData (
+data class RestaurantDetail (
     val message: String,
     @SerializedName("information")
-    val detailInformationList: List<DetailInformationData>
+    val detailInformationList: List<DetailInformation>
 )

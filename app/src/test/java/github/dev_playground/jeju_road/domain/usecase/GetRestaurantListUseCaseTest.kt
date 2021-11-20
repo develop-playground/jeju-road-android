@@ -1,7 +1,7 @@
 package github.dev_playground.jeju_road.domain.usecase
 
-import github.dev_playground.jeju_road.data.model.InformationData
-import github.dev_playground.jeju_road.data.model.RestaurantData
+import github.dev_playground.jeju_road.data.model.Information
+import github.dev_playground.jeju_road.data.model.Restaurants
 import github.dev_playground.jeju_road.data.repository.RestaurantRepository
 import github.dev_playground.jeju_road.util.Result
 import junit.framework.Assert.assertEquals
@@ -16,10 +16,10 @@ import org.mockito.kotlin.whenever
 class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
 
     private val repository : RestaurantRepository = mock()
-    private val restaurantData = RestaurantData(
+    private val restaurantData = Restaurants(
         message = "test",
         informationList = listOf(
-            InformationData(
+            Information(
                 id = 1,
                 name = "맛집",
                 category = listOf("category"),

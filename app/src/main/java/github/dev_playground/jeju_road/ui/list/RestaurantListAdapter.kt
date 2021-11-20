@@ -5,13 +5,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import github.dev_playground.jeju_road.R
+import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.ItemRestaurantListBinding
-import github.dev_playground.jeju_road.domain.model.Information
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 
 class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAdapter<Information>(
-    R.layout.item_restaurant_list,
     DIFF_CALLBACK
 ) {
 
@@ -48,7 +47,7 @@ class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAd
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
             override fun areItemsTheSame(oldItem: Information, newItem: Information) = oldItem.id == newItem.id
             override fun areContentsTheSame(oldItem: Information, newItem: Information) = oldItem == newItem
         }

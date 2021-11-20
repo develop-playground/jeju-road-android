@@ -6,7 +6,7 @@
 
         <variable
             name="information"
-            type="github.dev_playground.jeju_road.domain.model.Information" />
+            type="github.dev_playground.jeju_road.data.model.Information" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -29,20 +29,6 @@
                 app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
         </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_restaurant_page"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
-
-        <ProgressBar
-            android:id="@+id/progressBar_restaurant_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

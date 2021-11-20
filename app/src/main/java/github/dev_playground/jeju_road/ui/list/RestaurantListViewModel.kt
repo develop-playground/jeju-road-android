@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import github.dev_playground.jeju_road.domain.model.Information
-import github.dev_playground.jeju_road.domain.model.Restaurants
+import github.dev_playground.jeju_road.data.model.Information
+import github.dev_playground.jeju_road.data.model.Restaurants
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
 import github.dev_playground.jeju_road.util.Event
 import github.dev_playground.jeju_road.util.UiState

@@ -11,12 +11,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseListAdapter<ITEM>(
-    @LayoutRes
-    private val itemLayoutId: Int,
     diffCallback: DiffUtil.ItemCallback<ITEM>
 ) : ListAdapter<ITEM, BaseListAdapter<ITEM>.BaseViewHolder>(diffCallback) {
-
-    override fun getItemViewType(position: Int) = itemLayoutId
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(getItem(position))

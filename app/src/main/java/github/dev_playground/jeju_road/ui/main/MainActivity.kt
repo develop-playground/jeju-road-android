@@ -12,8 +12,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    override val loadingProgressBar: ProgressBar = binding.progressBarMain
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

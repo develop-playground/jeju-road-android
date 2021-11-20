@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import github.dev_playground.jeju_road.util.UiState
+import kotlinx.coroutines.delay
 
 class LoadingEventViewModel : ViewModel() {
 

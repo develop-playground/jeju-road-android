@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.domain.model
+package github.dev_playground.jeju_road.data.model
 
 import java.io.Serializable
 

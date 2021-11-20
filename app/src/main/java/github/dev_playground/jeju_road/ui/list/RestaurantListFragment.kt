@@ -10,6 +10,7 @@ import github.dev_playground.jeju_road.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
 import github.dev_playground.jeju_road.util.startActivity
+import kotlinx.coroutines.delay
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
