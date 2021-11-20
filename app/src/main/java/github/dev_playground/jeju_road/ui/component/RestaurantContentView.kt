@@ -54,12 +54,12 @@ constructor(
             adapter = ContentImageListAdapter().apply {
                 submitList(images)
             }
-            binding.textViewRestaurantContentImageCount.text = "0 / ${images.size}"
+            binding.textViewRestaurantContentImageCount.text = "1 / ${images.size}"
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    binding.textViewRestaurantContentImageCount.text = "$position / ${images.size}"
+                    binding.textViewRestaurantContentImageCount.text = "${position + 1} / ${images.size}"
                 }
             })
         }
