@@ -10,6 +10,7 @@ import github.dev_playground.jeju_road.ui.component.VerticalDividerItemDecoratio
 import github.dev_playground.jeju_road.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
+import github.dev_playground.jeju_road.util.startActivity
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -33,9 +34,9 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             }
 
             onRestaurantClickEvent.eventObserve {
-                val intent = Intent(activity, RestaurantPageActivity::class.java)
-                intent.putExtra(KEY_RESTAURANT_INFO, it)
-                startActivity(intent)
+                requireActivity().startActivity<RestaurantPageActivity> {
+                    putExtra(KEY_RESTAURANT_INFO, it)
+                }
             }
         }
     }
