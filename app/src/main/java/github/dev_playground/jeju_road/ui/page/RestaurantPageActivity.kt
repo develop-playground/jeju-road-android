@@ -11,17 +11,17 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
 ) {
 
     companion object {
-        const val RESTAURANT_INFO = "restaurantInfo"
+        const val KEY_RESTAURANT_INFO = "restaurantInfo"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val intent = intent
-        val restaurantInfo = intent.getSerializableExtra(RESTAURANT_INFO) as Information
+        val restaurantInfo = intent.getSerializableExtra(KEY_RESTAURANT_INFO) as Information
 
-        binding.apply {
-            textViewActivityRestaurantPageName.text = restaurantInfo.name
+        binding {
+            information = restaurantInfo
         }
     }
+    
 }
