@@ -10,8 +10,7 @@ class RestaurantPageViewModel(
     private val getRestaurantPageUseCase: GetRestaurantDetailUseCase
 ) : ViewModel() {
 
-    private val _id: MutableLiveData<Long> = MutableLiveData<Long>()
-    val id: LiveData<Long> = _id
+    val id: MutableLiveData<Long> = MutableLiveData<Long>()
 
     val restaurantDetail: LiveData<UiState<RestaurantDetail>> = id.switchMap {
         liveData {

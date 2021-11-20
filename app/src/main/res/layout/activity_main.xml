@@ -16,6 +16,7 @@
             app:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="@string/text_main_toolbar_title"
@@ -30,13 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
-
-<!--        <ProgressBar-->
-<!--            android:id="@+id/progressBar_main"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:indeterminate="true"-->
-<!--            android:layout_gravity="center"/>-->
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

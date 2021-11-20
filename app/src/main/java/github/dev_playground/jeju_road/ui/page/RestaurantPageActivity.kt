@@ -1,6 +1,7 @@
 package github.dev_playground.jeju_road.ui.page
 
 import android.os.Bundle
+import android.widget.Toolbar
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.ActivityRestaurantPageBinding
@@ -19,16 +20,23 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setSupportActionBar(binding.toolbarRestaurantPage)
 
         val restaurantInfo = intent.getSerializableExtra(KEY_RESTAURANT_INFO) as Information
 
         binding {
-            information = restaurantInfo
+            name = restaurantInfo.name
+            address = restaurantInfo.address
+            introduction = restaurantInfo.introduction
         }
 
-        viewModel.restaurantDetail.observe {
-            loadingEventViewModel.setLoadingState(it) { detail ->
-                detail.information
+        viewModel.apply {
+            id.value = restaurantInfo.id
+
+            restaurantDetail.observe {
+                loadingEventViewModel.setLoadingState(it) { detail ->
+                    binding.information = detail.information
+                }
             }
         }
     }

@@ -6,7 +6,19 @@
 
         <variable
             name="information"
-            type="github.dev_playground.jeju_road.data.model.Information" />
+            type="github.dev_playground.jeju_road.data.model.DetailInformation"/>
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="address"
+            type="String" />
+
+        <variable
+            name="introduction"
+            type="String" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
