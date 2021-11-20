@@ -2,6 +2,7 @@ package github.dev_playground.jeju_road.ui.base
 
 import android.os.Bundle
 import android.view.Gravity
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -72,6 +73,13 @@ abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCo
 
     protected infix fun <T> LiveData<Event<T>>.eventObserve(action: (T) -> Unit) {
         observe(this@BaseActivity, { it.get(action) })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
