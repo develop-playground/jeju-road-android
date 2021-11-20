@@ -1,7 +1,6 @@
 package github.dev_playground.jeju_road.ui.base
 
 import android.view.View
-import androidx.annotation.LayoutRes
 import androidx.core.view.doOnAttach
 import androidx.core.view.doOnDetach
 import androidx.lifecycle.LifecycleOwner
