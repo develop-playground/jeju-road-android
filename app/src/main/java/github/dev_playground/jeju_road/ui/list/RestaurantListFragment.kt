@@ -1,6 +1,5 @@
 package github.dev_playground.jeju_road.ui.list
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import github.dev_playground.jeju_road.R

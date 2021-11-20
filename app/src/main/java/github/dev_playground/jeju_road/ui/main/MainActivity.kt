@@ -2,6 +2,7 @@ package github.dev_playground.jeju_road.ui.main
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.databinding.ActivityMainBinding
 import github.dev_playground.jeju_road.ui.base.BaseActivity
@@ -11,7 +12,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private val viewModel by viewModel<LoadingEventViewModel>()
+    override val loadingProgressBar: ProgressBar = binding.progressBarMain
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +21,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             .beginTransaction()
             .replace(R.id.fragmentContainerView_main, RestaurantListFragment.newInstance())
             .commit()
-
-        viewModel.loadingState.observe {
-            binding.progressBarMain.visibility = if (it.loading) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-        }
     }
 
 }
