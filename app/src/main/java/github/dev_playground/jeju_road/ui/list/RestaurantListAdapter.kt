@@ -27,6 +27,15 @@ class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAd
     }
 
     inner class ViewHolder(private val binding: ItemRestaurantListBinding) : BaseViewHolder(binding.root) {
+
+        init {
+            binding.constraintLayoutItemRestaurantListArea.setOnClickListener {
+                getItem(bindingAdapterPosition)?.let {
+                    viewModel.callOnRestaurantClickEvent(it)
+                }
+            }
+        }
+
         override fun bind(data: Information) {
             binding.apply {
                 information = data
@@ -34,12 +43,6 @@ class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAd
                     root.resources.getDimension(R.dimen.dp_8)
                 )
                 executePendingBindings()
-
-                constraintLayoutItemRestaurantListArea.setOnClickListener {
-                    getItem(bindingAdapterPosition)?.let {
-                        viewModel.callOnRestaurantClickEvent(data)
-                    }
-                }
             }
         }
     }

@@ -68,56 +68,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="한밭대 떡볶이" />
 
-            <androidx.appcompat.widget.AppCompatRatingBar
-                android:id="@+id/ratingBar_activity_restaurant"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:isIndicator="true"
-                android:scaleX="0.8"
-                android:scaleY="0.8"
-
-                android:numStars="5"
-                android:stepSize="0.5"
-                app:layout_constraintStart_toStartOf="@id/textView_activity_restaurant_page_name"
-                app:layout_constraintTop_toBottomOf="@id/textView_activity_restaurant_page_name" />
-
-            <TextView
-                android:id="@+id/textView_activity_restaurant_page_ratingSum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                style="@style/Text.BODY_RESTAURANT_PATE"
-                app:layout_constraintTop_toTopOf="@id/ratingBar_activity_restaurant"
-                app:layout_constraintStart_toEndOf="@id/ratingBar_activity_restaurant"
-                app:layout_constraintBottom_toBottomOf="@id/ratingBar_activity_restaurant"
-                tools:text="0"
-                />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageView_activity_restaurant_page_like_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/ic_heart"
-                app:layout_constraintStart_toEndOf="@id/textView_activity_restaurant_page_ratingSum"
-                app:layout_constraintTop_toTopOf="@id/ratingBar_activity_restaurant"
-                app:layout_constraintBottom_toBottomOf="@id/ratingBar_activity_restaurant"
-                />
-
-            <TextView
-                android:id="@+id/textView_activity_restaurant_page_likeSum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                style="@style/Text.BODY_RESTAURANT_PATE"
-                app:layout_constraintTop_toTopOf="@id/imageView_activity_restaurant_page_like_icon"
-                app:layout_constraintStart_toEndOf="@id/imageView_activity_restaurant_page_like_icon"
-                app:layout_constraintBottom_toBottomOf="@id/imageView_activity_restaurant_page_like_icon"
-                tools:text="0"
-                />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
