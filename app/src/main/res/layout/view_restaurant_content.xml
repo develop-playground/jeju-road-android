@@ -12,7 +12,8 @@
             android:id="@+id/linearLayout_restaurant_content_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_16"
+            android:layout_marginVertical="@dimen/dp_32"
+            android:layout_marginHorizontal="@dimen/dp_16"
             android:orientation="vertical">
 
             <TextView
