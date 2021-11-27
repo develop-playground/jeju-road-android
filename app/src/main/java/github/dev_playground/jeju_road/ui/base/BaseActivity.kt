@@ -9,11 +9,9 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
-import github.dev_playground.jeju_road.domain.usecase.GetRestaurantDetailUseCase
 import github.dev_playground.jeju_road.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.util.Event
 import org.koin.android.viewmodel.ext.android.viewModel
