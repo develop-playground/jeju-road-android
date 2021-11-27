@@ -20,9 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="@string/text_main_toolbar_title"
-                app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                app:contentInsetStartWithNavigation="0dp"
-                app:navigationIcon="@drawable/ic_arrow_back_24" />
+                app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

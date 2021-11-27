@@ -10,13 +10,13 @@ import github.dev_playground.jeju_road.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
 import github.dev_playground.jeju_road.util.startActivity
-import kotlinx.coroutines.delay
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     R.layout.fragment_restaurant_list
 ) {
+
     private val viewModel by viewModel<RestaurantListViewModel>()
     private val loadingEventViewModel by sharedViewModel<LoadingEventViewModel>()
     private val adapter by lazy { RestaurantListAdapter(viewModel) }
