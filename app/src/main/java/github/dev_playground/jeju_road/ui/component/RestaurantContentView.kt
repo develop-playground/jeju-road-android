@@ -17,7 +17,6 @@ import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.ui.image.FullSizeImageActivity
 import github.dev_playground.jeju_road.ui.image.FullSizeImageActivity.Companion.KEY_URL
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
-import github.dev_playground.jeju_road.util.showShort
 import github.dev_playground.jeju_road.util.startActivity
 
 class RestaurantContentView
@@ -33,7 +32,8 @@ constructor(
     init {
         binding.apply {
             viewPager2RestaurantContent.outlineProvider = RoundRectOutlineProvider()
-            frameLayoutRestaurantContentImageCount.outlineProvider = RoundRectOutlineProvider(R.dimen.dp_16)
+            frameLayoutRestaurantContentImageCount.outlineProvider =
+                RoundRectOutlineProvider(R.dimen.dp_16)
         }
     }
 
@@ -57,24 +57,30 @@ constructor(
             adapter = ContentImageListAdapter().apply {
                 submitList(images)
             }
-            binding.textViewRestaurantContentImageCount.text = "1 / ${images.size}"
+            binding.textViewRestaurantContentImageCount.text =
+                resources.getString(R.string.text_restaurant_content_image_count, images.size)
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    binding.textViewRestaurantContentImageCount.text = "${position + 1} / ${images.size}"
+                    binding.textViewRestaurantContentImageCount.text =
+                        resources.getString(
+                            R.string.text_restaurant_content_image_current_count,
+                            position + 1,
+                            images.size
+                        )
                 }
             })
         }
     }
 
-    fun setMenuList(menus: List<Menu>) {
+    private fun setMenuList(menus: List<Menu>) {
         binding.recyclerViewRestaurantContentMenu.adapter = ContentMenuListAdapter().apply {
             submitList(menus)
         }
     }
 
-    inner class ContentImageListAdapter : BaseListAdapter<String>(IMAGE_DIFF_CALLBACK) {
+    private inner class ContentImageListAdapter : BaseListAdapter<String>(IMAGE_DIFF_CALLBACK) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
             return ImagePagerViewHolder(
@@ -87,7 +93,8 @@ constructor(
             )
         }
 
-        private inner class ImagePagerViewHolder(val binding: ItemRestaurantContentImageBinding) : BaseViewHolder(binding.root) {
+        private inner class ImagePagerViewHolder(val binding: ItemRestaurantContentImageBinding) :
+            BaseViewHolder(binding.root) {
 
             init {
                 binding.imageViewItemRestaurantContent.setOnClickListener {
@@ -107,21 +114,9 @@ constructor(
         }
     }
 
-    companion object {
-        private val IMAGE_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
-            override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
-            override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
-        }
-        private val MENU_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Menu>() {
-            override fun areItemsTheSame(oldItem: Menu, newItem: Menu) = oldItem.id == newItem.id
-            override fun areContentsTheSame(oldItem: Menu, newItem: Menu) = oldItem == newItem
-        }
-    }
-
-    inner class ContentMenuListAdapter: BaseListAdapter<Menu>(MENU_DIFF_CALLBACK) {
-
+    private inner class ContentMenuListAdapter : BaseListAdapter<Menu>(MENU_DIFF_CALLBACK) {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-            return  ContentMenuViewHolder(
+            return ContentMenuViewHolder(
                 DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
                     R.layout.item_restaurant_content_menu,
@@ -131,10 +126,9 @@ constructor(
             )
         }
 
-        private inner class  ContentMenuViewHolder(
+        private inner class ContentMenuViewHolder(
             val binding: ItemRestaurantContentMenuBinding
-        ): BaseViewHolder(binding.root) {
-
+        ) : BaseViewHolder(binding.root) {
             init {
                 binding.imageViewItemRestaurantContentMenu.setOnClickListener {
                     it.context.startActivity<FullSizeImageActivity> {
@@ -153,6 +147,17 @@ constructor(
 
         }
 
+    }
+
+    companion object {
+        private val IMAGE_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
+            override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
+        }
+        private val MENU_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Menu>() {
+            override fun areItemsTheSame(oldItem: Menu, newItem: Menu) = oldItem.id == newItem.id
+            override fun areContentsTheSame(oldItem: Menu, newItem: Menu) = oldItem == newItem
+        }
     }
 
 }
