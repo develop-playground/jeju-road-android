@@ -62,6 +62,7 @@ abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCo
 
             addView(progressBar)
             (progressBar.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.CENTER
+            visibility = View.GONE
         }
         val viewGroup = binding.root as ViewGroup
         viewGroup.addView(loadingView)

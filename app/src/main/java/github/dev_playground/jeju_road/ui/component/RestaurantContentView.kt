@@ -14,8 +14,11 @@ import github.dev_playground.jeju_road.databinding.ItemRestaurantContentImageBin
 import github.dev_playground.jeju_road.databinding.ItemRestaurantContentMenuBinding
 import github.dev_playground.jeju_road.databinding.ViewRestaurantContentBinding
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
+import github.dev_playground.jeju_road.ui.image.FullSizeImageActivity
+import github.dev_playground.jeju_road.ui.image.FullSizeImageActivity.Companion.KEY_URL
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 import github.dev_playground.jeju_road.util.showShort
+import github.dev_playground.jeju_road.util.startActivity
 
 class RestaurantContentView
 @JvmOverloads
@@ -88,8 +91,9 @@ constructor(
 
             init {
                 binding.imageViewItemRestaurantContent.setOnClickListener {
-                    // TODO: 11/21/21 클릭 시 이미지 전체화면
-                    binding.root.context.showShort("url :: ${getItem(bindingAdapterPosition)}")
+                    it.context.startActivity<FullSizeImageActivity> {
+                        putExtra(KEY_URL, getItem(bindingAdapterPosition))
+                    }
                 }
             }
 
@@ -133,7 +137,9 @@ constructor(
 
             init {
                 binding.imageViewItemRestaurantContentMenu.setOnClickListener {
-                    // TODO: 11/21/21 이미지 클릭 시 전체화면으로 보여주기
+                    it.context.startActivity<FullSizeImageActivity> {
+                        putExtra(KEY_URL, getItem(bindingAdapterPosition).image)
+                    }
                 }
             }
 

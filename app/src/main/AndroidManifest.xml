@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.page.RestaurantPageActivity" />
+        <activity android:name=".ui.image.FullSizeImageActivity" />
     </application>
 
 </manifest>
