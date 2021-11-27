@@ -23,12 +23,12 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbarRestaurantPage)
 
-        val restaurantInfo = intent.getSerializableExtra(KEY_RESTAURANT_INFO) as Information
-
         setRecyclerView()
 
         viewModel.apply {
-            id.value = restaurantInfo.id
+            (intent.getSerializableExtra(KEY_RESTAURANT_INFO) as? Information)?.let {
+                id.value = it.id
+            }
 
             restaurantDetail.observe {
                 loadingEventViewModel.setLoadingState(it) { detail ->
