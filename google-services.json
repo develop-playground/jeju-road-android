@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "778686489341",
+    "project_id": "jejuroad-2c7f3",
+    "storage_bucket": "jejuroad-2c7f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778686489341:android:0ee88e84ba67978f965494",
+        "android_client_info": {
+          "package_name": "github.dev_playground.jeju_road"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778686489341-ukufhogavcc9v5i02m1jfio6dokolghe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "github.dev_playground.jeju_road",
+            "certificate_hash": "2f306f06be0077d7e18aca486f04e50dd97ace0c"
+          }
+        },
+        {
+          "client_id": "778686489341-octpndbaeqq00s7i2pifh2cvs2nd3ml3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuUvZvse_aJH1ES36iIO8uxUUZFgl3wsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778686489341-octpndbaeqq00s7i2pifh2cvs2nd3ml3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
