@@ -9,4 +9,5 @@ interface RestaurantRepository {
 
     suspend fun getRestaurantDetail(id: Long): RestaurantDetail
 
+    suspend fun getRestaurantPaging(): Restaurants
 }

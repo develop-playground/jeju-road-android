@@ -13,4 +13,5 @@ interface RestaurantApi {
     @GET("/restaurant/{id}")
     suspend fun getRestaurantDetail(@Path("id") id: Long): RestaurantDetail
 
+
 }

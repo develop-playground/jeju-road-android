@@ -25,7 +25,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     private val viewModel by viewModel<RestaurantListViewModel>()
     private val loadingEventViewModel by sharedViewModel<LoadingEventViewModel>()
     private val adapter by lazy { RestaurantListAdapter(viewModel) }
-
+    private var isLoading = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView()
@@ -37,25 +37,26 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     adapter.submitList(restaurants.informationList)
                 }
 
-                binding.apply {
-                    recyclerViewRestaurantList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                            super.onScrolled(recyclerView, dx, dy)
-                            val lastVisibleItemPosition =
-                                (recyclerView.layoutManager as LinearLayoutManager)
-                                    .findLastCompletelyVisibleItemPosition()
-                            val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
+                binding.recyclerViewRestaurantList.addOnScrollListener(object :
+                    RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        super.onScrolled(recyclerView, dx, dy)
 
-                            if (lastVisibleItemPosition == itemTotalCount) {
+                        val lastVisibleItemPosition =
+                            (recyclerView.layoutManager as LinearLayoutManager)
+                                .findLastCompletelyVisibleItemPosition()
+                        val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
 
-                            }
+                        if (!isLoading && lastVisibleItemPosition == itemTotalCount) {
+                            isLoading = true
+                            pagingRestaurantList()
                         }
+                    }
+                })
+            }
 
-                        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                            super.onScrollStateChanged(recyclerView, newState)
-                        }
-                    })
-                }
+            bringRestaurantList.observe {
+                println("테스트: $it")
             }
 
             onRestaurantClickEvent.eventObserve {

@@ -20,4 +20,9 @@ class RestaurantRepositoryImpl(
         }.getOrThrow()
     }
 
+    override suspend fun getRestaurantPaging(): Restaurants {
+        return runCatching {
+            restaurantApi.getRestaurantList()
+        }.getOrThrow()
+    }
 }

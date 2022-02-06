@@ -12,5 +12,4 @@ class GetRestaurantDetailUseCase(
     override suspend fun execute(param: Long): RestaurantDetail {
         return  restaurantRepository.getRestaurantDetail(param)
     }
-
 }

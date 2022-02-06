@@ -7,7 +7,10 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { RestaurantListViewModel(get()) }
+    viewModel { RestaurantListViewModel(
+        getRestaurantListUseCase = get(),
+        getRestaurantPagingUseCase = get(),
+    )}
     viewModel { RestaurantPageViewModel(get()) }
     viewModel { LoadingEventViewModel() }
 }
