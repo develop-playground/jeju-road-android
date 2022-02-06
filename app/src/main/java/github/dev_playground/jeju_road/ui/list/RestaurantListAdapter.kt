@@ -45,6 +45,12 @@ class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAd
         }
     }
 
+    fun submitAddList(list: List<Information>?) {
+        super.submitList(list)
+        //알고리즘 구현중
+    }
+
+
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
             override fun areItemsTheSame(oldItem: Information, newItem: Information) =

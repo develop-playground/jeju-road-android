@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import github.dev_playground.jeju_road.R
+import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.ui.base.BaseFragment
 import github.dev_playground.jeju_road.ui.component.VerticalDividerItemDecoration
@@ -21,11 +22,11 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     R.layout.fragment_restaurant_list
 ) {
-
     private val viewModel by viewModel<RestaurantListViewModel>()
     private val loadingEventViewModel by sharedViewModel<LoadingEventViewModel>()
     private val adapter by lazy { RestaurantListAdapter(viewModel) }
     private var isLoading = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView()
@@ -56,7 +57,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             }
 
             bringRestaurantList.observe {
-                println("테스트: $it")
+                adapter.submitAddList(it.data?.informationList)
             }
 
             onRestaurantClickEvent.eventObserve {
