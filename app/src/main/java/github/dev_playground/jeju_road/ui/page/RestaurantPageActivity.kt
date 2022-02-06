@@ -41,6 +41,7 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
     fun setRecyclerView() {
         adapter = RestaurantPageListAdapter()
         binding.recyclerViewRestaurantPage.adapter = adapter
+
     }
 
 }

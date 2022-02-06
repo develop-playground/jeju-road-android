@@ -3,24 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/custom_rating.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/drawable/custom_rating_false.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/drawable/custom_rating_true.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.32685185185185184" />
-        <entry key="app/src/main/res/drawable/ic_carbon_overflow_menu_horizontal.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.1763888888888889" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.32685185185185184" />
-        <entry key="app/src/main/res/drawable/ic_map_24.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/drawable/ic_menu_24.xml" value="0.3374358974358974" />
-        <entry key="app/src/main/res/drawable/ic_star_15.xml" value="0.3296296296296296" />
-        <entry key="app/src/main/res/drawable/ic_star_true_20.xml" value="0.34270833333333334" />
-        <entry key="app/src/main/res/font/nanum_gotic_bold.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/font/nanum_gotic_bold_font.xml" value="0.3567708333333333" />
-        <entry key="app/src/main/res/font/nanum_gotic_font.xml" value="0.3567708333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16388044579533942" />
-        <entry key="app/src/main/res/layout/activity_restaurant_page.xml" value="0.1746929541047188" />
-        <entry key="app/src/main/res/layout/asdlfkhsad.xml" value="0.1912568306010929" />
-        <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.12297996121525533" />
+        <entry key="app/src/main/res/layout/activity_restaurant_page.xml" value="0.1834016393442623" />
+        <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.3188405797101449" />
+        <entry key="app/src/main/res/layout/item_restaurant_content_image.xml" value="0.1834016393442623" />
         <entry key="app/src/main/res/layout/item_restaurant_list.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3463541666666667" />

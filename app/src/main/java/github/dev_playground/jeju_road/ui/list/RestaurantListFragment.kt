@@ -1,7 +1,12 @@
 package github.dev_playground.jeju_road.ui.list
 
 import android.os.Bundle
+import android.renderscript.Allocation
 import android.view.View
+import android.widget.AbsListView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.ui.base.BaseFragment
@@ -30,6 +35,26 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 loadingEventViewModel.setLoadingState(it) { restaurants ->
                     binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                     adapter.submitList(restaurants.informationList)
+                }
+
+                binding.apply {
+                    recyclerViewRestaurantList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                            super.onScrolled(recyclerView, dx, dy)
+                            val lastVisibleItemPosition =
+                                (recyclerView.layoutManager as LinearLayoutManager)
+                                    .findLastCompletelyVisibleItemPosition()
+                            val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
+
+                            if (lastVisibleItemPosition == itemTotalCount) {
+
+                            }
+                        }
+
+                        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                            super.onScrollStateChanged(recyclerView, newState)
+                        }
+                    })
                 }
             }
 
