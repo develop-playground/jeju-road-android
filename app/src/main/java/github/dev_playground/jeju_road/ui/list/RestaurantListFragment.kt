@@ -1,12 +1,9 @@
 package github.dev_playground.jeju_road.ui.list
 
 import android.os.Bundle
-import android.renderscript.Allocation
 import android.view.View
-import android.widget.AbsListView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.FragmentRestaurantListBinding
@@ -25,7 +22,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     private val viewModel by viewModel<RestaurantListViewModel>()
     private val loadingEventViewModel by sharedViewModel<LoadingEventViewModel>()
     private val adapter by lazy { RestaurantListAdapter(viewModel) }
-    private var isLoading = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,7 +53,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             }
 
             bringRestaurantList.observe {
-                adapter.submitAddList(it.data?.informationList)
+                adapter.updateList(it.data?.informationList as MutableList<Information>)
             }
 
             onRestaurantClickEvent.eventObserve {
@@ -82,6 +78,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     }
 
     companion object {
+        var isLoading = false
         fun newInstance() = RestaurantListFragment()
     }
 

@@ -6,7 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface RestaurantApi {
-
     @GET("/restaurant")
     suspend fun getRestaurantList(): Restaurants
 
