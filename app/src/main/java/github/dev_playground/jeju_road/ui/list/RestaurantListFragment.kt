@@ -33,26 +33,12 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                     adapter.submitList(restaurants.informationList)
                 }
-
-                binding.recyclerViewRestaurantList.addOnScrollListener(object :
-                    RecyclerView.OnScrollListener() {
-                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                        super.onScrolled(recyclerView, dx, dy)
-
-                        val lastVisibleItemPosition =
-                            (recyclerView.layoutManager as LinearLayoutManager)
-                                .findLastCompletelyVisibleItemPosition()
-                        val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
-
-                        if (!isLoading && lastVisibleItemPosition == itemTotalCount) {
-                            isLoading = true
-                            pagingRestaurantList()
-                        }
-                    }
-                })
             }
 
+            loadNewPageAtEndOfScroll()
+
             bringRestaurantList.observe {
+                println("테스트: $it")
                 adapter.updateList(it.data?.informationList as MutableList<Information>)
             }
 
@@ -77,8 +63,23 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         }
     }
 
+    private fun loadNewPageAtEndOfScroll() {
+        binding {
+            recyclerViewRestaurantList.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                val lastVisibleItemPosition =
+                    (recyclerViewRestaurantList.layoutManager as LinearLayoutManager)
+                        .findLastCompletelyVisibleItemPosition()
+
+                val itemTotalCount = recyclerViewRestaurantList.adapter?.itemCount?.minus(1)
+
+                if (lastVisibleItemPosition == itemTotalCount) {
+                    viewModel.pagingRestaurantList()
+                }
+            }
+        }
+    }
+
     companion object {
-        var isLoading = false
         fun newInstance() = RestaurantListFragment()
     }
 

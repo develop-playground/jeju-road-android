@@ -1,19 +1,13 @@
 package github.dev_playground.jeju_road.ui.list
 
-import android.icu.text.IDNA
-import android.support.v4.app.INotificationSideChannel
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.ItemRestaurantListBinding
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
-import github.dev_playground.jeju_road.ui.list.RestaurantListFragment.Companion.isLoading
-import github.dev_playground.jeju_road.util.Event
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 
 class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAdapter<Information>(
