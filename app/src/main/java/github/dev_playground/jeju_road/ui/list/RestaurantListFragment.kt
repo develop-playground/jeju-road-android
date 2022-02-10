@@ -3,7 +3,6 @@ package github.dev_playground.jeju_road.ui.list
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.FragmentRestaurantListBinding
@@ -38,7 +37,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             loadNewPageAtEndOfScroll()
 
             bringRestaurantList.observe {
-                println("테스트: $it")
                 adapter.updateList(it.data?.informationList as MutableList<Information>)
             }
 
@@ -65,7 +63,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     private fun loadNewPageAtEndOfScroll() {
         binding {
-            recyclerViewRestaurantList.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            recyclerViewRestaurantList.setOnScrollChangeListener { _, _, _, _, _ ->
                 val lastVisibleItemPosition =
                     (recyclerViewRestaurantList.layoutManager as LinearLayoutManager)
                         .findLastCompletelyVisibleItemPosition()

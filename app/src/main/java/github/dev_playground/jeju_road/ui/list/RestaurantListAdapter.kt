@@ -10,7 +10,7 @@ import github.dev_playground.jeju_road.databinding.ItemRestaurantListBinding
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 
-class RestaurantListAdapter(val viewModel: RestaurantListViewModel) : BaseListAdapter<Information>(
+class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : BaseListAdapter<Information>(
     DIFF_CALLBACK
 ) {
 

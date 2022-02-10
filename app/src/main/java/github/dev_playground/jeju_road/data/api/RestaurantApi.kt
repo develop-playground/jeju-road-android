@@ -1,7 +1,7 @@
 package github.dev_playground.jeju_road.data.api
 
-import github.dev_playground.jeju_road.data.model.Restaurants
 import github.dev_playground.jeju_road.data.model.RestaurantDetail
+import github.dev_playground.jeju_road.data.model.Restaurants
 import retrofit2.http.GET
 import retrofit2.http.Path
 
