@@ -1,7 +1,10 @@
 package github.dev_playground.jeju_road.ui.list
 
+import android.content.res.Configuration
+import android.content.res.Configuration.*
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
@@ -70,6 +73,8 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
                 val itemTotalCount = recyclerViewRestaurantList.adapter?.itemCount?.minus(1)
 
+                println("총 개수: $itemTotalCount")
+
                 if (lastVisibleItemPosition == itemTotalCount) {
                     viewModel.pagingRestaurantList()
                 }
@@ -81,4 +86,14 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         fun newInstance() = RestaurantListFragment()
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        if (newConfig.orientation === ORIENTATION_LANDSCAPE) {
+            Toast.makeText(requireContext(), "landscape", Toast.LENGTH_SHORT).show()
+        } else if (newConfig.orientation === ORIENTATION_PORTRAIT) {
+            Toast.makeText(requireContext(), "portrait", Toast.LENGTH_SHORT).show()
+        }
+
+    }
 }
