@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import github.dev_playground.jeju_road.data.api.RestaurantApi
 import github.dev_playground.jeju_road.data.model.RestaurantData
 import github.dev_playground.jeju_road.data.model.RestaurantDetailData
-import github.dev_playground.jeju_road.util.loadAsset
+import github.dev_playground.jeju_road.data.util.loadAsset
 
 class MockRestaurantApi(
     private val context: Context

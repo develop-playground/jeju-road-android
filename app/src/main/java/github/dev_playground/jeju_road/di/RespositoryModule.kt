@@ -1,9 +1,11 @@
 package github.dev_playground.jeju_road.di
 
-import github.dev_playground.jeju_road.data.repository.RestaurantRepository
 import github.dev_playground.jeju_road.data.repository.RestaurantRepositoryImpl
+import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<RestaurantRepository> { RestaurantRepositoryImpl(get()) }
+    single<RestaurantRepository> {
+        RestaurantRepositoryImpl(get())
+    }
 }

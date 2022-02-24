@@ -25,16 +25,16 @@ data class UiState<T>(
     companion object {
         fun <T> loading(): UiState<T> = UiState(loading = true)
 
-        fun <T> success(value: T): UiState<T> = UiState(data = value)
+        fun <T> success(value: T?): UiState<T> = UiState(data = value)
 
-        fun <T> failure(exception: Throwable): UiState<T> = UiState(exception = exception)
+        fun <T> failure(exception: Throwable?): UiState<T> = UiState(exception = exception)
     }
 }
 
 fun <T> Result<T>.toUiState(): UiState<T> {
-    return when(this) {
-        is Result.Success<T> -> UiState.success(this.data)
-        Result.Loading -> UiState.loading()
-        is Result.Error -> UiState.failure(this.exception)
+    return when {
+        isSuccess -> UiState.success(getOrNull())
+        isFailure -> UiState.failure(exceptionOrNull())
+        else -> UiState.loading()
     }
 }

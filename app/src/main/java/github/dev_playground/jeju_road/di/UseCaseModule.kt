@@ -5,5 +5,10 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    factory { GetRestaurantListUseCase(get(), get(named(IO))) }
+    factory {
+        GetRestaurantListUseCase(
+            get(),
+            get(named(IO))
+        )
+    }
 }

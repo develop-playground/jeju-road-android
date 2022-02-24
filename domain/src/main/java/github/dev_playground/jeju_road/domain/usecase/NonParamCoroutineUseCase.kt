@@ -1,7 +1,5 @@
 package github.dev_playground.jeju_road.domain.usecase
 
-import android.util.Log
-import github.dev_playground.jeju_road.util.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
@@ -15,12 +13,12 @@ abstract class NonParamCoroutineUseCase<R>(private val coroutineDispatcher: Coro
         return try {
             withContext(coroutineDispatcher) {
                 execute().let {
-                    Result.Success(it)
+                    Result.success(it)
                 }
             }
         } catch (e: Exception) {
-            Log.e("UseCase", e.toString())
-            Result.Error(e)
+            println("UseCase :: $e")
+            Result.failure(e)
         }
     }
 
