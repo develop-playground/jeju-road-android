@@ -11,7 +11,7 @@ import github.dev_playground.jeju_road.util.toUiState
 import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
-    private val getRestaurantListUseCase: GetRestaurantListUseCase
+    private val getRestaurantListUseCase: GetRestaurantListUseCase 
 ) : ViewModel() {
 
     private val _restaurantList: MutableLiveData<UiState<Restaurants>> = MutableLiveData<UiState<Restaurants>>(UiState.loading())
