@@ -19,7 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'String', 'BASE_URL', '"https://localhost:8080/api"'
+        buildConfigField 'String', 'BASE_URL', '"https://localhost:8080/api/"'
     }
 
     buildTypes {
