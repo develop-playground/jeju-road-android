@@ -15,11 +15,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbarMain)
-
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragmentContainerView_main, RestaurantListFragment.newInstance())
-            .commit()
+        if(savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragmentContainerView_main, RestaurantListFragment.newInstance())
+                .commit()
+        }
     }
-
 }

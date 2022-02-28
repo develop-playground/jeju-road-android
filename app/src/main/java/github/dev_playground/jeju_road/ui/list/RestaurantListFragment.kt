@@ -2,21 +2,19 @@ package github.dev_playground.jeju_road.ui.list
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.recyclerview.widget.LinearLayoutManager
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.ui.base.BaseFragment
 import github.dev_playground.jeju_road.ui.component.VerticalDividerItemDecoration
+import github.dev_playground.jeju_road.ui.list.RestaurantListViewModel.Companion.SAVED_STATED_KEY
 import github.dev_playground.jeju_road.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
 import github.dev_playground.jeju_road.util.startActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.stateViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 
 
 class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
@@ -31,13 +29,8 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         setUpView()
 
         viewModel.apply {
-            counterLiveData.observe {
-                println("카운트: $it")
-            }
-
             restaurantList.observe {
                 loadingEventViewModel.setLoadingState(it) { restaurants ->
-                    configurationTest()
                     binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                     adapter.submitList(restaurants.informationList)
                 }
@@ -55,7 +48,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 }
             }
 
-            currentRestaurantList.observe {
+            savedStateRestaurantList.observe {
                 adapter.submitList(it)
             }
         }
@@ -92,5 +85,10 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     companion object {
         fun newInstance() = RestaurantListFragment()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        viewModel.managementRestaurantList(adapter.currentList)
     }
 }
