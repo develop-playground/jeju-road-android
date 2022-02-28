@@ -21,4 +21,8 @@ class MockRestaurantApi(
         return gson.fromJson(context.loadAsset("restaurant_detail.json"), RestaurantDetail::class.java)
     }
 
+    override suspend fun getPagingRestaurantList(): Restaurants {
+        return gson.fromJson(context.loadAsset("restaurant_paging.json"), Restaurants::class.java)
+    }
+
 }

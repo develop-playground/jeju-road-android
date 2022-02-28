@@ -13,8 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Jejuroad">
-        <activity android:name="github.dev_playground.jeju_road.ui.main.MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+        <activity android:name="github.dev_playground.jeju_road.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

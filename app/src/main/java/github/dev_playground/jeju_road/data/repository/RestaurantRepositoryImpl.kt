@@ -24,7 +24,7 @@ class RestaurantRepositoryImpl(
 
     override suspend fun getRestaurantPaging(): Restaurants {
         return runCatching {
-            val list = restaurantApi.getRestaurantList()
+            val list = restaurantApi.getPagingRestaurantList()
             list.copy(
                 informationList = list.informationList.map { info ->
                     id++

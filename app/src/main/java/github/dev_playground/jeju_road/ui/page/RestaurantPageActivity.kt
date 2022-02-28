@@ -6,7 +6,7 @@ import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.ActivityRestaurantPageBinding
 import github.dev_playground.jeju_road.ui.base.BaseActivity
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
     R.layout.activity_restaurant_page

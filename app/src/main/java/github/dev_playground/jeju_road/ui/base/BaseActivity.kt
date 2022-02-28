@@ -14,7 +14,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import github.dev_playground.jeju_road.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.util.Event
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCompatActivity(layoutId) {
 
