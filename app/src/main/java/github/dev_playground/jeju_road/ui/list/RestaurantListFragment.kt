@@ -31,9 +31,13 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         setUpView()
 
         viewModel.apply {
+            counterLiveData.observe {
+                println("카운트: $it")
+            }
 
             restaurantList.observe {
                 loadingEventViewModel.setLoadingState(it) { restaurants ->
+                    configurationTest()
                     binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                     adapter.submitList(restaurants.informationList)
                 }

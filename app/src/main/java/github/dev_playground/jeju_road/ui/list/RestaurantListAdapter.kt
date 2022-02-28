@@ -49,7 +49,7 @@ class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : Ba
         val newList = mutableListOf<Information>()
         newList.addAll(currentList)
         newList.addAll(list)
-        viewModel.managementRestaurantList(newList)
+//        viewModel.managementRestaurantList(newList)
     }
 
     companion object {
