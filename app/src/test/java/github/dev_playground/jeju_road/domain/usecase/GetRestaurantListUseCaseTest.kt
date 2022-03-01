@@ -16,6 +16,7 @@ import org.mockito.kotlin.whenever
 class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
 
     private val repository : RestaurantRepository = mock()
+    private var pageIndex = 0
     private val restaurantData = Restaurants(
         message = "test",
         informationList = listOf(
@@ -34,11 +35,12 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
     override fun `실행 성공 테스트`() = runBlocking {
         // given
         val useCase = GetRestaurantListUseCase(repository, coroutineRule.testDispatcher)
-        whenever(repository.getRestaurantList())
-            .thenReturn(restaurantData)
 
         // when
-        val result = useCase.invoke()
+        whenever(repository.getRestaurantList(pageIndex))
+            .thenReturn(restaurantData)
+
+        val result = useCase.invoke(pageIndex)
 
         // then
         assertThat(result, `is`(IsInstanceOf(Result.Success::class.java)))
@@ -56,11 +58,12 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
         // given
         val useCase = GetRestaurantListUseCase(repository, coroutineRule.testDispatcher)
 
-        whenever(repository.getRestaurantList())
-            .thenThrow(IllegalStateException("Test"))
 
         // when
-        val result = useCase.invoke()
+        whenever(repository.getRestaurantList(pageIndex))
+            .thenThrow(IllegalStateException("Test"))
+
+        val result = useCase.invoke(pageIndex)
 
         // then
         assertThat(result, `is`(IsInstanceOf(Result.Error::class.java)))

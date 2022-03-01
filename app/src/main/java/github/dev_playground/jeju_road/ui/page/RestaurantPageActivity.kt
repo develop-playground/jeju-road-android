@@ -1,7 +1,6 @@
 package github.dev_playground.jeju_road.ui.page
 
 import android.os.Bundle
-import android.widget.Toolbar
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.ActivityRestaurantPageBinding
@@ -38,10 +37,9 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
         }
     }
 
-    fun setRecyclerView() {
+    private fun setRecyclerView() {
         adapter = RestaurantPageListAdapter()
         binding.recyclerViewRestaurantPage.adapter = adapter
-
     }
 
 }

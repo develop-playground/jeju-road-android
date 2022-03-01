@@ -1,5 +1,8 @@
 package github.dev_playground.jeju_road.util
 
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+
 open class Event<out T>(private val content: T) {
 
     var hasBeenHandled = false
@@ -26,4 +29,8 @@ open class Event<out T>(private val content: T) {
      */
     fun peekContent(): T = content
 
+}
+
+fun <T> LiveData<Event<T>>.eventObserve(lifecycleOwner: LifecycleOwner, action: (T) -> Unit) {
+    observe(lifecycleOwner) { it.get(action) }
 }
