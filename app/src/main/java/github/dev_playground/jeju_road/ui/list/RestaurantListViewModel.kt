@@ -1,21 +1,23 @@
 package github.dev_playground.jeju_road.ui.list
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.data.model.Restaurants
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
-import github.dev_playground.jeju_road.domain.usecase.GetRestaurantPagingUseCase
 import github.dev_playground.jeju_road.util.Event
 import github.dev_playground.jeju_road.util.UiState
 import github.dev_playground.jeju_road.util.toUiState
 import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
-    private val getRestaurantListUseCase: GetRestaurantListUseCase,
-    private val getRestaurantPagingUseCase: GetRestaurantPagingUseCase,
-    private val handle: SavedStateHandle,
+    private val getRestaurantListUseCase: GetRestaurantListUseCase
 ) : ViewModel() {
-    private val SAVED_STATED_KEY = "savedStatedList"
+
+    private val _page: MutableLiveData<Int> = MutableLiveData(START_PAGE_INDEX)
+    val page: LiveData<Int> = _page
 
     private val _restaurantList: MutableLiveData<UiState<Restaurants>> = MutableLiveData<UiState<Restaurants>>(UiState.loading())
     val restaurantList: LiveData<UiState<Restaurants>> = _restaurantList
@@ -23,36 +25,32 @@ class RestaurantListViewModel(
     private val _onRestaurantClickEvent =  MutableLiveData<Event<Information>>()
     val onRestaurantClickEvent: LiveData<Event<Information>> = _onRestaurantClickEvent
 
-    private val _bringRestaurantList: MutableLiveData<UiState<Restaurants>> = MutableLiveData<UiState<Restaurants>>()
-    val bringRestaurantList: LiveData<UiState<Restaurants>> = _bringRestaurantList
-
-    private var savedStateList = handle.get<MutableList<Information>>(SAVED_STATED_KEY)
-        set(value) {
-            handle.set(SAVED_STATED_KEY, value)
-            field = value
-        }
-
-    private val _savedStateRestaurantList: MutableLiveData<MutableList<Information>> = handle.getLiveData(SAVED_STATED_KEY)
-    val savedStateRestaurantList: LiveData<MutableList<Information>> = _savedStateRestaurantList
-
     init {
         fetchRestaurantList()
     }
 
-    fun fetchRestaurantList() = viewModelScope.launch {
-        _restaurantList.value = getRestaurantListUseCase.invoke().toUiState()
+    private fun fetchRestaurantList() = viewModelScope.launch {
+        val param = page.value ?: START_PAGE_INDEX
+        _restaurantList.value = getRestaurantListUseCase.invoke(param).toUiState()
+    }
+
+    fun incrementPageIndex() = viewModelScope.launch {
+        _page.value = _page.value?.plus(1) ?: START_PAGE_INDEX
+        fetchRestaurantList()
+    }
+
+    fun refreshPageIndex() {
+        _page.value = START_PAGE_INDEX
+        fetchRestaurantList()
     }
 
     fun callOnRestaurantClickEvent(data: Information) {
         _onRestaurantClickEvent.value = Event(data)
     }
 
-    fun pagingRestaurantList() = viewModelScope.launch {
-        _bringRestaurantList.value = getRestaurantPagingUseCase.invoke().toUiState()
+    companion object {
+        private const val START_PAGE_INDEX = 0
     }
 
-    fun managementRestaurantList(list: MutableList<Information>) = viewModelScope.launch {
-        savedStateList = list
-    }
 }
 

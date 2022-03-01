@@ -45,15 +45,8 @@ class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : Ba
         }
     }
 
-    fun updateList(list: MutableList<Information>) {
-        val newList = mutableListOf<Information>()
-        newList.addAll(currentList)
-        newList.addAll(list)
-        submitList(newList)
-    }
-
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
             override fun areItemsTheSame(oldItem: Information, newItem: Information) =
                 oldItem.id == newItem.id
 

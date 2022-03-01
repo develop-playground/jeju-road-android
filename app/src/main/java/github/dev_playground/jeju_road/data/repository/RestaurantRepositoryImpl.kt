@@ -8,9 +8,17 @@ class RestaurantRepositoryImpl(
     private val restaurantApi: RestaurantApi
 ): RestaurantRepository {
 
-    override suspend fun getRestaurantList(): Restaurants {
+    private var id = 1L
+
+    override suspend fun getRestaurantList(page: Int): Restaurants {
         return runCatching {
-            restaurantApi.getRestaurantList()
+            val list = restaurantApi.getRestaurantList(page)
+            list.copy(
+                informationList = list.informationList.map { info ->
+                    id++
+                    info.copy(id = id)
+                }
+            )
         }.getOrThrow()
     }
 
@@ -20,17 +28,4 @@ class RestaurantRepositoryImpl(
         }.getOrThrow()
     }
 
-    private var id = 1L
-
-    override suspend fun getRestaurantPaging(): Restaurants {
-        return runCatching {
-            val list = restaurantApi.getPagingRestaurantList()
-            list.copy(
-                informationList = list.informationList.map { info ->
-                    id++
-                    info.copy(id = id)
-                }
-            )
-        }.getOrThrow()
-    }
 }

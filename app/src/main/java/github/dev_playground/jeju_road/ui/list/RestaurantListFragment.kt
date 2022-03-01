@@ -4,25 +4,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import github.dev_playground.jeju_road.R
-import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.ui.base.BaseFragment
 import github.dev_playground.jeju_road.ui.component.VerticalDividerItemDecoration
-import github.dev_playground.jeju_road.ui.list.RestaurantListViewModel.Companion.SAVED_STATED_KEY
 import github.dev_playground.jeju_road.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
 import github.dev_playground.jeju_road.util.startActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 
 class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     R.layout.fragment_restaurant_list
 ) {
-    private val viewModel by stateViewModel<RestaurantListViewModel>()
+    private val viewModel by sharedViewModel<RestaurantListViewModel>()
     private val loadingEventViewModel by sharedViewModel<LoadingEventViewModel>()
-    private val adapter by lazy { RestaurantListAdapter(viewModel) }
+    private val restaurantListAdapter by lazy { RestaurantListAdapter(viewModel) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,37 +29,31 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             restaurantList.observe {
                 loadingEventViewModel.setLoadingState(it) { restaurants ->
                     binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
-                    adapter.submitList(restaurants.informationList)
+
+                    val list = restaurantListAdapter.currentList + restaurants.informationList
+                    restaurantListAdapter.submitList(list)
                 }
             }
-
-            loadNewPageAtEndOfScroll()
-
-            bringRestaurantList.observe {
-                adapter.updateList(it.data?.informationList as MutableList<Information>)
-            }
-
             onRestaurantClickEvent.eventObserve {
                 requireActivity().startActivity<RestaurantPageActivity> {
                     putExtra(KEY_RESTAURANT_INFO, it)
                 }
             }
-
-            savedStateRestaurantList.observe {
-                adapter.submitList(it)
-            }
         }
+
+        loadNewPageAtEndOfScroll()
     }
 
     private fun setUpView() {
         binding {
-            recyclerViewRestaurantList.apply {
-                adapter = this@RestaurantListFragment.adapter
+            recyclerViewRestaurantList.run {
+                adapter = restaurantListAdapter
                 addItemDecoration(VerticalDividerItemDecoration(requireContext()))
             }
 
             swipeRefreshLayoutRestaurantList.setOnRefreshListener {
-                viewModel.fetchRestaurantList()
+                restaurantListAdapter.submitList(null)
+                viewModel.refreshPageIndex()
             }
         }
     }
@@ -70,14 +61,13 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     private fun loadNewPageAtEndOfScroll() {
         binding {
             recyclerViewRestaurantList.setOnScrollChangeListener { _, _, _, _, _ ->
-                val lastVisibleItemPosition =
-                    (recyclerViewRestaurantList.layoutManager as LinearLayoutManager)
-                        .findLastCompletelyVisibleItemPosition()
+                val layoutManager = recyclerViewRestaurantList.layoutManager as LinearLayoutManager
 
-                val itemTotalCount = recyclerViewRestaurantList.adapter?.itemCount?.minus(1)
+                val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = restaurantListAdapter.itemCount.minus(1)
 
                 if (lastVisibleItemPosition == itemTotalCount) {
-                    viewModel.pagingRestaurantList()
+                    viewModel.incrementPageIndex()
                 }
             }
         }
@@ -87,8 +77,4 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         fun newInstance() = RestaurantListFragment()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        viewModel.managementRestaurantList(adapter.currentList)
-    }
 }
