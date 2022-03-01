@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
@@ -31,11 +32,7 @@ abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCo
         setUpProgressBar()
 
         loadingEventViewModel.loadingState.observe {
-            loadingView.visibility = if (it.loading) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
+            loadingView.isVisible = it.loading
         }
     }
 

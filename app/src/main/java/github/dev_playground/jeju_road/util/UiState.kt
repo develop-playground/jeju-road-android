@@ -31,8 +31,20 @@ data class UiState<T>(
     }
 }
 
+inline fun <T> UiState<T>.onSuccess(action: (T) -> Unit) = apply {
+    data?.let(action)
+}
+
+inline fun <T> UiState<T>.onFailure(action: (Throwable) -> Unit) = apply {
+    exception?.let(action)
+}
+
+inline fun <T> UiState<T>.onLoading(action: (Boolean) -> Unit) = apply {
+    action.invoke(loading)
+}
+
 fun <T> Result<T>.toUiState(): UiState<T> {
-    return when(this) {
+    return when (this) {
         is Result.Success<T> -> UiState.success(this.data)
         Result.Loading -> UiState.loading()
         is Result.Error -> UiState.failure(this.exception)
