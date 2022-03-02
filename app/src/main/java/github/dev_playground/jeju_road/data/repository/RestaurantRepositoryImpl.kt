@@ -1,20 +1,28 @@
 package github.dev_playground.jeju_road.data.repository
 
 import github.dev_playground.jeju_road.data.api.RestaurantApi
-import github.dev_playground.jeju_road.data.model.RestaurantData
-import github.dev_playground.jeju_road.data.model.RestaurantDetailData
+import github.dev_playground.jeju_road.data.model.RestaurantDetail
+import github.dev_playground.jeju_road.data.model.Restaurants
 
 class RestaurantRepositoryImpl(
     private val restaurantApi: RestaurantApi
 ): RestaurantRepository {
 
-    override suspend fun getRestaurantList(): RestaurantData {
+    private var id = 1L
+
+    override suspend fun getRestaurantList(page: Int): Restaurants {
         return runCatching {
-            restaurantApi.getRestaurantList()
+            val list = restaurantApi.getRestaurantList(page)
+            list.copy(
+                informationList = list.informationList.map { info ->
+                    id++
+                    info.copy(id = id)
+                }
+            )
         }.getOrThrow()
     }
 
-    override suspend fun getRestaurantDetail(id: String): RestaurantDetailData {
+    override suspend fun getRestaurantDetail(id: Long): RestaurantDetail {
         return runCatching {
             restaurantApi.getRestaurantDetail(id)
         }.getOrThrow()

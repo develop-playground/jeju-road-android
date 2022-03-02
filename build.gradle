@@ -17,9 +17,10 @@ buildscript {
                 coroutine_version = '1.5.0',
                 activity_ktx_version = '1.3.1',
                 fragment_ktx_version = '1.3.6',
-                koin_version = '2.2.3',
+                koin_version = '3.1.5',
                 mockito_version = '4.0.0',
                 json_test_version = '20210307',
+                photoview_version = '2.3.0',
                 firebase_bom_version = '29.0.3'
         ]
 
@@ -40,20 +41,11 @@ buildscript {
         ]
 
         koinDependencies = [
+                koin_version             : "io.insert-koin:koin-android:$koin_version",
                 koin_core                : "io.insert-koin:koin-core:$koin_version",
-                koin_core_ext            : "io.insert-koin:koin-core-ext:$koin_version",
                 koin_test                : "io.insert-koin:koin-test:$koin_version",
-
-                koin_android             : "io.insert-koin:koin-android:$koin_version",
-                koin_android_scope       : "io.insert-koin:koin-android-scope:$koin_version",
-                koin_android_viewmodel   : "io.insert-koin:koin-android-viewmodel:$koin_version",
-                koin_android_ext         : "io.insert-koin:koin-android-ext:$koin_version",
-
-                koin_androidx            : "io.insert-koin:koin-androidx-scope:$koin_version",
-                koin_androidx_viewmodel  : "io.insert-koin:koin-androidx-viewmodel:$koin_version",
-                koin_androidx_fragment   : "io.insert-koin:koin-androidx-fragment:$koin_version",
-                koin_androidx_workmanager: "io.insert-koin:koin-androidx-workmanager:$koin_version",
-                koin_androidx_ext        : "io.insert-koin:koin-androidx-ext:$koin_version",
+                koin_jetpack             : "io.insert-koin:koin-androidx-workmanager:$koin_version",
+                koin_compat              : "io.insert-koin:koin-android-compat:$koin_version",
         ]
 
         androidxDependencies = [
@@ -67,7 +59,8 @@ buildscript {
         ]
 
         utilDependencies = [
-                glide : "com.github.bumptech.glide:glide:$glide_version"
+                glide    : "com.github.bumptech.glide:glide:$glide_version",
+                photoView: "com.github.chrisbanes:PhotoView:$photoview_version"
         ]
 
         testDependencies = [
@@ -89,6 +82,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"

@@ -49,7 +49,7 @@ abstract class BaseFragment<VB: ViewDataBinding>(
     }
 
     protected infix fun <T> LiveData<Event<T>>.eventObserve(action: (T) -> Unit) {
-        observe(viewLifecycleOwner, { it.get(action) })
+        observe(viewLifecycleOwner) { it.get(action) }
     }
 
 

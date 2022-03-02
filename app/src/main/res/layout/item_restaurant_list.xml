@@ -7,10 +7,11 @@
     <data>
         <variable
             name="information"
-            type="github.dev_playground.jeju_road.domain.model.Information" />
+            type="github.dev_playground.jeju_road.data.model.Information" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_item_restaurant_list_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"

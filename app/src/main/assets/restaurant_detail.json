@@ -1,37 +1,63 @@
 {
   "code": "RESTAURANT-RES001",
   "message": "요청이 성공적으로 완료되었습니다.",
-  "information": [
-    {
-      "id": 1,
-      "name": "떡볶이",
-      "images": [
-        "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733."
-      ],
-      "menus": [
-        {
-          "id": 10,
-          "name": "아무튼 떡볶이",
-          "image": "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
-          "price": 9000
-        }
-      ],
-      "howToGo": "한밭대에서 1분",
-      "address": "한밭대학교 학하서로",
-      "servingTime": [
-        {
-          "dayOfWeek": "Mon",
-          "serving": "06:00 - 22:00"
-        },
-        {
-          "dayOfWeek": "Tuesday",
-          "serving": "holiday"
-        }
-      ],
-      "introduction": "'수요미식회'에 방영된, 따끈한 떡볶이 요리로 해장하기 좋은 음식점",
-      "tips": [
-        "주변 공영 주차장 이용 가능"
-      ]
-    }
-  ]
+  "information": {
+    "id": 1,
+    "name": "떡볶이",
+    "images": [
+      "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+      "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+      "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+      "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+      "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733."
+    ],
+    "menus": [
+      {
+        "id": 10,
+        "name": "아무튼 떡볶이",
+        "image": "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+        "price": 9000
+      },
+      {
+        "id": 11,
+        "name": "아무튼 떡볶이",
+        "image": "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+        "price": 9000
+      },
+      {
+        "id": 12,
+        "name": "아무튼 떡볶이",
+        "image": "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+        "price": 9000
+      },
+      {
+        "id": 13,
+        "name": "아무튼 떡볶이",
+        "image": "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+        "price": 9000
+      },
+      {
+        "id": 14,
+        "name": "아무튼 떡볶이",
+        "image": "https://cdn.meesig.com/v3/prod/image/item/mainpage/907/ad4474bef39c4167b84477eaa7a5052f20210708171733.",
+        "price": 9000
+      }
+    ],
+    "howToGo": "한밭대에서 1분",
+    "address": "한밭대학교 학하서로",
+    "servingTime": [
+      {
+        "dayOfWeek": "Mon",
+        "serving": "06:00 - 22:00"
+      },
+      {
+        "dayOfWeek": "Tuesday",
+        "serving": "06:00 - 22:00"
+      }
+    ],
+    "introduction": "'수요미식회'에 방영된, 따끈한 떡볶이 요리로 해장하기 좋은 음식점",
+    "tips": [
+      "주변 공영 주차장 이용 가능"
+    ]
+  }
 }

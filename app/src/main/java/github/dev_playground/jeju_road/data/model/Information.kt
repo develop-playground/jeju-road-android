@@ -1,4 +1,6 @@
-package github.dev_playground.jeju_road.domain.model
+package github.dev_playground.jeju_road.data.model
+
+import java.io.Serializable
 
 data class Information(
     val id: Long,
@@ -7,7 +9,7 @@ data class Information(
     val address: String,
     val image: String,
     val introduction: String
-) {
+) : Serializable {
 
     fun formatCategoryAndAddress(): String {
         return formatCategory() + " · " + address
