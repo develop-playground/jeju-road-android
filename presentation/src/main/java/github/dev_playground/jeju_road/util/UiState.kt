@@ -1,6 +1,5 @@
 package github.dev_playground.jeju_road.util
 
-
 data class UiState<T>(
     val loading: Boolean = false,
     val exception: Throwable? = null,

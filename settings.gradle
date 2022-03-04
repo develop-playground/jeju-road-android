@@ -2,3 +2,4 @@ include ':app'
 include ':domain'
 rootProject.name = "jeju-road"
 include ':data'
+include ':presentation'
