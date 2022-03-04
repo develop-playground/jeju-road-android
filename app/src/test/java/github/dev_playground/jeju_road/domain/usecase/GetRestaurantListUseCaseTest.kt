@@ -1,5 +1,6 @@
 package github.dev_playground.jeju_road.domain.usecase
 
+import github.dev_playground.jeju_road.data.model.Content
 import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.data.model.Restaurants
 import github.dev_playground.jeju_road.data.repository.RestaurantRepository
@@ -19,14 +20,16 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
     private var pageIndex = 0
     private val restaurantData = Restaurants(
         message = "test",
-        informationList = listOf(
-            Information(
-                id = 1,
-                name = "맛집",
-                category = listOf("category"),
-                address = "한밭대학교",
-                image = "대충 이미지 URL",
-                introduction = "대충 소개글"
+        information = Information(
+            contentList = listOf(
+                Content(
+                    id = 1,
+                    name = "맛집",
+                    categories = listOf("category"),
+                    address = "한밭대학교",
+                    image = "대충 이미지 URL",
+                    introduction = "대충 소개글"
+                )
             )
         )
     )
@@ -47,10 +50,10 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
 
         val successResult  = result as Result.Success
 
-        assertEquals(1, successResult.data.informationList.size)
+        assertEquals(1, successResult.data.information.contentList.size)
 
-        assertEquals(1L, successResult.data.informationList[0].id)
-        assertEquals("맛집", successResult.data.informationList[0].name)
+        assertEquals(1L, successResult.data.information.contentList[0].id)
+        assertEquals("맛집", successResult.data.information.contentList[0].name)
     }
 
     @Test

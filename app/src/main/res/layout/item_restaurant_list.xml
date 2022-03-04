@@ -7,7 +7,7 @@
     <data>
         <variable
             name="information"
-            type="github.dev_playground.jeju_road.data.model.Information" />
+            type="github.dev_playground.jeju_road.data.model.Content" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

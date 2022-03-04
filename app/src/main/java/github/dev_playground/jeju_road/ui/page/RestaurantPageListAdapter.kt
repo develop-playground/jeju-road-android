@@ -3,7 +3,6 @@ package github.dev_playground.jeju_road.ui.page
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import github.dev_playground.jeju_road.R
 import github.dev_playground.jeju_road.data.model.DetailInformation
@@ -56,7 +55,7 @@ class RestaurantPageListAdapter: RecyclerView.Adapter<RestaurantPageListAdapter.
         val view: TextView
     ): PageViewHolder(view) {
         override fun bind(data: DetailInformation) {
-            view.text = data.address
+            view.text = "${data.simpleAddress}\n${data.detailAddress}"
         }
     }
 

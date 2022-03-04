@@ -2,7 +2,7 @@ package github.dev_playground.jeju_road.ui.page
 
 import android.os.Bundle
 import github.dev_playground.jeju_road.R
-import github.dev_playground.jeju_road.data.model.Information
+import github.dev_playground.jeju_road.data.model.Content
 import github.dev_playground.jeju_road.databinding.ActivityRestaurantPageBinding
 import github.dev_playground.jeju_road.ui.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,7 +25,7 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
         setRecyclerView()
 
         viewModel.apply {
-            (intent.getSerializableExtra(KEY_RESTAURANT_INFO) as? Information)?.let {
+            (intent.getSerializableExtra(KEY_RESTAURANT_INFO) as? Content)?.let {
                 id.value = it.id
             }
 

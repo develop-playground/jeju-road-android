@@ -2,10 +2,8 @@ package github.dev_playground.jeju_road.di
 
 import github.dev_playground.jeju_road.BuildConfig
 import github.dev_playground.jeju_road.data.api.RestaurantApi
-import github.dev_playground.jeju_road.data.api.mock.MockRestaurantApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,15 +16,15 @@ private const val READ_TIMEOUT = 20L
 val networkModule = module {
 
     single {
-        OkHttpClient.Builder().apply {
-            connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-            writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-            readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-            retryOnConnectionFailure(true)
-            addInterceptor(HttpLoggingInterceptor().apply {
+        OkHttpClient.Builder()
+            .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(true)
+            .addNetworkInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
-        }.build()
+            .build()
     }
 
     single {
@@ -37,7 +35,7 @@ val networkModule = module {
             .build()
     }
 
-//    single { get<Retrofit>().create(RestaurantApi::class.java) }
-    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
+    single { get<Retrofit>().create(RestaurantApi::class.java) }
+//    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
 
 }

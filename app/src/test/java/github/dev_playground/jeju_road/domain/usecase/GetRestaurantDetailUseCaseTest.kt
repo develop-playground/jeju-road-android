@@ -1,6 +1,9 @@
 package github.dev_playground.jeju_road.domain.usecase
 
-import github.dev_playground.jeju_road.data.model.*
+import github.dev_playground.jeju_road.data.model.DetailInformation
+import github.dev_playground.jeju_road.data.model.Menu
+import github.dev_playground.jeju_road.data.model.RestaurantDetail
+import github.dev_playground.jeju_road.data.model.ServingTimeData
 import github.dev_playground.jeju_road.data.repository.RestaurantRepository
 import github.dev_playground.jeju_road.util.Result
 import junit.framework.Assert
@@ -30,12 +33,14 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
                     price = 9000
                 )
             ),
-            howToGo = "한밭대에서 1분",
-            address = "한밭대학교 학하서로",
-            servingTime = listOf(
+            wayToGo = "한밭대에서 1분",
+            simpleAddress = "한밭대학교 학하서로",
+            detailAddress = "디테일",
+            openTimes = listOf(
                 ServingTimeData(
-                    dayOfWeek = "??",
-                    serving = "???"
+                    day = "??",
+                    servingTime = "",
+                    breakTime = "???"
                 )
             ),
             introduction = "대충 소개글",
