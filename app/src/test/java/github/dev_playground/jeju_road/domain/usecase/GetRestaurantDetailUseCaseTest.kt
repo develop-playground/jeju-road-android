@@ -6,11 +6,11 @@ import github.dev_playground.jeju_road.data.model.RestaurantDetail
 import github.dev_playground.jeju_road.data.model.ServingTimeData
 import github.dev_playground.jeju_road.data.repository.RestaurantRepository
 import github.dev_playground.jeju_road.util.Result
-import junit.framework.Assert
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.hamcrest.core.IsInstanceOf
+import org.junit.Assert
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever

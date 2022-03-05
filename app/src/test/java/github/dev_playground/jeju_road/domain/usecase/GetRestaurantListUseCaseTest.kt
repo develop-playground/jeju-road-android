@@ -2,14 +2,14 @@ package github.dev_playground.jeju_road.domain.usecase
 
 import github.dev_playground.jeju_road.data.model.Content
 import github.dev_playground.jeju_road.data.model.Information
-import github.dev_playground.jeju_road.data.model.Restaurants
+import github.dev_playground.jeju_road.data.model.Restaurant
 import github.dev_playground.jeju_road.data.repository.RestaurantRepository
 import github.dev_playground.jeju_road.util.Result
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsInstanceOf
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
@@ -18,7 +18,7 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
 
     private val repository : RestaurantRepository = mock()
     private var pageIndex = 0
-    private val restaurantData = Restaurants(
+    private val restaurantData = Restaurant(
         message = "test",
         information = Information(
             contentList = listOf(

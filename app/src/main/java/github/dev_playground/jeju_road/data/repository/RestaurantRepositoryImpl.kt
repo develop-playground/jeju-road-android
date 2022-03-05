@@ -2,13 +2,13 @@ package github.dev_playground.jeju_road.data.repository
 
 import github.dev_playground.jeju_road.data.api.RestaurantApi
 import github.dev_playground.jeju_road.data.model.RestaurantDetail
-import github.dev_playground.jeju_road.data.model.Restaurants
+import github.dev_playground.jeju_road.data.model.Restaurant
 
 class RestaurantRepositoryImpl(
     private val restaurantApi: RestaurantApi
 ): RestaurantRepository {
 
-    override suspend fun getRestaurantList(page: Int): Restaurants {
+    override suspend fun getRestaurantList(page: Int): Restaurant {
         return runCatching {
             restaurantApi.getRestaurantList(page)
         }.getOrThrow()
