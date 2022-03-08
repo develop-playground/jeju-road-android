@@ -10,28 +10,28 @@ import androidx.annotation.StringRes
  * toast
  */
 
-fun Context.showShort(@StringRes stringRes: Int, context: Context) {
-    showShort(context.getString(stringRes), context)
+fun Context.showShort(@StringRes stringRes: Int) {
+    showShort(getString(stringRes))
 }
 
-fun Context.showShort(charSequence: CharSequence, context: Context) {
-    showShort(charSequence.toString(), context)
+fun Context.showShort(charSequence: CharSequence) {
+    showShort(charSequence.toString())
 }
 
-fun Context.showShort(string: String, context: Context) {
-    Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+fun Context.showShort(string: String) {
+    Toast.makeText(this, string, Toast.LENGTH_SHORT).show()
 }
 
-fun Context.showLong(@StringRes stringRes: Int, context: Context) {
-    showLong(context.getString(stringRes), context)
+fun Context.showLong(@StringRes stringRes: Int) {
+    showLong(getString(stringRes))
 }
 
-fun Context.showLong(charSequence: CharSequence, context: Context) {
-    showLong(charSequence.toString(), context)
+fun Context.showLong(charSequence: CharSequence) {
+    showLong(charSequence.toString())
 }
 
-fun Context.showLong(string: String, context: Context) {
-    Toast.makeText(context, string, Toast.LENGTH_LONG).show()
+fun Context.showLong(string: String) {
+    Toast.makeText(this, string, Toast.LENGTH_LONG).show()
 }
 
 /**

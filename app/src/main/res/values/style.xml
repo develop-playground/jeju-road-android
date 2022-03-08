@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text.HEAD_RESTAURANT_PATE" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/nanum_gotic_bold_font</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.BODY_RESTAURANT_PATE" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/nanum_gotic_font</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+</resources>

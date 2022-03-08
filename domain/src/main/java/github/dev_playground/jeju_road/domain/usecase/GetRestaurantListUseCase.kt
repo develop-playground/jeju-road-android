@@ -7,11 +7,11 @@ import kotlinx.coroutines.CoroutineDispatcher
 class GetRestaurantListUseCase(
     private val restaurantRepository: RestaurantRepository,
     ioDispatcher: CoroutineDispatcher
-): NonParamCoroutineUseCase<Restaurants>(ioDispatcher) {
+): CoroutineUseCase<Int, Restaurants>(ioDispatcher) {
 
-    override suspend fun execute(): Restaurants {
+    override suspend fun execute(param: Int): Restaurants {
         return Restaurants(
-            restaurantRepository.getRestaurantList()
+            restaurantRepository.getRestaurantList(param)
         )
     }
 

@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class RestaurantDetailData (
     val message: String,
     @SerializedName("information")
-    val detailInformationList: List<DetailInformationData>
+    val detailInformation: DetailInformationData
 )

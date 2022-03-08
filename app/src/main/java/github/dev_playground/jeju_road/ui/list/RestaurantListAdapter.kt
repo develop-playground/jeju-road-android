@@ -10,8 +10,7 @@ import github.dev_playground.jeju_road.domain.model.Information
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 
-class RestaurantListAdapter : BaseListAdapter<Information>(
-    R.layout.item_restaurant_list,
+class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : BaseListAdapter<Information>(
     DIFF_CALLBACK
 ) {
 
@@ -26,13 +25,21 @@ class RestaurantListAdapter : BaseListAdapter<Information>(
         )
     }
 
-    inner class ViewHolder(private val binding: ItemRestaurantListBinding) : BaseViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemRestaurantListBinding) :
+        BaseViewHolder(binding.root) {
+
+        init {
+            binding.constraintLayoutItemRestaurantListArea.setOnClickListener {
+                getItem(bindingAdapterPosition)?.let {
+                    viewModel.callOnRestaurantClickEvent(it)
+                }
+            }
+        }
+
         override fun bind(data: Information) {
             binding.apply {
                 information = data
-                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider(
-                    root.resources.getDimension(R.dimen.dp_8)
-                )
+                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider()
                 executePendingBindings()
             }
         }
@@ -40,9 +47,11 @@ class RestaurantListAdapter : BaseListAdapter<Information>(
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
-            override fun areItemsTheSame(oldItem: Information, newItem: Information) = oldItem.id == newItem.id
-            override fun areContentsTheSame(oldItem: Information, newItem: Information) = oldItem == newItem
+            override fun areItemsTheSame(oldItem: Information, newItem: Information) =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: Information, newItem: Information) =
+                oldItem == newItem
         }
     }
-
 }

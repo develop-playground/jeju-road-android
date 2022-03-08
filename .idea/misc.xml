@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16388044579533942" />
+        <entry key="app/src/main/res/layout/activity_restaurant_page.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.30117753623188404" />
+        <entry key="app/src/main/res/layout/item_restaurant_content_menu.xml" value="0.21927083333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="14" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
