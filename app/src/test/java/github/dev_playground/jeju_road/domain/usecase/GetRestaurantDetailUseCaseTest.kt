@@ -50,7 +50,7 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
         val result = useCase.invoke(id)
 
         // then
-        Assert.assertEquals(result, Result.success(detailInformation))
+        Assert.assertEquals(true, result.isSuccess)
 
         Assert.assertEquals(1L, result.getOrNull()?.id)
         Assert.assertEquals("떡볶이", result.getOrNull()?.name)
@@ -68,11 +68,7 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
         val result = useCase.invoke(id)
 
         // then
-        Assert.assertEquals(
-            result,
-            Result.failure<IllegalStateException>(IllegalStateException("Test"))
-        )
-
+        Assert.assertEquals(true, result.isFailure)
         Assert.assertEquals("Test", result.exceptionOrNull()?.message)
     }
 
