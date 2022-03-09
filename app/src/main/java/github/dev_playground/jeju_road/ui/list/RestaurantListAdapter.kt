@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import github.dev_playground.jeju_road.R
-import github.dev_playground.jeju_road.data.model.Information
 import github.dev_playground.jeju_road.databinding.ItemRestaurantListBinding
+import github.dev_playground.jeju_road.domain.model.Information
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 

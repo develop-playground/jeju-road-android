@@ -1,62 +1,58 @@
 package github.dev_playground.jeju_road.domain.usecase
 
-import github.dev_playground.jeju_road.data.model.Information
-import github.dev_playground.jeju_road.data.model.Restaurants
-import github.dev_playground.jeju_road.data.repository.RestaurantRepository
-import github.dev_playground.jeju_road.util.Result
-import junit.framework.Assert.assertEquals
+import github.dev_playground.jeju_road.domain.model.Information
+import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 import kotlinx.coroutines.runBlocking
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.core.IsInstanceOf
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
+class GetRestaurantListUseCaseTest : BaseUseCaseTest() {
 
-    private val repository : RestaurantRepository = mock()
+    private val repository: RestaurantRepository = mock()
     private var pageIndex = 0
-    private val restaurantData = Restaurants(
-        message = "test",
-        informationList = listOf(
-            Information(
-                id = 1,
-                name = "맛집",
-                category = listOf("category"),
-                address = "한밭대학교",
-                image = "대충 이미지 URL",
-                introduction = "대충 소개글"
-            )
+    private val informationList = listOf(
+        Information(
+            id = 1,
+            name = "맛집",
+            category = listOf("category"),
+            address = "한밭대학교",
+            image = "대충 이미지 URL",
+            introduction = "대충 소개글"
         )
     )
 
     @Test
     override fun `실행 성공 테스트`() = runBlocking {
         // given
-        val useCase = GetRestaurantListUseCase(repository, coroutineRule.testDispatcher)
+        val useCase = GetRestaurantListUseCase(
+            repository,
+            coroutineRule.testDispatcher
+        )
 
         // when
         whenever(repository.getRestaurantList(pageIndex))
-            .thenReturn(restaurantData)
+            .thenReturn(informationList)
 
         val result = useCase.invoke(pageIndex)
 
         // then
-        assertThat(result, `is`(IsInstanceOf(Result.Success::class.java)))
+        assertEquals(true, result.isSuccess)
 
-        val successResult  = result as Result.Success
+        assertEquals(1, result.getOrNull()?.informationList?.size)
 
-        assertEquals(1, successResult.data.informationList.size)
-
-        assertEquals(1L, successResult.data.informationList[0].id)
-        assertEquals("맛집", successResult.data.informationList[0].name)
+        assertEquals(1L, result.getOrNull()?.informationList?.get(0)?.id)
+        assertEquals("맛집", result.getOrNull()?.informationList?.get(0)?.name)
     }
 
     @Test
     override fun `실행 실패 테스트`() = runBlocking {
         // given
-        val useCase = GetRestaurantListUseCase(repository, coroutineRule.testDispatcher)
+        val useCase = GetRestaurantListUseCase(
+            repository,
+            coroutineRule.testDispatcher
+        )
 
 
         // when
@@ -66,10 +62,9 @@ class GetRestaurantListUseCaseTest: BaseUseCaseTest() {
         val result = useCase.invoke(pageIndex)
 
         // then
-        assertThat(result, `is`(IsInstanceOf(Result.Error::class.java)))
+        assertEquals(true, result.isFailure)
 
-        val errorResult  = result as Result.Error
-        assertEquals("Test", errorResult.exception.message)
+        assertEquals("Test", result.exceptionOrNull()?.message)
     }
 
 }

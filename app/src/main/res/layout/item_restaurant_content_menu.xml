@@ -6,7 +6,7 @@
     <data>
         <variable
             name="menu"
-            type="github.dev_playground.jeju_road.data.model.Menu" />
+            type="github.dev_playground.jeju_road.domain.model.Menu" />
     </data>
 
     <LinearLayout
