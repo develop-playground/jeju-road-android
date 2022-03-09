@@ -1,6 +1,6 @@
 package github.dev_playground.jeju_road.domain.usecase
 
-import github.dev_playground.jeju_road.domain.model.Information
+import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -12,11 +12,11 @@ class GetRestaurantListUseCaseTest : BaseUseCaseTest() {
 
     private val repository: RestaurantRepository = mock()
     private var pageIndex = 0
-    private val informationList = listOf(
-        Information(
+    private val contentList = listOf(
+        Content(
             id = 1,
             name = "맛집",
-            category = listOf("category"),
+            categories = listOf("category"),
             address = "한밭대학교",
             image = "대충 이미지 URL",
             introduction = "대충 소개글"
@@ -33,17 +33,17 @@ class GetRestaurantListUseCaseTest : BaseUseCaseTest() {
 
         // when
         whenever(repository.getRestaurantList(pageIndex))
-            .thenReturn(informationList)
+            .thenReturn(contentList)
 
         val result = useCase.invoke(pageIndex)
 
         // then
         assertEquals(true, result.isSuccess)
 
-        assertEquals(1, result.getOrNull()?.informationList?.size)
+        assertEquals(1, result.getOrNull()?.size)
 
-        assertEquals(1L, result.getOrNull()?.informationList?.get(0)?.id)
-        assertEquals("맛집", result.getOrNull()?.informationList?.get(0)?.name)
+        assertEquals(1L, result.getOrNull()?.get(0)?.id)
+        assertEquals("맛집", result.getOrNull()?.get(0)?.name)
     }
 
     @Test

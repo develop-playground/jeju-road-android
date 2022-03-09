@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import github.dev_playground.jeju_road.R
+import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.databinding.ItemRestaurantListBinding
-import github.dev_playground.jeju_road.domain.model.Information
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
 
-class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : BaseListAdapter<Information>(
+class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : BaseListAdapter<Content>(
     DIFF_CALLBACK
 ) {
 
@@ -36,9 +36,9 @@ class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : Ba
             }
         }
 
-        override fun bind(data: Information) {
+        override fun bind(data: Content) {
             binding.apply {
-                information = data
+                content = data
                 imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider()
                 executePendingBindings()
             }
@@ -46,11 +46,11 @@ class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : Ba
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Information>() {
-            override fun areItemsTheSame(oldItem: Information, newItem: Information) =
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Content>() {
+            override fun areItemsTheSame(oldItem: Content, newItem: Content) =
                 oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Information, newItem: Information) =
+            override fun areContentsTheSame(oldItem: Content, newItem: Content) =
                 oldItem == newItem
         }
     }

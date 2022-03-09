@@ -7,10 +7,9 @@ import github.dev_playground.jeju_road.data.model.RestaurantData
 import github.dev_playground.jeju_road.data.model.RestaurantDetailData
 import github.dev_playground.jeju_road.data.util.loadAsset
 
-
 class MockRestaurantApi(
     private val context: Context
-): RestaurantApi {
+) : RestaurantApi {
 
     private val gson = Gson()
 
@@ -19,7 +18,10 @@ class MockRestaurantApi(
     }
 
     override suspend fun getRestaurantDetail(param: Long): RestaurantDetailData {
-        return gson.fromJson(context.loadAsset("restaurant_detail.json"), RestaurantDetailData::class.java)
+        return gson.fromJson(
+            context.loadAsset("restaurant_detail.json"),
+            RestaurantDetailData::class.java
+        )
     }
 
 }

@@ -43,16 +43,19 @@
         "price": 9000
       }
     ],
-    "howToGo": "한밭대에서 1분",
-    "address": "한밭대학교 학하서로",
-    "servingTime": [
+    "wayToGo": "한밭대에서 1분",
+    "simpleAddress": "한밭대학교 학하서로",
+    "detailAddress": "한밭대학교 학하서로 들어서면 나옴",
+    "openTimes": [
       {
-        "dayOfWeek": "Mon",
-        "serving": "06:00 - 22:00"
+        "day": "MONDAY",
+        "servingTime" : "08:00-22:00",
+        "breakTime" : "15:00-17:00"
       },
       {
-        "dayOfWeek": "Tuesday",
-        "serving": "06:00 - 22:00"
+        "day": "WEDNESDAY",
+        "servingTime" : "08:00-22:00",
+        "breakTime" : "15:00-17:00"
       }
     ],
     "introduction": "'수요미식회'에 방영된, 따끈한 떡볶이 요리로 해장하기 좋은 음식점",

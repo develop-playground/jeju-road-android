@@ -5,11 +5,12 @@ import github.dev_playground.jeju_road.domain.model.DetailInformation
 data class DetailInformationData(
     val id: Long,
     val name: String,
-    val images: List<String>,
+    val images: List<String>? = null,
     val menus: List<MenuData>,
-    val howToGo: String,
-    val address: String,
-    val servingTime: List<ServingTimeData>,
+    val wayToGo: String,
+    val simpleAddress: String,
+    val detailAddress: String,
+    val openTimes: List<OpenTimeData>,
     val introduction: String,
     val tips: List<String>
 )
@@ -20,9 +21,10 @@ fun DetailInformationData.toDomain(): DetailInformation {
         name,
         images,
         menus.map { it.toDomain() },
-        howToGo,
-        address,
-        servingTime.map { it.toDomain() },
+        wayToGo,
+        simpleAddress,
+        detailAddress,
+        openTimes.map { it.toDomain() },
         introduction,
         tips
     )

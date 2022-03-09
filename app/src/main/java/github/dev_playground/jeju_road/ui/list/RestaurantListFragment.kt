@@ -26,13 +26,14 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         setUpView()
 
         viewModel.apply {
-            restaurantList.observe {
-                loadingEventViewModel.setLoadingState(it) { restaurants ->
+            contentListState.observe {
+                loadingEventViewModel.setLoadingState(it) { contentList ->
                     binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
-
-                    val list = restaurantListAdapter.currentList + restaurants.informationList
-                    restaurantListAdapter.submitList(list)
+                    addContentList(contentList)
                 }
+            }
+            contentList.observe {
+                restaurantListAdapter.submitList(it)
             }
             onRestaurantClickEvent.eventObserve {
                 requireActivity().startActivity<RestaurantPageActivity> {
@@ -52,8 +53,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             }
 
             swipeRefreshLayoutRestaurantList.setOnRefreshListener {
-                restaurantListAdapter.submitList(null)
-                viewModel.refreshPageIndex()
+                viewModel.refreshContentList()
             }
         }
     }
@@ -66,8 +66,10 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
                 val itemTotalCount = restaurantListAdapter.itemCount.minus(1)
 
-                if (lastVisibleItemPosition == itemTotalCount) {
-                    viewModel.incrementPageIndex()
+                if (lastVisibleItemPosition == itemTotalCount &&
+                    !binding.swipeRefreshLayoutRestaurantList.isRefreshing
+                ) {
+                    viewModel.fetchContentList()
                 }
             }
         }

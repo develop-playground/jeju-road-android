@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="information"
-            type="github.dev_playground.jeju_road.domain.model.Information" />
+            name="content"
+            type="github.dev_playground.jeju_road.domain.model.Content" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +34,7 @@
                 android:id="@+id/textView_item_restaurant_list_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{information.name}"
+                android:text="@{content.name}"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@{information.introduction}"
+                android:text="@{content.introduction}"
                 android:textSize="14sp"
                 android:maxLines="2"
                 android:ellipsize="end"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@{information.formatCategoryAndAddress()}"
+                android:text="@{content.formatCategoryAndAddress()}"
                 android:textSize="14sp"
                 android:textColor="@android:color/darker_gray"
                 tools:text="레스토랑/커피·한밭대학교"/>
@@ -69,7 +69,7 @@
             android:layout_height="120dp"
             android:layout_marginStart="16dp"
             android:scaleType="center"
-            bind:imageUrl="@{information.image}"
+            bind:imageUrl="@{content.image}"
             app:layout_constraintDimensionRatio="h,4:3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/linearLayout_item_restaurant_list_area"

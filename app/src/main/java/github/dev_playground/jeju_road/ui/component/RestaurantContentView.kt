@@ -52,7 +52,8 @@ constructor(
         binding.textViewRestaurantContentIntroduction.text = introduction
     }
 
-    fun setContentImageList(images: List<String>) {
+    fun setContentImageList(images: List<String>?) {
+        images ?: return
         binding.viewPager2RestaurantContent.apply {
             adapter = ContentImageListAdapter().apply {
                 submitList(images)

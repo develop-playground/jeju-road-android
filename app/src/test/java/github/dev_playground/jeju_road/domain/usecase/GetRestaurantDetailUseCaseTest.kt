@@ -2,7 +2,7 @@ package github.dev_playground.jeju_road.domain.usecase
 
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
-import github.dev_playground.jeju_road.domain.model.ServingTime
+import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -14,6 +14,7 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
 
     private val repository: RestaurantRepository = mock()
     private val id = 1L
+
     private val detailInformation = DetailInformation(
         id = 1L,
         name = "떡볶이",
@@ -26,12 +27,14 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
                 price = 9000
             )
         ),
-        howToGo = "한밭대에서 1분",
-        address = "한밭대학교 학하서로",
-        servingTime = listOf(
-            ServingTime(
-                dayOfWeek = "??",
-                serving = "???"
+        wayToGo = "한밭대에서 1분",
+        simpleAddress = "한밭대학교 학하서로",
+        detailAddress = "디테일",
+        openTimes = listOf(
+            OpenTime(
+                day = "??",
+                servingTime = "",
+                breakTime = "???"
             )
         ),
         introduction = "대충 소개글",
