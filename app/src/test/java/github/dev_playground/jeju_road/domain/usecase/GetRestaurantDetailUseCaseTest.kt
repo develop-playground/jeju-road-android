@@ -1,6 +1,5 @@
 package github.dev_playground.jeju_road.domain.usecase
 
-import github.dev_playground.jeju_road.data.model.OpenTimeData
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
 import github.dev_playground.jeju_road.domain.model.OpenTime

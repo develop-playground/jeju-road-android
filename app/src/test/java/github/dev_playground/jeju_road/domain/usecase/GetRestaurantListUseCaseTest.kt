@@ -1,7 +1,6 @@
 package github.dev_playground.jeju_road.domain.usecase
 
 import github.dev_playground.jeju_road.domain.model.Content
-import github.dev_playground.jeju_road.domain.model.Information
 import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -13,7 +12,6 @@ class GetRestaurantListUseCaseTest : BaseUseCaseTest() {
 
     private val repository: RestaurantRepository = mock()
     private var pageIndex = 0
-
     private val contentList = listOf(
         Content(
             id = 1,

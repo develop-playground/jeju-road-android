@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface RestaurantApi {
 
-    @GET("restaurant")
+    @GET("restaurants")
     suspend fun getRestaurantList(@Query("page") param: Int): RestaurantData
 
     @GET("restaurant/{id}")

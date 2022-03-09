@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/layout/activity_restaurant_page.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.30117753623188404" />
         <entry key="app/src/main/res/layout/item_restaurant_content_menu.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/layout/view_restaurant_content.xml" value="0.2671875" />
       </map>
     </option>
   </component>
