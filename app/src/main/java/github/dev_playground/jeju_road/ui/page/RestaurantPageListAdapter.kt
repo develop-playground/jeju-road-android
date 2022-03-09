@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import github.dev_playground.jeju_road.R
-import github.dev_playground.jeju_road.data.model.DetailInformation
+import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.ui.component.RestaurantContentView
 
 class RestaurantPageListAdapter: RecyclerView.Adapter<RestaurantPageListAdapter.PageViewHolder>() {

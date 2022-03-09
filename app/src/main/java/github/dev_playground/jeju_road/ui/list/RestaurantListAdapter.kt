@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import github.dev_playground.jeju_road.R
-import github.dev_playground.jeju_road.data.model.Content
+import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.databinding.ItemRestaurantListBinding
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.util.RoundRectOutlineProvider
@@ -38,7 +38,7 @@ class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) : Ba
 
         override fun bind(data: Content) {
             binding.apply {
-                information = data
+                content = data
                 imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider()
                 executePendingBindings()
             }

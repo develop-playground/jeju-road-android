@@ -8,11 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewpager2.widget.ViewPager2
 import github.dev_playground.jeju_road.R
-import github.dev_playground.jeju_road.data.model.DetailInformation
-import github.dev_playground.jeju_road.data.model.Menu
 import github.dev_playground.jeju_road.databinding.ItemRestaurantContentImageBinding
 import github.dev_playground.jeju_road.databinding.ItemRestaurantContentMenuBinding
 import github.dev_playground.jeju_road.databinding.ViewRestaurantContentBinding
+import github.dev_playground.jeju_road.domain.model.DetailInformation
+import github.dev_playground.jeju_road.domain.model.Menu
 import github.dev_playground.jeju_road.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.ui.image.FullSizeImageActivity
 import github.dev_playground.jeju_road.ui.image.FullSizeImageActivity.Companion.KEY_URL

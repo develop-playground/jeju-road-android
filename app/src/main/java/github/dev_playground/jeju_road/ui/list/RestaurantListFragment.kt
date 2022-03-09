@@ -30,7 +30,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 loadingEventViewModel.setLoadingState(it) { restaurants ->
                     binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
 
-                    val list = restaurantListAdapter.currentList + restaurants.information.contentList
+                    val list = restaurantListAdapter.currentList + restaurants.informationList.flatMap { it.contentList }
                     restaurantListAdapter.submitList(list)
                 }
             }

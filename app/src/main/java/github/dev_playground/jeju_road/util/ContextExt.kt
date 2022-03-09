@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.annotation.StringRes
-import java.nio.charset.Charset
 
 /**
  * toast
@@ -41,17 +40,4 @@ fun Context.showLong(string: String) {
 
 inline fun <reified T : Activity> Context.startActivity(noinline action: Intent.() -> Unit) {
     startActivity(Intent(this, T::class.java).apply(action))
-}
-
-/**
- * load asset
- */
-fun Context.loadAsset(fileName: String): String {
-    return this.assets.open(fileName).use {
-        val size = it.available()
-        val buffer = ByteArray(size)
-        it.read(buffer)
-
-        String(buffer, Charset.forName("UTF-8"))
-    }
 }
