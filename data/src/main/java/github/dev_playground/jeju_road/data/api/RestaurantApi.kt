@@ -11,7 +11,7 @@ interface RestaurantApi {
     @GET("restaurants")
     suspend fun getRestaurantList(@Query("page") param: Int): RestaurantData
 
-    @GET("restaurant/{id}")
+    @GET("restaurants/{id}")
     suspend fun getRestaurantDetail(@Path("id") param: Long): RestaurantDetailData
 
 }
