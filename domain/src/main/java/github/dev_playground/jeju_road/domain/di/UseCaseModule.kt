@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.di
+package github.dev_playground.jeju_road.domain.di
 
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantDetailUseCase
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase

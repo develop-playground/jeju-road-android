@@ -68,7 +68,7 @@ abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCo
     }
 
     protected infix fun <T> LiveData<Event<T>>.eventObserve(action: (T) -> Unit) {
-        observe(this@BaseActivity, { it.get(action) })
+        observe(this@BaseActivity) { it.get(action) }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

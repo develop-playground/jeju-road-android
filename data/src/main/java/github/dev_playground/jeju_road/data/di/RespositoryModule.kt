@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.di
+package github.dev_playground.jeju_road.data.di
 
 import github.dev_playground.jeju_road.data.repository.RestaurantRepositoryImpl
 import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
