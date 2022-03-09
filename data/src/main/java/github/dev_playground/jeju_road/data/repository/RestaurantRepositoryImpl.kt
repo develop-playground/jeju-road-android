@@ -6,7 +6,7 @@ import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 
-class RestaurantRepositoryImpl(
+internal class RestaurantRepositoryImpl(
     private val restaurantApi: RestaurantApi
 ): RestaurantRepository {
 

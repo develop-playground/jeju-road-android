@@ -1,9 +1,9 @@
-package github.dev_playground.jeju_road.di
+package github.dev_playground.jeju_road.data.di
 
-import github.dev_playground.jeju_road.BuildConfig
 import github.dev_playground.jeju_road.data.api.RestaurantApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit
 private const val CONNECT_TIMEOUT = 10L
 private const val WRITE_TIMEOUT = 1L
 private const val READ_TIMEOUT = 20L
+const val BASE_URL_KEY = "base_url_key"
 
 val networkModule = module {
 
@@ -30,7 +31,7 @@ val networkModule = module {
     single {
         Retrofit.Builder()
             .client(get())
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(get<String>(named(BASE_URL_KEY)))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

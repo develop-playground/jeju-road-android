@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.di
+package github.dev_playground.jeju_road.domain.di
 
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.qualifier.named
