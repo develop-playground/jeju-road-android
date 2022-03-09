@@ -2,7 +2,7 @@ package github.dev_playground.jeju_road.data.model
 
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 
-data class DetailInformationData(
+internal data class DetailInformationData(
     val id: Long,
     val name: String,
     val images: List<String>? = null,
@@ -15,7 +15,7 @@ data class DetailInformationData(
     val tips: List<String>
 )
 
-fun DetailInformationData.toDomain(): DetailInformation {
+internal fun DetailInformationData.toDomain(): DetailInformation {
     return DetailInformation(
         id,
         name,

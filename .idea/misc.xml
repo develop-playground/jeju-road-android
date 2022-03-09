@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.30117753623188404" />
         <entry key="app/src/main/res/layout/item_restaurant_content_menu.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/layout/view_restaurant_content.xml" value="0.2671875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3545" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3545" />
       </map>
     </option>
   </component>

@@ -7,7 +7,7 @@ import github.dev_playground.jeju_road.data.model.RestaurantData
 import github.dev_playground.jeju_road.data.model.RestaurantDetailData
 import github.dev_playground.jeju_road.data.util.loadAsset
 
-class MockRestaurantApi(
+internal class MockRestaurantApi(
     private val context: Context
 ) : RestaurantApi {
 
