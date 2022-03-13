@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.di
+package github.dev_playground.jeju_road.presentation.di
 
 import github.dev_playground.jeju_road.BuildConfig
 import github.dev_playground.jeju_road.data.di.BASE_URL_KEY
