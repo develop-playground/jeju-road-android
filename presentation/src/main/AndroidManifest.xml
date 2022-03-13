@@ -1,17 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="github.dev_playground.jeju_road">
-
-    <application>
-        <activity
-            android:name="github.dev_playground.jeju_road.ui.main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ui.page.RestaurantPageActivity" />
-        <activity android:name=".ui.image.FullSizeImageActivity" />
-    </application>
+    package="github.dev_playground.jeju_road.presentation">
 </manifest>
