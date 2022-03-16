@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="jeju-road.app" target="11" />
+      <module name="jeju-road.buildSrc" target="11" />
       <module name="jeju-road.data" target="11" />
       <module name="jeju-road.presentation" target="11" />
     </bytecodeTargetLevel>
