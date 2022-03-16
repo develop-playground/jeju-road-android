@@ -13,6 +13,7 @@ dependencies {
     implementation(Dep.Square.retrofit)
     implementation(Dep.Square.okhttp)
     implementation(Dep.Square.gsonConverter)
+    implementation(Dep.gson)
     implementation(Dep.Test.junitExt)
     implementation(Dep.Test.espresso)
 }
