@@ -1,5 +1,6 @@
-package github.dev_playground.jeju_road.presentation.util
+package github.dev_playground.jeju_road
 
+import github.dev_playground.jeju_road.presentation.util.CoroutinesDispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher

@@ -32,8 +32,6 @@ dependencies {
     implementation(Dep.Glide.glide)
     implementation(Dep.Glide.glideCompiler)
 
-    testImplementation(Dep.Kotlin.Test.coroutine)
-    testImplementation(Dep.Koin.Test.koinTest)
     testImplementation(Dep.Test.junit)
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.espresso)

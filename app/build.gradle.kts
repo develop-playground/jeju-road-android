@@ -62,10 +62,10 @@ dependencies {
     implementation(platform(Dep.Firebase.bom))
     implementation(Dep.Firebase.analytics)
 
-
     testImplementation(Dep.Test.junit)
     testImplementation(Dep.Test.json)
     testImplementation(Dep.Test.mockito)
+    testImplementation(Dep.Kotlin.Test.coroutine)
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.espresso)
 }
