@@ -65,6 +65,8 @@ object Dep {
     object Test {
         const val mockito = "org.mockito.kotlin:mockito-kotlin:4.0.0"
         const val json = "org.json:json:20210307"
+        const val junit = "androidx.test.ext:junit:1.1.3"
+        const val espresso = "androidx.test.espresso:espresso-core:3.4.0"
     }
 
     object Glide {
