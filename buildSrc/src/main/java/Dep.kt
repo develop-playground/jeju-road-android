@@ -11,6 +11,8 @@ object Versions {
 object Dep {
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.1.2"
     const val googleService = "com.google.gms:google-services:4.3.10"
+    const val material = "com.google.android.material:material:1.5.0"
+
 
     object Kotlin {
         const val version = "1.5.0"
@@ -30,14 +32,18 @@ object Dep {
             const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
         }
 
+        const val activity = "androidx.activity:activity-ktx:1.3.1"
+        const val fragment = "androidx.fragment:fragment-ktx:1.3.6"
         const val recyclerView = "androidx.recyclerview:recyclerview:1.2.1"
         const val recyclerViewSelection = "androidx.recyclerview:recyclerview-selection:1.1.0"
-        const val activity = "androidx.activity:activity-ktx:1.3.1"
+        const val coreKtx = "androidx.core:core-ktx:1.7.0"
+        const val appCompat = "androidx.appcompat:appcompat:1.4.1"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
+        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
-        const val fragment = "androidx.fragment:fragment-ktx:1.3.6"
         private const val roomVersion = "2.3.0"
-        const val room = "androidx.room:room-runtime:$roomVersion"
 
+        const val room = "androidx.room:room-runtime:$roomVersion"
         const val roomKtx = "androidx.room:room-ktx:$roomVersion"
     }
 
@@ -65,7 +71,8 @@ object Dep {
     object Test {
         const val mockito = "org.mockito.kotlin:mockito-kotlin:4.0.0"
         const val json = "org.json:json:20210307"
-        const val junit = "androidx.test.ext:junit:1.1.3"
+        const val junit = "junit:junit:4.13.2"
+        const val junitExt = "androidx.test.ext:junit:1.1.3"
         const val espresso = "androidx.test.espresso:espresso-core:3.4.0"
     }
 
@@ -79,4 +86,5 @@ object Dep {
         const val bom = "com.google.firebase:firebase-bom:29.0.3"
         const val analytics = "com.google.firebase:firebase-analytics-ktx"
     }
+
 }
