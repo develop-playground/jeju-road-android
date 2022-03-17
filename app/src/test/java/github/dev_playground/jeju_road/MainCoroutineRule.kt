@@ -1,12 +1,13 @@
-package github.dev_playground.jeju_road.presentation.util
+package github.dev_playground.jeju_road
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
-class MainCoroutineRule(
+class MainCoroutineRule @ExperimentalCoroutinesApi constructor(
     val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
 ) : TestWatcher() {
 
