@@ -16,6 +16,8 @@
     <dimen name="dp_160">160dp</dimen>
     <dimen name="dp_220">220dp</dimen>
 
+    <dimen name="padding_restaurant_category_view">8dp</dimen>
+
     <dimen name="bg_card_content_radius">12dp</dimen>
     <dimen name="restaurant_list_item_space">8dp</dimen>
 </resources>

@@ -12,7 +12,7 @@
             android:id="@+id/recyclerView_restaurant_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bg_light_blue"
+            android:background="@color/blue_medium"
             android:padding="@dimen/dp_8"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="20"

@@ -17,9 +17,9 @@ class RestaurantCategoryView
 ) : androidx.appcompat.widget.AppCompatTextView(context, attrs) {
 
     @ColorRes
-    private val backgroundColor = R.color.bg_category
+    private val backgroundColor = R.color.blue_light
     @DimenRes
-    private val paddingSize = R.dimen.dp_8
+    private val paddingSize = R.dimen.padding_restaurant_category_view
 
     init {
         setBackgroundColor(

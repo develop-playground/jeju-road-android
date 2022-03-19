@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue_light">#E0EEF0</color>
-    <color name="light_blue_100">#B3E5FC</color>
-    <color name="lightBlue200">#81D4FA</color>
+    <color name="blue_light">#F1F6F8</color>
+    <color name="blue_medium">#E0EEF0</color>
+    <color name="blue_deep">#D1E7F5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="bg_category">#F1F6F8</color>
-    <color name="bg_light_blue">#E0EEF0</color>
     <color name="shimmerColor">#C2C2C2</color>
 </resources>
