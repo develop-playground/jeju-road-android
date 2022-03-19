@@ -2,7 +2,6 @@ package github.dev_playground.jeju_road.presentation.ui.list
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
@@ -73,7 +72,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     private fun loadNewPageAtEndOfScroll() {
         binding {
             recyclerViewRestaurantList.setOnScrollChangeListener { _, _, _, _, _ ->
-                val layoutManager = recyclerViewRestaurantList.layoutManager as LinearLayoutManager
                 if (!recyclerViewRestaurantList.canScrollVertically(1) &&
                     recyclerViewRestaurantList.adapter?.itemCount ?: 0 > 0
                 ) {

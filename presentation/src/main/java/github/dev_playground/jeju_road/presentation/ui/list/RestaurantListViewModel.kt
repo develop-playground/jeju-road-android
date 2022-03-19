@@ -10,7 +10,6 @@ import github.dev_playground.jeju_road.presentation.util.Event
 import github.dev_playground.jeju_road.presentation.util.Pager
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.toUiState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
@@ -35,7 +34,6 @@ class RestaurantListViewModel(
     fun fetchContentList() {
         viewModelScope.launch {
             pager.load { param ->
-                delay(5000)
                 val result = getRestaurantListUseCase.invoke(param).toUiState()
                 _contentListState.value = result
 

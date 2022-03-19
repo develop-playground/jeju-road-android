@@ -21,6 +21,7 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbarRestaurantPage)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         setRecyclerView()
 
