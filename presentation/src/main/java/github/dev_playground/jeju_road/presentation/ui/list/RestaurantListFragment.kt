@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
-import github.dev_playground.jeju_road.presentation.ui.component.VerticalDividerItemDecoration
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
 import github.dev_playground.jeju_road.presentation.util.startActivity
@@ -45,7 +44,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         binding {
             recyclerViewRestaurantList.run {
                 adapter = restaurantListAdapter
-                addItemDecoration(VerticalDividerItemDecoration(requireContext()))
+                addItemDecoration(RestaurantListItemDecoration())
             }
 
             swipeRefreshLayoutRestaurantList.setOnRefreshListener {

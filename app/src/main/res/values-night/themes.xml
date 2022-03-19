@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Jejuroad" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lightBlue100</item>
-        <item name="colorPrimaryVariant">@color/lightBlue50</item>
+        <item name="colorPrimary">@color/light_blue_100</item>
+        <item name="colorPrimaryVariant">@color/light_blue_50</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/black</item>

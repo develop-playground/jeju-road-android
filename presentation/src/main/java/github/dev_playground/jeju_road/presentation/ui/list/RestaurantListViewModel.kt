@@ -10,7 +10,6 @@ import github.dev_playground.jeju_road.presentation.util.Event
 import github.dev_playground.jeju_road.presentation.util.Pager
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.toUiState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
@@ -46,7 +45,6 @@ class RestaurantListViewModel(
     fun addContentList(contentList: List<Content>) {
         _contentList.value = (_contentList.value ?: emptyList()) + contentList
     }
-
 
     fun refreshContentList() {
         _contentList.value = emptyList()

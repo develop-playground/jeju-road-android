@@ -15,10 +15,10 @@ class RoundRectOutlineProvider(
         view?.apply {
             clipToOutline = true
             outline?.setRoundRect(
-                paddingLeft,
-                paddingTop,
-                width - paddingRight,
-                height - paddingLeft,
+                0,
+                0,
+                width,
+                height,
                 resources.getDimension(radius)
             )
         }

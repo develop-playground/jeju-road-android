@@ -11,12 +11,8 @@ data class Content(
     val introduction: String
 ) : Serializable {
 
-    fun formatCategoryAndAddress(): String {
-        return formatCategory() + " · " + address
-    }
-
-    private fun formatCategory(): String {
-        return categories.joinToString(separator = "/")
+    fun getCategoryList(): List<String> {
+        return categories + address
     }
 
 }

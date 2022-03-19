@@ -19,6 +19,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(Dep.material)
+    implementation(Dep.AndroidX.appCompat)
 
     implementation(Dep.AndroidX.activity)
     implementation(Dep.AndroidX.fragment)
