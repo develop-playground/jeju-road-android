@@ -26,9 +26,10 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             contentListState.observe { state ->
                 binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                 addContentList(state.data ?: emptyList())
+                setVisibilityShimmer(state.loading)
             }
             contentList.observe {
-                restaurantListAdapter.submitList(it)
+                restaurantListAdapter.submitList(it.distinctBy { item -> item.id })
             }
             onRestaurantClickEvent.eventObserve {
                 requireActivity().startActivity<RestaurantPageActivity> {
@@ -46,9 +47,25 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 adapter = restaurantListAdapter
                 addItemDecoration(RestaurantListItemDecoration())
             }
-
             swipeRefreshLayoutRestaurantList.setOnRefreshListener {
                 viewModel.refreshContentList()
+            }
+        }
+    }
+
+    private fun setVisibilityShimmer(isLoading: Boolean) {
+        binding {
+            when (isLoading) {
+                true -> {
+                    shimmerFrameLayoutRestaurantList.startShimmer()
+                    shimmerFrameLayoutRestaurantList.visibility = View.VISIBLE
+                    recyclerViewRestaurantList.visibility = View.INVISIBLE
+                }
+                else -> {
+                    shimmerFrameLayoutRestaurantList.stopShimmer()
+                    recyclerViewRestaurantList.visibility = View.VISIBLE
+                    shimmerFrameLayoutRestaurantList.visibility = View.INVISIBLE
+                }
             }
         }
     }
@@ -57,12 +74,8 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         binding {
             recyclerViewRestaurantList.setOnScrollChangeListener { _, _, _, _, _ ->
                 val layoutManager = recyclerViewRestaurantList.layoutManager as LinearLayoutManager
-
-                val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-                val itemTotalCount = restaurantListAdapter.itemCount.minus(1)
-
-                if (lastVisibleItemPosition == itemTotalCount &&
-                    !binding.swipeRefreshLayoutRestaurantList.isRefreshing
+                if (!recyclerViewRestaurantList.canScrollVertically(1) &&
+                    recyclerViewRestaurantList.adapter?.itemCount ?: 0 > 0
                 ) {
                     viewModel.fetchContentList()
                 }

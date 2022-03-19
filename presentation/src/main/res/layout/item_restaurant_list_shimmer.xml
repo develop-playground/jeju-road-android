@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/bg_card_content_radius_12"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout_item_restaurant_list_shimmer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout_item_restaurant_list_category_shimmer"
+            app:layout_constraintEnd_toStartOf="@id/imageView_item_restaurant_list_shimmer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/shimmerColor"
+                android:minWidth="120dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@color/shimmerColor"
+                android:lines="2"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/linearLayout_item_restaurant_list_category_shimmer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/shimmerColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/linearLayout_item_restaurant_list_shimmer"
+            app:layout_constraintStart_toStartOf="@id/linearLayout_item_restaurant_list_shimmer"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_item_restaurant_list_shimmer"
+            app:layout_constraintVertical_bias="1" />
+
+        <View
+            android:id="@+id/imageView_item_restaurant_list_shimmer"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/shimmerColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,4:3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/linearLayout_item_restaurant_list_shimmer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
