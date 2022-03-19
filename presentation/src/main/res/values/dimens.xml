@@ -14,4 +14,6 @@
     <dimen name="dp_144">144dp</dimen>
     <dimen name="dp_160">160dp</dimen>
     <dimen name="dp_220">220dp</dimen>
+
+    <dimen name="bg_card_content_radius">12dp</dimen>
 </resources>

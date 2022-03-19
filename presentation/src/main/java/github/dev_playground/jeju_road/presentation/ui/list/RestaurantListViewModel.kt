@@ -10,6 +10,7 @@ import github.dev_playground.jeju_road.presentation.util.Event
 import github.dev_playground.jeju_road.presentation.util.Pager
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.toUiState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
@@ -18,7 +19,7 @@ class RestaurantListViewModel(
 
     private val pager = Pager()
 
-    private val _contentListState: MutableLiveData<UiState<List<Content>>> = MutableLiveData()
+    private val _contentListState: MutableLiveData<UiState<List<Content>>> = MutableLiveData(UiState.loading())
     val contentListState: LiveData<UiState<List<Content>>> = _contentListState
 
     private val _contentList: MutableLiveData<List<Content>> = MutableLiveData(emptyList())

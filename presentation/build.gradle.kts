@@ -7,6 +7,10 @@ plugins {
 
 android {
     compileSdk = Versions.compileSdk
+
+    defaultConfig {
+        minSdk = Versions.minSdk
+    }
     buildFeatures {
         dataBinding = true
     }
@@ -31,6 +35,7 @@ dependencies {
     implementation(Dep.photoView)
     implementation(Dep.Glide.glide)
     implementation(Dep.Glide.glideCompiler)
+    implementation(Dep.shimmer)
 
     testImplementation(Dep.Test.junit)
     androidTestImplementation(Dep.Test.junitExt)

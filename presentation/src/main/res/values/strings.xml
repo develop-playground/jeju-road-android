@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">jeju-road</string>
-    <string name="text_main_toolbar_title">제주 맛집</string>
+    <string name="text_main_toolbar_title">제주도 맛집</string>
     <string name="text_restaurant_content_menu">대표메뉴</string>
     <string name="text_restaurant_information_title">기본정보</string>
     <string name="text_restaurant_information_address">주소</string>

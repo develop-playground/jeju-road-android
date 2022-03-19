@@ -7,7 +7,6 @@ import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
 import github.dev_playground.jeju_road.presentation.ui.component.VerticalDividerItemDecoration
-import github.dev_playground.jeju_road.presentation.ui.loading.LoadingEventViewModel
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
 import github.dev_playground.jeju_road.presentation.util.startActivity
@@ -18,7 +17,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     R.layout.fragment_restaurant_list
 ) {
     private val viewModel by sharedViewModel<RestaurantListViewModel>()
-    private val loadingEventViewModel by sharedViewModel<LoadingEventViewModel>()
     private val restaurantListAdapter by lazy { RestaurantListAdapter(viewModel) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,11 +24,9 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         setUpView()
 
         viewModel.apply {
-            contentListState.observe {
-                loadingEventViewModel.setLoadingState(it) { contentList ->
-                    binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
-                    addContentList(contentList)
-                }
+            contentListState.observe { state ->
+                binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
+                addContentList(state.data ?: emptyList())
             }
             contentList.observe {
                 restaurantListAdapter.submitList(it)

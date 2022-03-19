@@ -29,9 +29,9 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
                 id.value = it.id
             }
 
-            detailInformationState.observe {
-                loadingEventViewModel.setLoadingState(it) { detail ->
-                    adapter.setDetailInformation(detail)
+            detailInformationState.observe { state ->
+                state.data?.let {
+                    adapter.setDetailInformation(it)
                 }
             }
         }
