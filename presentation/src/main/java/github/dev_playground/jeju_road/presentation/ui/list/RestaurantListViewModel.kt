@@ -13,7 +13,7 @@ import github.dev_playground.jeju_road.presentation.util.toUiState
 import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
-    private val getRestaurantListUseCase: GetRestaurantListUseCase 
+    private val getRestaurantListUseCase: GetRestaurantListUseCase
 ) : ViewModel() {
 
     private val pager = Pager()

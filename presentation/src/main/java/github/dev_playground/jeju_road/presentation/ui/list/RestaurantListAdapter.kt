@@ -1,8 +1,10 @@
 package github.dev_playground.jeju_road.presentation.ui.list
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import github.dev_playground.jeju_road.domain.model.Content
@@ -12,10 +14,9 @@ import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.ui.component.RestaurantCategoryView
 import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
 
-class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) :
-    BaseListAdapter<Content>(
-        DIFF_CALLBACK
-    ) {
+class RestaurantListAdapter(
+    private val onItemClick: (Content, View) -> Unit
+) : BaseListAdapter<Content>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ViewHolder(
@@ -33,7 +34,20 @@ class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) :
 
         init {
             binding.constraintLayoutItemRestaurantListArea.setOnClickListener {
-                viewModel.callOnRestaurantClickEvent(getItem(absoluteAdapterPosition))
+                onItemClick.invoke(getItem(bindingAdapterPosition), binding.constraintLayoutItemRestaurantListArea)
+            }
+        }
+
+        override fun bind(data: Content) {
+            binding.apply {
+                content = data
+                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider()
+                linearLayoutItemRestaurantListCategory.removeAllViews()
+                data.getCategoryList().forEachIndexed { index, s ->
+                    addCategoryView(index, s)
+                }
+                ViewCompat.setTransitionName(constraintLayoutItemRestaurantListArea, data.name)
+                executePendingBindings()
             }
         }
 
@@ -52,19 +66,6 @@ class RestaurantListAdapter(private val viewModel: RestaurantListViewModel) :
                 outlineProvider = RoundRectOutlineProvider(R.dimen.dp_12)
             }
             binding.linearLayoutItemRestaurantListCategory.addView(categoryView)
-        }
-
-        override fun bind(data: Content) {
-            binding.apply {
-                content = data
-                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider()
-                linearLayoutItemRestaurantListCategory.removeAllViews()
-                data.getCategoryList().forEachIndexed { index, s ->
-                    addCategoryView(index, s)
-                }
-
-                executePendingBindings()
-            }
         }
     }
 
