@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
-import github.dev_playground.jeju_road.presentation.util.Event
 import github.dev_playground.jeju_road.presentation.util.Pager
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.toUiState
@@ -23,9 +22,6 @@ class RestaurantListViewModel(
 
     private val _contentList: MutableLiveData<List<Content>> = MutableLiveData(emptyList())
     val contentList: LiveData<List<Content>> = _contentList
-
-    private val _onRestaurantClickEvent =  MutableLiveData<Event<Content>>()
-    val onRestaurantClickEvent: LiveData<Event<Content>> = _onRestaurantClickEvent
 
     init {
         fetchContentList()
@@ -50,10 +46,6 @@ class RestaurantListViewModel(
         _contentList.value = emptyList()
         pager.reset()
         fetchContentList()
-    }
-
-    fun callOnRestaurantClickEvent(data: Content) {
-        _onRestaurantClickEvent.value = Event(data)
     }
 
 }

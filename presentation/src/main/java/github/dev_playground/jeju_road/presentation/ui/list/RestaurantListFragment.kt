@@ -10,9 +10,8 @@ import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity
-import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_INFO
+import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_TRANSITION_NAME
-import github.dev_playground.jeju_road.presentation.util.startActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -39,11 +38,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             contentList.observe {
                 restaurantListAdapter.submitList(it.distinctBy { item -> item.id })
             }
-            onRestaurantClickEvent.eventObserve {
-                requireActivity().startActivity<RestaurantPageActivity> {
-                    putExtra(KEY_RESTAURANT_INFO, it)
-                }
-            }
         }
 
         loadNewPageAtEndOfScroll()
@@ -66,7 +60,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         requireNotNull(transitionName)
 
         val intent = Intent(requireActivity(), RestaurantPageActivity::class.java).apply {
-            putExtra(KEY_RESTAURANT_INFO, content)
+            putExtra(KEY_RESTAURANT_ID, content.id)
             putExtra(KEY_TRANSITION_NAME, transitionName)
         }
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(

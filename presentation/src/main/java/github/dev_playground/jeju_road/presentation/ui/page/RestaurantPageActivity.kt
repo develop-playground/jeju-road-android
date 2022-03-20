@@ -3,75 +3,73 @@ package github.dev_playground.jeju_road.presentation.ui.page
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
-import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaurantPageBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
+import github.dev_playground.jeju_road.presentation.util.onSuccess
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
     R.layout.activity_restaurant_page
 ) {
 
-    companion object {
-        const val KEY_RESTAURANT_INFO = "restaurantInfo"
-        const val KEY_TRANSITION_NAME = "transitionName"
-    }
-
     private val viewModel by viewModel<RestaurantPageViewModel>()
-    private lateinit var adapter: RestaurantPageListAdapter
+    private val adapter: RestaurantPageListAdapter by lazy { RestaurantPageListAdapter() }
+
+    private val transitionName: String? by lazy { intent.getStringExtra(KEY_TRANSITION_NAME) }
+    private val id: Long by lazy { intent.getLongExtra(KEY_RESTAURANT_ID, 0) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        startTransition()
+        makeTransition()
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbarRestaurantPage)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        binding.toolbarRestaurantPage.setNavigationOnClickListener {
-            finishAfterTransition()
+        binding {
+            toolbarRestaurantPage.setNavigationOnClickListener {
+                finishAfterTransition()
+            }
+            recyclerViewRestaurantPage.adapter = adapter
         }
 
-        setRecyclerView()
-
         viewModel.apply {
-            (intent.getSerializableExtra(KEY_RESTAURANT_INFO) as? Content)?.let {
-                id.value = it.id
-            }
+            id.value = this@RestaurantPageActivity.id
 
             detailInformationState.observe { state ->
-                state.data?.let {
+                state.onSuccess {
                     adapter.setDetailInformation(it)
                 }
             }
         }
     }
 
-    private fun startTransition() {
-        intent.getStringExtra(KEY_TRANSITION_NAME)?.let {
-            findViewById<View>(android.R.id.content).transitionName = it
-        }
+    private fun makeTransition() {
+        transitionName ?: return
+
+        findViewById<View>(android.R.id.content).transitionName = transitionName
 
         setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
 
         window.sharedElementEnterTransition = MaterialContainerTransform().apply {
             addTarget(android.R.id.content)
-            scrimColor = Color.WHITE
+            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.blue_medium)
             setAllContainerColors(Color.WHITE)
             duration = 300L
         }
         window.sharedElementReturnTransition = MaterialContainerTransform().apply {
             addTarget(android.R.id.content)
-            scrimColor = Color.WHITE
+            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.blue_medium)
             setAllContainerColors(Color.WHITE)
             duration = 250L
         }
     }
 
-    private fun setRecyclerView() {
-        adapter = RestaurantPageListAdapter()
-        binding.recyclerViewRestaurantPage.adapter = adapter
+    companion object {
+        const val KEY_RESTAURANT_ID = "restaurantId"
+        const val KEY_TRANSITION_NAME = "transitionName"
     }
 
 }

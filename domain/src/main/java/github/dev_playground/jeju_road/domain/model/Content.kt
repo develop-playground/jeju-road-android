@@ -1,7 +1,5 @@
 package github.dev_playground.jeju_road.domain.model
 
-import java.io.Serializable
-
 data class Content(
     val id: Long,
     val name: String,
@@ -9,7 +7,7 @@ data class Content(
     val address: String,
     val image: String?,
     val introduction: String
-) : Serializable {
+) {
 
     fun getCategoryList(): List<String> {
         return categories + address
