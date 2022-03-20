@@ -29,6 +29,10 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
         setSupportActionBar(binding.toolbarRestaurantPage)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        binding.toolbarRestaurantPage.setNavigationOnClickListener {
+            finishAfterTransition()
+        }
+
         setRecyclerView()
 
         viewModel.apply {
