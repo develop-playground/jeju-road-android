@@ -1,8 +1,10 @@
 package github.dev_playground.jeju_road.data.di
 
 import github.dev_playground.jeju_road.data.api.RestaurantApi
+import github.dev_playground.jeju_road.data.api.mock.MockRestaurantApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -36,7 +38,7 @@ val networkModule = module {
             .build()
     }
 
-    single { get<Retrofit>().create(RestaurantApi::class.java) }
-//    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
+//    single { get<Retrofit>().create(RestaurantApi::class.java) }
+    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
 
 }

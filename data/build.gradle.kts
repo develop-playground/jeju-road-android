@@ -10,6 +10,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(Dep.Koin.koinCore)
+    implementation(Dep.Koin.koinAndroid)
     implementation(Dep.Square.retrofit)
     implementation(Dep.Square.okhttp)
     implementation(Dep.Square.gsonConverter)

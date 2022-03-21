@@ -6,7 +6,7 @@
       {
         "id": 1,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -17,7 +17,7 @@
       {
         "id": 2,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -28,7 +28,7 @@
       {
         "id": 3,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -39,7 +39,7 @@
       {
         "id": 4,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -50,7 +50,7 @@
       {
         "id": 5,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -61,7 +61,7 @@
       {
         "id": 6,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -72,7 +72,7 @@
       {
         "id": 7,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -83,7 +83,7 @@
       {
         "id": 8,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -94,7 +94,7 @@
       {
         "id": 9,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -105,7 +105,7 @@
       {
         "id": 10,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -116,7 +116,7 @@
       {
         "id": 11,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -127,7 +127,7 @@
       {
         "id": 12,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -138,7 +138,7 @@
       {
         "id": 13,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -149,7 +149,7 @@
       {
         "id": 14,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -160,7 +160,7 @@
       {
         "id": 15,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -171,7 +171,7 @@
       {
         "id": 16,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -182,7 +182,7 @@
       {
         "id": 17,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
@@ -193,7 +193,7 @@
       {
         "id": 18,
         "name": "한밭대 떡볶이",
-        "category": [
+        "categories": [
           "식당",
           "카페"
         ],
