@@ -72,7 +72,7 @@
             android:layout_height="120dp"
             android:layout_marginStart="16dp"
             android:scaleType="center"
-            android:background="#F5F5F5"
+            android:background="@color/disable_grey"
             app:imageUrl="@{content.image}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="h,4:3"

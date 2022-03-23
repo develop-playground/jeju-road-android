@@ -10,7 +10,7 @@ import github.dev_playground.jeju_road.presentation.R
 fun loadImage(imageView: ImageView, imageUrl: String?) {
     Glide.with(imageView.context)
         .load(imageUrl)
-        .fallback(R.drawable.ic_fail_load_36)
+        .placeholder(R.drawable.ic_fail_load_36)
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(imageView)
 }
