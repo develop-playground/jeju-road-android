@@ -110,7 +110,7 @@ constructor(
                 binding.imageViewItemRestaurantContent.run {
                     setOnClickListener {
                         val imageUrl = getItem(bindingAdapterPosition)
-                        
+
                         if (imageUrl != EMPTY_URL) {
                             it.context.startActivity<FullSizeImageActivity> {
                                 putExtra(KEY_URL, imageUrl)

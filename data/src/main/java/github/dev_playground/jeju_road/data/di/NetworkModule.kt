@@ -38,7 +38,7 @@ val networkModule = module {
             .build()
     }
 
-    single { get<Retrofit>().create(RestaurantApi::class.java) }
-//    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
+//    single { get<Retrofit>().create(RestaurantApi::class.java) }
+    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
 
 }

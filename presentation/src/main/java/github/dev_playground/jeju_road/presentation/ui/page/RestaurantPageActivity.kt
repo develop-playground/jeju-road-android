@@ -9,7 +9,7 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaurantPageBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
-import github.dev_playground.jeju_road.presentation.util.onSuccess
+import github.dev_playground.jeju_road.presentation.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
@@ -50,20 +50,23 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
         transitionName ?: return
 
         findViewById<View>(android.R.id.content).transitionName = transitionName
+        addEnterMaterialSharedElementCallback()
 
-        setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
-
-        window.sharedElementEnterTransition = MaterialContainerTransform().apply {
+        addMaterialSharedElementEnterTransition {
             addTarget(android.R.id.content)
             scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.blue_medium)
-            setAllContainerColors(Color.WHITE)
-            duration = 300L
+            setAllContainerColors(
+                ContextCompat.getColor(this@RestaurantPageActivity, R.color.white)
+            )
+            duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }
-        window.sharedElementReturnTransition = MaterialContainerTransform().apply {
+        addMaterialSharedElementReturnTransition {
             addTarget(android.R.id.content)
             scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.blue_medium)
-            setAllContainerColors(Color.WHITE)
-            duration = 250L
+            setAllContainerColors(
+                ContextCompat.getColor(this@RestaurantPageActivity, R.color.white)
+            )
+            duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }
     }
 
