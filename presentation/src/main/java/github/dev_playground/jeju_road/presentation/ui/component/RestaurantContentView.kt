@@ -58,14 +58,16 @@ constructor(
     }
 
     fun setContentImageList(images: List<String>?) {
-        contentImageAdapter.submitList(images ?: EMPTY_IMAGE)
+        contentImageAdapter.submitList(images ?: EMPTY_URL_LIST)
 
         val imageCount = images?.size ?: 0
         binding.run {
             isMoreThanImageCountOne = imageCount > 1
-            textViewRestaurantContentImageCount.text = resources.getString(R.string.text_restaurant_content_image_count, imageCount)
+            textViewRestaurantContentImageCount.text =
+                resources.getString(R.string.text_restaurant_content_image_count, imageCount)
 
-            viewPager2RestaurantContent.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            viewPager2RestaurantContent.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     textViewRestaurantContentImageCount.text =
@@ -107,8 +109,12 @@ constructor(
             init {
                 binding.imageViewItemRestaurantContent.run {
                     setOnClickListener {
-                        it.context.startActivity<FullSizeImageActivity> {
-                            putExtra(KEY_URL, getItem(bindingAdapterPosition))
+                        val imageUrl = getItem(bindingAdapterPosition)
+                        
+                        if (imageUrl != EMPTY_URL) {
+                            it.context.startActivity<FullSizeImageActivity> {
+                                putExtra(KEY_URL, imageUrl)
+                            }
                         }
                     }
                     outlineProvider = RoundRectOutlineProvider()
@@ -175,7 +181,7 @@ constructor(
             val position = parent.getChildAdapterPosition(view)
             val space = view.context.resources.getDimensionPixelSize(spaceDimenResId)
 
-            when(position) {
+            when (position) {
                 0 -> outRect.right = space
                 count -> outRect.left = space
                 else -> {
@@ -188,6 +194,9 @@ constructor(
     }
 
     companion object {
+        private const val EMPTY_URL = "empty"
+        private val EMPTY_URL_LIST = listOf(EMPTY_URL)
+
         private val IMAGE_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
             override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
             override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
@@ -196,7 +205,6 @@ constructor(
             override fun areItemsTheSame(oldItem: Menu, newItem: Menu) = oldItem.id == newItem.id
             override fun areContentsTheSame(oldItem: Menu, newItem: Menu) = oldItem == newItem
         }
-        private val EMPTY_IMAGE = listOf("empty")
     }
 
 }
