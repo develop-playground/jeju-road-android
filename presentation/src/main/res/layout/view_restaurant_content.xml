@@ -12,16 +12,7 @@
             android:id="@+id/linearLayout_restaurant_content_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dp_32"
-            android:layout_marginHorizontal="@dimen/dp_16"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView_restaurant_content_title"
-                style="@style/Text.HEAD_RESTAURANT_PATE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="우진 해장국" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -32,42 +23,39 @@
                     android:id="@+id/viewPager2_restaurant_content"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_220"
-                    tools:listitem="@layout/item_restaurant_content_image"/>
+                    tools:listitem="@layout/item_restaurant_content_image" />
 
-                <FrameLayout
-                    android:id="@+id/frameLayout_restaurant_content_image_count"
+                <TextView
+                    android:id="@+id/textView_restaurant_content_image_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|end"
-                    android:layout_margin="@dimen/dp_8"
-                    android:background="@android:color/darker_gray">
-
-                    <TextView
-                        android:id="@+id/textView_restaurant_content_image_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:fontFamily="sans-serif-medium"
-                        android:layout_margin="@dimen/dp_4"
-                        tools:text="1/100" />
-
-                </FrameLayout>
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_24"
+                    android:padding="@dimen/dp_4"
+                    android:background="@android:color/darker_gray"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/white"
+                    android:layout_gravity="end"
+                    tools:text="1/100" />
 
             </FrameLayout>
 
-            <View
+            <TextView
+                android:id="@+id/textView_restaurant_content_title"
+                style="@style/Text.HEAD_RESTAURANT_PATE"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_marginTop="@dimen/dp_16"
-                android:background="@android:color/darker_gray" />
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
+                tools:text="우진 해장국" />
 
             <TextView
                 android:id="@+id/textView_restaurant_content_introduction"
                 style="@style/Text.HEAD_RESTAURANT_PATE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_32"
-                android:textSize="24sp"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:textSize="12sp"
                 tools:text="'수요미식회'에 방영된, 따끈한 국물 요리로 해장하기 좋은 음식점" />
 
             <TextView
@@ -84,8 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_16"
                 android:orientation="horizontal"
-                tools:listitem="@layout/item_restaurant_content_menu"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_restaurant_content_menu" />
 
         </LinearLayout>
 

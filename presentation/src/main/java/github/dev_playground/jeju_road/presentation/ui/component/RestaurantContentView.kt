@@ -30,11 +30,7 @@ constructor(
     override fun getLayoutId() = R.layout.view_restaurant_content
 
     init {
-        binding.apply {
-            viewPager2RestaurantContent.outlineProvider = RoundRectOutlineProvider()
-            frameLayoutRestaurantContentImageCount.outlineProvider =
-                RoundRectOutlineProvider(R.dimen.dp_16)
-        }
+        binding.textViewRestaurantContentImageCount.outlineProvider = RoundRectOutlineProvider(R.dimen.dp_12)
     }
 
     fun setContentInformation(information: DetailInformation) {
@@ -98,10 +94,13 @@ constructor(
             BaseViewHolder(binding.root) {
 
             init {
-                binding.imageViewItemRestaurantContent.setOnClickListener {
-                    it.context.startActivity<FullSizeImageActivity> {
-                        putExtra(KEY_URL, getItem(bindingAdapterPosition))
+                binding.imageViewItemRestaurantContent.run {
+                    setOnClickListener {
+                        it.context.startActivity<FullSizeImageActivity> {
+                            putExtra(KEY_URL, getItem(bindingAdapterPosition))
+                        }
                     }
+                    outlineProvider = RoundRectOutlineProvider()
                 }
             }
 

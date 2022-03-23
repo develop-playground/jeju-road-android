@@ -25,7 +25,7 @@ class RestaurantCategoryView
         setBackgroundColor(
             ContextCompat.getColor(context, backgroundColor)
         )
-        TextViewCompat.setTextAppearance(this, R.style.Text_BODY_RESTAURANT_PATE)
+        TextViewCompat.setTextAppearance(this, R.style.JejuLoadTextStyle)
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         setPadding(resources.getDimensionPixelSize(paddingSize))
     }

@@ -24,7 +24,6 @@
 
             <TextView
                 android:id="@+id/textView_restaurant_information_title"
-                style="@style/Text.HEAD_RESTAURANT_PATE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/text_restaurant_information_title" />
