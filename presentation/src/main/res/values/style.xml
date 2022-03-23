@@ -11,11 +11,15 @@
     </style>
 
     <style name="JejuLoadTextStyle.SubTitle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="JejuLoadTextStyle.Content">
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="JejuLoadTextStyle.Toolbar">
-        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/nanum_gothic_bold</item>
         <item name="android:textSize">16sp</item>
     </style>
 

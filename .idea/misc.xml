@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/layout/view_restaurant_content.xml" value="0.2671875" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_back_24.xml" value="0.1555" />
         <entry key="presentation/src/main/res/drawable/ic_close_24.xml" value="0.1555" />
+        <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
         <entry key="presentation/src/main/res/layout/activity_full_size_image.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_page.xml" value="0.2730496453900709" />

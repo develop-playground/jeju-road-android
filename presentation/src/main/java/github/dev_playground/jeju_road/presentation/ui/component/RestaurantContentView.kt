@@ -1,11 +1,15 @@
 package github.dev_playground.jeju_road.presentation.ui.component
 
 import android.content.Context
+import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.DimenRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
@@ -28,9 +32,14 @@ constructor(
 ) : BaseCustomView<ViewRestaurantContentBinding>(context, attr, defStyleAttr) {
 
     override fun getLayoutId() = R.layout.view_restaurant_content
+    private val contentImageAdapter by lazy { ContentImageListAdapter() }
 
     init {
-        binding.textViewRestaurantContentImageCount.outlineProvider = RoundRectOutlineProvider(R.dimen.dp_12)
+        binding.run {
+            viewPager2RestaurantContent.adapter = contentImageAdapter
+            textViewRestaurantContentImageCount.outlineProvider =
+                RoundRectOutlineProvider(R.dimen.dp_12)
+        }
     }
 
     fun setContentInformation(information: DetailInformation) {
@@ -49,22 +58,21 @@ constructor(
     }
 
     fun setContentImageList(images: List<String>?) {
-        images ?: return
-        binding.viewPager2RestaurantContent.apply {
-            adapter = ContentImageListAdapter().apply {
-                submitList(images)
-            }
-            binding.textViewRestaurantContentImageCount.text =
-                resources.getString(R.string.text_restaurant_content_image_count, images.size)
+        contentImageAdapter.submitList(images ?: EMPTY_IMAGE)
 
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        val imageCount = images?.size ?: 0
+        binding.run {
+            isMoreThanImageCountOne = imageCount > 1
+            textViewRestaurantContentImageCount.text = resources.getString(R.string.text_restaurant_content_image_count, imageCount)
+
+            viewPager2RestaurantContent.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    binding.textViewRestaurantContentImageCount.text =
+                    textViewRestaurantContentImageCount.text =
                         resources.getString(
                             R.string.text_restaurant_content_image_current_count,
                             position + 1,
-                            images.size
+                            imageCount
                         )
                 }
             })
@@ -72,8 +80,11 @@ constructor(
     }
 
     private fun setMenuList(menus: List<Menu>) {
-        binding.recyclerViewRestaurantContentMenu.adapter = ContentMenuListAdapter().apply {
-            submitList(menus)
+        binding.recyclerViewRestaurantContentMenu.run {
+            adapter = ContentMenuListAdapter().apply {
+                submitList(menus)
+            }
+            addItemDecoration(ContentMenuItemDecoration())
         }
     }
 
@@ -105,7 +116,7 @@ constructor(
             }
 
             override fun bind(data: String) {
-                binding.apply {
+                binding.run {
                     url = data
                     executePendingBindings()
                 }
@@ -130,23 +141,50 @@ constructor(
             val binding: ItemRestaurantContentMenuBinding
         ) : BaseViewHolder(binding.root) {
             init {
-                binding.imageViewItemRestaurantContentMenu.setOnClickListener {
-                    it.context.startActivity<FullSizeImageActivity> {
-                        putExtra(KEY_URL, getItem(bindingAdapterPosition).image)
+                binding.imageViewItemRestaurantContentMenu.run {
+                    setOnClickListener {
+                        it.context.startActivity<FullSizeImageActivity> {
+                            putExtra(KEY_URL, getItem(bindingAdapterPosition).image)
+                        }
                     }
                 }
             }
 
             override fun bind(data: Menu) {
-                binding.apply {
-                    imageViewItemRestaurantContentMenu.outlineProvider = RoundRectOutlineProvider()
+                binding.run {
                     menu = data
                     executePendingBindings()
                 }
             }
-
         }
 
+    }
+
+    private class ContentMenuItemDecoration(
+        @DimenRes
+        private val spaceDimenResId: Int = R.dimen.dp_4
+    ) : RecyclerView.ItemDecoration() {
+
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            val count = parent.adapter?.itemCount ?: 0
+            val position = parent.getChildAdapterPosition(view)
+            val space = view.context.resources.getDimensionPixelSize(spaceDimenResId)
+
+            when(position) {
+                0 -> outRect.right = space
+                count -> outRect.left = space
+                else -> {
+                    outRect.left = space
+                    outRect.right = space
+                }
+            }
+            outRect.bottom = space
+        }
     }
 
     companion object {
@@ -158,6 +196,7 @@ constructor(
             override fun areItemsTheSame(oldItem: Menu, newItem: Menu) = oldItem.id == newItem.id
             override fun areContentsTheSame(oldItem: Menu, newItem: Menu) = oldItem == newItem
         }
+        private val EMPTY_IMAGE = listOf("empty")
     }
 
 }
