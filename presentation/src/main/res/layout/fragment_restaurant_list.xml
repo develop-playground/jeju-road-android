@@ -7,7 +7,7 @@
         android:id="@+id/swipeRefreshLayout_restaurant_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_medium">
+        android:background="@color/surfaceVariant">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -17,7 +17,7 @@
                 android:id="@+id/recyclerView_restaurant_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/dp_8"
+                android:paddingVertical="@dimen/dp_8"
                 android:visibility="invisible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="20"

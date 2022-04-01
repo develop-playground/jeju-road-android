@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:background="@color/white">
+            tools:background="@color/onSurface">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -43,10 +43,10 @@
                     android:layout_marginTop="@dimen/dp_8"
                     android:layout_marginEnd="@dimen/dp_24"
                     android:alpha="0.9"
-                    android:background="@android:color/darker_gray"
+                    android:background="@color/disable"
                     android:fontFamily="@font/nanum_gotic_font"
                     android:padding="@dimen/dp_4"
-                    android:textColor="@color/white"
+                    android:textColor="@color/onSurface"
                     android:textSize="12sp"
                     android:visibility="@{isMoreThanImageCountOne ? View.VISIBLE : View.GONE}"
                     tools:text="1/100" />

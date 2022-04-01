@@ -17,7 +17,8 @@ class RestaurantCategoryView
 ) : androidx.appcompat.widget.AppCompatTextView(context, attrs) {
 
     @ColorRes
-    private val backgroundColor = R.color.blue_light
+    private val backgroundColor = R.color.primary
+
     @DimenRes
     private val paddingSize = R.dimen.padding_restaurant_category_view
 
@@ -26,6 +27,7 @@ class RestaurantCategoryView
             ContextCompat.getColor(context, backgroundColor)
         )
         TextViewCompat.setTextAppearance(this, R.style.JejuLoadTextStyle)
+        setTextColor(ContextCompat.getColor(context, R.color.onPrimary))
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         setPadding(resources.getDimensionPixelSize(paddingSize))
     }

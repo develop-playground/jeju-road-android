@@ -14,7 +14,7 @@
         android:layout_width="@dimen/dp_160"
         android:layout_height="wrap_content"
         app:cardElevation="@dimen/dp_1"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/onPrimary"
         app:cardCornerRadius="@dimen/dp_4">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
                 android:id="@+id/imageView_item_restaurant_content_menu"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@color/disable_grey"
+                android:background="@color/disable"
                 app:imageUrl="@{menu.image}"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"

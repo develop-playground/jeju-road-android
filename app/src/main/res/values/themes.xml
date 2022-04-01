@@ -3,15 +3,16 @@
     <style name="Theme.Jejuroad" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="android:windowActivityTransitions">true</item>
-        <item name="colorPrimary">@color/blue_light</item>
-        <item name="colorPrimaryVariant">@color/blue_light</item>
-        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryContainer</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/white</item>
-        <item name="colorSecondaryVariant">@color/white</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondaryContainer</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/blue_medium</item>
+        <item name="android:statusBarColor" >@color/surfaceVariant</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
     </style>

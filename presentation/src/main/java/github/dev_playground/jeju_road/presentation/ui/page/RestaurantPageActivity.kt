@@ -54,17 +54,17 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
 
         addMaterialSharedElementEnterTransition {
             addTarget(android.R.id.content)
-            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.blue_medium)
+            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             setAllContainerColors(
-                ContextCompat.getColor(this@RestaurantPageActivity, R.color.white)
+                ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             )
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }
         addMaterialSharedElementReturnTransition {
             addTarget(android.R.id.content)
-            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.blue_medium)
+            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             setAllContainerColors(
-                ContextCompat.getColor(this@RestaurantPageActivity, R.color.white)
+                ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             )
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }

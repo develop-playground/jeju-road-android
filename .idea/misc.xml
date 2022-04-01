@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.30117753623188404" />
         <entry key="app/src/main/res/layout/item_restaurant_content_menu.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/layout/view_restaurant_content.xml" value="0.2671875" />
+        <entry key="presentation/src/main/res/drawable/bg_card_content_radius_12.xml" value="0.274" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_back_24.xml" value="0.1555" />
         <entry key="presentation/src/main/res/drawable/ic_close_24.xml" value="0.1555" />
         <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
@@ -31,6 +32,7 @@
         <entry key="presentation/src/main/res/layout/item_restaurant_content_image.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_menu.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list.xml" value="0.2730496453900709" />
+        <entry key="presentation/src/main/res/layout/item_restaurant_list_shimmer.xml" value="0.31431159420289856" />
         <entry key="presentation/src/main/res/layout/view_restaurant_content.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/view_restaurant_information.xml" value="0.2730496453900709" />
       </map>

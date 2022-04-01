@@ -15,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_card_content_radius_12"
+        android:elevation="@dimen/dp_2"
+        android:layout_marginHorizontal="@dimen/dp_8"
         android:clickable="true"
         android:focusable="true"
         android:padding="16dp">
@@ -36,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{content.name}"
-                android:textColor="@android:color/black"
+                android:textColor="@color/onSurface"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="한밭대 떡볶이" />
@@ -72,7 +74,7 @@
             android:layout_height="120dp"
             android:layout_marginStart="16dp"
             android:scaleType="center"
-            android:background="@color/disable_grey"
+            android:background="@color/disable"
             app:imageUrl="@{content.image}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="h,4:3"

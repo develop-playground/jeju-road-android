@@ -1,6 +1,7 @@
 package github.dev_playground.jeju_road.presentation.ui.component
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -20,6 +21,7 @@ import github.dev_playground.jeju_road.presentation.databinding.ViewRestaurantCo
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity.Companion.KEY_URL
+import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
 import github.dev_playground.jeju_road.presentation.util.startActivity
 
