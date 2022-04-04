@@ -27,6 +27,9 @@
     <color name="inverseSurface">#362F2C</color>
     <color name="inversePrimary">#FFB593</color>
     <color name="shadow">#000000</color>
+    <color name="gray">#545454</color>
+    <color name="lightGray">#F0F0F0</color>
+    <color name="pageBorder">#EFEFEF</color>
     <color name="primaryInverse">#FFB593</color>
 
     <color name="disable">#121F1F1F</color>

@@ -1,7 +1,6 @@
 package github.dev_playground.jeju_road.presentation.ui.component
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -16,15 +15,14 @@ import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
 import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.presentation.R
-import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentImageBinding
-import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentMenuBinding
-import github.dev_playground.jeju_road.presentation.databinding.ViewRestaurantContentBinding
+import github.dev_playground.jeju_road.presentation.databinding.*
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity.Companion.KEY_URL
-import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
+import github.dev_playground.jeju_road.presentation.util.currentDayOfWeek
 import github.dev_playground.jeju_road.presentation.util.startActivity
+import java.text.SimpleDateFormat
 
 class RestaurantContentView
 @JvmOverloads
@@ -50,6 +48,10 @@ constructor(
         setIntroduction(information.introduction)
         setContentImageList(information.images)
         setMenuList(information.menus)
+        setAddress(information.detailAddress)
+        setWayToGo(information.wayToGo)
+        setOpenTimes(information.openTimes)
+        setTipList(information.tips)
     }
 
     private fun setTitle(title: String) {
@@ -102,12 +104,81 @@ constructor(
     }
 
     private fun setOpenTimes(servingTime: List<OpenTime>) {
+        binding.apply {
+            isExpand = false
+            toggleButtonRestaurantContentInformationFlip.setOnCheckedChangeListener { btn, checked ->
+                if (checked) {
+                    isExpand = false
+                    servingTime.find { it.day == currentDayOfWeek() }?.let {
+                        textViewRestaurantContentInformationServingTime.text =
+                            "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart?.substring(0, 5) + "  -  " + it.operationEnd?.substring(0, 5)
+                    }
 
+                } else {
+                    recyclerViewRestaurantContentInformationServingTime.run {
+                        isExpand = true
+                        adapter = ContentOpenTimesListAdapter().apply {
+                            submitList(servingTime)
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    private fun setTipList(tips: List<String>) {
-        binding.textViewRestaurantContentInformationTip.run {
+    private fun setTipList(tips: List<String>?) {
+        binding.recyclerViewRestaurantContentInformationTip.run {
+            adapter = ContentTipsListAdapter().apply {
+                submitList(tips ?: EMPTY_URL_LIST)
+            }
+        }
+    }
 
+    private inner class ContentOpenTimesListAdapter :
+        BaseListAdapter<OpenTime>(OPEN_TIME_DIFF_CALLBACK) {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+            return OpenTimeViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.item_restaurant_content_serving_time,
+                    parent,
+                    false
+                )
+            )
+        }
+
+        private inner class OpenTimeViewHolder(val binding: ItemRestaurantContentServingTimeBinding) :
+            BaseViewHolder(binding.root) {
+            override fun bind(data: OpenTime) {
+                binding.run {
+                    openTime = data
+                    executePendingBindings()
+                }
+            }
+        }
+    }
+
+    private inner class ContentTipsListAdapter : BaseListAdapter<String>(TIPS_DIFF_CALLBACK) {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+            return TipsPagerViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.item_restaurant_content_tip,
+                    parent,
+                    false
+                )
+            )
+        }
+
+        private inner class TipsPagerViewHolder(val binding: ItemRestaurantContentTipBinding) :
+            BaseViewHolder(binding.root) {
+
+            override fun bind(data: String) {
+                binding.run {
+                    tip = data
+                    executePendingBindings()
+                }
+            }
         }
     }
 
@@ -218,6 +289,19 @@ constructor(
         private const val EMPTY_URL = "empty"
         private val EMPTY_URL_LIST = listOf(EMPTY_URL)
 
+        private val OPEN_TIME_DIFF_CALLBACK = object : DiffUtil.ItemCallback<OpenTime>() {
+            override fun areItemsTheSame(oldItem: OpenTime, newItem: OpenTime) =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: OpenTime, newItem: OpenTime) =
+                oldItem == newItem
+
+        }
+
+        private val TIPS_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
+            override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
+        }
         private val IMAGE_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
             override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
             override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem

@@ -43,24 +43,58 @@
         "price": 9000
       }
     ],
-    "wayToGo": "한밭대에서 1분",
+    "wayToGo": "한밭대학교에서 5분 거리 안에 있음",
     "simpleAddress": "한밭대학교 학하서로",
     "detailAddress": "한밭대학교 학하서로 들어서면 나옴",
-    "openTimes": [
+    "openTimes" : [ {
+      "day" : "MON",
+      "operationStart" : "09:00:00",
+      "operationEnd" : "21:00:00",
+      "breakStart" : "14:00:00",
+      "breakEnd" : "16:00:00"
+    }, {
+      "day" : "TUE",
+      "operationStart" : "09:00:00",
+      "operationEnd" : "21:00:00",
+      "breakStart" : "14:00:00",
+      "breakEnd" : "16:00:00"
+    }, {
+      "day" : "WED",
+      "operationStart" : "09:00:00",
+      "operationEnd" : "21:00:00",
+      "breakStart" : "14:00:00",
+      "breakEnd" : "16:00:00"
+    }, {
+      "day" : "THU",
+      "operationStart" : "09:00:00",
+      "operationEnd" : "21:00:00",
+      "breakStart" : "14:00:00",
+      "breakEnd" : "16:00:00"
+    }, {
+      "day" : "FRI",
+      "operationStart" : "09:00:00",
+      "operationEnd" : "21:00:00",
+      "breakStart" : "14:00:00",
+      "breakEnd" : "16:00:00"
+    }, {
+      "day" : "SAT",
+      "operationStart" : "09:00:00",
+      "operationEnd" : "21:00:00",
+      "breakStart" : "14:00:00",
+      "breakEnd" : "16:00:00"
+    },
       {
-        "day": "MONDAY",
-        "servingTime" : "08:00-22:00",
-        "breakTime" : "15:00-17:00"
-      },
-      {
-        "day": "WEDNESDAY",
-        "servingTime" : "08:00-22:00",
-        "breakTime" : "15:00-17:00"
-      }
-    ],
+        "day" : "SUN",
+        "operationStart" : "09:00:00",
+        "operationEnd" : "21:00:00",
+        "breakStart" : "14:00:00",
+        "breakEnd" : "16:00:00"
+      }],
     "introduction": "'수요미식회'에 방영된, 따끈한 떡볶이 요리로 해장하기 좋은 음식점",
     "tips": [
-      "주변 공영 주차장 이용 가능"
+      "무료 주차 가능",
+      "- 주차 공간 넓음",
+      "배틀트립 촬영 장소"
     ]
   }
 }

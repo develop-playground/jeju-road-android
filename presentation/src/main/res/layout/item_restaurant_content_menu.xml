@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="menu"
             type="github.dev_playground.jeju_road.domain.model.Menu" />
@@ -34,7 +33,7 @@
 
             <TextView
                 android:id="@+id/textView_item_restaurant_content_menu"
-                style="@style/JejuLoadTextStyle.Content"
+                style="@style/JejuLoadTextStyle.SubTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_8"
@@ -47,7 +46,7 @@
                 tools:text="고깃국" />
 
             <TextView
-                style="@style/JejuLoadTextStyle.Content"
+                style="@style/JejuLoadTextStyle.SubTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_8"

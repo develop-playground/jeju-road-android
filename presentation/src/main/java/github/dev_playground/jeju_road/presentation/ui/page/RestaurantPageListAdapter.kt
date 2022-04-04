@@ -55,7 +55,6 @@ class RestaurantPageListAdapter: RecyclerView.Adapter<RestaurantPageListAdapter.
         val view: TextView
     ): PageViewHolder(view) {
         override fun bind(data: DetailInformation) {
-
 //            view.text = "${data.simpleAddress}\n${data.detailAddress}"
         }
     }

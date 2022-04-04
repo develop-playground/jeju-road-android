@@ -18,11 +18,17 @@
 
     <style name="JejuLoadTextStyle.Content">
         <item name="android:fontFamily">@font/nanum_gothic_light</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="JejuLoadTextStyle.Focus">
+        <item name="android:fontFamily">@font/nanum_gothic_bold</item>
+        <item name="android:textColor">@color/onSurfaceVariant</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="JejuLoadTextStyle.Toolbar">
-        <item name="android:fontFamily">@font/nanum_gothic_bold</item>
+        <item name="android:fontFamily">@font/nanum_gothic_extrabold</item>
         <item name="android:textSize">16sp</item>
     </style>
 
