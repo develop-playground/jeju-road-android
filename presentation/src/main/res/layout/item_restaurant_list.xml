@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="content"
             type="github.dev_playground.jeju_road.domain.model.Content" />
@@ -73,9 +72,9 @@
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_marginStart="16dp"
-            android:scaleType="center"
-            android:background="@color/disable"
-            app:imageUrl="@{content.image}"
+            android:background="@drawable/bg_item_restaurant_list_image"
+            app:roundImageUrl="@{content.image}"
+            app:roundImageRadius="@{@dimen/dp_8}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="h,4:3"
             app:layout_constraintEnd_toEndOf="parent"

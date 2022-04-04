@@ -12,6 +12,7 @@ import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_TRANSITION_NAME
+import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -29,7 +30,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         super.onViewCreated(view, savedInstanceState)
         setUpView()
 
-        viewModel.apply {
+        with(viewModel) {
             contentListState.observe { state ->
                 binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
                 addContentList(state.data ?: emptyList())

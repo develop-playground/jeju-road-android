@@ -1,11 +1,11 @@
 package github.dev_playground.jeju_road.presentation.ui.page
 
-import android.graphics.Color
+import android.graphics.RectF
 import android.os.Bundle
+import android.transition.ChangeTransform
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.google.android.material.transition.platform.MaterialContainerTransform
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
+import com.google.android.material.shape.ShapeAppearanceModel
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaurantPageBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
@@ -58,6 +58,9 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
             setAllContainerColors(
                 ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             )
+            startShapeAppearanceModel = ShapeAppearanceModel.builder().setAllCornerSizes(
+                resources.getDimension(R.dimen.dp_12)
+            ).build()
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }
         addMaterialSharedElementReturnTransition {
@@ -66,6 +69,9 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
             setAllContainerColors(
                 ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             )
+            endShapeAppearanceModel = ShapeAppearanceModel.builder().setAllCornerSizes(
+                resources.getDimension(R.dimen.dp_12)
+            ).build()
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }
     }

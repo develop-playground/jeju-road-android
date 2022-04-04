@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
+import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentImageBinding
 import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentMenuBinding
@@ -51,15 +52,15 @@ constructor(
         setMenuList(information.menus)
     }
 
-    fun setTitle(title: String) {
+    private fun setTitle(title: String) {
         binding.textViewRestaurantContentTitle.text = title
     }
 
-    fun setIntroduction(introduction: String) {
+    private fun setIntroduction(introduction: String) {
         binding.textViewRestaurantContentIntroduction.text = introduction
     }
 
-    fun setContentImageList(images: List<String>?) {
+    private fun setContentImageList(images: List<String>?) {
         contentImageAdapter.submitList(images ?: EMPTY_URL_LIST)
 
         val imageCount = images?.size ?: 0
@@ -89,6 +90,24 @@ constructor(
                 submitList(menus)
             }
             addItemDecoration(ContentMenuItemDecoration())
+        }
+    }
+
+    private fun setAddress(address: String) {
+        binding.textViewRestaurantContentInformationAddress.text = address
+    }
+
+    private fun setWayToGo(wayToGo: String) {
+        binding.textViewRestaurantContentInformationHowToGo.text = wayToGo
+    }
+
+    private fun setOpenTimes(servingTime: List<OpenTime>) {
+
+    }
+
+    private fun setTipList(tips: List<String>) {
+        binding.textViewRestaurantContentInformationTip.run {
+
         }
     }
 

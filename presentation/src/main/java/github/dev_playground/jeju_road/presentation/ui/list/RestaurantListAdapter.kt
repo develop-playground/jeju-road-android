@@ -39,9 +39,8 @@ class RestaurantListAdapter(
         }
 
         override fun bind(data: Content) {
-            binding.apply {
+            with(binding) {
                 content = data
-                imageViewItemRestaurantListImage.outlineProvider = RoundRectOutlineProvider()
                 linearLayoutItemRestaurantListCategory.removeAllViews()
                 data.getCategoryList().forEachIndexed { index, s ->
                     addCategoryView(index, s)
@@ -63,7 +62,6 @@ class RestaurantListAdapter(
                     layoutParams = params
                 }
                 text = title
-                outlineProvider = RoundRectOutlineProvider(R.dimen.dp_12)
             }
             binding.linearLayoutItemRestaurantListCategory.addView(categoryView)
         }
