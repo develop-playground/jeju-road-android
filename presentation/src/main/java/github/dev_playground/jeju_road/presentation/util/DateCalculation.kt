@@ -9,14 +9,13 @@ fun currentDayOfWeek(): String {
     val date = Date(System.currentTimeMillis())
     val cal = Calendar.getInstance()
     cal.time = date
-
     return when(cal.get(Calendar.DAY_OF_WEEK)) {
-        0 -> "MON"
-        1 -> "TUE"
-        2 -> "WED"
-        3 -> "THU"
-        4 -> "FRI"
-        5 -> "SAT"
+        2 -> "MON"
+        3 -> "TUE"
+        4 -> "WED"
+        5 -> "THU"
+        6 -> "FRI"
+        7 -> "SAT"
         else -> "SUN"
     }
 }

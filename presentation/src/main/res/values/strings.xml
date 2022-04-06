@@ -8,7 +8,7 @@
     <string name="text_restaurant_content_information_how_to_go">가는방법</string>
     <string name="text_restaurant_information_serving_time">이용가능시간, 휴무일</string>
     <string name="text_restaurant_content_information_tipe">이곳의 이용팁</string>
-
+    <string name="text_restaurant_content_find_load">길찾기</string>
     <string name="text_restaurant_content_image_count">1 / %d</string>
     <string name="text_restaurant_content_image_current_count">%d / %d</string>
 </resources>

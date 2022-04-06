@@ -29,5 +29,10 @@
     <color name="shadow">#000000</color>
     <color name="primaryInverse">#A43D00</color>
 
+    <color name="orangeMainColor">#53443D</color>
+    <color name="orangeSubColor">#D7C2BA</color>
+    <color name="orangeActionColor">#A08D86</color>
+
+
     <color name="disable">#12CFCFCF</color>
 </resources>

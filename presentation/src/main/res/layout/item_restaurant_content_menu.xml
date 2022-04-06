@@ -33,7 +33,7 @@
 
             <TextView
                 android:id="@+id/textView_item_restaurant_content_menu"
-                style="@style/JejuLoadTextStyle.SubTitle"
+                style="@style/JejuLoadTextStyle.Content"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_8"
@@ -46,7 +46,7 @@
                 tools:text="고깃국" />
 
             <TextView
-                style="@style/JejuLoadTextStyle.SubTitle"
+                style="@style/JejuLoadTextStyle.Content"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_8"

@@ -20,7 +20,8 @@
     <color name="onBackground">#201A18</color>
     <color name="surface">#FCFCFC</color>
     <color name="onSurface">#201A18</color>
-    <color name="surfaceVariant">#F5DED5</color>
+    <color name="surfaceVariant">#F7B653</color>
+<!--    #F5DED5-->
     <color name="onSurfaceVariant">#53443D</color>
     <color name="outline">#85736C</color>
     <color name="inverseOnSurface">#FBEEEA</color>
@@ -31,6 +32,10 @@
     <color name="lightGray">#F0F0F0</color>
     <color name="pageBorder">#EFEFEF</color>
     <color name="primaryInverse">#FFB593</color>
+
+    <color name="orangeMainColor">#F7B653</color>
+    <color name="orangeSubColor">#F69D18</color>
+    <color name="orangeActionColor">#AAD9FF</color>
 
     <color name="disable">#121F1F1F</color>
 </resources>

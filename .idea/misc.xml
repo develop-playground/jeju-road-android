@@ -25,14 +25,19 @@
         <entry key="presentation/src/main/res/drawable/bg_card_content_radius_12.xml" value="0.274" />
         <entry key="presentation/src/main/res/drawable/bg_item_restaurant_list_image.xml" value="0.2355" />
         <entry key="presentation/src/main/res/drawable/bg_open_time_toggle_bitton.xml" value="0.1" />
+        <entry key="presentation/src/main/res/drawable/bg_open_time_toggle_button.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/bg_open_time_toggle_false.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/bg_open_time_toggle_true.xml" value="0.1" />
+        <entry key="presentation/src/main/res/drawable/bg_radius_12.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/bg_restaurant_category_view.xml" value="0.1345" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_back_24.xml" value="0.1555" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_bottom.xml" value="0.233" />
+        <entry key="presentation/src/main/res/drawable/ic_arrow_bottom_24.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_top.xml" value="0.233" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_top_24.xml" value="0.1345" />
         <entry key="presentation/src/main/res/drawable/ic_close_24.xml" value="0.1555" />
+        <entry key="presentation/src/main/res/drawable/ic_fail_load.xml" value="0.1425" />
+        <entry key="presentation/src/main/res/drawable/ic_fail_load_36.xml" value="0.1425" />
         <entry key="presentation/src/main/res/font/nanum_gotic_bold_font.xml" value="0.2814814814814815" />
         <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
         <entry key="presentation/src/main/res/layout/activity_full_size_image.xml" value="0.2730496453900709" />

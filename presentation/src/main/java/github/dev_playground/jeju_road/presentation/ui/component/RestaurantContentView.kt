@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DimenRes
+import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -152,6 +153,20 @@ constructor(
             override fun bind(data: OpenTime) {
                 binding.run {
                     openTime = data
+                    if (openTime?.day == currentDayOfWeek()) {
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentDay,
+                            R.style.JejuLoadTextStyle_Focus)
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentStartTime,
+                            R.style.JejuLoadTextStyle_Focus)
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentMiddleLine,
+                            R.style.JejuLoadTextStyle_Focus)
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentEndTime,
+                            R.style.JejuLoadTextStyle_Focus)
+                    }
                     executePendingBindings()
                 }
             }
