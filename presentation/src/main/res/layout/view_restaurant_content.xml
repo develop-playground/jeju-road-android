@@ -218,20 +218,9 @@
                     android:layout_marginBottom="@dimen/dp_16"
                     android:layout_marginTop="@dimen/dp_32">
 
-                    <TextView
-                        android:id="@+id/textView_restaurant_content_information_serving_time_title"
-                        style="@style/JejuLoadTextStyle.SubTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/text_restaurant_information_serving_time"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@id/toggleButton_restaurant_content_information_flip"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <ToggleButton
                         android:id="@+id/toggleButton_restaurant_content_information_flip"
-                        android:layout_width="@dimen/dp_20"
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_20"
                         android:background="@drawable/bg_open_time_toggle_button"
                         android:textOff="@null"
@@ -241,6 +230,17 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/textView_restaurant_content_information_serving_time_title"
                         app:layout_constraintTop_toTopOf="@id/textView_restaurant_content_information_serving_time_title" />
+
+                    <TextView
+                        android:id="@+id/textView_restaurant_content_information_serving_time_title"
+                        style="@style/JejuLoadTextStyle.SubTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_restaurant_information_serving_time"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/toggleButton_restaurant_content_information_flip"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textView_restaurant_content_information_serving_time"
