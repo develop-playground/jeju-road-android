@@ -7,6 +7,10 @@ plugins {
 
 android {
     compileSdk = Versions.compileSdk
+
+    defaultConfig {
+        minSdk = Versions.minSdk
+    }
     buildFeatures {
         dataBinding = true
     }
@@ -15,6 +19,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(Dep.material)
+    implementation(Dep.AndroidX.appCompat)
 
     implementation(Dep.AndroidX.activity)
     implementation(Dep.AndroidX.fragment)
@@ -31,6 +36,7 @@ dependencies {
     implementation(Dep.photoView)
     implementation(Dep.Glide.glide)
     implementation(Dep.Glide.glideCompiler)
+    implementation(Dep.shimmer)
 
     testImplementation(Dep.Test.junit)
     androidTestImplementation(Dep.Test.junitExt)

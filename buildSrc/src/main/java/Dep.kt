@@ -13,7 +13,6 @@ object Dep {
     const val googleService = "com.google.gms:google-services:4.3.10"
     const val material = "com.google.android.material:material:1.5.0"
 
-
     object Kotlin {
         const val version = "1.5.0"
 
@@ -68,9 +67,6 @@ object Dep {
         }
     }
 
-    const val gson = "com.google.code.gson:gson:2.8.7"
-    const val photoView = "com.github.chrisbanes:PhotoView:2.3.0"
-
     object Test {
         const val mockito = "org.mockito.kotlin:mockito-kotlin:4.0.0"
         const val json = "org.json:json:20210307"
@@ -89,5 +85,9 @@ object Dep {
         const val bom = "com.google.firebase:firebase-bom:29.0.3"
         const val analytics = "com.google.firebase:firebase-analytics-ktx"
     }
+
+    const val gson = "com.google.code.gson:gson:2.8.7"
+    const val photoView = "com.github.chrisbanes:PhotoView:2.3.0"
+    const val shimmer =  "com.facebook.shimmer:shimmer:0.5.0"
 
 }

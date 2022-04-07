@@ -1,7 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style  name="Theme.Jejuroad" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Jejuroad" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
+        <item name="android:windowActivityTransitions">true</item>
+
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primaryContainer</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
@@ -11,6 +13,7 @@
         <item name="colorOnSecondary">@color/onSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/surfaceVariant</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

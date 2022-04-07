@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,44 +9,56 @@
             type="github.dev_playground.jeju_road.domain.model.Menu" />
     </data>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="@dimen/dp_160"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_8"
-        android:orientation="vertical">
+        app:cardElevation="@dimen/dp_1"
+        app:cardBackgroundColor="@color/onPrimary"
+        app:cardCornerRadius="@dimen/dp_4">
 
-        <ImageView
-            android:id="@+id/imageView_item_restaurant_content_menu"
-            android:layout_width="@dimen/dp_144"
-            android:layout_height="@dimen/dp_144"
-            bind:imageUrl="@{menu.image}"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@{menu.name}"
-            android:textColor="@color/black"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="18sp"
-            android:layout_marginTop="@dimen/dp_16"
-            tools:text="몸국"/>
+            <ImageView
+                android:id="@+id/imageView_item_restaurant_content_menu"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/disable"
+                app:imageUrl="@{menu.image}"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dp_4"
-            android:textSize="16sp"
-            android:text="메뉴 설명 프로퍼티 추가 요망" />
+            <TextView
+                android:id="@+id/textView_item_restaurant_content_menu"
+                style="@style/JejuLoadTextStyle.Content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@{menu.name}"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView_item_restaurant_content_menu"
+                tools:text="고깃국" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dp_4"
-            android:textColor="@color/black"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="18sp"
-            android:text="@{menu.formatPrice()}"
-            tools:text="9,000원" />
+            <TextView
+                style="@style/JejuLoadTextStyle.Content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:layout_marginVertical="@dimen/dp_4"
+                android:text="@{menu.formatPrice()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_item_restaurant_content_menu"
+                tools:text="9,000원" />
 
-    </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>

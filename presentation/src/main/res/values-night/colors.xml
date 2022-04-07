@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FFB593</color>
+    <color name="onPrimary">#000000</color>
+    <color name="primaryContainer">#7D2D00</color>
+    <color name="onPrimaryContainer">#FFBF9B</color>
+    <color name="secondary">#E7BEAD</color>
+    <color name="onSecondary">#432A1F</color>
+    <color name="secondaryContainer">#735E3F</color>
+    <color name="onSecondaryContainer">#F7B653</color>
+    <color name="tertiary">#D2C78F</color>
+    <color name="onTertiary">#373107</color>
+    <color name="tertiaryContainer">#4E471B</color>
+    <color name="onTertiaryContainer">#EEE3A8</color>
+    <color name="error">#FFB4A9</color>
+    <color name="errorContainer">#9D3900</color>
+    <color name="onError">#680003</color>
+    <color name="onErrorContainer">#FF9559</color>
+    <color name="background">#201A18</color>
+    <color name="onBackground">#EDE0DC</color>
+    <color name="surface">#201A18</color>
+    <color name="onSurface">#EDE0DC</color>
+    <color name="surfaceVariant">#53443D</color>
+    <color name="onSurfaceVariant">#D7C2BA</color>
+    <color name="outline">#A08D86</color>
+    <color name="inverseOnSurface">#201A18</color>
+    <color name="inverseSurface">#EDE0DC</color>
+    <color name="inversePrimary">#A43D00</color>
+    <color name="shadow">#000000</color>
+    <color name="primaryInverse">#A43D00</color>
+
+    <color name="orangeMainColor">#53443D</color>
+    <color name="orangeSubColor">#5A3F16</color>
+    <color name="orangeActionColor">#B9815A</color>
+
+
+    <color name="disable">#12CFCFCF</color>
+</resources>

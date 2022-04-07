@@ -5,6 +5,7 @@ import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantDetailUseCase
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.toUiState
+import kotlinx.coroutines.*
 
 class RestaurantPageViewModel(
     private val getRestaurantPageUseCase: GetRestaurantDetailUseCase
@@ -18,5 +19,4 @@ class RestaurantPageViewModel(
             emit(getRestaurantPageUseCase.invoke(it).toUiState())
         }
     }
-
 }

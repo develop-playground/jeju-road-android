@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#A43D00</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#FFBF9B</color>
+    <color name="onPrimaryContainer">#360F00</color>
+    <color name="secondary">#77574A</color>
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="secondaryContainer">#F7B653</color>
+    <color name="onSecondaryContainer">#2C160C</color>
+    <color name="tertiary">#675F30</color>
+    <color name="onTertiary">#FFFFFF</color>
+    <color name="tertiaryContainer">#EEE3A8</color>
+    <color name="onTertiaryContainer">#201C00</color>
+    <color name="error">#BA1B1B</color>
+    <color name="errorContainer">#FFDAD4</color>
+    <color name="onError">#FFFFFF</color>
+    <color name="onErrorContainer">#410001</color>
+    <color name="background">#FCFCFC</color>
+    <color name="onBackground">#201A18</color>
+    <color name="surface">#FCFCFC</color>
+    <color name="onSurface">#201A18</color>
+    <color name="surfaceVariant">#F7B653</color>
+    <color name="onSurfaceVariant">#53443D</color>
+    <color name="outline">#85736C</color>
+    <color name="inverseOnSurface">#FBEEEA</color>
+    <color name="inverseSurface">#362F2C</color>
+    <color name="inversePrimary">#FFB593</color>
+    <color name="shadow">#000000</color>
+    <color name="gray">#545454</color>
+    <color name="lightGray">#F0F0F0</color>
+    <color name="pageBorder">#EFEFEF</color>
+    <color name="primaryInverse">#FFB593</color>
+
+    <color name="orangeMainColor">#F7B653</color>
+    <color name="orangeSubColor">#F69D18</color>
+    <color name="orangeActionColor">#EEA674</color>
+
+    <color name="disable">#121F1F1F</color>
+
+    <color name="black">#000000</color>
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="tip"
+            type="String" />
+    </data>
+
+    <TextView
+        android:id="@+id/textView_item_restaurant_content_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/JejuLoadTextStyle.Content"
+        android:layout_marginHorizontal="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="@{tip}"
+        />
+</layout>

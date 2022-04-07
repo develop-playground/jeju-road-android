@@ -1,23 +1,29 @@
 package github.dev_playground.jeju_road.presentation.ui.component
 
 import android.content.Context
+import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.DimenRes
+import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
+import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.presentation.R
-import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentImageBinding
-import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentMenuBinding
-import github.dev_playground.jeju_road.presentation.databinding.ViewRestaurantContentBinding
+import github.dev_playground.jeju_road.presentation.databinding.*
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity.Companion.KEY_URL
 import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
+import github.dev_playground.jeju_road.presentation.util.currentDayOfWeek
 import github.dev_playground.jeju_road.presentation.util.startActivity
+import java.text.SimpleDateFormat
 
 class RestaurantContentView
 @JvmOverloads
@@ -28,12 +34,13 @@ constructor(
 ) : BaseCustomView<ViewRestaurantContentBinding>(context, attr, defStyleAttr) {
 
     override fun getLayoutId() = R.layout.view_restaurant_content
+    private val contentImageAdapter by lazy { ContentImageListAdapter() }
 
     init {
-        binding.apply {
-            viewPager2RestaurantContent.outlineProvider = RoundRectOutlineProvider()
-            frameLayoutRestaurantContentImageCount.outlineProvider =
-                RoundRectOutlineProvider(R.dimen.dp_16)
+        binding.run {
+            viewPager2RestaurantContent.adapter = contentImageAdapter
+            textViewRestaurantContentImageCount.outlineProvider =
+                RoundRectOutlineProvider(R.dimen.dp_12)
         }
     }
 
@@ -42,33 +49,38 @@ constructor(
         setIntroduction(information.introduction)
         setContentImageList(information.images)
         setMenuList(information.menus)
+        setAddress(information.detailAddress)
+        setWayToGo(information.wayToGo)
+        setOpenTimes(information.openTimes)
+        setTipList(information.tips)
     }
 
-    fun setTitle(title: String) {
+    private fun setTitle(title: String) {
         binding.textViewRestaurantContentTitle.text = title
     }
 
-    fun setIntroduction(introduction: String) {
+    private fun setIntroduction(introduction: String) {
         binding.textViewRestaurantContentIntroduction.text = introduction
     }
 
-    fun setContentImageList(images: List<String>?) {
-        images ?: return
-        binding.viewPager2RestaurantContent.apply {
-            adapter = ContentImageListAdapter().apply {
-                submitList(images)
-            }
-            binding.textViewRestaurantContentImageCount.text =
-                resources.getString(R.string.text_restaurant_content_image_count, images.size)
+    private fun setContentImageList(images: List<String>?) {
+        contentImageAdapter.submitList(images ?: EMPTY_URL_LIST)
 
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        val imageCount = images?.size ?: 0
+        binding.run {
+            isMoreThanImageCountOne = imageCount > 1
+            textViewRestaurantContentImageCount.text =
+                resources.getString(R.string.text_restaurant_content_image_count, imageCount)
+
+            viewPager2RestaurantContent.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    binding.textViewRestaurantContentImageCount.text =
+                    textViewRestaurantContentImageCount.text =
                         resources.getString(
                             R.string.text_restaurant_content_image_current_count,
                             position + 1,
-                            images.size
+                            imageCount
                         )
                 }
             })
@@ -76,8 +88,117 @@ constructor(
     }
 
     private fun setMenuList(menus: List<Menu>) {
-        binding.recyclerViewRestaurantContentMenu.adapter = ContentMenuListAdapter().apply {
-            submitList(menus)
+        binding.recyclerViewRestaurantContentMenu.run {
+            adapter = ContentMenuListAdapter().apply {
+                submitList(menus)
+            }
+            addItemDecoration(ContentMenuItemDecoration())
+        }
+    }
+
+    private fun setAddress(address: String) {
+        binding.textViewRestaurantContentInformationAddress.text = address
+    }
+
+    private fun setWayToGo(wayToGo: String) {
+        binding.textViewRestaurantContentInformationHowToGo.text = wayToGo
+    }
+
+    private fun setOpenTimes(servingTime: List<OpenTime>) {
+        with(binding) {
+            isExpand = false
+            servingTime.find { it.day == currentDayOfWeek() }?.let {
+                textViewRestaurantContentInformationServingTime.text =
+                    "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart.substring(
+                        0,
+                        5
+                    ) + "  -  " + it.operationEnd.substring(0, 5)
+            }
+
+            toggleButtonRestaurantContentInformationFlip.setOnCheckedChangeListener { btn, checked ->
+                if (checked) {
+                    isExpand = false
+                } else {
+                    isExpand = true
+                    recyclerViewRestaurantContentInformationServingTime.adapter =
+                        ContentOpenTimesListAdapter().apply {
+                            submitList(servingTime)
+                        }
+                }
+            }
+        }
+    }
+
+    private fun setTipList(tips: List<String>?) {
+        binding.recyclerViewRestaurantContentInformationTip.adapter =
+            ContentTipsListAdapter().apply {
+                submitList(tips ?: EMPTY_URL_LIST)
+            }
+    }
+
+    private inner class ContentOpenTimesListAdapter :
+        BaseListAdapter<OpenTime>(OPEN_TIME_DIFF_CALLBACK) {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+            return OpenTimeViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.item_restaurant_content_serving_time,
+                    parent,
+                    false
+                )
+            )
+        }
+
+        private inner class OpenTimeViewHolder(val binding: ItemRestaurantContentServingTimeBinding) :
+            BaseViewHolder(binding.root) {
+            override fun bind(data: OpenTime) {
+                with(binding) {
+                    openTime = data
+                    if (openTime?.day == currentDayOfWeek()) {
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentDay,
+                            R.style.JejuLoadTextStyle_Focus
+                        )
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentStartTime,
+                            R.style.JejuLoadTextStyle_Focus
+                        )
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentMiddleLine,
+                            R.style.JejuLoadTextStyle_Focus
+                        )
+                        TextViewCompat.setTextAppearance(
+                            binding.textViewItemRestaurantContentEndTime,
+                            R.style.JejuLoadTextStyle_Focus
+                        )
+                    }
+                    executePendingBindings()
+                }
+            }
+        }
+    }
+
+    private inner class ContentTipsListAdapter : BaseListAdapter<String>(TIPS_DIFF_CALLBACK) {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+            return TipsPagerViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.item_restaurant_content_tip,
+                    parent,
+                    false
+                )
+            )
+        }
+
+        private inner class TipsPagerViewHolder(val binding: ItemRestaurantContentTipBinding) :
+            BaseViewHolder(binding.root) {
+
+            override fun bind(data: String) {
+                with(binding) {
+                    tip = data
+                    executePendingBindings()
+                }
+            }
         }
     }
 
@@ -98,15 +219,22 @@ constructor(
             BaseViewHolder(binding.root) {
 
             init {
-                binding.imageViewItemRestaurantContent.setOnClickListener {
-                    it.context.startActivity<FullSizeImageActivity> {
-                        putExtra(KEY_URL, getItem(bindingAdapterPosition))
+                binding.imageViewItemRestaurantContent.run {
+                    setOnClickListener {
+                        val imageUrl = getItem(bindingAdapterPosition)
+
+                        if (imageUrl != EMPTY_URL) {
+                            it.context.startActivity<FullSizeImageActivity> {
+                                putExtra(KEY_URL, imageUrl)
+                            }
+                        }
                     }
+                    outlineProvider = RoundRectOutlineProvider()
                 }
             }
 
             override fun bind(data: String) {
-                binding.apply {
+                with(binding) {
                     url = data
                     executePendingBindings()
                 }
@@ -131,26 +259,69 @@ constructor(
             val binding: ItemRestaurantContentMenuBinding
         ) : BaseViewHolder(binding.root) {
             init {
-                binding.imageViewItemRestaurantContentMenu.setOnClickListener {
-                    it.context.startActivity<FullSizeImageActivity> {
-                        putExtra(KEY_URL, getItem(bindingAdapterPosition).image)
+                binding.imageViewItemRestaurantContentMenu.run {
+                    setOnClickListener {
+                        it.context.startActivity<FullSizeImageActivity> {
+                            putExtra(KEY_URL, getItem(bindingAdapterPosition).image)
+                        }
                     }
                 }
             }
 
             override fun bind(data: Menu) {
-                binding.apply {
-                    imageViewItemRestaurantContentMenu.outlineProvider = RoundRectOutlineProvider()
+                with(binding) {
                     menu = data
                     executePendingBindings()
                 }
             }
-
         }
 
     }
 
+    private class ContentMenuItemDecoration(
+        @DimenRes
+        private val spaceDimenResId: Int = R.dimen.dp_4
+    ) : RecyclerView.ItemDecoration() {
+
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            val count = parent.adapter?.itemCount ?: 0
+            val position = parent.getChildAdapterPosition(view)
+            val space = view.context.resources.getDimensionPixelSize(spaceDimenResId)
+
+            when (position) {
+                0 -> outRect.right = space
+                count -> outRect.left = space
+                else -> {
+                    outRect.left = space
+                    outRect.right = space
+                }
+            }
+            outRect.bottom = space
+        }
+    }
+
     companion object {
+        private const val EMPTY_URL = "empty"
+        private val EMPTY_URL_LIST = listOf(EMPTY_URL)
+
+        private val OPEN_TIME_DIFF_CALLBACK = object : DiffUtil.ItemCallback<OpenTime>() {
+            override fun areItemsTheSame(oldItem: OpenTime, newItem: OpenTime) =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: OpenTime, newItem: OpenTime) =
+                oldItem == newItem
+
+        }
+
+        private val TIPS_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
+            override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
+        }
         private val IMAGE_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
             override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
             override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
