@@ -107,14 +107,14 @@ constructor(
     private fun setOpenTimes(servingTime: List<OpenTime>) {
         binding.apply {
             isExpand = false
+            servingTime.find { it.day == currentDayOfWeek() }?.let {
+                textViewRestaurantContentInformationServingTime.text =
+                    "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart.substring(0, 5) + "  -  " + it.operationEnd.substring(0, 5)
+            }
+
             toggleButtonRestaurantContentInformationFlip.setOnCheckedChangeListener { btn, checked ->
                 if (checked) {
                     isExpand = false
-                    servingTime.find { it.day == currentDayOfWeek() }?.let {
-                        textViewRestaurantContentInformationServingTime.text =
-                            "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart?.substring(0, 5) + "  -  " + it.operationEnd?.substring(0, 5)
-                    }
-
                 } else {
                     recyclerViewRestaurantContentInformationServingTime.run {
                         isExpand = true
