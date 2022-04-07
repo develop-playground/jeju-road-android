@@ -32,13 +32,18 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
         detailAddress = "디테일",
         openTimes = listOf(
             OpenTime(
+                id = 1L,
                 day = "??",
-                servingTime = "",
-                breakTime = "???"
+                operationStart = "",
+                        operationEnd = "",
+                breakStart = "???",
+                breakEnd = "???"
             )
         ),
-        introduction = "대충 소개글",
-        tips = listOf("팁팁")
+        introduction = "소개글",
+        tips = listOf(
+            ""
+        )
     )
 
     @Test
