@@ -2,12 +2,11 @@
 <resources>
     <color name="primary">#A43D00</color>
     <color name="onPrimary">#FFFFFF</color>
-    <color name="primaryContainer">#FFDBCB</color>
+    <color name="primaryContainer">#FFBF9B</color>
     <color name="onPrimaryContainer">#360F00</color>
     <color name="secondary">#77574A</color>
     <color name="onSecondary">#FFFFFF</color>
     <color name="secondaryContainer">#F7B653</color>
-    <!--  분홍색  #FFDBCB-->
     <color name="onSecondaryContainer">#2C160C</color>
     <color name="tertiary">#675F30</color>
     <color name="onTertiary">#FFFFFF</color>
@@ -22,7 +21,6 @@
     <color name="surface">#FCFCFC</color>
     <color name="onSurface">#201A18</color>
     <color name="surfaceVariant">#F7B653</color>
-    <!--  분홍색  #F5DED5-->
     <color name="onSurfaceVariant">#53443D</color>
     <color name="outline">#85736C</color>
     <color name="inverseOnSurface">#FBEEEA</color>
@@ -36,7 +34,9 @@
 
     <color name="orangeMainColor">#F7B653</color>
     <color name="orangeSubColor">#F69D18</color>
-    <color name="orangeActionColor">#AAD9FF</color>
+    <color name="orangeActionColor">#EEA674</color>
 
     <color name="disable">#121F1F1F</color>
+
+    <color name="black">#000000</color>
 </resources>
