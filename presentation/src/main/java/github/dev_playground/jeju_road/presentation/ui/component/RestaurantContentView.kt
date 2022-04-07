@@ -105,34 +105,35 @@ constructor(
     }
 
     private fun setOpenTimes(servingTime: List<OpenTime>) {
-        binding.apply {
+        with(binding) {
             isExpand = false
             servingTime.find { it.day == currentDayOfWeek() }?.let {
                 textViewRestaurantContentInformationServingTime.text =
-                    "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart.substring(0, 5) + "  -  " + it.operationEnd.substring(0, 5)
+                    "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart.substring(
+                        0,
+                        5
+                    ) + "  -  " + it.operationEnd.substring(0, 5)
             }
 
             toggleButtonRestaurantContentInformationFlip.setOnCheckedChangeListener { btn, checked ->
                 if (checked) {
                     isExpand = false
                 } else {
-                    recyclerViewRestaurantContentInformationServingTime.run {
-                        isExpand = true
-                        adapter = ContentOpenTimesListAdapter().apply {
+                    isExpand = true
+                    recyclerViewRestaurantContentInformationServingTime.adapter =
+                        ContentOpenTimesListAdapter().apply {
                             submitList(servingTime)
                         }
-                    }
                 }
             }
         }
     }
 
     private fun setTipList(tips: List<String>?) {
-        binding.recyclerViewRestaurantContentInformationTip.run {
-            adapter = ContentTipsListAdapter().apply {
+        binding.recyclerViewRestaurantContentInformationTip.adapter =
+            ContentTipsListAdapter().apply {
                 submitList(tips ?: EMPTY_URL_LIST)
             }
-        }
     }
 
     private inner class ContentOpenTimesListAdapter :
@@ -151,21 +152,25 @@ constructor(
         private inner class OpenTimeViewHolder(val binding: ItemRestaurantContentServingTimeBinding) :
             BaseViewHolder(binding.root) {
             override fun bind(data: OpenTime) {
-                binding.run {
+                with(binding) {
                     openTime = data
                     if (openTime?.day == currentDayOfWeek()) {
                         TextViewCompat.setTextAppearance(
                             binding.textViewItemRestaurantContentDay,
-                            R.style.JejuLoadTextStyle_Focus)
+                            R.style.JejuLoadTextStyle_Focus
+                        )
                         TextViewCompat.setTextAppearance(
                             binding.textViewItemRestaurantContentStartTime,
-                            R.style.JejuLoadTextStyle_Focus)
+                            R.style.JejuLoadTextStyle_Focus
+                        )
                         TextViewCompat.setTextAppearance(
                             binding.textViewItemRestaurantContentMiddleLine,
-                            R.style.JejuLoadTextStyle_Focus)
+                            R.style.JejuLoadTextStyle_Focus
+                        )
                         TextViewCompat.setTextAppearance(
                             binding.textViewItemRestaurantContentEndTime,
-                            R.style.JejuLoadTextStyle_Focus)
+                            R.style.JejuLoadTextStyle_Focus
+                        )
                     }
                     executePendingBindings()
                 }
@@ -189,7 +194,7 @@ constructor(
             BaseViewHolder(binding.root) {
 
             override fun bind(data: String) {
-                binding.run {
+                with(binding) {
                     tip = data
                     executePendingBindings()
                 }
@@ -229,7 +234,7 @@ constructor(
             }
 
             override fun bind(data: String) {
-                binding.run {
+                with(binding) {
                     url = data
                     executePendingBindings()
                 }
@@ -264,7 +269,7 @@ constructor(
             }
 
             override fun bind(data: Menu) {
-                binding.run {
+                with(binding) {
                     menu = data
                     executePendingBindings()
                 }
