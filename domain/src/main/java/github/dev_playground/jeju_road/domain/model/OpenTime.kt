@@ -1,7 +1,5 @@
 package github.dev_playground.jeju_road.domain.model
 
-import java.text.SimpleDateFormat
-
 data class OpenTime(
     val id: Long,
     val day: String,

@@ -45,11 +45,12 @@ constructor(
         with(binding) {
             isExpand = false
             servingTime.find { it.day == currentDayOfWeek() }?.let {
-                textViewRestaurantDefaultInformationServingTime.text =
-                    "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart.substring(
-                        0,
-                        5
-                    ) + "  -  " + it.operationEnd.substring(0, 5)
+                textViewRestaurantDefaultInformationServingTime.text = resources.getString(
+                    R.string.text_restaurant_default_information_serving_time_format,
+                    it.convertDayOfWeek(it.day),
+                    it.operationStart.substring(0, 5),
+                    it.operationEnd.substring(0, 5)
+                )
             }
             val adapter = ContentOpenTimesListAdapter()
 
