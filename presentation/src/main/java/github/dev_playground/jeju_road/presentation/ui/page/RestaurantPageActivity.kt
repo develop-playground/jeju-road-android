@@ -36,7 +36,12 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
                 finishAfterTransition()
             }
             recyclerViewRestaurantPage.adapter = adapter
-            recyclerViewRestaurantPage.addItemDecoration(RestaurantListItemDecoration(R.dimen.dp_16))
+            recyclerViewRestaurantPage.addItemDecoration(
+                RestaurantListItemDecoration(
+                    spaceResId = R.dimen.dp_16,
+                    color = ContextCompat.getColor(this@RestaurantPageActivity, R.color.lightGray)
+                )
+            )
         }
 
         with(viewModel) {
