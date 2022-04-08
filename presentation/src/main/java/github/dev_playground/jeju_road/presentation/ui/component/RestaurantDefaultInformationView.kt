@@ -48,8 +48,8 @@ constructor(
                 textViewRestaurantDefaultInformationServingTime.text = resources.getString(
                     R.string.text_restaurant_default_information_serving_time_format,
                     it.convertDayOfWeek(it.day),
-                    it.operationStart.substring(0, 5),
-                    it.operationEnd.substring(0, 5)
+                    it.operationStart.substring(OPEN_TIME_SPLIT_START_INDEX, OPEN_TIME_SPLIT_END_INDEX),
+                    it.operationEnd.substring(OPEN_TIME_SPLIT_START_INDEX, OPEN_TIME_SPLIT_END_INDEX)
                 )
             }
             val adapter = ContentOpenTimesListAdapter()
@@ -141,6 +141,8 @@ constructor(
     }
 
     companion object {
+        private const val OPEN_TIME_SPLIT_START_INDEX = 0
+        private const val OPEN_TIME_SPLIT_END_INDEX = 5
         private val OPEN_TIME_DIFF_CALLBACK = object : DiffUtil.ItemCallback<OpenTime>() {
             override fun areItemsTheSame(oldItem: OpenTime, newItem: OpenTime) =
                 oldItem.id == newItem.id
