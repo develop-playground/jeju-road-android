@@ -48,6 +48,10 @@
         <entry key="presentation/src/main/res/layout/item_restaurant_content_menu.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_serving_time.xml" value="0.3052536231884058" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_tip.xml" value="0.1818642350557244" />
+        <entry key="presentation/src/main/res/layout/item_restaurant_default_information_serving_time.xml" value="0.23229166666666667" />
+        <entry key="presentation/src/main/res/layout/item_restaurant_default_information_tip.xml" value="0.23229166666666667" />
+        <entry key="presentation/src/main/res/layout/item_restaurant_introduction_image.xml" value="0.2509057971014493" />
+        <entry key="presentation/src/main/res/layout/item_restaurant_introduction_menu.xml" value="0.23229166666666667" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list_shimmer.xml" value="0.31431159420289856" />
         <entry key="presentation/src/main/res/layout/view_restaurant_content.xml" value="0.23220973782771537" />

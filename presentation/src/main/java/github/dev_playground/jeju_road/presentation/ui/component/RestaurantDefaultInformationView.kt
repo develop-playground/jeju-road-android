@@ -10,22 +10,21 @@ import androidx.recyclerview.widget.DiffUtil
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.presentation.R
-import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentServingTimeBinding
-import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantContentTipBinding
-import github.dev_playground.jeju_road.presentation.databinding.ViewRestaurantInformationBinding
+import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantDefaultInformationServingTimeBinding
+import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantDefaultInformationTipBinding
+import github.dev_playground.jeju_road.presentation.databinding.ViewRestaurantDefaultInformationBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.util.currentDayOfWeek
 
-class RestaurantInformationView
+class RestaurantDefaultInformationView
 @JvmOverloads
 constructor(
     context: Context,
     attr: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : BaseCustomView<ViewRestaurantInformationBinding>(context, attr, defStyleAttr) {
+) : BaseCustomView<ViewRestaurantDefaultInformationBinding>(context, attr, defStyleAttr) {
 
-    override fun getLayoutId() = R.layout.view_restaurant_information
-
+    override fun getLayoutId() = R.layout.view_restaurant_default_information
 
     fun setRestaurantInformation(information: DetailInformation) {
         setAddress(information.detailAddress)
@@ -35,18 +34,18 @@ constructor(
     }
 
     private fun setAddress(address: String) {
-        binding.textViewRestaurantContentInformationAddress.text = address
+        binding.textViewRestaurantDefaultInformationAddress.text = address
     }
 
     private fun setWayToGo(wayToGo: String) {
-        binding.textViewRestaurantContentInformationHowToGo.text = wayToGo
+        binding.textViewRestaurantDefaultInformationHowToGo.text = wayToGo
     }
 
     private fun setOpenTimes(servingTime: List<OpenTime>) {
         with(binding) {
             isExpand = false
             servingTime.find { it.day == currentDayOfWeek() }?.let {
-                textViewRestaurantContentInformationServingTime.text =
+                textViewRestaurantDefaultInformationServingTime.text =
                     "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart.substring(
                         0,
                         5
@@ -54,12 +53,12 @@ constructor(
             }
             val adapter = ContentOpenTimesListAdapter()
 
-            toggleButtonRestaurantContentInformationFlip.setOnCheckedChangeListener { _, checked ->
+            toggleButtonRestaurantDefaultInformationFlip.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
                     isExpand = false
                 } else {
                     isExpand = true
-                    recyclerViewRestaurantContentInformationServingTime.adapter = adapter.apply {
+                    recyclerViewRestaurantDefaultInformationServingTime.adapter = adapter.apply {
                         submitList(servingTime)
                     }
                 }
@@ -68,7 +67,7 @@ constructor(
     }
 
     private fun setTipList(tips: List<String>?) {
-        binding.recyclerViewRestaurantContentInformationTip.adapter =
+        binding.recyclerViewRestaurantDefaultInformationTip.adapter =
             ContentTipsListAdapter().apply {
                 submitList(tips ?: emptyList())
             }
@@ -80,14 +79,14 @@ constructor(
             return OpenTimeViewHolder(
                 DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
-                    R.layout.item_restaurant_content_serving_time,
+                    R.layout.item_restaurant_default_information_serving_time,
                     parent,
                     false
                 )
             )
         }
 
-        private inner class OpenTimeViewHolder(val binding: ItemRestaurantContentServingTimeBinding) :
+        private inner class OpenTimeViewHolder(val binding: ItemRestaurantDefaultInformationServingTimeBinding) :
             BaseViewHolder(binding.root) {
             override fun bind(data: OpenTime) {
                 with(binding) {
@@ -121,14 +120,14 @@ constructor(
             return TipsPagerViewHolder(
                 DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
-                    R.layout.item_restaurant_content_tip,
+                    R.layout.item_restaurant_default_information_tip,
                     parent,
                     false
                 )
             )
         }
 
-        private inner class TipsPagerViewHolder(val binding: ItemRestaurantContentTipBinding) :
+        private inner class TipsPagerViewHolder(val binding: ItemRestaurantDefaultInformationTipBinding) :
             BaseViewHolder(binding.root) {
 
             override fun bind(data: String) {

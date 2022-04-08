@@ -7,39 +7,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DimenRes
-import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
-import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.*
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity
 import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity.Companion.KEY_URL
 import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
-import github.dev_playground.jeju_road.presentation.util.currentDayOfWeek
 import github.dev_playground.jeju_road.presentation.util.startActivity
-import java.text.SimpleDateFormat
+import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantIntroductionImageBinding
 
-class RestaurantContentView
+class RestaurantIntroductionView
 @JvmOverloads
 constructor(
     context: Context,
     attr: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : BaseCustomView<ViewRestaurantContentBinding>(context, attr, defStyleAttr) {
+) : BaseCustomView<ViewRestaurantIntroductionBinding>(context, attr, defStyleAttr) {
 
-    override fun getLayoutId() = R.layout.view_restaurant_content
+    override fun getLayoutId() = R.layout.view_restaurant_introduction
     private val contentImageAdapter by lazy { ContentImageListAdapter() }
 
     init {
         with(binding) {
             viewPager2RestaurantContent.adapter = contentImageAdapter
-            textViewRestaurantContentImageCount.outlineProvider =
+            textViewRestaurantIntroductionImageCount.outlineProvider =
                 RoundRectOutlineProvider(R.dimen.dp_12)
         }
     }
@@ -52,29 +49,29 @@ constructor(
     }
 
     private fun setTitle(title: String) {
-        binding.textViewRestaurantContentTitle.text = title
+        binding.textViewRestaurantIntroductionTitle.text = title
     }
 
     private fun setIntroduction(introduction: String) {
-        binding.textViewRestaurantContentIntroduction.text = introduction
+        binding.textViewRestaurantIntroductionIntroduction.text = introduction
     }
 
     private fun setContentImageList(images: List<String>?) {
         contentImageAdapter.submitList(images ?: EMPTY_URL_LIST)
 
         val imageCount = images?.size ?: 0
-        binding.run {
+        with(binding) {
             isMoreThanImageCountOne = imageCount > 1
-            textViewRestaurantContentImageCount.text =
-                resources.getString(R.string.text_restaurant_content_image_count, imageCount)
+            textViewRestaurantIntroductionImageCount.text =
+                resources.getString(R.string.text_restaurant_introduction_image_count, imageCount)
 
             viewPager2RestaurantContent.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    textViewRestaurantContentImageCount.text =
+                    textViewRestaurantIntroductionImageCount.text =
                         resources.getString(
-                            R.string.text_restaurant_content_image_current_count,
+                            R.string.text_restaurant_introduction_image_current_count,
                             position + 1,
                             imageCount
                         )
@@ -84,7 +81,7 @@ constructor(
     }
 
     private fun setMenuList(menus: List<Menu>) {
-        with(binding.recyclerViewRestaurantContentMenu) {
+        with(binding.recyclerViewRestaurantIntroductionMenu) {
             adapter = ContentMenuListAdapter().apply {
                 submitList(menus)
             }
@@ -98,14 +95,14 @@ constructor(
             return ImagePagerViewHolder(
                 DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
-                    R.layout.item_restaurant_content_image,
+                    R.layout.item_restaurant_introduction_image,
                     parent,
                     false
                 )
             )
         }
 
-        private inner class ImagePagerViewHolder(val binding: ItemRestaurantContentImageBinding) :
+        private inner class ImagePagerViewHolder(val binding: ItemRestaurantIntroductionImageBinding) :
             BaseViewHolder(binding.root) {
 
             init {
@@ -138,7 +135,7 @@ constructor(
             return ContentMenuViewHolder(
                 DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
-                    R.layout.item_restaurant_content_menu,
+                    R.layout.item_restaurant_introduction_menu,
                     parent,
                     false
                 )
@@ -146,10 +143,10 @@ constructor(
         }
 
         private inner class ContentMenuViewHolder(
-            val binding: ItemRestaurantContentMenuBinding
+            val binding: ItemRestaurantIntroductionMenuBinding
         ) : BaseViewHolder(binding.root) {
             init {
-                binding.imageViewItemRestaurantContentMenu.run {
+                with(binding.imageViewItemRestaurantContentMenu) {
                     setOnClickListener {
                         it.context.startActivity<FullSizeImageActivity> {
                             putExtra(KEY_URL, getItem(bindingAdapterPosition).image)
