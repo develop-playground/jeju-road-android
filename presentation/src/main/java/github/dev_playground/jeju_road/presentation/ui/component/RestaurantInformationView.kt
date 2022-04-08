@@ -52,16 +52,16 @@ constructor(
                         5
                     ) + "  -  " + it.operationEnd.substring(0, 5)
             }
+            val adapter = ContentOpenTimesListAdapter()
 
             toggleButtonRestaurantContentInformationFlip.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
                     isExpand = false
                 } else {
                     isExpand = true
-                    recyclerViewRestaurantContentInformationServingTime.adapter =
-                        ContentOpenTimesListAdapter().apply {
-                            submitList(servingTime)
-                        }
+                    recyclerViewRestaurantContentInformationServingTime.adapter = adapter.apply {
+                        submitList(servingTime)
+                    }
                 }
             }
         }
