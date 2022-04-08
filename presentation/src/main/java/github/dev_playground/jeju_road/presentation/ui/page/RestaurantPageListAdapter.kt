@@ -6,56 +6,62 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.presentation.R
+import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
+import github.dev_playground.jeju_road.presentation.model.RestaurantInformationModel
+import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
+import github.dev_playground.jeju_road.presentation.ui.component.RestaurantDefaultInformationView
 import github.dev_playground.jeju_road.presentation.ui.component.RestaurantIntroductionView
 
-class RestaurantPageListAdapter: RecyclerView.Adapter<RestaurantPageListAdapter.PageViewHolder>() {
+class RestaurantPageListAdapter : RecyclerView.Adapter<RestaurantPageListAdapter.PageViewHolder>() {
 
-    private var detailInformation: DetailInformation? = null
+    private var itemList: List<RestaurantInformationModel> = listOf()
+
+    fun submitList(newItemList: List<RestaurantInformationModel>) {
+        itemList = newItemList
+        notifyItemRangeChanged(0, itemList.size - 1)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageViewHolder {
-        return when(viewType) {
-            R.layout.view_restaurant_introduction -> ContentViewHolder(RestaurantIntroductionView(parent.context))
-            else -> InformationViewHolder(TextView(parent.context))
+        return when (viewType) {
+            R.layout.view_restaurant_introduction -> IntroductionViewHolder(
+                RestaurantIntroductionView(parent.context)
+            )
+            else -> DetailInformationViewHolder(
+                RestaurantDefaultInformationView(parent.context)
+            )
         }
     }
 
     override fun onBindViewHolder(holder: PageViewHolder, position: Int) {
-        detailInformation?.let {
-            holder.bind(it)
-        }
+        holder.bind(itemList[position])
     }
 
-    override fun getItemCount() = 2
+    override fun getItemCount() = itemList.size
 
     override fun getItemViewType(position: Int): Int {
-        return when(position) {
-            0 -> R.layout.view_restaurant_introduction
+        return when (itemList[position]) {
+            is RestaurantIntroductionModel -> R.layout.view_restaurant_introduction
             else -> R.layout.view_restaurant_default_information
         }
     }
 
-    fun setDetailInformation(detailInformation: DetailInformation) {
-        this.detailInformation = detailInformation
-        notifyDataSetChanged()
+    abstract class PageViewHolder(view: View) :
+        RecyclerView.ViewHolder(view) {
+        abstract fun <T : RestaurantInformationModel> bind(model: T)
     }
 
-    abstract class PageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        abstract fun bind(data: DetailInformation)
-    }
-
-    inner class ContentViewHolder(
-        val view: RestaurantIntroductionView
-    ): PageViewHolder(view) {
-        override fun bind(data: DetailInformation) {
-            view.setContentInformation(data)
+    inner class IntroductionViewHolder(val view: RestaurantIntroductionView) :
+        PageViewHolder(view) {
+        override fun <T : RestaurantInformationModel> bind(model: T) {
+            view.setIntroduction(model as RestaurantIntroductionModel)
         }
     }
 
-    inner class InformationViewHolder(
-        val view: TextView
-    ): PageViewHolder(view) {
-        override fun bind(data: DetailInformation) {
-//            view.text = "${data.simpleAddress}\n${data.detailAddress}"
+    inner class DetailInformationViewHolder(
+        val view: RestaurantDefaultInformationView
+    ) : PageViewHolder(view) {
+        override fun <T : RestaurantInformationModel> bind(model: T) {
+            view.setDetailInformation(model as RestaurantDetailInformationModel)
         }
     }
 

@@ -8,7 +8,10 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.shape.ShapeAppearanceModel
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaurantPageBinding
+import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
+import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
+import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListItemDecoration
 import github.dev_playground.jeju_road.presentation.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,14 +36,20 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
                 finishAfterTransition()
             }
             recyclerViewRestaurantPage.adapter = adapter
+            recyclerViewRestaurantPage.addItemDecoration(RestaurantListItemDecoration(R.dimen.dp_16))
         }
 
-        viewModel.apply {
+        with(viewModel) {
             id.value = this@RestaurantPageActivity.id
 
             detailInformationState.observe { state ->
                 state.onSuccess {
-                    adapter.setDetailInformation(it)
+                    adapter.submitList(
+                        listOf(
+                            RestaurantIntroductionModel.toPresentation(it),
+                            RestaurantDetailInformationModel.toPresentation(it)
+                        )
+                    )
                 }
             }
         }

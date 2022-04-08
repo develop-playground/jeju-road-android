@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.*
@@ -21,6 +20,7 @@ import github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivi
 import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
 import github.dev_playground.jeju_road.presentation.util.startActivity
 import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantIntroductionImageBinding
+import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
 
 class RestaurantIntroductionView
 @JvmOverloads
@@ -41,11 +41,11 @@ constructor(
         }
     }
 
-    fun setContentInformation(information: DetailInformation) {
-        setTitle(information.name)
-        setIntroduction(information.introduction)
-        setContentImageList(information.images)
-        setMenuList(information.menus)
+    fun setIntroduction(introduction: RestaurantIntroductionModel) {
+        setTitle(introduction.name)
+        setIntroduction(introduction.introduction)
+        setContentImageList(introduction.images)
+        setMenuList(introduction.menus)
     }
 
     private fun setTitle(title: String) {

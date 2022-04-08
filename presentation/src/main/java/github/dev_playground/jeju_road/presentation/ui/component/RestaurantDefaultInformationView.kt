@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
-import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantDefaultInformationServingTimeBinding
 import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantDefaultInformationTipBinding
 import github.dev_playground.jeju_road.presentation.databinding.ViewRestaurantDefaultInformationBinding
+import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.util.currentDayOfWeek
 
@@ -26,11 +26,11 @@ constructor(
 
     override fun getLayoutId() = R.layout.view_restaurant_default_information
 
-    fun setRestaurantInformation(information: DetailInformation) {
-        setAddress(information.detailAddress)
-        setWayToGo(information.wayToGo)
-        setOpenTimes(information.openTimes)
-        setTipList(information.tips)
+    fun setDetailInformation(detailInformation: RestaurantDetailInformationModel) {
+        setAddress(detailInformation.detailAddress)
+        setWayToGo(detailInformation.wayToGo)
+        setOpenTimes(detailInformation.openTimes)
+        setTipList(detailInformation.tips)
     }
 
     private fun setAddress(address: String) {
