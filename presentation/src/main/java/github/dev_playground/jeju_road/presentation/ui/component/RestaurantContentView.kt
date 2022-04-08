@@ -37,7 +37,7 @@ constructor(
     private val contentImageAdapter by lazy { ContentImageListAdapter() }
 
     init {
-        binding.run {
+        with(binding) {
             viewPager2RestaurantContent.adapter = contentImageAdapter
             textViewRestaurantContentImageCount.outlineProvider =
                 RoundRectOutlineProvider(R.dimen.dp_12)
@@ -49,10 +49,6 @@ constructor(
         setIntroduction(information.introduction)
         setContentImageList(information.images)
         setMenuList(information.menus)
-        setAddress(information.detailAddress)
-        setWayToGo(information.wayToGo)
-        setOpenTimes(information.openTimes)
-        setTipList(information.tips)
     }
 
     private fun setTitle(title: String) {
@@ -88,117 +84,11 @@ constructor(
     }
 
     private fun setMenuList(menus: List<Menu>) {
-        binding.recyclerViewRestaurantContentMenu.run {
+        with(binding.recyclerViewRestaurantContentMenu) {
             adapter = ContentMenuListAdapter().apply {
                 submitList(menus)
             }
             addItemDecoration(ContentMenuItemDecoration())
-        }
-    }
-
-    private fun setAddress(address: String) {
-        binding.textViewRestaurantContentInformationAddress.text = address
-    }
-
-    private fun setWayToGo(wayToGo: String) {
-        binding.textViewRestaurantContentInformationHowToGo.text = wayToGo
-    }
-
-    private fun setOpenTimes(servingTime: List<OpenTime>) {
-        with(binding) {
-            isExpand = false
-            servingTime.find { it.day == currentDayOfWeek() }?.let {
-                textViewRestaurantContentInformationServingTime.text =
-                    "오늘" + "[${it.convertDayOfWeek(it.day)}] " + it.operationStart.substring(
-                        0,
-                        5
-                    ) + "  -  " + it.operationEnd.substring(0, 5)
-            }
-
-            toggleButtonRestaurantContentInformationFlip.setOnCheckedChangeListener { btn, checked ->
-                if (checked) {
-                    isExpand = false
-                } else {
-                    isExpand = true
-                    recyclerViewRestaurantContentInformationServingTime.adapter =
-                        ContentOpenTimesListAdapter().apply {
-                            submitList(servingTime)
-                        }
-                }
-            }
-        }
-    }
-
-    private fun setTipList(tips: List<String>?) {
-        binding.recyclerViewRestaurantContentInformationTip.adapter =
-            ContentTipsListAdapter().apply {
-                submitList(tips ?: EMPTY_URL_LIST)
-            }
-    }
-
-    private inner class ContentOpenTimesListAdapter :
-        BaseListAdapter<OpenTime>(OPEN_TIME_DIFF_CALLBACK) {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-            return OpenTimeViewHolder(
-                DataBindingUtil.inflate(
-                    LayoutInflater.from(parent.context),
-                    R.layout.item_restaurant_content_serving_time,
-                    parent,
-                    false
-                )
-            )
-        }
-
-        private inner class OpenTimeViewHolder(val binding: ItemRestaurantContentServingTimeBinding) :
-            BaseViewHolder(binding.root) {
-            override fun bind(data: OpenTime) {
-                with(binding) {
-                    openTime = data
-                    if (openTime?.day == currentDayOfWeek()) {
-                        TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantContentDay,
-                            R.style.JejuLoadTextStyle_Focus
-                        )
-                        TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantContentStartTime,
-                            R.style.JejuLoadTextStyle_Focus
-                        )
-                        TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantContentMiddleLine,
-                            R.style.JejuLoadTextStyle_Focus
-                        )
-                        TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantContentEndTime,
-                            R.style.JejuLoadTextStyle_Focus
-                        )
-                    }
-                    executePendingBindings()
-                }
-            }
-        }
-    }
-
-    private inner class ContentTipsListAdapter : BaseListAdapter<String>(TIPS_DIFF_CALLBACK) {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-            return TipsPagerViewHolder(
-                DataBindingUtil.inflate(
-                    LayoutInflater.from(parent.context),
-                    R.layout.item_restaurant_content_tip,
-                    parent,
-                    false
-                )
-            )
-        }
-
-        private inner class TipsPagerViewHolder(val binding: ItemRestaurantContentTipBinding) :
-            BaseViewHolder(binding.root) {
-
-            override fun bind(data: String) {
-                with(binding) {
-                    tip = data
-                    executePendingBindings()
-                }
-            }
         }
     }
 
@@ -308,20 +198,6 @@ constructor(
     companion object {
         private const val EMPTY_URL = "empty"
         private val EMPTY_URL_LIST = listOf(EMPTY_URL)
-
-        private val OPEN_TIME_DIFF_CALLBACK = object : DiffUtil.ItemCallback<OpenTime>() {
-            override fun areItemsTheSame(oldItem: OpenTime, newItem: OpenTime) =
-                oldItem.id == newItem.id
-
-            override fun areContentsTheSame(oldItem: OpenTime, newItem: OpenTime) =
-                oldItem == newItem
-
-        }
-
-        private val TIPS_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
-            override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
-            override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
-        }
         private val IMAGE_DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
             override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
             override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem

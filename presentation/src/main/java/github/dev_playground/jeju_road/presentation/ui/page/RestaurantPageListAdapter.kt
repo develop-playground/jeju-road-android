@@ -30,7 +30,7 @@ class RestaurantPageListAdapter: RecyclerView.Adapter<RestaurantPageListAdapter.
     override fun getItemViewType(position: Int): Int {
         return when(position) {
             0 -> R.layout.view_restaurant_content
-            else -> 123
+            else -> R.layout.view_restaurant_information
         }
     }
 

@@ -50,8 +50,8 @@
         <entry key="presentation/src/main/res/layout/item_restaurant_content_tip.xml" value="0.1818642350557244" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list_shimmer.xml" value="0.31431159420289856" />
-        <entry key="presentation/src/main/res/layout/view_restaurant_content.xml" value="0.24745762711864408" />
-        <entry key="presentation/src/main/res/layout/view_restaurant_information.xml" value="0.2730496453900709" />
+        <entry key="presentation/src/main/res/layout/view_restaurant_content.xml" value="0.23220973782771537" />
+        <entry key="presentation/src/main/res/layout/view_restaurant_information.xml" value="0.21016949152542372" />
       </map>
     </option>
   </component>
