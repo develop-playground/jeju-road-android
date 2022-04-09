@@ -2,9 +2,7 @@ package github.dev_playground.jeju_road.presentation.ui.page
 
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
 import github.dev_playground.jeju_road.presentation.model.RestaurantInformationModel
@@ -12,7 +10,7 @@ import github.dev_playground.jeju_road.presentation.model.RestaurantIntroduction
 import github.dev_playground.jeju_road.presentation.ui.component.RestaurantDefaultInformationView
 import github.dev_playground.jeju_road.presentation.ui.component.RestaurantIntroductionView
 
-class RestaurantPageListAdapter : RecyclerView.Adapter<RestaurantPageListAdapter.PageViewHolder>() {
+class RestaurantDetailListAdapter : RecyclerView.Adapter<RestaurantDetailListAdapter.PageViewHolder>() {
 
     private var itemList: List<RestaurantInformationModel> = listOf()
 

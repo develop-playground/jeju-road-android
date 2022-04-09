@@ -15,7 +15,7 @@ class FullSizeImageActivity: BaseActivity<ActivityFullSizeImageBinding>(
         super.onCreate(savedInstanceState)
 
         binding {
-            imageButtonFullSizeImage.setOnClickListener {
+            imageButtonFullSizeClose.setOnClickListener {
                 finish()
             }
         }

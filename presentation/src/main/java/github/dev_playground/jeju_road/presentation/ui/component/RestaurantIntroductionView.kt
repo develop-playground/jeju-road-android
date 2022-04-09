@@ -106,7 +106,7 @@ constructor(
             BaseViewHolder(binding.root) {
 
             init {
-                binding.imageViewItemRestaurantContent.run {
+                with(binding.imageViewItemRestaurantIntroduction) {
                     setOnClickListener {
                         val imageUrl = getItem(bindingAdapterPosition)
 
