@@ -36,7 +36,7 @@
     <color name="orangeSubColor">#F69D18</color>
     <color name="orangeActionColor">#EEA674</color>
 
-    <color name="disable">#121F1F1F</color>
+    <color name="disable">#FFCCCCCC</color>
 
     <color name="black">#000000</color>
 </resources>

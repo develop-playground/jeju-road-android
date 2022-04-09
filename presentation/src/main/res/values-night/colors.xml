@@ -34,5 +34,5 @@
     <color name="orangeActionColor">#B9815A</color>
 
 
-    <color name="disable">#12CFCFCF</color>
+    <color name="disable">#FF1F1F1F</color>
 </resources>

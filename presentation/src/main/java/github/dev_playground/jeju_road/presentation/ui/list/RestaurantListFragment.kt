@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
@@ -46,9 +47,11 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     private fun setUpView() {
         binding {
-            recyclerViewRestaurantList.run {
+            with(recyclerViewRestaurantList) {
                 adapter = restaurantListAdapter
-                addItemDecoration(RestaurantListItemDecoration())
+                addItemDecoration(
+                    RestaurantListItemDecoration()
+                )
             }
             swipeRefreshLayoutRestaurantList.setOnRefreshListener {
                 viewModel.refreshContentList()
