@@ -12,7 +12,6 @@ import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
 import github.dev_playground.jeju_road.presentation.ui.component.RestaurantCategoryView
-import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
 
 class RestaurantListAdapter(
     private val onItemClick: (Content, View) -> Unit
@@ -34,7 +33,10 @@ class RestaurantListAdapter(
 
         init {
             binding.constraintLayoutItemRestaurantListArea.setOnClickListener {
-                onItemClick.invoke(getItem(bindingAdapterPosition), binding.constraintLayoutItemRestaurantListArea)
+                onItemClick.invoke(
+                    getItem(bindingAdapterPosition),
+                    binding.constraintLayoutItemRestaurantListArea
+                )
             }
         }
 
@@ -53,7 +55,8 @@ class RestaurantListAdapter(
         private fun addCategoryView(index: Int, title: String) {
             val categoryView = RestaurantCategoryView(binding.root.context).apply {
                 if (index != 0) {
-                    val margin = binding.root.context.resources.getDimensionPixelSize(R.dimen.dp_4)
+                    val margin =
+                        binding.root.context.resources.getDimensionPixelSize(R.dimen.restaurant_category_margin_left)
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.WRAP_CONTENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT

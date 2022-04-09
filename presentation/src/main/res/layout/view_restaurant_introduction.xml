@@ -32,19 +32,19 @@
                 style="@style/JejuLoadTextStyle.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginHorizontal="@dimen/restaurant_introduction_title_margin_horizontal"
+                android:layout_marginTop="@dimen/restaurant_introduction_title_margin_top"
                 tools:text="우진 해장국" />
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8">
+                android:layout_marginTop="@dimen/restaurant_introduction_image_container_margin_top">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPager2_restaurant_content"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_220"
+                    android:layout_height="@dimen/restaurant_introduction_view_pager_height"
                     tools:listitem="@layout/item_restaurant_introduction_image" />
 
                 <TextView
@@ -52,12 +52,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginTop="@dimen/dp_8"
-                    android:layout_marginEnd="@dimen/dp_24"
+                    android:layout_marginTop="@dimen/restaurant_introduction_image_count_margin_top"
+                    android:layout_marginEnd="@dimen/restaurant_introduction_image_count_margin_end"
                     android:alpha="0.9"
                     android:background="@color/disable"
                     android:fontFamily="@font/nanum_gotic_font"
-                    android:padding="@dimen/dp_4"
+                    android:padding="@dimen/restaurant_introduction_image_count_padding"
                     android:textColor="@color/onSurface"
                     android:textSize="12sp"
                     android:visibility="@{isMoreThanImageCountOne ? View.VISIBLE : View.GONE}"
@@ -69,8 +69,8 @@
                 style="@style/JejuLoadTextStyle.Content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginHorizontal="@dimen/restaurant_introduction_introduction_margin_horizontal"
+                android:layout_marginTop="@dimen/restaurant_introduction_introduction_margin_top"
                 tools:text="'수요미식회'에 방영된, 따끈한 국물 요리로 해장하기 좋은 음식점" />
 
             <TextView
@@ -78,8 +78,8 @@
                 style="@style/JejuLoadTextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_32"
+                android:layout_marginHorizontal="@dimen/restaurant_introduction_menu_margin_horizontal"
+                android:layout_marginTop="@dimen/restaurant_introduction_menu_margin_top"
                 android:text="@string/text_restaurant_introduction_menu"
                 android:textStyle="bold" />
 
@@ -87,10 +87,10 @@
                 android:id="@+id/recyclerView_restaurant_introduction_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
-                android:layout_marginBottom="@dimen/dp_16"
+                android:layout_marginTop="@dimen/restaurant_introduction_menu_container_margin_top"
+                android:layout_marginBottom="@dimen/restaurant_introduction_menu_container_margin_bottom"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingHorizontal="@dimen/restaurant_introduction_menu_container_margin_horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_restaurant_introduction_menu" />
         </LinearLayout>

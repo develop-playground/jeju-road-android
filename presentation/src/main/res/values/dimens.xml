@@ -1,28 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="dp_0.3">0.3dp</dimen>
-    <dimen name="dp_0.5">0.5dp</dimen>
-    <dimen name="dp_1">1dp</dimen>
-    <dimen name="dp_2">2dp</dimen>
-    <dimen name="dp_4">4dp</dimen>
-    <dimen name="dp_8">8dp</dimen>
-    <dimen name="dp_10">10dp</dimen>
-    <dimen name="dp_12">12dp</dimen>
-    <dimen name="dp_14">14dp</dimen>
-    <dimen name="dp_16">16dp</dimen>
-    <dimen name="dp_20">20dp</dimen>
-    <dimen name="dp_24">24dp</dimen>
-    <dimen name="dp_32">32dp</dimen>
-    <dimen name="dp_48">48dp</dimen>
-    <dimen name="dp_80">80dp</dimen>
-    <dimen name="dp_120">120dp</dimen>
-    <dimen name="dp_136">136dp</dimen>
-    <dimen name="dp_144">144dp</dimen>
-    <dimen name="dp_160">160dp</dimen>
-    <dimen name="dp_220">220dp</dimen>
+    <dimen name="restaurant_detail_list_item_space">16dp</dimen>
 
-    <dimen name="padding_restaurant_category_view">8dp</dimen>
+    <dimen name="restaurant_card_content_radius">12dp</dimen>
+    <dimen name="restaurant_transition_shape_model_radius">12dp</dimen>
 
-    <dimen name="bg_card_content_radius">12dp</dimen>
+    <dimen name="restaurant_category_margin_left">4dp</dimen>
+    <dimen name="restaurant_category_padding">8dp</dimen>
+    <dimen name="restaurant_category_radius">12dp</dimen>
+
+    <dimen name="restaurant_list_container_padding_vertical">8dp</dimen>
     <dimen name="restaurant_list_item_space">8dp</dimen>
+    <dimen name="restaurant_list_item_elevation">2dp</dimen>
+    <dimen name="restaurant_list_item_default_space">8dp</dimen>
+    <dimen name="restaurant_list_item_image_corner_radius">8dp</dimen>
+    <dimen name="restaurant_list_item_margin_horizontal">8dp</dimen>
+    <dimen name="restaurant_list_item_image_radius">8dp</dimen>
+
+    <dimen name="restaurant_list_shimmer_padding_horizontal">8dp</dimen>
+    <dimen name="restaurant_list_shimmer_container_margin_top">8dp</dimen>
+
+    <dimen name="restaurant_introduction_item_image_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_introduction_title_margin_top">12dp</dimen>
+    <dimen name="restaurant_introduction_title_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_introduction_introduction_margin_top">12dp</dimen>
+    <dimen name="restaurant_introduction_introduction_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_introduction_view_pager_height">220dp</dimen>
+    <dimen name="restaurant_introduction_menu_card_width">160dp</dimen>
+    <dimen name="restaurant_introduction_menu_space">4dp</dimen>
+    <dimen name="restaurant_introduction_menu_price_margin">4dp</dimen>
+    <dimen name="restaurant_introduction_menu_elevation">1dp</dimen>
+    <dimen name="restaurant_introduction_menu_radius">4dp</dimen>
+    <dimen name="restaurant_introduction_menu_container_margin_top">8dp</dimen>
+    <dimen name="restaurant_introduction_menu_container_margin_bottom">16dp</dimen>
+    <dimen name="restaurant_introduction_menu_container_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_introduction_menu_name_margin">8dp</dimen>
+    <dimen name="restaurant_introduction_menu_margin_top">32dp</dimen>
+    <dimen name="restaurant_introduction_menu_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_introduction_image_count_padding">4dp</dimen>
+    <dimen name="restaurant_introduction_image_count_radius">12dp</dimen>
+    <dimen name="restaurant_introduction_image_container_margin_top">8dp</dimen>
+    <dimen name="restaurant_introduction_image_count_margin_top">8dp</dimen>
+    <dimen name="restaurant_introduction_image_count_margin_end">24dp</dimen>
+    <dimen name="restaurant_introduction_address_area_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_introduction_address_area_margin_top">16dp</dimen>
+    <dimen name="restaurant_introduction_address_area_padding">16dp</dimen>
+
+    <dimen name="restaurant_default_information_divider_height">0.3dp</dimen>
+    <dimen name="restaurant_default_information_divider_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_default_information_divider_margin_top">16dp</dimen>
+    <dimen name="restaurant_default_information_title_margin_top">32dp</dimen>
+    <dimen name="restaurant_default_information_title_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_default_information_tips_margin_top">32dp</dimen>
+    <dimen name="restaurant_default_information_tips_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_default_information_tip_container_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_default_information_tip_margin_horizontal">8dp</dimen>
+    <dimen name="restaurant_default_information_tip_margin_top">12dp</dimen>
+    <dimen name="restaurant_default_information_address_margin_start">8dp</dimen>
+    <dimen name="restaurant_default_information_phone_margin_start">8dp</dimen>
+    <dimen name="restaurant_default_information_phone_title_margin_top">12dp</dimen>
+    <dimen name="restaurant_default_information_find_load_margin_top">8dp</dimen>
+    <dimen name="restaurant_default_information_find_load_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_default_information_serving_time_area_margin_top">16dp</dimen>
+    <dimen name="restaurant_default_information_serving_time_area_margin_horizontal">16dp</dimen>
+    <dimen name="restaurant_default_information_serving_time_margin_horizontal">8dp</dimen>
+    <dimen name="restaurant_default_information_serving_time_margin_top">16dp</dimen>
+    <dimen name="restaurant_default_information_start_time_margin_horizontal">12dp</dimen>
+    <dimen name="restaurant_default_information_middle_line_margin_horizontal">12dp</dimen>
+    <dimen name="restaurant_default_information_end_time_margin_horizontal">12dp</dimen>
+    <dimen name="restaurant_default_information_flip_height">20dp</dimen>
+    <dimen name="restaurant_default_information_how_to_go_title_margin_horizontal">24dp</dimen>
+    <dimen name="restaurant_default_information_how_to_go_title_margin_top">32dp</dimen>
+    <dimen name="restaurant_default_information_how_to_go_margin_horizontal">24dp</dimen>
+    <dimen name="restaurant_default_information_how_to_go_margin_vertical">16dp</dimen>
+    <dimen name="restaurant_default_information_day_width">32dp</dimen>
+    <dimen name="restaurant_default_information_day_margin">14dp</dimen>
+
+    <dimen name="image_full_size_button_close_size">48dp</dimen>
+    <dimen name="round_rect_outline_provider_default_radius">8dp</dimen>
+    <dimen name="bg_radius">10dp</dimen>
 </resources>

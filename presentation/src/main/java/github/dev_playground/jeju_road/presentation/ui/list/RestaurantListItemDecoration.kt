@@ -18,7 +18,7 @@ import kotlinx.coroutines.handleCoroutineException
  */
 class RestaurantListItemDecoration(
     @DimenRes
-    private val spaceResId: Int = R.dimen.dp_8,
+    private val spaceResId: Int = R.dimen.restaurant_list_item_default_space,
     @ColorInt
     private val color: Int = Color.TRANSPARENT
 ): RecyclerView.ItemDecoration() {

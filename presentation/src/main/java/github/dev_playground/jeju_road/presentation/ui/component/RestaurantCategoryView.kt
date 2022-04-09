@@ -1,12 +1,8 @@
 package github.dev_playground.jeju_road.presentation.ui.component
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
-import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
@@ -21,7 +17,7 @@ class RestaurantCategoryView
 ) : androidx.appcompat.widget.AppCompatTextView(context, attrs) {
 
     @DimenRes
-    private val paddingSize = R.dimen.padding_restaurant_category_view
+    private val paddingSize = R.dimen.restaurant_category_padding
 
     init {
         TextViewCompat.setTextAppearance(this, R.style.JejuLoadTextStyle)
@@ -29,7 +25,7 @@ class RestaurantCategoryView
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         setPadding(resources.getDimensionPixelSize(paddingSize))
         background = ContextCompat.getDrawable(context, R.drawable.bg_restaurant_category_view)
-        outlineProvider = RoundRectOutlineProvider(R.dimen.dp_12)
+        outlineProvider = RoundRectOutlineProvider(R.dimen.restaurant_category_radius)
     }
 
 }

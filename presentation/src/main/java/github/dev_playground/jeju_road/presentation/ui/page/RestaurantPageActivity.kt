@@ -38,7 +38,7 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
             recyclerViewRestaurantPage.adapter = adapter
             recyclerViewRestaurantPage.addItemDecoration(
                 RestaurantListItemDecoration(
-                    spaceResId = R.dimen.dp_16,
+                    spaceResId = R.dimen.restaurant_detail_list_item_space,
                     color = ContextCompat.getColor(this@RestaurantPageActivity, R.color.lightGray)
                 )
             )
@@ -73,7 +73,7 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
                 ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             )
             startShapeAppearanceModel = ShapeAppearanceModel.builder().setAllCornerSizes(
-                resources.getDimension(R.dimen.dp_12)
+                resources.getDimension(R.dimen.restaurant_transition_shape_model_radius)
             ).build()
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }
@@ -84,7 +84,7 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
                 ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
             )
             endShapeAppearanceModel = ShapeAppearanceModel.builder().setAllCornerSizes(
-                resources.getDimension(R.dimen.dp_12)
+                resources.getDimension(R.dimen.restaurant_transition_shape_model_radius)
             ).build()
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }

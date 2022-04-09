@@ -20,9 +20,9 @@
             app:imageUrl="@{url}" />
 
         <ImageButton
-            android:id="@+id/imageButton_full_size_image"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
+            android:id="@+id/imageButton_full_size_close"
+            android:layout_width="@dimen/image_full_size_button_close_size"
+            android:layout_height="@dimen/image_full_size_button_close_size"
             android:layout_gravity="end"
             android:background="?attr/selectableItemBackground"
             android:src="@drawable/ic_close_24"/>
