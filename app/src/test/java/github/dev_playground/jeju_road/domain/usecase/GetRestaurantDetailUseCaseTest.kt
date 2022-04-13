@@ -1,5 +1,6 @@
 package github.dev_playground.jeju_road.domain.usecase
 
+import github.dev_playground.jeju_road.domain.model.DayKor
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.model.Menu
 import github.dev_playground.jeju_road.domain.model.OpenTime
@@ -33,9 +34,9 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
         openTimes = listOf(
             OpenTime(
                 id = 1L,
-                day = "??",
+                day = DayKor.MON,
                 operationStart = "",
-                        operationEnd = "",
+                operationEnd = "",
                 breakStart = "???",
                 breakEnd = "???"
             )
