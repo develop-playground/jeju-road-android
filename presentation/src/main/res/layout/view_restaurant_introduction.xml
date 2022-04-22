@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isMoreThanImageCountOne"
+            type="Boolean" />
+
+        <variable
+            name="isExpand"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <merge
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:parentTag="android.widget.FrameLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:background="@color/onSurface">
+
+            <TextView
+                android:id="@+id/textView_restaurant_introduction_title"
+                style="@style/JejuLoadTextStyle.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_12"
+                tools:text="우진 해장국" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2_restaurant_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_220"
+                    tools:listitem="@layout/item_restaurant_introduction_image" />
+
+                <TextView
+                    android:id="@+id/textView_restaurant_introduction_image_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_24"
+                    android:alpha="0.9"
+                    android:background="@color/disable"
+                    android:fontFamily="@font/nanum_gotic_font"
+                    android:padding="@dimen/dp_4"
+                    android:textColor="@color/onSurface"
+                    android:textSize="12sp"
+                    android:visibility="@{isMoreThanImageCountOne ? View.VISIBLE : View.GONE}"
+                    tools:text="1/100" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/textView_restaurant_introduction_introduction"
+                style="@style/JejuLoadTextStyle.Content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_12"
+                tools:text="'수요미식회'에 방영된, 따끈한 국물 요리로 해장하기 좋은 음식점" />
+
+            <TextView
+                android:id="@+id/textView_restaurant_introduction_menu"
+                style="@style/JejuLoadTextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_32"
+                android:text="@string/text_restaurant_introduction_menu"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_restaurant_introduction_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_16"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_restaurant_introduction_menu" />
+        </LinearLayout>
+    </merge>
+</layout>

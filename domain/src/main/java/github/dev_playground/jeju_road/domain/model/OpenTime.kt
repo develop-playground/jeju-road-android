@@ -1,34 +1,33 @@
 package github.dev_playground.jeju_road.domain.model
 
-import java.text.SimpleDateFormat
+import java.util.*
 
 data class OpenTime(
     val id: Long,
-    val day: String,
+    val day: DayKor,
     val operationStart: String,
     val operationEnd: String,
     val breakStart: String,
     val breakEnd: String
 ) {
-    fun convertDayOfWeek(dayOfWeek: String): String {
-        return when(dayOfWeek) {
-            "MON" -> DayKor.MON.day
-            "TUE" -> DayKor.TUE.day
-            "WED" -> DayKor.WED.day
-            "THU" -> DayKor.THU.day
-            "FRI" -> DayKor.FRI.day
-            "SAT" -> DayKor.SAT.day
-            else -> DayKor.SUN.day
-        }
+
+    fun currentDayOfWeek(): DayKor {
+        val date = Date(System.currentTimeMillis())
+        val cal = Calendar.getInstance()
+        cal.time = date
+        val dayOfWeekIndex = cal.get(Calendar.DAY_OF_WEEK)
+
+        return DayKor.values()[dayOfWeekIndex - 1]
     }
+
 }
 
-enum class DayKor(val day: String) {
-    MON(day = "월"),
-    TUE(day = "화"),
-    WED(day = "수"),
-    THU(day = "목"),
-    FRI(day = "금"),
-    SAT(day = "토"),
-    SUN(day = "일"),
+enum class DayKor(val dayOfWeek: String) {
+    SUN(dayOfWeek = "일"),
+    MON(dayOfWeek = "월"),
+    TUE(dayOfWeek = "화"),
+    WED(dayOfWeek = "수"),
+    THU(dayOfWeek = "목"),
+    FRI(dayOfWeek = "금"),
+    SAT(dayOfWeek = "토"),
 }
