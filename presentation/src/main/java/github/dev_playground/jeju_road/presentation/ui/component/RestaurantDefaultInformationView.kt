@@ -94,19 +94,19 @@ constructor(
                     openTime = data
                     if (openTime?.day == openTime?.currentDayOfWeek()) {
                         TextViewCompat.setTextAppearance(
-                            textViewItemRestaurantContentDay,
+                            textViewItemRestaurantDefaultInformationDay,
                             R.style.JejuLoadTextStyle_Focus
                         )
                         TextViewCompat.setTextAppearance(
-                            textViewItemRestaurantContentStartTime,
+                            textViewItemRestaurantDefaultInformationStartTime,
                             R.style.JejuLoadTextStyle_Focus
                         )
                         TextViewCompat.setTextAppearance(
-                            textViewItemRestaurantContentMiddleLine,
+                            textViewItemRestaurantDefaultInformationMiddleLine,
                             R.style.JejuLoadTextStyle_Focus
                         )
                         TextViewCompat.setTextAppearance(
-                            textViewItemRestaurantContentEndTime,
+                            textViewItemRestaurantDefaultInformationEndTime,
                             R.style.JejuLoadTextStyle_Focus
                         )
                     }
