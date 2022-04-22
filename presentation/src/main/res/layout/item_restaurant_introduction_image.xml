@@ -9,10 +9,10 @@
     </data>
 
     <ImageView
-        android:id="@+id/imageView_item_restaurant_content"
+        android:id="@+id/imageView_item_restaurant_introduction"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/disable"
-        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginHorizontal="@dimen/restaurant_introduction_item_image_margin_horizontal"
         app:imageUrl="@{url}"/>
 </layout>

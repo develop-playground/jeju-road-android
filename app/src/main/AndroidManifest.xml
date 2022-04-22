@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity" />
+        <activity android:name="github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity" />
         <activity android:name="github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity" />
     </application>
 </manifest>

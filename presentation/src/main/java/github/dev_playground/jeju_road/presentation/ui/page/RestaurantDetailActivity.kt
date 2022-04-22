@@ -1,13 +1,11 @@
 package github.dev_playground.jeju_road.presentation.ui.page
 
-import android.graphics.RectF
 import android.os.Bundle
-import android.transition.ChangeTransform
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.google.android.material.shape.ShapeAppearanceModel
 import github.dev_playground.jeju_road.presentation.R
-import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaurantPageBinding
+import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaurantDetailBinding
 import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
 import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
@@ -15,12 +13,12 @@ import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListItemDe
 import github.dev_playground.jeju_road.presentation.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
-    R.layout.activity_restaurant_page
+class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
+    R.layout.activity_restaurant_detail
 ) {
 
-    private val viewModel by viewModel<RestaurantPageViewModel>()
-    private val adapter: RestaurantPageListAdapter by lazy { RestaurantPageListAdapter() }
+    private val viewModel by viewModel<RestaurantDetailViewModel>()
+    private val adapter: RestaurantDetailListAdapter by lazy { RestaurantDetailListAdapter() }
 
     private val transitionName: String? by lazy { intent.getStringExtra(KEY_TRANSITION_NAME) }
     private val id: Long by lazy { intent.getLongExtra(KEY_RESTAURANT_ID, 0) }
@@ -28,24 +26,24 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         makeTransition()
         super.onCreate(savedInstanceState)
-        setSupportActionBar(binding.toolbarRestaurantPage)
+        setSupportActionBar(binding.toolbarRestaurantDetail)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         binding {
-            toolbarRestaurantPage.setNavigationOnClickListener {
+            toolbarRestaurantDetail.setNavigationOnClickListener {
                 finishAfterTransition()
             }
-            recyclerViewRestaurantPage.adapter = adapter
-            recyclerViewRestaurantPage.addItemDecoration(
+            recyclerViewRestaurantDetail.adapter = adapter
+            recyclerViewRestaurantDetail.addItemDecoration(
                 RestaurantListItemDecoration(
-                    spaceResId = R.dimen.dp_16,
-                    color = ContextCompat.getColor(this@RestaurantPageActivity, R.color.lightGray)
+                    spaceResId = R.dimen.restaurant_detail_list_item_space,
+                    color = ContextCompat.getColor(this@RestaurantDetailActivity, R.color.lightGray)
                 )
             )
         }
 
         with(viewModel) {
-            id.value = this@RestaurantPageActivity.id
+            id.value = this@RestaurantDetailActivity.id
 
             detailInformationState.observe { state ->
                 state.onSuccess {
@@ -68,23 +66,23 @@ class RestaurantPageActivity : BaseActivity<ActivityRestaurantPageBinding>(
 
         addMaterialSharedElementEnterTransition {
             addTarget(android.R.id.content)
-            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
+            scrimColor = ContextCompat.getColor(this@RestaurantDetailActivity, R.color.surface)
             setAllContainerColors(
-                ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
+                ContextCompat.getColor(this@RestaurantDetailActivity, R.color.surface)
             )
             startShapeAppearanceModel = ShapeAppearanceModel.builder().setAllCornerSizes(
-                resources.getDimension(R.dimen.dp_12)
+                resources.getDimension(R.dimen.restaurant_transition_shape_model_radius)
             ).build()
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }
         addMaterialSharedElementReturnTransition {
             addTarget(android.R.id.content)
-            scrimColor = ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
+            scrimColor = ContextCompat.getColor(this@RestaurantDetailActivity, R.color.surface)
             setAllContainerColors(
-                ContextCompat.getColor(this@RestaurantPageActivity, R.color.surface)
+                ContextCompat.getColor(this@RestaurantDetailActivity, R.color.surface)
             )
             endShapeAppearanceModel = ShapeAppearanceModel.builder().setAllCornerSizes(
-                resources.getDimension(R.dimen.dp_12)
+                resources.getDimension(R.dimen.restaurant_transition_shape_model_radius)
             ).build()
             duration = resources.getInteger(R.integer.restaurant_page_anim_duration).toLong()
         }

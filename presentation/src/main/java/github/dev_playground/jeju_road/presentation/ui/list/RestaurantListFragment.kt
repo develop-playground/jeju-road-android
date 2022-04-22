@@ -4,16 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
-import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity
-import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_RESTAURANT_ID
-import github.dev_playground.jeju_road.presentation.ui.page.RestaurantPageActivity.Companion.KEY_TRANSITION_NAME
-import github.dev_playground.jeju_road.presentation.util.RoundRectOutlineProvider
+import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity
+import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
+import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_TRANSITION_NAME
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -63,7 +61,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         val transitionName = ViewCompat.getTransitionName(sharedView)
         requireNotNull(transitionName)
 
-        val intent = Intent(requireActivity(), RestaurantPageActivity::class.java).apply {
+        val intent = Intent(requireActivity(), RestaurantDetailActivity::class.java).apply {
             putExtra(KEY_RESTAURANT_ID, content.id)
             putExtra(KEY_TRANSITION_NAME, transitionName)
         }

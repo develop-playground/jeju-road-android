@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginTop="@dimen/restaurant_list_shimmer_container_margin_top"
         android:background="@drawable/bg_card_content_radius_12"
         android:padding="16dp">
 

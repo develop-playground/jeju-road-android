@@ -7,7 +7,7 @@ import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.toUiState
 import kotlinx.coroutines.*
 
-class RestaurantPageViewModel(
+class RestaurantDetailViewModel(
     private val getRestaurantPageUseCase: GetRestaurantDetailUseCase
 ) : ViewModel() {
 

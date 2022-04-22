@@ -37,7 +37,7 @@ constructor(
         with(binding) {
             viewPager2RestaurantContent.adapter = contentImageAdapter
             textViewRestaurantIntroductionImageCount.outlineProvider =
-                RoundRectOutlineProvider(R.dimen.dp_12)
+                RoundRectOutlineProvider(R.dimen.restaurant_introduction_image_count_radius)
         }
     }
 
@@ -85,7 +85,7 @@ constructor(
             adapter = ContentMenuListAdapter().apply {
                 submitList(menus)
             }
-            addItemDecoration(ContentMenuItemDecoration())
+            addItemDecoration(IntroductionMenuItemDecoration())
         }
     }
 
@@ -106,7 +106,7 @@ constructor(
             BaseViewHolder(binding.root) {
 
             init {
-                binding.imageViewItemRestaurantContent.run {
+                with(binding.imageViewItemRestaurantIntroduction) {
                     setOnClickListener {
                         val imageUrl = getItem(bindingAdapterPosition)
 
@@ -146,7 +146,7 @@ constructor(
             val binding: ItemRestaurantIntroductionMenuBinding
         ) : BaseViewHolder(binding.root) {
             init {
-                with(binding.imageViewItemRestaurantContentMenu) {
+                with(binding.imageViewItemRestaurantIntroductionMenu) {
                     setOnClickListener {
                         it.context.startActivity<FullSizeImageActivity> {
                             putExtra(KEY_URL, getItem(bindingAdapterPosition).image)
@@ -165,10 +165,7 @@ constructor(
 
     }
 
-    private class ContentMenuItemDecoration(
-        @DimenRes
-        private val spaceDimenResId: Int = R.dimen.dp_4
-    ) : RecyclerView.ItemDecoration() {
+    private class IntroductionMenuItemDecoration : RecyclerView.ItemDecoration() {
 
         override fun getItemOffsets(
             outRect: Rect,
@@ -178,7 +175,7 @@ constructor(
         ) {
             val count = parent.adapter?.itemCount ?: 0
             val position = parent.getChildAdapterPosition(view)
-            val space = view.context.resources.getDimensionPixelSize(spaceDimenResId)
+            val space = view.context.resources.getDimensionPixelSize(R.dimen.restaurant_introduction_menu_space)
 
             when (position) {
                 0 -> outRect.right = space

@@ -8,7 +8,7 @@ import github.dev_playground.jeju_road.presentation.R
 
 class RoundRectOutlineProvider(
     @DimenRes
-    private val radius: Int = R.dimen.dp_8
+    private val radius: Int = R.dimen.round_rect_outline_provider_default_radius
 ): ViewOutlineProvider() {
 
     override fun getOutline(view: View?, outline: Outline?) {
