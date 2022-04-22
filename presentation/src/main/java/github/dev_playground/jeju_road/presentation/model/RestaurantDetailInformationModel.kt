@@ -14,14 +14,16 @@ data class RestaurantDetailInformationModel(
 
     companion object {
         fun toPresentation(information: DetailInformation): RestaurantDetailInformationModel {
-            return RestaurantDetailInformationModel(
-                information.id,
-                information.wayToGo,
-                information.simpleAddress,
-                information.detailAddress,
-                information.openTimes,
-                information.tips,
-            )
+            return information.run {
+                RestaurantDetailInformationModel(
+                    id,
+                    wayToGo,
+                    simpleAddress,
+                    detailAddress,
+                    openTimes,
+                    tips,
+                )
+            }
         }
     }
 
