@@ -21,7 +21,7 @@
             android:layout_width="@dimen/restaurant_default_information_day_width"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/restaurant_default_information_day_margin"
-            android:text="@{openTime.convertDayOfWeek(openTime.day)}"
+            android:text="@{openTime.day.dayOfWeek}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="수" />

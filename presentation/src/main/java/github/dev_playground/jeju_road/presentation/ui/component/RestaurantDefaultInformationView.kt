@@ -14,7 +14,6 @@ import github.dev_playground.jeju_road.presentation.databinding.ItemRestaurantDe
 import github.dev_playground.jeju_road.presentation.databinding.ViewRestaurantDefaultInformationBinding
 import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseListAdapter
-import github.dev_playground.jeju_road.presentation.util.currentDayOfWeek
 
 class RestaurantDefaultInformationView
 @JvmOverloads
@@ -44,10 +43,10 @@ constructor(
     private fun setOpenTimes(servingTime: List<OpenTime>) {
         with(binding) {
             isExpand = false
-            servingTime.find { it.day == currentDayOfWeek() }?.let {
+            servingTime.find { it.day == it.currentDayOfWeek() }?.let {
                 textViewRestaurantDefaultInformationServingTime.text = resources.getString(
                     R.string.text_restaurant_default_information_serving_time_format,
-                    it.convertDayOfWeek(it.day),
+                    it.day.dayOfWeek,
                     it.operationStart.substring(OPEN_TIME_SPLIT_START_INDEX, OPEN_TIME_SPLIT_END_INDEX),
                     it.operationEnd.substring(OPEN_TIME_SPLIT_START_INDEX, OPEN_TIME_SPLIT_END_INDEX)
                 )
@@ -89,24 +88,25 @@ constructor(
 
         private inner class OpenTimeViewHolder(val binding: ItemRestaurantDefaultInformationServingTimeBinding) :
             BaseViewHolder(binding.root) {
+
             override fun bind(data: OpenTime) {
                 with(binding) {
                     openTime = data
-                    if (openTime?.day == currentDayOfWeek()) {
+                    if (openTime?.day == openTime?.currentDayOfWeek()) {
                         TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantDefaultInformationDay,
+                            textViewItemRestaurantContentDay,
                             R.style.JejuLoadTextStyle_Focus
                         )
                         TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantDefaultInformationStartTime,
+                            textViewItemRestaurantContentStartTime,
                             R.style.JejuLoadTextStyle_Focus
                         )
                         TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantDefaultInformationMiddleLine,
+                            textViewItemRestaurantContentMiddleLine,
                             R.style.JejuLoadTextStyle_Focus
                         )
                         TextViewCompat.setTextAppearance(
-                            binding.textViewItemRestaurantDefaultInformationEndTime,
+                            textViewItemRestaurantContentEndTime,
                             R.style.JejuLoadTextStyle_Focus
                         )
                     }
@@ -114,6 +114,7 @@ constructor(
                 }
             }
         }
+
     }
 
     private inner class ContentTipsListAdapter : BaseListAdapter<String>(TIPS_DIFF_CALLBACK) {
