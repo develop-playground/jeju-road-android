@@ -1,5 +1,6 @@
 package github.dev_playground.jeju_road.presentation.ui.list
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,18 +24,16 @@ class RestaurantListViewModel(
     private val _contentList: MutableLiveData<List<Content>> = MutableLiveData(emptyList())
     val contentList: LiveData<List<Content>> = _contentList
 
+    private val _recyclerState: MutableLiveData<Parcelable?> = MutableLiveData(null)
+    val recyclerState: LiveData<Parcelable?> get() = _recyclerState
+
     init {
-        fetchContentList()
+        refreshContentList()
     }
 
     fun fetchContentList() {
         viewModelScope.launch {
-            pager.load { param ->
-                val result = getRestaurantListUseCase.invoke(param).toUiState()
-                _contentListState.value = result
-
-                result.data != null && result.data.isNotEmpty()
-            }
+            loadContentList()
         }
     }
 
@@ -44,8 +43,26 @@ class RestaurantListViewModel(
 
     fun refreshContentList() {
         _contentList.value = emptyList()
+        saveState(null)
         pager.reset()
-        fetchContentList()
+
+        viewModelScope.launch {
+            _contentListState.value = UiState.loading()
+            loadContentList()
+        }
+    }
+
+    private suspend fun loadContentList() {
+        pager.load { param ->
+            val result = getRestaurantListUseCase.invoke(param).toUiState()
+            _contentListState.value = result
+
+            result.data != null && result.data.isNotEmpty()
+        }
+    }
+
+    fun saveState(state: Parcelable?) {
+        _recyclerState.value = state
     }
 
 }
