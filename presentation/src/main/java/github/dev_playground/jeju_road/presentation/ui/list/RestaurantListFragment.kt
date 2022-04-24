@@ -16,6 +16,7 @@ import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActi
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_TRANSITION_NAME
 import github.dev_playground.jeju_road.presentation.util.UiState
+import github.dev_playground.jeju_road.presentation.util.onSuccess
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -34,7 +35,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         binding {
             bindList(
                 restaurantListAdapter,
-                viewModel.contentList,
+                viewModel.contentListState,
                 viewModel.recyclerState,
                 viewModel::fetchContentList,
                 viewModel::saveState
@@ -42,15 +43,11 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             bindSwipeRefresh(viewModel::refreshContentList)
             bindShimmer(viewModel.contentListState)
         }
-
-        viewModel.contentListState.observe {
-            viewModel.addContentList(it.data ?: emptyList())
-        }
     }
 
     private fun FragmentRestaurantListBinding.bindList(
         adapter: RestaurantListAdapter,
-        contentList: LiveData<List<Content>>,
+        contentUiState: LiveData<UiState<List<Content>>>,
         savedState: LiveData<Parcelable?>,
         fetchContentList: () -> Unit,
         saveState: (Parcelable?) -> Unit
@@ -74,10 +71,12 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             })
         }
 
-        contentList.observe {
-            restaurantListAdapter.submitList(it)
-            savedState.value?.let { state ->
-                recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
+        contentUiState.observe {
+            restaurantListAdapter.submitList(it.data)
+            it.onSuccess {
+                savedState.value?.let { state ->
+                    recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
+                }
             }
         }
     }

@@ -21,9 +21,6 @@ class RestaurantListViewModel(
     private val _contentListState: MutableLiveData<UiState<List<Content>>> = MutableLiveData(UiState.loading())
     val contentListState: LiveData<UiState<List<Content>>> = _contentListState
 
-    private val _contentList: MutableLiveData<List<Content>> = MutableLiveData(emptyList())
-    val contentList: LiveData<List<Content>> = _contentList
-
     private val _recyclerState: MutableLiveData<Parcelable?> = MutableLiveData(null)
     val recyclerState: LiveData<Parcelable?> get() = _recyclerState
 
@@ -37,25 +34,29 @@ class RestaurantListViewModel(
         }
     }
 
-    fun addContentList(contentList: List<Content>) {
-        _contentList.value = (_contentList.value ?: emptyList()) + contentList
-    }
-
     fun refreshContentList() {
-        _contentList.value = emptyList()
+        _contentListState.value = UiState(data = emptyList())
         saveState(null)
         pager.reset()
 
         viewModelScope.launch {
             _contentListState.value = UiState.loading()
-            loadContentList()
+            loadContentList(false)
         }
     }
 
-    private suspend fun loadContentList() {
+    private suspend fun loadContentList(isFetch: Boolean = true) {
         pager.load { param ->
             val result = getRestaurantListUseCase.invoke(param).toUiState()
-            _contentListState.value = result
+
+            if (isFetch) {
+                val oldList = _contentListState.value?.data ?: emptyList()
+                val newList = result.data ?: emptyList()
+
+                _contentListState.value = result.copy(data = oldList + newList)
+            } else {
+                _contentListState.value = result
+            }
 
             result.data != null && result.data.isNotEmpty()
         }
