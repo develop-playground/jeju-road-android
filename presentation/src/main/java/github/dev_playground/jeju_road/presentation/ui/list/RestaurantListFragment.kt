@@ -2,9 +2,12 @@ package github.dev_playground.jeju_road.presentation.ui.list
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
+import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.RecyclerView
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
@@ -12,6 +15,8 @@ import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_TRANSITION_NAME
+import github.dev_playground.jeju_road.presentation.util.UiState
+import github.dev_playground.jeju_road.presentation.util.onSuccess
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -27,32 +32,79 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpView()
-
-        with(viewModel) {
-            contentListState.observe { state ->
-                binding.swipeRefreshLayoutRestaurantList.isRefreshing = false
-                addContentList(state.data ?: emptyList())
-                setVisibilityShimmer(state.loading)
-            }
-            contentList.observe {
-                restaurantListAdapter.submitList(it.distinctBy { item -> item.id })
-            }
+        binding {
+            bindList(
+                restaurantListAdapter,
+                viewModel.contentListState,
+                viewModel.recyclerState,
+                viewModel::fetchContentList,
+                viewModel::saveState
+            )
+            bindSwipeRefresh(viewModel::refreshContentList)
+            bindShimmer(viewModel.contentListState)
         }
-
-        loadNewPageAtEndOfScroll()
     }
 
-    private fun setUpView() {
-        binding {
-            with(recyclerViewRestaurantList) {
-                adapter = restaurantListAdapter
-                addItemDecoration(
-                    RestaurantListItemDecoration()
-                )
+    private fun FragmentRestaurantListBinding.bindList(
+        adapter: RestaurantListAdapter,
+        contentUiState: LiveData<UiState<List<Content>>>,
+        savedState: LiveData<Parcelable?>,
+        fetchContentList: () -> Unit,
+        saveState: (Parcelable?) -> Unit
+    ) {
+        with(recyclerViewRestaurantList) {
+            this.adapter = adapter
+            addItemDecoration(
+                RestaurantListItemDecoration()
+            )
+            setHasFixedSize(true)
+            setOnScrollChangeListener { _, _, _, _, _ ->
+                if (!canScrollVertically(1) && adapter.itemCount > 0) {
+                    fetchContentList()
+                }
             }
-            swipeRefreshLayoutRestaurantList.setOnRefreshListener {
-                viewModel.refreshContentList()
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    saveState(layoutManager?.onSaveInstanceState())
+                }
+            })
+        }
+
+        contentUiState.observe {
+            restaurantListAdapter.submitList(it.data)
+            it.onSuccess {
+                savedState.value?.let { state ->
+                    recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
+                }
+            }
+        }
+    }
+
+    private fun FragmentRestaurantListBinding.bindSwipeRefresh(
+        refresh: () -> Unit
+    ) {
+        swipeRefreshLayoutRestaurantList.setOnRefreshListener {
+            refresh()
+            swipeRefreshLayoutRestaurantList.isRefreshing = false
+        }
+    }
+
+    private fun FragmentRestaurantListBinding.bindShimmer(
+        contentUiState: LiveData<UiState<List<Content>>>
+    ) {
+        contentUiState.observe {
+            when (it.loading) {
+                true -> {
+                    shimmerFrameLayoutRestaurantList.startShimmer()
+                    shimmerFrameLayoutRestaurantList.visibility = View.VISIBLE
+                    recyclerViewRestaurantList.visibility = View.INVISIBLE
+                }
+                else -> {
+                    shimmerFrameLayoutRestaurantList.stopShimmer()
+                    recyclerViewRestaurantList.visibility = View.VISIBLE
+                    shimmerFrameLayoutRestaurantList.visibility = View.INVISIBLE
+                }
             }
         }
     }
@@ -72,35 +124,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         )
 
         requireActivity().startActivity(intent, options.toBundle())
-    }
-
-    private fun setVisibilityShimmer(isLoading: Boolean) {
-        binding {
-            when (isLoading) {
-                true -> {
-                    shimmerFrameLayoutRestaurantList.startShimmer()
-                    shimmerFrameLayoutRestaurantList.visibility = View.VISIBLE
-                    recyclerViewRestaurantList.visibility = View.INVISIBLE
-                }
-                else -> {
-                    shimmerFrameLayoutRestaurantList.stopShimmer()
-                    recyclerViewRestaurantList.visibility = View.VISIBLE
-                    shimmerFrameLayoutRestaurantList.visibility = View.INVISIBLE
-                }
-            }
-        }
-    }
-
-    private fun loadNewPageAtEndOfScroll() {
-        binding {
-            recyclerViewRestaurantList.setOnScrollChangeListener { _, _, _, _, _ ->
-                if (!recyclerViewRestaurantList.canScrollVertically(1) &&
-                    recyclerViewRestaurantList.adapter?.itemCount ?: 0 > 0
-                ) {
-                    viewModel.fetchContentList()
-                }
-            }
-        }
     }
 
     companion object {
