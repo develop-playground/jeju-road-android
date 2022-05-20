@@ -1,22 +1,21 @@
 package github.dev_playground.jeju_road.presentation.ui.page
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import github.dev_playground.jeju_road.domain.model.DetailInformation
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantDetailUseCase
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.toUiState
-import kotlinx.coroutines.*
 
 class RestaurantDetailViewModel(
+    id: Long,
     private val getRestaurantPageUseCase: GetRestaurantDetailUseCase
 ) : ViewModel() {
 
-    val id: MutableLiveData<Long> = MutableLiveData<Long>()
-
-    val detailInformationState: LiveData<UiState<DetailInformation>> = id.switchMap {
+    val detailInformationState: LiveData<UiState<DetailInformation>> =
         liveData {
             emit(UiState.loading())
-            emit(getRestaurantPageUseCase.invoke(it).toUiState())
+            emit(getRestaurantPageUseCase.invoke(id).toUiState())
         }
-    }
 }
