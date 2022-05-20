@@ -1,5 +1,5 @@
 <div align = "center">
-  <h1> jeju-road-android </h1>
+  <h1> jeju-road </h1>
 </div>
 
 [![Build Status](https://app.bitrise.io/app/08e79fd5bf6fa07f/status.svg?token=WMgAOx82RJyiEZPslYMMqg&branch=master)](https://app.bitrise.io/app/08e79fd5bf6fa07f)
