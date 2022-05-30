@@ -13,26 +13,22 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.junit.Assert.assertEquals
-import org.mockito.kotlin.notNull
 import org.mockito.kotlin.whenever
+import java.lang.IllegalStateException
 
 @ExperimentalCoroutinesApi
 class RestaurantListViewModelTest : BaseTest() {
     private lateinit var restaurantListViewModel: RestaurantListViewModel
     private val getRestaurantListUseCase: GetRestaurantListUseCase = mock()
     private val pageIndex = 0
-    private val uiStateList = UiState(
-        loading = false,
-        exception = null,
-        listOf(
-            Content(
-                id = 1,
-                name = "맛집",
-                categories = listOf("category"),
-                address = "한밭대학교",
-                image = "대충 이미지 URL",
-                introduction = "대충 소개글"
-            )
+    private val contentList = listOf(
+        Content(
+            id = 1,
+            name = "맛집",
+            categories = listOf("category"),
+            address = "한밭대학교",
+            image = "대충 이미지 URL",
+            introduction = "대충 소개글"
         )
     )
 
@@ -43,10 +39,8 @@ class RestaurantListViewModelTest : BaseTest() {
 
     @Test
     fun `리스트 새로고침 성공`() = runBlocking {
-        whenever(getRestaurantListUseCase.invoke(pageIndex).toUiState())
-            .thenReturn(uiStateList)
-
-        val result = getRestaurantListUseCase.invoke(pageIndex).toUiState()
+        whenever(getRestaurantListUseCase.invoke(pageIndex))
+            .thenReturn(Result.success(contentList))
 
         //when
         coroutineRule.pauseDispatcher()
@@ -67,17 +61,18 @@ class RestaurantListViewModelTest : BaseTest() {
 
         assertEquals(
             restaurantListViewModel.contentListState.getOrAwaitValue(),
-            result
+            UiState(data = contentList)
         )
     }
 
     @Test
-    fun `리스트 새로고침 실패`() {
+    fun `리스트 새로고침 실패`() = runBlocking {
+        whenever(getRestaurantListUseCase.invoke(pageIndex))
+            .thenThrow(IllegalStateException("Failed to fetch information."))
+
         //when
-        coroutineRule.pauseDispatcher()
         restaurantListViewModel.refreshContentList()
 
         //then
-
     }
 }

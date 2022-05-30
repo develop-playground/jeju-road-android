@@ -44,8 +44,8 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
 
         with(viewModel) {
             id.value = this@RestaurantDetailActivity.id
-
             detailInformationState.observe { state ->
+                println("테스트 입니당: ${state}")
                 state.onSuccess {
                     adapter.submitList(
                         listOf(
