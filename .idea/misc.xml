@@ -40,12 +40,15 @@
         <entry key="presentation/src/main/res/drawable/ic_close_24.xml" value="0.1555" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load_36.xml" value="0.1425" />
+        <entry key="presentation/src/main/res/drawable/ic_iland.xml" value="0.118" />
         <entry key="presentation/src/main/res/font/nanum_gotic_bold_font.xml" value="0.2814814814814815" />
         <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
+        <entry key="presentation/src/main/res/layout-land/activity_splash.xml" value="0.30070546737213405" />
         <entry key="presentation/src/main/res/layout/activity_full_size_image.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.2730496453900709" />
+        <entry key="presentation/src/main/res/layout/activity_restaurant_detail.xml" value="0.17274569402228976" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_page.xml" value="0.2730496453900709" />
-        <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.17223910840932116" />
+        <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/fragment_restaurant_list.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_image.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_menu.xml" value="0.2730496453900709" />
