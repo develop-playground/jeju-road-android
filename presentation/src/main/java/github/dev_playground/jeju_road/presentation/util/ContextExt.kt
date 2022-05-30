@@ -41,3 +41,4 @@ fun Context.showLong(string: String) {
 inline fun <reified T : Activity> Context.startActivity(noinline action: Intent.() -> Unit) {
     startActivity(Intent(this, T::class.java).apply(action))
 }
+
