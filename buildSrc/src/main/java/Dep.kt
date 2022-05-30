@@ -69,6 +69,7 @@ object Dep {
 
     object Test {
         const val mockito = "org.mockito.kotlin:mockito-kotlin:4.0.0"
+        const val mockitoInline = "org.mockito:mockito-inline:2.13.0"
         const val json = "org.json:json:20210307"
         const val junit = "junit:junit:4.13.2"
         const val junitExt = "androidx.test.ext:junit:1.1.3"
