@@ -66,6 +66,7 @@ dependencies {
     testImplementation(Dep.Test.json)
     testImplementation(Dep.Test.mockito)
     testImplementation(Dep.Kotlin.Test.coroutine)
+    testImplementation(Dep.Test.archTest)
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.espresso)
 }

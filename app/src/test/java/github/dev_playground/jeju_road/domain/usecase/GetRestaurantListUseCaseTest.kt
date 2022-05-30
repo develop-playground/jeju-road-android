@@ -2,6 +2,7 @@ package github.dev_playground.jeju_road.domain.usecase
 
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -9,6 +10,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
+@ExperimentalCoroutinesApi
 class GetRestaurantListUseCaseTest : BaseUseCaseTest() {
 
     private val repository: RestaurantRepository = mock()
@@ -23,11 +25,6 @@ class GetRestaurantListUseCaseTest : BaseUseCaseTest() {
             introduction = "대충 소개글"
         )
     )
-
-    @Before
-    fun setUp() {
-
-    }
 
     @Test
     override fun `실행 성공 테스트`() = runBlocking {
