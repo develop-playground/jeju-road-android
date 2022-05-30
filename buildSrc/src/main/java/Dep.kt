@@ -86,6 +86,7 @@ object Dep {
         const val analytics = "com.google.firebase:firebase-analytics-ktx"
     }
 
+    const val lottie = "com.airbnb.android:lottie:5.0.3"
     const val gson = "com.google.code.gson:gson:2.8.7"
     const val photoView = "com.github.chrisbanes:PhotoView:2.3.0"
     const val shimmer =  "com.facebook.shimmer:shimmer:0.5.0"
