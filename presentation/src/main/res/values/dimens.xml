@@ -4,6 +4,8 @@
 
     <dimen name="splash_ic_dev_end">12dp</dimen>
     <dimen name="splash_ic_dev_bottom">12dp</dimen>
+    <dimen name="splash_ic_leanerLayoutFirst_start">30dp</dimen>
+    <dimen name="splash_ic_leanerLayoutSecond_end">30dp</dimen>
 
     <dimen name="restaurant_card_content_radius">12dp</dimen>
     <dimen name="restaurant_transition_shape_model_radius">12dp</dimen>
