@@ -2,8 +2,10 @@ package github.dev_playground.jeju_road.data.di
 
 import github.dev_playground.jeju_road.data.api.RestaurantApi
 import github.dev_playground.jeju_road.data.api.mock.MockRestaurantApi
+import github.dev_playground.jeju_road.data.util.NetworkHealthCheckingInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -24,6 +26,7 @@ val networkModule = module {
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
+            .addNetworkInterceptor(NetworkHealthCheckingInterceptor())
             .addNetworkInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
@@ -38,7 +41,7 @@ val networkModule = module {
             .build()
     }
 
-//    single { get<Retrofit>().create(RestaurantApi::class.java) }
-    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
+    single { get<Retrofit>().create(RestaurantApi::class.java) }
+//    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
 
 }

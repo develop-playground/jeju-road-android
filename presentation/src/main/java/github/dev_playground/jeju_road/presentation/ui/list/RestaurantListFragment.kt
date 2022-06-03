@@ -12,11 +12,14 @@ import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
+import github.dev_playground.jeju_road.presentation.ui.error.ErrorHandlingActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_TRANSITION_NAME
 import github.dev_playground.jeju_road.presentation.util.UiState
+import github.dev_playground.jeju_road.presentation.util.onFailure
 import github.dev_playground.jeju_road.presentation.util.onSuccess
+import github.dev_playground.jeju_road.presentation.util.startActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -78,6 +81,12 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
             }
+
+            it.onFailure {
+                context?.startActivity<ErrorHandlingActivity> {
+                    putExtra(ERROR_MESSAGE, it.message)
+                }
+            }
         }
     }
 
@@ -128,6 +137,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     companion object {
         fun newInstance() = RestaurantListFragment()
+        const val ERROR_MESSAGE = "error message"
     }
 
 }
