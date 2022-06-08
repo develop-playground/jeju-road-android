@@ -7,5 +7,5 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { RestaurantListViewModel(getRestaurantListUseCase = get())}
-    viewModel { RestaurantDetailViewModel(get()) }
+    viewModel { (id: Long) -> RestaurantDetailViewModel(id, get()) }
 }
