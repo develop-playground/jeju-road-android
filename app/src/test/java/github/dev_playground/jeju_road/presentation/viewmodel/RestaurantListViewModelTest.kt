@@ -1,24 +1,19 @@
 package github.dev_playground.jeju_road.presentation.viewmodel
 
 import github.dev_playground.jeju_road.BaseTest
-import github.dev_playground.jeju_road.MainCoroutineRule
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
 import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListViewModel
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
-import github.dev_playground.jeju_road.presentation.util.toUiState
-import github.dev_playground.jeju_road.runBlockingTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
-import org.junit.Assert.assertEquals
-import org.junit.Rule
 import org.mockito.kotlin.whenever
-import java.lang.IllegalStateException
 
 @ExperimentalCoroutinesApi
 class RestaurantListViewModelTest : BaseTest() {
@@ -42,7 +37,7 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `리스트 새로고침 성공`() = runBlockingTest {
+    fun `새로고침하면 로딩 표시 후 콘텐츠 리스트가 잘 표시되는지 검증`() = runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenReturn(Result.success(contentList))
 
@@ -63,7 +58,7 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `리스트 새로고침 실패`() = runBlocking {
+    fun `새로고침 실패 검증`() = runBlocking {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenThrow(IllegalStateException("Failed to fetch information."))
 

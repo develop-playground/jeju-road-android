@@ -65,7 +65,7 @@ class RestaurantDetailViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `상세 정보 가져오기`() = runBlocking {
+    fun `상세 정보 데이터를 가져올 때 로딩 후 상세 정보 데이터가 잘 들어왔는지 검증`() = runBlocking {
         //when
         restaurantDetailViewModel.id.value = id
 
