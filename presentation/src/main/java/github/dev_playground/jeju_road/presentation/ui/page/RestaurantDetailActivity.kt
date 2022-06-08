@@ -10,18 +10,23 @@ import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInform
 import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
 import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListItemDecoration
-import github.dev_playground.jeju_road.presentation.util.*
+import github.dev_playground.jeju_road.presentation.util.addEnterMaterialSharedElementCallback
+import github.dev_playground.jeju_road.presentation.util.addMaterialSharedElementEnterTransition
+import github.dev_playground.jeju_road.presentation.util.addMaterialSharedElementReturnTransition
+import github.dev_playground.jeju_road.presentation.util.onSuccess
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
     R.layout.activity_restaurant_detail
 ) {
 
-    private val viewModel by viewModel<RestaurantDetailViewModel>()
+    private val viewModel by viewModel<RestaurantDetailViewModel> {
+        parametersOf(intent.getLongExtra(KEY_RESTAURANT_ID, 0))
+    }
     private val adapter: RestaurantDetailListAdapter by lazy { RestaurantDetailListAdapter() }
 
     private val transitionName: String? by lazy { intent.getStringExtra(KEY_TRANSITION_NAME) }
-    private val id: Long by lazy { intent.getLongExtra(KEY_RESTAURANT_ID, 0) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         makeTransition()
@@ -42,18 +47,14 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
             )
         }
 
-        with(viewModel) {
-            id.value = this@RestaurantDetailActivity.id
-            detailInformationState.observe { state ->
-                println("테스트 입니당: ${state}")
-                state.onSuccess {
-                    adapter.submitList(
-                        listOf(
-                            RestaurantIntroductionModel.toPresentation(it),
-                            RestaurantDetailInformationModel.toPresentation(it)
-                        )
+        viewModel.detailInformationState.observe { state ->
+            state.onSuccess {
+                adapter.submitList(
+                    listOf(
+                        RestaurantIntroductionModel.toPresentation(it),
+                        RestaurantDetailInformationModel.toPresentation(it)
                     )
-                }
+                )
             }
         }
     }
@@ -94,3 +95,4 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
     }
 
 }
+
