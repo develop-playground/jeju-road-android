@@ -9,8 +9,7 @@ import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -39,7 +38,7 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `리스트 새로고침 성공`() = runBlockingTest {
+    fun `새로고침하면 로딩 표시 후 콘텐츠 리스트가 잘 표시되는지 검증`() = runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenReturn(Result.success(contentList))
 
@@ -50,14 +49,9 @@ class RestaurantListViewModelTest : BaseTest() {
         //then
         assertEquals(
             restaurantListViewModel.contentListState.getOrAwaitValue(),
-            UiState<List<Content>>(data = emptyList())
+            UiState.loading<List<Content>>()
         )
-
-        assertEquals(
-            restaurantListViewModel.contentListState.getOrAwaitValue().loading,
-            true
-        )
-
+        coroutineRule.resumeDispatcher()
         assertEquals(
             restaurantListViewModel.contentListState.getOrAwaitValue(),
             UiState(data = contentList)
@@ -65,7 +59,7 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `리스트 새로고침 실패`() = runBlocking {
+    fun `새로고침 실패 검증`() = runBlocking {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenThrow(IllegalStateException("Failed to fetch information."))
 
