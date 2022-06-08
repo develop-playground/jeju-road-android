@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.data.api
+package github.dev_playground.jeju_road.data.datasource.remote.api
 
 import github.dev_playground.jeju_road.data.model.RestaurantData
 import github.dev_playground.jeju_road.data.model.RestaurantDetailData

@@ -1,6 +1,6 @@
 package github.dev_playground.jeju_road.data.repository
 
-import github.dev_playground.jeju_road.data.api.RestaurantApi
+import github.dev_playground.jeju_road.data.datasource.remote.api.RestaurantApi
 import github.dev_playground.jeju_road.data.model.toDomain
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.model.DetailInformation

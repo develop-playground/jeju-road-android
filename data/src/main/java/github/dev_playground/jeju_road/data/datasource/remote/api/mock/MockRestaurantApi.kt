@@ -1,8 +1,8 @@
-package github.dev_playground.jeju_road.data.api.mock
+package github.dev_playground.jeju_road.data.datasource.remote.api.mock
 
 import android.content.Context
 import com.google.gson.Gson
-import github.dev_playground.jeju_road.data.api.RestaurantApi
+import github.dev_playground.jeju_road.data.datasource.remote.api.RestaurantApi
 import github.dev_playground.jeju_road.data.model.InformationData
 import github.dev_playground.jeju_road.data.model.RestaurantData
 import github.dev_playground.jeju_road.data.model.RestaurantDetailData

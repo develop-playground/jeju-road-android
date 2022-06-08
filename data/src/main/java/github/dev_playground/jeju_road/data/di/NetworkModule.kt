@@ -1,7 +1,7 @@
 package github.dev_playground.jeju_road.data.di
 
-import github.dev_playground.jeju_road.data.api.RestaurantApi
-import github.dev_playground.jeju_road.data.api.mock.MockRestaurantApi
+import github.dev_playground.jeju_road.data.datasource.remote.api.RestaurantApi
+import github.dev_playground.jeju_road.data.datasource.remote.api.mock.MockRestaurantApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
