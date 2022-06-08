@@ -9,6 +9,11 @@ import github.dev_playground.jeju_road.presentation.databinding.FragmentDialogEr
 import github.dev_playground.jeju_road.presentation.ui.base.BaseDialogFragment
 
 class ErrorDialogFragment : BaseDialogFragment<FragmentDialogErrorBinding>(R.layout.fragment_dialog_error) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        isCancelable = false
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
