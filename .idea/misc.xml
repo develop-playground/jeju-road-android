@@ -52,6 +52,7 @@
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_detail.xml" value="0.24592391304347827" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_page.xml" value="0.2730496453900709" />
+        <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.33695652173913043" />
         <entry key="presentation/src/main/res/layout/dialog_error.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/diglog_error.xml" value="0.16337386018237082" />
         <entry key="presentation/src/main/res/layout/fragment_restaurant_list.xml" value="0.1" />
