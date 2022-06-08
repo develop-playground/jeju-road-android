@@ -39,6 +39,7 @@
     <color name="disable">#FFCCCCCC</color>
 
     <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 
     <color name="lightBlue">#F3FEFF</color>
 </resources>

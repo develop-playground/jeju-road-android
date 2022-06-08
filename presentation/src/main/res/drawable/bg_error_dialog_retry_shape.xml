@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/orangeMainColor"/>
+    <corners android:radius="@dimen/error_dialog_retry_button_radius"/>
+</shape>
