@@ -46,13 +46,10 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
             id.value = this@RestaurantDetailActivity.id
 
             detailInformationState.observe { state ->
-                state.onSuccess {
-                    adapter.submitList(
-                        listOf(
-                            RestaurantIntroductionModel.toPresentation(it),
-                            RestaurantDetailInformationModel.toPresentation(it)
-                        )
-                    )
+                when(state) {
+                    is RestaurantDetailUiState.Success -> adapter.submitList(state.informationList)
+                    is RestaurantDetailUiState.Error -> TODO()
+                    is RestaurantDetailUiState.Loading -> TODO()
                 }
             }
         }

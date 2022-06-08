@@ -21,7 +21,7 @@
                 app:navigationIcon="@drawable/ic_arrow_back_24" />
 
         </com.google.android.material.appbar.AppBarLayout>
-        
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_restaurant_detail"
             android:layout_width="match_parent"
