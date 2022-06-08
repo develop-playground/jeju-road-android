@@ -3,19 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_error_dialog_radius_shape">
 
         <ImageView
-            android:id="@+id/imageView_ic_error"
-            android:layout_width="@dimen/ic_error_width"
-            android:layout_height="@dimen/ic_error_height"
-            android:src="@drawable/ic_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warning"
+            android:layout_marginTop="@dimen/ic_waring_margin_top"
+            android:layout_marginEnd="@dimen/ic_waring_margin_end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/imageView_ic_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_error"
+            android:layout_marginTop="@dimen/ic_error_margin_top"
+            app:layout_constraintBottom_toTopOf="@id/textView_message_error_dialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/error_dialog_message_text_margin_top"
             android:gravity="center"
+            android:text="@string/text_error_500_message"
+            android:lineSpacingExtra="@dimen/error_dialog_message_text_line_height"
             app:layout_constraintBottom_toTopOf="@id/button_retry_error_dialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +47,9 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_retry_error_dialog"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_height="@dimen/error_dialog_retry_button_height"
+            android:layout_marginStart="@dimen/error_dialog_retry_button_margin_start"
+            android:layout_marginEnd="@dimen/error_dialog_retry_button_margin_end"
             style="@style/Text.ERROR_MESSAGE"
             android:background="@drawable/bg_error_dialog_retry_shape"
             android:text="@string/text_error_button_retry"

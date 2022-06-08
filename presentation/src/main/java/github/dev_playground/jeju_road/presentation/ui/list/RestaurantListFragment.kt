@@ -12,6 +12,7 @@ import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
+import github.dev_playground.jeju_road.presentation.ui.error.ErrorDialogFragment
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_TRANSITION_NAME
@@ -80,7 +81,8 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
             }.onFailure {
-
+                val errorDialog = ErrorDialogFragment()
+                errorDialog.show(requireActivity().supportFragmentManager, "tag")
             }
         }
     }

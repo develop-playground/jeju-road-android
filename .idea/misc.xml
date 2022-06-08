@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_jeju_load.xml" value="0.2025" />
         <entry key="presentation/src/main/res/drawable/bg_card_content_radius_12.xml" value="0.274" />
         <entry key="presentation/src/main/res/drawable/bg_error_dialog_radius_20.xml" value="0.106" />
+        <entry key="presentation/src/main/res/drawable/bg_error_dialog_radius_shape.xml" value="0.1935" />
         <entry key="presentation/src/main/res/drawable/bg_error_dialog_retry_shape.xml" value="0.1605" />
         <entry key="presentation/src/main/res/drawable/bg_item_restaurant_list_image.xml" value="0.2355" />
         <entry key="presentation/src/main/res/drawable/bg_open_time_toggle_bitton.xml" value="0.1" />
@@ -45,6 +46,7 @@
         <entry key="presentation/src/main/res/drawable/ic_error.xml" value="0.106" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load_36.xml" value="0.1425" />
+        <entry key="presentation/src/main/res/drawable/ic_warning.xml" value="0.25" />
         <entry key="presentation/src/main/res/font/nanum_gotic_bold_font.xml" value="0.2814814814814815" />
         <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
         <entry key="presentation/src/main/res/layout/activity_error.xml" value="0.17198581560283688" />
@@ -55,6 +57,7 @@
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.33695652173913043" />
         <entry key="presentation/src/main/res/layout/dialog_error.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/diglog_error.xml" value="0.16337386018237082" />
+        <entry key="presentation/src/main/res/layout/fragment_dialog_error.xml" value="0.46693840579710144" />
         <entry key="presentation/src/main/res/layout/fragment_restaurant_list.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_image.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_menu.xml" value="0.2730496453900709" />
