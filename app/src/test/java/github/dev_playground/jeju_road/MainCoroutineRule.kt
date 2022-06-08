@@ -7,7 +7,8 @@ import kotlinx.coroutines.test.*
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
-class MainCoroutineRule @ExperimentalCoroutinesApi constructor(
+@OptIn(ExperimentalCoroutinesApi::class)
+class MainCoroutineRule constructor(
     val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
 ) : TestWatcher() {
 
