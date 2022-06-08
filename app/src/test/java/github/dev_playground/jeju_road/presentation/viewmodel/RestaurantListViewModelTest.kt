@@ -1,18 +1,22 @@
 package github.dev_playground.jeju_road.presentation.viewmodel
 
 import github.dev_playground.jeju_road.BaseTest
+import github.dev_playground.jeju_road.MainCoroutineRule
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
 import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListViewModel
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
 import github.dev_playground.jeju_road.presentation.util.toUiState
+import github.dev_playground.jeju_road.runBlockingTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.junit.Assert.assertEquals
+import org.junit.Rule
 import org.mockito.kotlin.whenever
 import java.lang.IllegalStateException
 
@@ -38,7 +42,7 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `리스트 새로고침 성공`() = runBlocking {
+    fun `리스트 새로고침 성공`() = runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenReturn(Result.success(contentList))
 
@@ -49,16 +53,9 @@ class RestaurantListViewModelTest : BaseTest() {
         //then
         assertEquals(
             restaurantListViewModel.contentListState.getOrAwaitValue(),
-            UiState<List<Content>>(data = emptyList())
+            UiState.loading<List<Content>>()
         )
-
-        assertEquals(
-            restaurantListViewModel.recyclerState.getOrAwaitValue(),
-            null
-        )
-
         coroutineRule.resumeDispatcher()
-
         assertEquals(
             restaurantListViewModel.contentListState.getOrAwaitValue(),
             UiState(data = contentList)
