@@ -48,4 +48,13 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/nanum_gothic_bold</item>
     </style>
+
+    <style name="Dialog.ERROR_DIALOG" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">
+            @drawable/bg_error_dialog_radius_shape
+        </item>
+
+        <item name="android:windowMinWidthMajor">80%</item>
+        <item name="android:windowMinWidthMinor">80%</item>
+    </style>
 </resources>
