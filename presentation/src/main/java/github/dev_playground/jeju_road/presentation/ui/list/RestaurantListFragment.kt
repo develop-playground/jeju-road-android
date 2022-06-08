@@ -21,6 +21,7 @@ import github.dev_playground.jeju_road.presentation.util.onFailure
 import github.dev_playground.jeju_road.presentation.util.onSuccess
 import github.dev_playground.jeju_road.presentation.util.startActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.core.parameter.parametersOf
 
 
 class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
@@ -79,12 +80,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
             it.onSuccess {
                 savedState.value?.let { state ->
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
-                }
-            }
-
-            it.onFailure {
-                context?.startActivity<ErrorHandlingActivity> {
-                    putExtra(ERROR_MESSAGE, it.message)
                 }
             }
         }

@@ -8,9 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import github.dev_playground.jeju_road.presentation.util.Event
+import github.dev_playground.jeju_road.presentation.util.UiState
 
-abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCompatActivity(layoutId) {
+abstract class BaseActivity<B: ViewDataBinding>(
+    @LayoutRes layoutId: Int
+): AppCompatActivity(layoutId) {
+
+    //baseviewmodel에서 ui state 상태 바뀐거 여기서 onSuccess, onFailure, onLoading 처리?
 
     protected val binding: B by lazy { DataBindingUtil.setContentView<B>(this, layoutId) }
 
@@ -37,6 +43,7 @@ abstract class BaseActivity<B: ViewDataBinding>(@LayoutRes layoutId: Int): AppCo
         if (item.itemId == android.R.id.home) {
             finish()
         }
+
         return super.onOptionsItemSelected(item)
     }
 

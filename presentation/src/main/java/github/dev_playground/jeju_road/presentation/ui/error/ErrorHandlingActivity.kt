@@ -9,7 +9,5 @@ class ErrorHandlingActivity : BaseActivity<ActivityErrorBinding>(R.layout.activi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
     }
 }

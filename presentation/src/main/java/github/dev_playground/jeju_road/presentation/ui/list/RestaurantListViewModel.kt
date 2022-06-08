@@ -7,9 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
-import github.dev_playground.jeju_road.presentation.util.Pager
-import github.dev_playground.jeju_road.presentation.util.UiState
-import github.dev_playground.jeju_road.presentation.util.toUiState
+import github.dev_playground.jeju_road.presentation.ui.base.BaseViewModel
+import github.dev_playground.jeju_road.presentation.util.*
 import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
