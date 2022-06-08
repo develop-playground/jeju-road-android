@@ -1,5 +1,6 @@
 package github.dev_playground.jeju_road.presentation.ui.list
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,32 +21,49 @@ class RestaurantListViewModel(
     private val _contentListState: MutableLiveData<UiState<List<Content>>> = MutableLiveData(UiState.loading())
     val contentListState: LiveData<UiState<List<Content>>> = _contentListState
 
-    private val _contentList: MutableLiveData<List<Content>> = MutableLiveData(emptyList())
-    val contentList: LiveData<List<Content>> = _contentList
+    private val _recyclerState: MutableLiveData<Parcelable?> = MutableLiveData(null)
+    val recyclerState: LiveData<Parcelable?> get() = _recyclerState
 
     init {
-        fetchContentList()
+        refreshContentList()
     }
 
     fun fetchContentList() {
         viewModelScope.launch {
-            pager.load { param ->
-                val result = getRestaurantListUseCase.invoke(param).toUiState()
-                _contentListState.value = result
-
-                result.data != null && result.data.isNotEmpty()
-            }
+            loadContentList()
         }
     }
 
-    fun addContentList(contentList: List<Content>) {
-        _contentList.value = (_contentList.value ?: emptyList()) + contentList
+    fun refreshContentList() {
+        _contentListState.value = UiState(data = emptyList())
+        saveState(null)
+        pager.reset()
+
+        viewModelScope.launch {
+            _contentListState.value = UiState.loading()
+            loadContentList(false)
+        }
     }
 
-    fun refreshContentList() {
-        _contentList.value = emptyList()
-        pager.reset()
-        fetchContentList()
+    private suspend fun loadContentList(isFetch: Boolean = true) {
+        pager.load { param ->
+            val result = getRestaurantListUseCase.invoke(param).toUiState()
+
+            if (isFetch) {
+                val oldList = _contentListState.value?.data ?: emptyList()
+                val newList = result.data ?: emptyList()
+
+                _contentListState.value = result.copy(data = oldList + newList)
+            } else {
+                _contentListState.value = result
+            }
+
+            result.data != null && result.data.isNotEmpty()
+        }
+    }
+
+    fun saveState(state: Parcelable?) {
+        _recyclerState.value = state
     }
 
 }

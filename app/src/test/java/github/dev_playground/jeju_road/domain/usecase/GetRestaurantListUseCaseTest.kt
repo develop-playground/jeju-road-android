@@ -67,4 +67,23 @@ class GetRestaurantListUseCaseTest : BaseUseCaseTest() {
         assertEquals("Test", result.exceptionOrNull()?.message)
     }
 
+    @Test
+    fun `리스트 비었을 경우 테스트`() = runBlocking {
+        // given
+        val useCase = GetRestaurantListUseCase(
+            repository,
+            coroutineRule.testDispatcher
+        )
+
+        // when
+        whenever(repository.getRestaurantList(pageIndex))
+            .thenReturn(emptyList())
+
+        // then
+        val result = useCase.invoke(pageIndex)
+
+        assertEquals(true, result.isSuccess)
+        assertEquals(0, result.getOrNull()?.size)
+    }
+
 }
