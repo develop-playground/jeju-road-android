@@ -7,9 +7,9 @@
     <application
         android:name="github.dev_playground.JejuRoadApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_jeju_load"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_jeju_load_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Jejuroad"
         android:usesCleartextTraffic="true">
