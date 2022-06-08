@@ -17,6 +17,11 @@ class ErrorDialogFragment : BaseDialogFragment<FragmentDialogErrorBinding>(R.lay
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding {
+            imageViewCloseErrorDialog.setOnClickListener {
+                dialog?.dismiss()
+            }
+        }
     }
 
     override fun onResume() {

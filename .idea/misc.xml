@@ -43,10 +43,17 @@
         <entry key="presentation/src/main/res/drawable/ic_arrow_top.xml" value="0.233" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_top_24.xml" value="0.1345" />
         <entry key="presentation/src/main/res/drawable/ic_close_24.xml" value="0.1555" />
+        <entry key="presentation/src/main/res/drawable/ic_close_black.xml" value="0.185" />
+        <entry key="presentation/src/main/res/drawable/ic_devplayground.xml" value="0.339" />
         <entry key="presentation/src/main/res/drawable/ic_error.xml" value="0.106" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load_36.xml" value="0.1425" />
+        <entry key="presentation/src/main/res/drawable/ic_haenyeo_with_waves.xml" value="0.339" />
+        <entry key="presentation/src/main/res/drawable/ic_island.xml" value="0.339" />
+        <entry key="presentation/src/main/res/drawable/ic_mandarin_with_waves.xml" value="0.339" />
+        <entry key="presentation/src/main/res/drawable/ic_stone_with_waves.xml" value="0.339" />
         <entry key="presentation/src/main/res/drawable/ic_warning.xml" value="0.25" />
+        <entry key="presentation/src/main/res/drawable/ic_waves.xml" value="0.339" />
         <entry key="presentation/src/main/res/font/nanum_gotic_bold_font.xml" value="0.2814814814814815" />
         <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
         <entry key="presentation/src/main/res/layout/activity_error.xml" value="0.17198581560283688" />

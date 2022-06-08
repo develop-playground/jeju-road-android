@@ -9,6 +9,16 @@
         android:background="@drawable/bg_error_dialog_radius_shape">
 
         <ImageView
+            android:id="@+id/imageView_close_error_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_black"
+            android:layout_marginTop="@dimen/ic_close_black_margin_top"
+            android:layout_marginStart="@dimen/ic_close_black_margin_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_warning"
