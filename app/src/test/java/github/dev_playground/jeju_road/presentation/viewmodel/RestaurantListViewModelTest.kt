@@ -7,14 +7,12 @@ import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListViewMo
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import java.lang.IllegalStateException
 
 @ExperimentalCoroutinesApi
 class RestaurantListViewModelTest : BaseTest() {
@@ -27,8 +25,8 @@ class RestaurantListViewModelTest : BaseTest() {
             name = "맛집",
             categories = listOf("category"),
             address = "한밭대학교",
-            image = "대충 이미지 URL",
-            introduction = "대충 소개글"
+            image = "이미지 URL",
+            introduction = "소개글"
         )
     )
 
@@ -59,13 +57,17 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `새로고침 실패 검증`() = runBlocking {
+    fun `새로고침 실패 검증`() = runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
-            .thenThrow(IllegalStateException("Failed to fetch information."))
+            .thenReturn(Result.failure(IllegalAccessException("test")))
 
         //when
         restaurantListViewModel.refreshContentList()
 
         //then
+        assertEquals(
+            restaurantListViewModel.contentListState.getOrAwaitValue(),
+            UiState.failure<List<Content>>(exception = IllegalAccessException("test"))
+        )
     }
 }
