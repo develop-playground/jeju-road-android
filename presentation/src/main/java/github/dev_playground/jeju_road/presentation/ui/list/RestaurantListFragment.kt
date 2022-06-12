@@ -26,7 +26,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     R.layout.fragment_restaurant_list
 ) {
     private val viewModel by sharedViewModel<RestaurantListViewModel>()
-    private val errorDialog = ErrorDialogFragment()
     private val restaurantListAdapter by lazy {
         RestaurantListAdapter { content, view ->
             onContentItemClick(content, view)
@@ -82,6 +81,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
             }.onFailure {
+                val errorDialog = ErrorDialogFragment()
                 errorDialog.show(requireActivity().supportFragmentManager, "tag")
             }
         }
