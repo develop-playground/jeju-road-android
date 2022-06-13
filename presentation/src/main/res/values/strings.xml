@@ -16,4 +16,8 @@
     <string name="text_restaurant_default_information_tips">이곳의 이용팁</string>
     <string name="text_restaurant_default_information_find_load">길찾기</string>
     <string name="text_restaurant_default_information_serving_time_format">오늘 %s %s - %s</string>
+
+    <!-- Error Message-->
+    <string name="text_error_button_retry">다시 시도</string>
+    <string name="text_error_500_message">서버 연결 상태가 좋지 않습니다.\n 잠시 후 다시 시도해주세요.</string>
 </resources>

@@ -37,6 +37,7 @@ dependencies {
     implementation(Dep.Glide.glide)
     implementation(Dep.Glide.glideCompiler)
     implementation(Dep.shimmer)
+    implementation(Dep.lottie)
 
     testImplementation(Dep.Test.junit)
     androidTestImplementation(Dep.Test.junitExt)
