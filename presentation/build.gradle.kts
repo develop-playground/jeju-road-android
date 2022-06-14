@@ -38,8 +38,10 @@ dependencies {
     implementation(Dep.Glide.glideCompiler)
     implementation(Dep.shimmer)
     implementation(Dep.lottie)
+    implementation(Dep.Test.espressoIdlingResource)
 
     testImplementation(Dep.Test.junit)
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.espresso)
+
 }
