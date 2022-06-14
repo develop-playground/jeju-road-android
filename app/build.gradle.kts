@@ -44,7 +44,10 @@ android {
     }
 
     testOptions {
-        unitTests.isReturnDefaultValues = true
+        unitTests {
+            isReturnDefaultValues = true
+            isIncludeAndroidResources = true
+        }
     }
 }
 
@@ -61,6 +64,7 @@ dependencies {
     implementation(Dep.Koin.koinAndroid)
     implementation(platform(Dep.Firebase.bom))
     implementation(Dep.Firebase.analytics)
+    implementation(Dep.Test.espressoIdlingResource)
 
     testImplementation(Dep.Test.junit)
     testImplementation(Dep.Test.json)
@@ -68,4 +72,6 @@ dependencies {
     testImplementation(Dep.Kotlin.Test.coroutine)
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.espresso)
+
+    debugImplementation(Dep.Test.fragmentTesting)
 }

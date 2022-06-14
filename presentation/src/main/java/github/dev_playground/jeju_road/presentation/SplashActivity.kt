@@ -25,9 +25,7 @@ class SplashActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             delay(2000)
-
             this@SplashActivity.startActivity<MainActivity> {  }
-
             finish()
         }
     }

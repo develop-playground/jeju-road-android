@@ -5,7 +5,6 @@ import android.os.Bundle
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ActivityGlobalErrorBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
-import github.dev_playground.jeju_road.presentation.util.startActivity
 
 class GlobalErrorActivity
     : BaseActivity<ActivityGlobalErrorBinding>(R.layout.activity_global_error) {
