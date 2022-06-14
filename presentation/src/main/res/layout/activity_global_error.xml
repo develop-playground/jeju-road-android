@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warning"
+            android:layout_marginTop="@dimen/ic_waring_margin_top"
+            android:layout_marginEnd="@dimen/ic_waring_margin_end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/imageView_ic_global_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_global_error"
+            android:layout_marginBottom="@dimen/ic_global_error_margin_bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textView_head_explain_global_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_global_error_head_explain"
+            style="@style/Text.ERROR_HEAD_EXPLAIN"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/imageView_ic_global_error"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textView_body_explain_global_error" />
+
+        <TextView
+            android:id="@+id/textView_body_explain_global_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Text.ERROR_BODY_EXPLAIN"
+            android:lineSpacingExtra="@dimen/global_error_body_message_text_line_height"
+            android:gravity="center"
+            android:text="@string/text_global_error_body_explain"
+            app:layout_constraintTop_toBottomOf="@id/textView_head_explain_global_error"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/button_retry_global_error"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_retry_global_error"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/global_error_retry_button_height"
+            android:layout_margin="@dimen/global_error_retry_button_margin"
+            android:background="@drawable/bg_error_dialog_retry_shape"
+            android:text="@string/text_global_error_button_retry"
+            style="@style/Text.ERROR_BODY_EXPLAIN"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/textView_body_explain_global_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -48,6 +48,7 @@
         <entry key="presentation/src/main/res/drawable/ic_error.xml" value="0.106" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load_36.xml" value="0.1425" />
+        <entry key="presentation/src/main/res/drawable/ic_global_error.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/ic_haenyeo_with_waves.xml" value="0.339" />
         <entry key="presentation/src/main/res/drawable/ic_island.xml" value="0.339" />
         <entry key="presentation/src/main/res/drawable/ic_mandarin_with_waves.xml" value="0.339" />
@@ -58,6 +59,7 @@
         <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
         <entry key="presentation/src/main/res/layout/activity_error.xml" value="0.17198581560283688" />
         <entry key="presentation/src/main/res/layout/activity_full_size_image.xml" value="0.2730496453900709" />
+        <entry key="presentation/src/main/res/layout/activity_global_error.xml" value="0.2518518518518518" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_detail.xml" value="0.24592391304347827" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_page.xml" value="0.2730496453900709" />

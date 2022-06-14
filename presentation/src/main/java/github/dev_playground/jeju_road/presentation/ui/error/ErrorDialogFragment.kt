@@ -17,7 +17,7 @@ class ErrorDialogFragment
         super.onViewCreated(view, savedInstanceState)
 
         binding {
-            textViewMessageErrorDialog.text = receiveErrorMessage.toString()
+            textViewMessageErrorDialog.text = resources.getText(R.string.text_error_500_message)
 
             imageViewCloseErrorDialog.setOnClickListener {
                 dialog?.dismiss()
