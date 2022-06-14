@@ -20,6 +20,10 @@ class ErrorDialogFragment
             imageViewCloseErrorDialog.setOnClickListener {
                 dialog?.dismiss()
             }
+
+            buttonRetryErrorDialog.setOnClickListener {
+                println("부모: ${parentFragment}, 자식 ${childFragmentManager}")
+            }
         }
     }
 

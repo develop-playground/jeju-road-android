@@ -82,7 +82,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 }
             }.onFailure {
                 val errorDialog = ErrorDialogFragment()
-                errorDialog.show(requireActivity().supportFragmentManager, "tag")
+                errorDialog.show(requireActivity().supportFragmentManager, "error")
             }
         }
     }
