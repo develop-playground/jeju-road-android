@@ -45,14 +45,12 @@
             style="@style/Text.ERROR_MESSAGE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:gravity="center"
-            android:text="@string/text_error_500_message"
             android:lineSpacingExtra="@dimen/error_dialog_message_text_line_height"
-            app:layout_constraintBottom_toTopOf="@id/button_retry_error_dialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView_ic_error"
+            app:layout_constraintBottom_toTopOf="@id/button_retry_error_dialog"
             tools:text="@string/text_error_500_message" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -60,7 +58,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/error_dialog_retry_button_height"
             android:layout_margin="@dimen/error_dialog_retry_button_margin"
-
             style="@style/Text.ERROR_MESSAGE"
             android:background="@drawable/bg_error_dialog_retry_shape"
             android:text="@string/text_error_button_retry"

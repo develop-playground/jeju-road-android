@@ -1,5 +1,6 @@
 package github.dev_playground.jeju_road.presentation.ui.base
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
+import github.dev_playground.jeju_road.presentation.R
 
 abstract class BaseDialogFragment<VB: ViewDataBinding>(
     @LayoutRes val layoutId: Int
@@ -32,6 +34,16 @@ abstract class BaseDialogFragment<VB: ViewDataBinding>(
         }
 
         return binding.root
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        setStyle(STYLE_NO_TITLE, R.style.Dialog_ERROR_DIALOG)
+        return super.onCreateDialog(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dialog?.setCanceledOnTouchOutside(false)
     }
 
     protected fun binding(action: VB.() -> Unit) {

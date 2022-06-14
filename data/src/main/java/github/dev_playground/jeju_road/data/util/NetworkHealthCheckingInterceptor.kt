@@ -4,7 +4,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 
-class NetworkHealthCheckingInterceptor() : Interceptor {
+class NetworkHealthCheckingInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val response = chain.proceed(request)
@@ -22,7 +22,7 @@ class NetworkHealthCheckingInterceptor() : Interceptor {
 
 class ConnectionShutdownException : IOException() {
     override val message: String
-        get() = "500 ERROR: 서버에 오류가 발생하여 종료되었습니다. 다시 시도해주세요."
+        get() = "서버에 오류가 발생하여 종료되었습니다. 다시 시도해주세요."
 }
 
 class NotImplementedException : IOException() {

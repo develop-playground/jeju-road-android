@@ -82,7 +82,12 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 }
             }.onFailure {
                 val errorDialog = ErrorDialogFragment()
-                errorDialog.show(requireActivity().supportFragmentManager, "error")
+
+                errorDialog.arguments = Bundle().apply {
+                    putString(ERROR_KEY, it.message.toString())
+                }
+
+                errorDialog.show(requireActivity().supportFragmentManager, "ERROR DIALOG")
             }
         }
     }
@@ -134,6 +139,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     companion object {
         fun newInstance() = RestaurantListFragment()
+        const val ERROR_KEY = "error key"
     }
 
 }
