@@ -27,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
             delay(2000)
 
             this@SplashActivity.startActivity<MainActivity> {  }
+
             finish()
         }
     }

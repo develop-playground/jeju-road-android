@@ -34,6 +34,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding {
             bindList(
                 restaurantListAdapter,
@@ -81,6 +82,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
             }.onFailure {
+
                 val errorDialog = ErrorDialogFragment()
 
                 errorDialog.arguments = Bundle().apply {

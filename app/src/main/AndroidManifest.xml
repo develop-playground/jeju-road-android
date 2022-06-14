@@ -25,5 +25,6 @@
         <activity android:name=".presentation.ui.main.MainActivity"/>
         <activity android:name="github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity" />
         <activity android:name="github.dev_playground.jeju_road.presentation.ui.image.FullSizeImageActivity" />
+        <activity android:name=".presentation.ui.error.GlobalErrorActivity"/>
     </application>
 </manifest>

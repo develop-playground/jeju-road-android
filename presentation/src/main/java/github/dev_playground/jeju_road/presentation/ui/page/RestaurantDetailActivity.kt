@@ -31,6 +31,7 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         makeTransition()
         super.onCreate(savedInstanceState)
+
         setSupportActionBar(binding.toolbarRestaurantDetail)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 

@@ -6,30 +6,30 @@ import android.os.Bundle
 
 abstract class SimpleActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        TODO("Not yet implemented")
+        // no-op
     }
 
     override fun onActivityStarted(activity: Activity) {
-        TODO("Not yet implemented")
+        // no-op
     }
 
     override fun onActivityResumed(activity: Activity) {
-        TODO("Not yet implemented")
+        // no-op
     }
 
     override fun onActivityPaused(activity: Activity) {
-        TODO("Not yet implemented")
+        // no-op
     }
 
     override fun onActivityStopped(activity: Activity) {
-        TODO("Not yet implemented")
+        // no-op
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-        TODO("Not yet implemented")
+        // no-op
     }
 
     override fun onActivityDestroyed(activity: Activity) {
-        TODO("Not yet implemented")
+        // no-op
     }
 }
