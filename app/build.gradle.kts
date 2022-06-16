@@ -40,7 +40,10 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true
+        dataBinding {
+            isEnabled = true
+            isEnabledForTests = true
+        }
     }
 
     testOptions {
@@ -48,6 +51,12 @@ android {
             isReturnDefaultValues = true
             isIncludeAndroidResources = true
         }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-debug")
     }
 }
 
@@ -70,8 +79,10 @@ dependencies {
     testImplementation(Dep.Test.json)
     testImplementation(Dep.Test.mockito)
     testImplementation(Dep.Kotlin.Test.coroutine)
+
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.espresso)
+    androidTestImplementation(Dep.Kotlin.Test.coroutine)
 
     debugImplementation(Dep.Test.fragmentTesting)
 }
