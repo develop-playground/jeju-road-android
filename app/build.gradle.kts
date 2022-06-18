@@ -75,14 +75,21 @@ dependencies {
     implementation(Dep.Firebase.analytics)
     implementation(Dep.Test.espressoIdlingResource)
 
+    implementation(Dep.AndroidX.Test.androidXTestCore)
+    implementation(Dep.AndroidX.Test.fragmentTest)
+
     testImplementation(Dep.Test.junit)
     testImplementation(Dep.Test.json)
-    testImplementation(Dep.Test.mockito)
+    testImplementation(Dep.Test.mockitoKotlin)
     testImplementation(Dep.Kotlin.Test.coroutine)
 
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.espresso)
+    androidTestImplementation(Dep.Test.espressoContrib)
     androidTestImplementation(Dep.Kotlin.Test.coroutine)
+    androidTestImplementation(Dep.Test.archTest)
+    androidTestImplementation(Dep.Test.mockitoKotlin)
+    androidTestImplementation(Dep.Test.dexMakerInline)
 
-    debugImplementation(Dep.Test.fragmentTesting)
+    debugImplementation(Dep.AndroidX.Test.fragmentTest)
 }

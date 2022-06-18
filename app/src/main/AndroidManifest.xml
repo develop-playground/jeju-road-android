@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jejuroad"
         android:usesCleartextTraffic="true">
-
         <activity
             android:name="github.dev_playground.jeju_road.presentation.SplashActivity"
             android:exported="true">

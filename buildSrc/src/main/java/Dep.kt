@@ -47,6 +47,11 @@ object Dep {
 
         const val room = "androidx.room:room-runtime:$roomVersion"
         const val roomKtx = "androidx.room:room-ktx:$roomVersion"
+
+        object Test {
+            const val androidXTestCore = "androidx.test:core:1.3.0"
+            const val fragmentTest = "androidx.fragment:fragment-testing:1.4.1"
+        }
     }
 
     object Square {
@@ -68,13 +73,21 @@ object Dep {
     }
 
     object Test {
-        const val mockito = "org.mockito.kotlin:mockito-kotlin:4.0.0"
+        private const val version = "3.4.0"
+
+        const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:4.0.0"
+        const val mockitoCore = "org.mockito:mockito-core:4.6.1"
+        const val mockitoAndroid = "org.mockito:mockito-android:2.25.0"
+        const val mockitoInline = "org.mockito:mockito-inline:2.13.0"
         const val json = "org.json:json:20210307"
         const val junit = "junit:junit:4.13.2"
         const val junitExt = "androidx.test.ext:junit:1.1.3"
-        const val espresso = "androidx.test.espresso:espresso-core:3.4.0"
-        const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:3.4.0"
-        const val fragmentTesting = "androidx.fragment:fragment-testing:1.4.1"
+        const val archTest = "androidx.arch.core:core-testing:2.1.0"
+        const val dexMaker = "com.linkedin.dexmaker:dexmaker-mockito:2.28.1"
+        const val dexMakerInline = "com.linkedin.dexmaker:dexmaker-mockito-inline-extended:2.28.1"
+        const val espresso = "androidx.test.espresso:espresso-core:$version"
+        const val espressoContrib = "androidx.test.espresso:espresso-contrib:$version"
+        const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
     }
 
     object Glide {
