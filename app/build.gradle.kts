@@ -16,7 +16,10 @@ android {
         versionCode = Versions.versionCode
         versionName = Versions.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "github.dev_playground.MockTestRunner"
+
+        useLibrary("android.test.runner")
+
         buildConfigField("String", "BASE_URL", "\"http://183.107.10.236:8080/api/\"")
     }
 
@@ -84,6 +87,8 @@ dependencies {
     testImplementation(Dep.Kotlin.Test.coroutine)
 
     androidTestImplementation(Dep.Test.junitExt)
+    androidTestImplementation(Dep.Test.testRunner)
+    androidTestImplementation(Dep.Test.testRules)
     androidTestImplementation(Dep.Test.espresso)
     androidTestImplementation(Dep.Test.espressoContrib)
     androidTestImplementation(Dep.Kotlin.Test.coroutine)

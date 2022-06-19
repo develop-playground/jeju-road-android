@@ -11,7 +11,7 @@ import github.dev_playground.jeju_road.presentation.util.handler.GlobalErrorExce
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class JejuRoadApp: Application() {
+open class JejuRoadApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -26,10 +26,11 @@ class JejuRoadApp: Application() {
             )
             androidContext(this@JejuRoadApp)
         }
+
         setCrashHandler()
     }
 
-    private fun setCrashHandler() {
+    protected open fun setCrashHandler() {
         Thread.setDefaultUncaughtExceptionHandler(
             GlobalErrorExceptionHandler(
                 this

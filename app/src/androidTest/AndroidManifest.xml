@@ -1,8 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="github.dev_playground.jeju_road">
 
     <application
         android:extractNativeLibs="true">
+        <uses-library
+            android:name="android.test.runner"
+            android:required="false" />
+        <uses-library android:name="android.test.mock"/>
     </application>
 
 </manifest>

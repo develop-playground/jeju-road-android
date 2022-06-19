@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road
+package github.dev_playground.jeju_road.ui.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

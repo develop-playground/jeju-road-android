@@ -83,11 +83,12 @@ object Dep {
         const val junit = "junit:junit:4.13.2"
         const val junitExt = "androidx.test.ext:junit:1.1.3"
         const val archTest = "androidx.arch.core:core-testing:2.1.0"
-        const val dexMaker = "com.linkedin.dexmaker:dexmaker-mockito:2.28.1"
         const val dexMakerInline = "com.linkedin.dexmaker:dexmaker-mockito-inline-extended:2.28.1"
         const val espresso = "androidx.test.espresso:espresso-core:$version"
         const val espressoContrib = "androidx.test.espresso:espresso-contrib:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
+        const val testRunner = "androidx.test:runner:1.1.0"
+        const val testRules = "androidx.test:rules:1.1.0"
     }
 
     object Glide {
