@@ -69,6 +69,7 @@ object Dep {
 
         object Test {
             const val koinTest = "io.insert-koin:koin-test:$version"
+            const val koinTestJunit4 = "io.insert-koin:koin-test-junit4:$version"
         }
     }
 

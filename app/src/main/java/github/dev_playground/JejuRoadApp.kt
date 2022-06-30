@@ -6,12 +6,14 @@ import github.dev_playground.jeju_road.data.di.repositoryModule
 import github.dev_playground.jeju_road.di.appModule
 import github.dev_playground.jeju_road.domain.di.dispatcherModule
 import github.dev_playground.jeju_road.domain.di.useCaseModule
+import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 import github.dev_playground.jeju_road.presentation.di.viewModelModule
 import github.dev_playground.jeju_road.presentation.util.handler.GlobalErrorExceptionHandler
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
-open class JejuRoadApp: Application() {
+open class JejuRoadApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -22,7 +24,7 @@ open class JejuRoadApp: Application() {
                 networkModule,
                 repositoryModule,
                 useCaseModule,
-                viewModelModule
+                viewModelModule,
             )
             androidContext(this@JejuRoadApp)
         }

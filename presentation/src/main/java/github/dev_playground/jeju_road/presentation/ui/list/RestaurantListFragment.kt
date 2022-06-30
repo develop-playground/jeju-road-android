@@ -82,7 +82,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
             }.onFailure {
-
                 val errorDialog = ErrorDialogFragment()
 
                 errorDialog.arguments = Bundle().apply {
@@ -141,7 +140,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     companion object {
         fun newInstance() = RestaurantListFragment()
-        const val ERROR_KEY = "error key"
+        const val ERROR_KEY = "error dialog intent key"
     }
 
 }

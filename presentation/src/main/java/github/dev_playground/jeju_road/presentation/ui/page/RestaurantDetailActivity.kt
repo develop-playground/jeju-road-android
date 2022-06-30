@@ -9,11 +9,10 @@ import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaura
 import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
 import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
+import github.dev_playground.jeju_road.presentation.ui.error.ErrorDialogFragment
+import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListFragment
 import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListItemDecoration
-import github.dev_playground.jeju_road.presentation.util.addEnterMaterialSharedElementCallback
-import github.dev_playground.jeju_road.presentation.util.addMaterialSharedElementEnterTransition
-import github.dev_playground.jeju_road.presentation.util.addMaterialSharedElementReturnTransition
-import github.dev_playground.jeju_road.presentation.util.onSuccess
+import github.dev_playground.jeju_road.presentation.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -56,6 +55,8 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
                         RestaurantDetailInformationModel.toPresentation(it)
                     )
                 )
+            }.onFailure {
+
             }
         }
     }
@@ -65,7 +66,6 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
 
         findViewById<View>(android.R.id.content).transitionName = transitionName
         addEnterMaterialSharedElementCallback()
-
         addMaterialSharedElementEnterTransition {
             addTarget(android.R.id.content)
             scrimColor = ContextCompat.getColor(this@RestaurantDetailActivity, R.color.surface)

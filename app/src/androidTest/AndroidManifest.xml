@@ -8,6 +8,7 @@
             android:name="android.test.runner"
             android:required="false" />
         <uses-library android:name="android.test.mock"/>
+
     </application>
 
 </manifest>

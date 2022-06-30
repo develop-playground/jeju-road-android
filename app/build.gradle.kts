@@ -96,5 +96,8 @@ dependencies {
     androidTestImplementation(Dep.Test.mockitoKotlin)
     androidTestImplementation(Dep.Test.dexMakerInline)
 
+    androidTestImplementation(Dep.Koin.Test.koinTest)
+    androidTestImplementation(Dep.Koin.Test.koinTestJunit4)
+
     debugImplementation(Dep.AndroidX.Test.fragmentTest)
 }

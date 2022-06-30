@@ -1,16 +1,16 @@
 package github.dev_playground.jeju_road
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import github.dev_playground.jeju_road.ui.util.MainCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
+import org.koin.test.KoinTest
+import org.koin.test.mock.MockProviderRule
+import org.mockito.Mockito
 
-@ExperimentalCoroutinesApi
-abstract class BaseAndroidTest {
+abstract class BaseAndroidTest : KoinTest {
 
     @get:Rule
-    var coroutineRule = MainCoroutineRule()
+    val mockProvider = MockProviderRule.create { clazz ->
+        Mockito.mock(clazz.java)
+    }
 
-    @get:Rule
-    var instantTaskExecutorRule = InstantTaskExecutorRule()
 }
