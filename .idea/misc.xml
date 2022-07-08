@@ -64,10 +64,14 @@
         <entry key="presentation/src/main/res/layout/activity_restaurant_detail.xml" value="0.24592391304347827" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_page.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.33695652173913043" />
+        <entry key="presentation/src/main/res/layout/asdf.xml" value="0.3713768115942029" />
+        <entry key="presentation/src/main/res/layout/asdfklh.xml" value="0.2735562310030395" />
+        <entry key="presentation/src/main/res/layout/custom_error_view.xml" value="0.3283514492753623" />
+        <entry key="presentation/src/main/res/layout/df.xml" value="0.2735562310030395" />
         <entry key="presentation/src/main/res/layout/dialog_error.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/diglog_error.xml" value="0.16337386018237082" />
         <entry key="presentation/src/main/res/layout/fragment_dialog_error.xml" value="0.35604395604395606" />
-        <entry key="presentation/src/main/res/layout/fragment_restaurant_list.xml" value="0.1" />
+        <entry key="presentation/src/main/res/layout/fragment_restaurant_list.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_image.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_menu.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_serving_time.xml" value="0.3052536231884058" />
@@ -78,6 +82,8 @@
         <entry key="presentation/src/main/res/layout/item_restaurant_introduction_menu.xml" value="0.23229166666666667" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list_shimmer.xml" value="0.31431159420289856" />
+        <entry key="presentation/src/main/res/layout/sdfwae.xml" value="0.3328804347826087" />
+        <entry key="presentation/src/main/res/layout/tesat.xml" value="0.2735562310030395" />
         <entry key="presentation/src/main/res/layout/view_restaurant_content.xml" value="0.23220973782771537" />
         <entry key="presentation/src/main/res/layout/view_restaurant_default_information.xml" value="0.2368659420289855" />
         <entry key="presentation/src/main/res/layout/view_restaurant_information.xml" value="0.21016949152542372" />

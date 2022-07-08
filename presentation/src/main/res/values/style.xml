@@ -44,7 +44,7 @@
     <!-- error -->
     <style name="Text.ERROR_MESSAGE" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/nanum_gothic_bold</item>
     </style>

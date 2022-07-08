@@ -55,8 +55,17 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
                         RestaurantDetailInformationModel.toPresentation(it)
                     )
                 )
-            }.onFailure {
-
+            }.onFailure { e ->
+                binding {
+                    recyclerViewRestaurantDetail.visibility = View.INVISIBLE
+                    errorViewRestaurantDetail.apply {
+                        visibility = View.VISIBLE
+                        setErrorMessage(e.message)
+                        setOnRefreshClickListener {
+                            recreate()
+                        }
+                    }
+                }
             }
         }
     }

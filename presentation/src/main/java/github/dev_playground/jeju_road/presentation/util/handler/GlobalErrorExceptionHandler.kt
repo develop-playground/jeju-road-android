@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
+import android.util.Log
 import github.dev_playground.jeju_road.presentation.ui.error.GlobalErrorActivity
 import github.dev_playground.jeju_road.presentation.ui.error.GlobalErrorActivity.Companion.EXTRA_ERROR_TEXT
 import github.dev_playground.jeju_road.presentation.ui.error.GlobalErrorActivity.Companion.EXTRA_INTENT
@@ -27,8 +28,7 @@ class GlobalErrorExceptionHandler(
                         return
                     }
                     lastActivity = activity
-
-                    println("onActivityCreated ${lastActivity.toString()}")
+                    Log.d("onActivityCreated", lastActivity.toString())
                 }
 
                 override fun onActivityStarted(activity: Activity) {
@@ -37,7 +37,7 @@ class GlobalErrorExceptionHandler(
                     }
                     activityCount++
                     lastActivity = activity
-                    println("onActivityStarted ${lastActivity.toString()}")
+                    Log.d("onActivityStarted", lastActivity.toString())
                 }
 
                 override fun onActivityStopped(activity: Activity) {
@@ -48,7 +48,7 @@ class GlobalErrorExceptionHandler(
                     if (activityCount < 0) {
                         lastActivity = null
                     }
-                    println("onActivityStopped ${lastActivity.toString()}")
+                    Log.d("onActivityStopped", lastActivity.toString())
                 }
             })
     }
@@ -56,9 +56,8 @@ class GlobalErrorExceptionHandler(
     private fun isSkipActivity(activity: Activity) = activity is GlobalErrorActivity
 
     override fun uncaughtException(thread: Thread, throwable: Throwable) {
-        println("uncaughtException last : ${lastActivity.toString()}")
+        Log.d("uncaughtException", "${thread.name} ${throwable.message}")
         lastActivity?.run {
-            println("uncaughtException : ${thread.name} ${throwable.message}")
             val stringWriter = StringWriter()
             throwable.printStackTrace(PrintWriter(stringWriter))
             startErrorActivity(this, stringWriter.toString())
@@ -68,7 +67,7 @@ class GlobalErrorExceptionHandler(
     }
 
     private fun startErrorActivity(activity: Activity, errorText: String) = activity.run {
-        println("startErrorActivity : ${activity.componentName} $errorText ${application.applicationInfo}")
+        Log.d("startErrorActivity", "${activity.componentName} ${application.applicationInfo}")
         val errorActivityIntent = Intent(this, GlobalErrorActivity::class.java)
             .apply {
                 putExtra(EXTRA_INTENT, intent)

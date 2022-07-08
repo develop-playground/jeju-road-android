@@ -13,12 +13,14 @@ import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
 import github.dev_playground.jeju_road.presentation.ui.error.ErrorDialogFragment
+import github.dev_playground.jeju_road.presentation.ui.main.MainActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_TRANSITION_NAME
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.onFailure
 import github.dev_playground.jeju_road.presentation.util.onSuccess
+import github.dev_playground.jeju_road.presentation.util.startActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -34,7 +36,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding {
             bindList(
                 restaurantListAdapter,
@@ -81,14 +82,16 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 savedState.value?.let { state ->
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
-            }.onFailure {
-                val errorDialog = ErrorDialogFragment()
-
-                errorDialog.arguments = Bundle().apply {
-                    putString(ERROR_KEY, it.message.toString())
+            }.onFailure { e ->
+                shimmerFrameLayoutRestaurantList.visibility = View.INVISIBLE
+                recyclerViewRestaurantList.visibility = View.INVISIBLE
+                errorViewRestaurantList.apply {
+                    visibility = View.VISIBLE
+                    setErrorMessage(e.message.toString())
+                    setOnRefreshClickListener {
+                        context.startActivity<MainActivity> {  }
+                    }
                 }
-
-                errorDialog.show(requireActivity().supportFragmentManager, "ERROR DIALOG")
             }
         }
     }
