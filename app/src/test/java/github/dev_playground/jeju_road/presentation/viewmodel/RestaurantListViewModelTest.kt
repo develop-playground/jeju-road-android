@@ -8,6 +8,8 @@ import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -30,13 +32,15 @@ class RestaurantListViewModelTest : BaseTest() {
         )
     )
 
+    private val exception = NullPointerException()
+
     @Before
     fun setUp() {
         restaurantListViewModel = RestaurantListViewModel(getRestaurantListUseCase)
     }
 
     @Test
-    fun `새로고침하면 로딩 표시 후 콘텐츠 리스트가 잘 표시되는지 검증`() = runBlockingTest {
+    fun `새로고침하면_로딩_표시_후_콘텐츠_리스트가_잘_표시되는지_검증`() = runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenReturn(Result.success(contentList))
 
@@ -50,6 +54,7 @@ class RestaurantListViewModelTest : BaseTest() {
             UiState.loading<List<Content>>()
         )
         coroutineRule.resumeDispatcher()
+
         assertEquals(
             restaurantListViewModel.contentListState.getOrAwaitValue(),
             UiState(data = contentList)
@@ -57,17 +62,18 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `새로고침 실패 검증`() = runBlockingTest {
+    fun `새로고침_했을때_예외가_생길때_실패_검증`() = runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
-            .thenReturn(Result.failure(IllegalAccessException("test")))
+            .thenReturn(Result.failure(exception))
+
 
         //when
         restaurantListViewModel.refreshContentList()
 
         //then
-        assertEquals(
+        assertThat(
             restaurantListViewModel.contentListState.getOrAwaitValue(),
-            UiState.failure<List<Content>>(exception = IllegalAccessException("test"))
+            `is`(UiState<List<Content>>(exception = exception))
         )
     }
 }
