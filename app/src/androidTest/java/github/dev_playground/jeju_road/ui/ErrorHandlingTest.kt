@@ -1,10 +1,11 @@
-package github.dev_playground.jeju_road.ui.list
+package github.dev_playground.jeju_road.ui
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -35,13 +36,12 @@ class ErrorHandlingTest : BaseAndroidTest() {
     }
 
     @Test
-    fun `예기치_못한_에러가_터졌을때_에러페이지가_잘_나오는지에_대한_테스트`() {
-
-        //given
+    fun `예기치_못한_에러가_상세페이지에서_발생했을때_에러페이지가_잘_나오는지에_대한_테스트`() {
+        //when
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         dataBindingIdlingResource.monitorActivity(activityScenario)
 
-        //when
+        //then
         onView(withId(R.id.recyclerView_restaurant_list))
             .perform(
                 RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -49,9 +49,37 @@ class ErrorHandlingTest : BaseAndroidTest() {
                 )
             )
 
-//        onView(withId(R.id.constraintLayout_global_error)).check(ViewAssertions.matches(isDisplayed()))
+        onView(withId(R.id.errorView_restaurant_detail)).check(matches(isDisplayed()))
+
+        activityScenario.close()
+    }
+
+    @Test
+    fun `예기치_못한_에러가_리스트페이지에서_발생했을때_에러페이지가_잘_나오는지에_대한_테스트`() {
+
+        //when
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        dataBindingIdlingResource.monitorActivity(activityScenario)
 
         //then
+        onView(withId(R.id.errorView_restaurant_list)).check(matches(isDisplayed()))
+
+        activityScenario.close()
+    }
+
+    @Test
+    fun `에러페이지_새로고침_버튼을_눌렀을때_해당_페이지가_새로고침_되는지에_대한_테스트`() {
+        //given
+
+        //when
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        dataBindingIdlingResource.monitorActivity(activityScenario)
+
+        //then
+        onView(withId(R.id.errorView_restaurant_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.button_retry_custom_error_view)).perform(click())
+        onView(withId(R.id.recyclerView_restaurant_list)).check(matches(isDisplayed()))
+
         activityScenario.close()
     }
 

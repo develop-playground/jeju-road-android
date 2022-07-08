@@ -12,7 +12,6 @@ import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
-import github.dev_playground.jeju_road.presentation.ui.error.ErrorDialogFragment
 import github.dev_playground.jeju_road.presentation.ui.main.MainActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
@@ -87,7 +86,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 recyclerViewRestaurantList.visibility = View.INVISIBLE
                 errorViewRestaurantList.apply {
                     visibility = View.VISIBLE
-                    setErrorMessage(e.message.toString())
+                    setErrorMessage(e.message)
                     setOnRefreshClickListener {
                         context.startActivity<MainActivity> {  }
                     }

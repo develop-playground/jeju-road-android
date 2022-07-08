@@ -7,6 +7,7 @@ import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 
 class FakeRestaurantRepositoryImpl : RestaurantRepository {
     override suspend fun getRestaurantList(param: Int): List<Content> {
+        throw RuntimeException()
         return listOf(
             Content(
                 id = 1,
@@ -20,6 +21,6 @@ class FakeRestaurantRepositoryImpl : RestaurantRepository {
     }
 
     override suspend fun getRestaurantDetail(id: Long): DetailInformation {
-        throw UnknownError("예기치 못한 에러")
+        throw RuntimeException()
     }
 }
