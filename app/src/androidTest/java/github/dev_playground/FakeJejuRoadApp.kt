@@ -1,12 +1,7 @@
 package github.dev_playground
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.test.core.app.ApplicationProvider
 import github.dev_playground.jeju_road.data.FakeRestaurantRepositoryImpl
-import github.dev_playground.jeju_road.data.di.networkModule
-import github.dev_playground.jeju_road.data.di.repositoryModule
-import github.dev_playground.jeju_road.di.appModule
 import github.dev_playground.jeju_road.domain.di.dispatcherModule
 import github.dev_playground.jeju_road.domain.di.useCaseModule
 import github.dev_playground.jeju_road.domain.repository.RestaurantRepository

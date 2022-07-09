@@ -16,13 +16,9 @@ class GlobalErrorActivity : BaseActivity<ActivityGlobalErrorBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        println("GlobalErrorActivity : $errorText $lastActivityIntent")
-
-        binding {
-            buttonRetryGlobalError.setOnClickListener {
-                startActivity(lastActivityIntent)
-                finish()
-            }
+        binding.buttonRetryGlobalError.setOnClickListener {
+            startActivity(lastActivityIntent)
+            finish()
         }
     }
 

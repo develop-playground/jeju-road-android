@@ -27,6 +27,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     R.layout.fragment_restaurant_list
 ) {
     private val viewModel by sharedViewModel<RestaurantListViewModel>()
+
     private val restaurantListAdapter by lazy {
         RestaurantListAdapter { content, view ->
             onContentItemClick(content, view)
@@ -35,6 +36,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding {
             bindList(
                 restaurantListAdapter,
@@ -142,7 +144,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     companion object {
         fun newInstance() = RestaurantListFragment()
-        const val ERROR_KEY = "error dialog intent key"
     }
 
 }

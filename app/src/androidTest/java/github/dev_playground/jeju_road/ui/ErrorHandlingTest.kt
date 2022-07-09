@@ -10,6 +10,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import github.dev_playground.jeju_road.BaseAndroidTest
+import github.dev_playground.jeju_road.data.FakeRestaurantRepositoryImpl
+import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 import org.junit.runner.RunWith
 import github.dev_playground.jeju_road.presentation.util.EspressoIdlingResource
 import github.dev_playground.jeju_road.ui.util.DataBindingIdlingResource
@@ -17,11 +19,14 @@ import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.ui.main.MainActivity
 import github.dev_playground.jeju_road.ui.util.monitorActivity
 import org.junit.*
+import org.koin.test.inject
 
 @RunWith(AndroidJUnit4::class)
 class ErrorHandlingTest : BaseAndroidTest() {
 
     private val dataBindingIdlingResource = DataBindingIdlingResource()
+
+    private val fakeRepoImpl by inject<RestaurantRepository>()
 
     @Before
     fun setUp() {
@@ -37,6 +42,9 @@ class ErrorHandlingTest : BaseAndroidTest() {
 
     @Test
     fun `예기치_못한_에러가_상세페이지에서_발생했을때_에러페이지가_잘_나오는지에_대한_테스트`() {
+        // given
+        (fakeRepoImpl as FakeRestaurantRepositoryImpl).flag = true
+
         //when
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         dataBindingIdlingResource.monitorActivity(activityScenario)
@@ -50,7 +58,7 @@ class ErrorHandlingTest : BaseAndroidTest() {
             )
 
         onView(withId(R.id.errorView_restaurant_detail)).check(matches(isDisplayed()))
-
+        println(fakeRepoImpl)
         activityScenario.close()
     }
 
@@ -78,7 +86,7 @@ class ErrorHandlingTest : BaseAndroidTest() {
         //then
         onView(withId(R.id.errorView_restaurant_list)).check(matches(isDisplayed()))
         onView(withId(R.id.button_retry_custom_error_view)).perform(click())
-        onView(withId(R.id.recyclerView_restaurant_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.frameLayout_restaurant_list)).check(matches(isDisplayed()))
 
         activityScenario.close()
     }
