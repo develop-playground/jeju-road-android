@@ -9,7 +9,6 @@
         <entry key="app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.155" />
-        <entry key="app/src/main/res/drawable/ic_jeju_load_background.xml" value="0.118" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_map_24.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_menu_24.xml" value="0.155" />
@@ -23,11 +22,7 @@
         <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.30117753623188404" />
         <entry key="app/src/main/res/layout/item_restaurant_content_menu.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/layout/view_restaurant_content.xml" value="0.2671875" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_jeju_load.xml" value="0.2025" />
         <entry key="presentation/src/main/res/drawable/bg_card_content_radius_12.xml" value="0.274" />
-        <entry key="presentation/src/main/res/drawable/bg_error_dialog_radius_20.xml" value="0.106" />
-        <entry key="presentation/src/main/res/drawable/bg_error_dialog_radius_shape.xml" value="0.1935" />
-        <entry key="presentation/src/main/res/drawable/bg_error_dialog_retry_shape.xml" value="0.1605" />
         <entry key="presentation/src/main/res/drawable/bg_item_restaurant_list_image.xml" value="0.2355" />
         <entry key="presentation/src/main/res/drawable/bg_open_time_toggle_bitton.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/bg_open_time_toggle_button.xml" value="0.1425" />
@@ -43,35 +38,18 @@
         <entry key="presentation/src/main/res/drawable/ic_arrow_top.xml" value="0.233" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_top_24.xml" value="0.1345" />
         <entry key="presentation/src/main/res/drawable/ic_close_24.xml" value="0.1555" />
-        <entry key="presentation/src/main/res/drawable/ic_close_black.xml" value="0.185" />
-        <entry key="presentation/src/main/res/drawable/ic_devplayground.xml" value="0.339" />
-        <entry key="presentation/src/main/res/drawable/ic_error.xml" value="0.106" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/ic_fail_load_36.xml" value="0.1425" />
-        <entry key="presentation/src/main/res/drawable/ic_global_error.xml" value="0.1" />
-        <entry key="presentation/src/main/res/drawable/ic_haenyeo_with_waves.xml" value="0.339" />
-        <entry key="presentation/src/main/res/drawable/ic_island.xml" value="0.339" />
-        <entry key="presentation/src/main/res/drawable/ic_mandarin_with_waves.xml" value="0.339" />
-        <entry key="presentation/src/main/res/drawable/ic_stone_with_waves.xml" value="0.339" />
-        <entry key="presentation/src/main/res/drawable/ic_warning.xml" value="0.25" />
-        <entry key="presentation/src/main/res/drawable/ic_waves.xml" value="0.339" />
         <entry key="presentation/src/main/res/font/nanum_gotic_bold_font.xml" value="0.2814814814814815" />
         <entry key="presentation/src/main/res/font/nanum_gotic_font.xml" value="0.43385416666666665" />
-        <entry key="presentation/src/main/res/layout/activity_error.xml" value="0.17198581560283688" />
         <entry key="presentation/src/main/res/layout/activity_full_size_image.xml" value="0.2730496453900709" />
-        <entry key="presentation/src/main/res/layout/activity_global_error.xml" value="0.2518518518518518" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.2730496453900709" />
-        <entry key="presentation/src/main/res/layout/activity_restaurant_detail.xml" value="0.24592391304347827" />
+        <entry key="presentation/src/main/res/layout/activity_restaurant_detail.xml" value="0.3067708333333333" />
         <entry key="presentation/src/main/res/layout/activity_restaurant_page.xml" value="0.2730496453900709" />
-        <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.33695652173913043" />
-        <entry key="presentation/src/main/res/layout/asdf.xml" value="0.3713768115942029" />
-        <entry key="presentation/src/main/res/layout/asdfklh.xml" value="0.2735562310030395" />
-        <entry key="presentation/src/main/res/layout/custom_error_view.xml" value="0.3283514492753623" />
-        <entry key="presentation/src/main/res/layout/df.xml" value="0.2735562310030395" />
-        <entry key="presentation/src/main/res/layout/dialog_error.xml" value="0.335" />
-        <entry key="presentation/src/main/res/layout/diglog_error.xml" value="0.16337386018237082" />
-        <entry key="presentation/src/main/res/layout/fragment_dialog_error.xml" value="0.35604395604395606" />
-        <entry key="presentation/src/main/res/layout/fragment_restaurant_list.xml" value="0.25" />
+        <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.3067708333333333" />
+        <entry key="presentation/src/main/res/layout/custom_error_view.xml" value="0.3067708333333333" />
+        <entry key="presentation/src/main/res/layout/fragment_dialog_error.xml" value="0.3067708333333333" />
+        <entry key="presentation/src/main/res/layout/fragment_restaurant_list.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_image.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_menu.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_content_serving_time.xml" value="0.3052536231884058" />
@@ -82,8 +60,6 @@
         <entry key="presentation/src/main/res/layout/item_restaurant_introduction_menu.xml" value="0.23229166666666667" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list.xml" value="0.2730496453900709" />
         <entry key="presentation/src/main/res/layout/item_restaurant_list_shimmer.xml" value="0.31431159420289856" />
-        <entry key="presentation/src/main/res/layout/sdfwae.xml" value="0.3328804347826087" />
-        <entry key="presentation/src/main/res/layout/tesat.xml" value="0.2735562310030395" />
         <entry key="presentation/src/main/res/layout/view_restaurant_content.xml" value="0.23220973782771537" />
         <entry key="presentation/src/main/res/layout/view_restaurant_default_information.xml" value="0.2368659420289855" />
         <entry key="presentation/src/main/res/layout/view_restaurant_information.xml" value="0.21016949152542372" />

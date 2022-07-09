@@ -9,8 +9,6 @@ import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaura
 import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInformationModel
 import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
-import github.dev_playground.jeju_road.presentation.ui.error.ErrorDialogFragment
-import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListFragment
 import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListItemDecoration
 import github.dev_playground.jeju_road.presentation.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
