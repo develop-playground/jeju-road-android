@@ -10,7 +10,7 @@ data class RestaurantDetailInformationModel(
     val detailAddress: String,
     val openTimes: List<OpenTime>,
     val tips: List<String>
-) : RestaurantInformationModel {
+) : RestaurantInformationModel() {
 
     companion object {
         fun toPresentation(information: DetailInformation): RestaurantDetailInformationModel {
