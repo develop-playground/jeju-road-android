@@ -84,13 +84,13 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
             }.onFailure { e ->
-                shimmerFrameLayoutRestaurantList.visibility = View.INVISIBLE
-                recyclerViewRestaurantList.visibility = View.INVISIBLE
+                shimmerFrameLayoutRestaurantList.visibility = View.GONE
+                recyclerViewRestaurantList.visibility = View.GONE
                 errorViewRestaurantList.apply {
                     visibility = View.VISIBLE
                     setErrorMessage(e.message)
                     setOnRefreshClickListener {
-                        context.startActivity<MainActivity> {  }
+                        context.startActivity<MainActivity> { }
                     }
                 }
             }
@@ -110,6 +110,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         contentUiState: LiveData<UiState<List<Content>>>
     ) {
         contentUiState.observe {
+            println("loading State: ${it.loading}")
             when (it.loading) {
                 true -> {
                     shimmerFrameLayoutRestaurantList.startShimmer()

@@ -43,7 +43,7 @@ class ErrorHandlingTest : BaseAndroidTest() {
     @Test
     fun `예기치_못한_에러가_상세페이지에서_발생했을때_에러페이지가_잘_나오는지에_대한_테스트`() {
         // given
-        (fakeRepoImpl as FakeRestaurantRepositoryImpl).flag = true
+        (fakeRepoImpl as FakeRestaurantRepositoryImpl).flag = false
 
         //when
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
@@ -58,7 +58,6 @@ class ErrorHandlingTest : BaseAndroidTest() {
             )
 
         onView(withId(R.id.errorView_restaurant_detail)).check(matches(isDisplayed()))
-        println(fakeRepoImpl)
         activityScenario.close()
     }
 
@@ -77,16 +76,21 @@ class ErrorHandlingTest : BaseAndroidTest() {
 
     @Test
     fun `에러페이지_새로고침_버튼을_눌렀을때_해당_페이지가_새로고침_되는지에_대한_테스트`() {
-        //given
 
         //when
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         dataBindingIdlingResource.monitorActivity(activityScenario)
 
         //then
-        onView(withId(R.id.errorView_restaurant_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.errorView_restaurant_list)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+//        onView(withId(R.id.recyclerView_restaurant_list)).check(matches(withEffectiveVisibility(Visibility.GONE)))
+        onView(withId(R.id.shimmerFrameLayout_restaurant_list)).check(matches(withEffectiveVisibility(Visibility.GONE)))
+
         onView(withId(R.id.button_retry_custom_error_view)).perform(click())
-        onView(withId(R.id.frameLayout_restaurant_list)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.errorView_restaurant_list)).check(matches(withEffectiveVisibility(Visibility.GONE)))
+        onView(withId(R.id.recyclerView_restaurant_list)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+        onView(withId(R.id.shimmerFrameLayout_restaurant_list)).check(matches(withEffectiveVisibility(Visibility.INVISIBLE)))
 
         activityScenario.close()
     }
