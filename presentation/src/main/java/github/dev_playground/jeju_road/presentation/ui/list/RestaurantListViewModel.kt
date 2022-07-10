@@ -33,12 +33,11 @@ class RestaurantListViewModel(
     }
 
     fun refreshContentList() {
-        _contentListState.value = UiState(data = emptyList())
         saveState(null)
         pager.reset()
 
+        _contentListState.value = UiState.loading()
         viewModelScope.launch {
-            _contentListState.value = UiState.loading()
             loadContentList(false)
         }
     }

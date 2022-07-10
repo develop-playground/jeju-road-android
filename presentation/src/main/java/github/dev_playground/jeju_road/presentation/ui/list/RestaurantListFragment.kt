@@ -110,7 +110,6 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
         contentUiState: LiveData<UiState<List<Content>>>
     ) {
         contentUiState.observe {
-            println("loading State: ${it.loading}")
             when (it.loading) {
                 true -> {
                     shimmerFrameLayoutRestaurantList.startShimmer()
@@ -119,8 +118,8 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 }
                 else -> {
                     shimmerFrameLayoutRestaurantList.stopShimmer()
-                    recyclerViewRestaurantList.visibility = View.VISIBLE
                     shimmerFrameLayoutRestaurantList.visibility = View.INVISIBLE
+                    recyclerViewRestaurantList.visibility = View.VISIBLE
                 }
             }
         }

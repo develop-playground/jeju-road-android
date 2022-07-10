@@ -55,7 +55,7 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
                 )
             }.onFailure { e ->
                 binding {
-                    recyclerViewRestaurantDetail.visibility = View.INVISIBLE
+                    recyclerViewRestaurantDetail.visibility = View.GONE
                     errorViewRestaurantDetail.apply {
                         visibility = View.VISIBLE
                         setErrorMessage(e.message)

@@ -24,7 +24,7 @@ data class UiState<T>(
     }
 
     companion object {
-        fun <T> loading(): UiState<T> = UiState(loading = false)
+        fun <T> loading(): UiState<T> = UiState(loading = true)
 
         fun <T> success(value: T?): UiState<T> = UiState(data = value)
 

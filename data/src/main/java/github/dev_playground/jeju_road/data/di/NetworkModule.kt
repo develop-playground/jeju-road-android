@@ -1,7 +1,6 @@
 package github.dev_playground.jeju_road.data.di
 
 import github.dev_playground.jeju_road.data.api.RestaurantApi
-import github.dev_playground.jeju_road.data.api.mock.MockRestaurantApi
 import github.dev_playground.jeju_road.data.util.NetworkConnectionInterceptor
 import github.dev_playground.jeju_road.data.util.ServerExceptionInterceptor
 import okhttp3.OkHttpClient
@@ -42,6 +41,6 @@ val networkModule = module {
             .build()
     }
 
-//    single { get<Retrofit>().create(RestaurantApi::class.java) }
-    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
+    single { get<Retrofit>().create(RestaurantApi::class.java) }
+//    single<RestaurantApi> { MockRestaurantApi(androidContext()) }
 }
