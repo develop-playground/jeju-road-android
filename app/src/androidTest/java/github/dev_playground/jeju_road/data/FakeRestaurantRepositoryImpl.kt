@@ -6,10 +6,10 @@ import github.dev_playground.jeju_road.domain.repository.RestaurantRepository
 
 
 class FakeRestaurantRepositoryImpl : RestaurantRepository {
-    var isExceptionCheck: Boolean = true
+    var hasError: Boolean = false
 
     override suspend fun getRestaurantList(param: Int): List<Content> {
-        if (!isExceptionCheck) {
+        if (!hasError) {
             return listOf(
                 Content(
                     id = 1,
@@ -21,7 +21,6 @@ class FakeRestaurantRepositoryImpl : RestaurantRepository {
                 )
             )
         } else {
-            isExceptionCheck = !isExceptionCheck
             throw RuntimeException()
         }
     }
