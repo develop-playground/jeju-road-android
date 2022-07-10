@@ -10,5 +10,5 @@ data class DetailInformation(
     val detailAddress: String,
     val openTimes: List<OpenTime>,
     val introduction: String,
-    val tips: List<String>
+    val tips: List<String>,
 )

@@ -9,7 +9,7 @@ data class RestaurantIntroductionModel(
     val images: List<String>? = null,
     val introduction: String,
     val menus: List<Menu>
-): RestaurantInformationModel {
+): RestaurantInformationModel() {
 
     companion object {
         fun toPresentation(information: DetailInformation): RestaurantIntroductionModel {
