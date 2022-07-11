@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <merge
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_custom_error_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_error_dialog_radius_shape"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ic_waring_margin_top"
+                android:layout_marginEnd="@dimen/ic_waring_margin_end"
+                android:src="@drawable/ic_warning"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView_ic_custom_error_view"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="80dp"
+                android:src="@drawable/ic_error"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_message_custom_error_view"
+                style="@style/Text.ERROR_MESSAGE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/error_dialog_message_text_line_height"
+                app:layout_constraintBottom_toTopOf="@id/button_retry_custom_error_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView_ic_custom_error_view"
+                tools:text="@string/text_error_500_message" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_retry_custom_error_view"
+                style="@style/Text.ERROR_MESSAGE"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/error_dialog_retry_button_height"
+                android:layout_margin="@dimen/error_dialog_retry_button_margin"
+                android:background="@drawable/bg_error_dialog_retry_shape"
+                android:gravity="center"
+                android:text="@string/text_error_button_retry"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_message_custom_error_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </merge>
+</layout>

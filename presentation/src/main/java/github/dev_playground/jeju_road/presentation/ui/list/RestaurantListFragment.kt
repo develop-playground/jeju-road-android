@@ -12,13 +12,14 @@ import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.FragmentRestaurantListBinding
 import github.dev_playground.jeju_road.presentation.ui.base.BaseFragment
-import github.dev_playground.jeju_road.presentation.ui.error.ErrorDialogFragment
+import github.dev_playground.jeju_road.presentation.ui.main.MainActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_RESTAURANT_ID
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailActivity.Companion.KEY_TRANSITION_NAME
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.onFailure
 import github.dev_playground.jeju_road.presentation.util.onSuccess
+import github.dev_playground.jeju_road.presentation.util.startActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -26,6 +27,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
     R.layout.fragment_restaurant_list
 ) {
     private val viewModel by sharedViewModel<RestaurantListViewModel>()
+
     private val restaurantListAdapter by lazy {
         RestaurantListAdapter { content, view ->
             onContentItemClick(content, view)
@@ -34,6 +36,7 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding {
             bindList(
                 restaurantListAdapter,
@@ -80,9 +83,16 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 savedState.value?.let { state ->
                     recyclerViewRestaurantList.layoutManager?.onRestoreInstanceState(state)
                 }
-            }.onFailure {
-                val errorDialog = ErrorDialogFragment()
-                errorDialog.show(requireActivity().supportFragmentManager, "tag")
+            }.onFailure { e ->
+                shimmerFrameLayoutRestaurantList.visibility = View.GONE
+                recyclerViewRestaurantList.visibility = View.GONE
+                errorViewRestaurantList.apply {
+                    visibility = View.VISIBLE
+                    setErrorMessage(e.message)
+                    setOnRefreshClickListener {
+                        context.startActivity<MainActivity> { }
+                    }
+                }
             }
         }
     }
@@ -108,8 +118,8 @@ class RestaurantListFragment : BaseFragment<FragmentRestaurantListBinding>(
                 }
                 else -> {
                     shimmerFrameLayoutRestaurantList.stopShimmer()
-                    recyclerViewRestaurantList.visibility = View.VISIBLE
                     shimmerFrameLayoutRestaurantList.visibility = View.INVISIBLE
+                    recyclerViewRestaurantList.visibility = View.VISIBLE
                 }
             }
         }

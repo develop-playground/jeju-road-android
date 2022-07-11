@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="github.dev_playground.jeju_road">
+
+    <application>
+        
+    </application>
+    
+    <instrumentation
+        android:name="github.dev_playground.MockTestRunner"
+        android:targetPackage="github.dev_playground.jeju_road"
+        />
+
+</manifest>

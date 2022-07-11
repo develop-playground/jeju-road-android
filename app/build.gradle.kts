@@ -16,7 +16,10 @@ android {
         versionCode = Versions.versionCode
         versionName = Versions.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "github.dev_playground.MockTestRunner"
+
+        useLibrary("android.test.runner")
+
         buildConfigField("String", "BASE_URL", "\"http://183.107.10.236:8080/api/\"")
     }
 
@@ -40,11 +43,23 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true
+        dataBinding {
+            isEnabled = true
+            isEnabledForTests = true
+        }
     }
 
     testOptions {
-        unitTests.isReturnDefaultValues = true
+        unitTests {
+            isReturnDefaultValues = true
+            isIncludeAndroidResources = true
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-debug")
     }
 }
 
@@ -61,11 +76,28 @@ dependencies {
     implementation(Dep.Koin.koinAndroid)
     implementation(platform(Dep.Firebase.bom))
     implementation(Dep.Firebase.analytics)
+    implementation(Dep.Test.espressoIdlingResource)
+
+    implementation(Dep.AndroidX.Test.androidXTestCore)
+    implementation(Dep.AndroidX.Test.fragmentTest)
 
     testImplementation(Dep.Test.junit)
     testImplementation(Dep.Test.json)
-    testImplementation(Dep.Test.mockito)
+    testImplementation(Dep.Test.mockitoKotlin)
     testImplementation(Dep.Kotlin.Test.coroutine)
+
     androidTestImplementation(Dep.Test.junitExt)
+    androidTestImplementation(Dep.Test.testRunner)
+    androidTestImplementation(Dep.Test.testRules)
     androidTestImplementation(Dep.Test.espresso)
+    androidTestImplementation(Dep.Test.espressoContrib)
+    androidTestImplementation(Dep.Kotlin.Test.coroutine)
+    androidTestImplementation(Dep.Test.archTest)
+    androidTestImplementation(Dep.Test.mockitoKotlin)
+    androidTestImplementation(Dep.Test.dexMakerInline)
+
+    androidTestImplementation(Dep.Koin.Test.koinTest)
+    androidTestImplementation(Dep.Koin.Test.koinTestJunit4)
+
+    debugImplementation(Dep.AndroidX.Test.fragmentTest)
 }
