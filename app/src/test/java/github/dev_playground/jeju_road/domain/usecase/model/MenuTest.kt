@@ -16,7 +16,7 @@ class MenuTest {
 
     @Test
     fun `가격_포멧이_잘_변경되는지에_대한_테스트`() {
-       //given
+        //given
         val expectFormatPrice = "44,000"
 
         //when

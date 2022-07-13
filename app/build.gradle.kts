@@ -87,9 +87,8 @@ dependencies {
     testImplementation(Dep.Test.mockitoInline)
     testImplementation(Dep.Kotlin.Test.coroutine)
     testImplementation(Dep.Test.archTest)
-
     testImplementation(Dep.Test.mockitoKotlin)
-    testImplementation(Dep.Kotlin.Test.coroutine)
+    testImplementation(Dep.Test.mockk)
     
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.testRunner)
