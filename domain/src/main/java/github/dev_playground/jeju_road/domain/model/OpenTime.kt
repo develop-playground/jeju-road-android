@@ -19,7 +19,6 @@ data class OpenTime(
 
         return DayKor.values()[dayOfWeekIndex - 1]
     }
-
 }
 
 enum class DayKor(val dayOfWeek: String) {
