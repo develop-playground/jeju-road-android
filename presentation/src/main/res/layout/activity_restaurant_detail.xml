@@ -30,5 +30,13 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
+        <github.dev_playground.jeju_road.presentation.ui.error.ErrorView
+            android:id="@+id/errorView_restaurant_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -11,10 +11,7 @@ import github.dev_playground.jeju_road.presentation.model.RestaurantDetailInform
 import github.dev_playground.jeju_road.presentation.model.RestaurantIntroductionModel
 import github.dev_playground.jeju_road.presentation.ui.base.BaseActivity
 import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListItemDecoration
-import github.dev_playground.jeju_road.presentation.util.addEnterMaterialSharedElementCallback
-import github.dev_playground.jeju_road.presentation.util.addMaterialSharedElementEnterTransition
-import github.dev_playground.jeju_road.presentation.util.addMaterialSharedElementReturnTransition
-import github.dev_playground.jeju_road.presentation.util.onSuccess
+import github.dev_playground.jeju_road.presentation.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -32,6 +29,7 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         makeTransition()
         super.onCreate(savedInstanceState)
+
         setSupportActionBar(binding.toolbarRestaurantDetail)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
@@ -56,6 +54,17 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
                         RestaurantDetailInformationModel.toPresentation(it)
                     )
                 )
+            }.onFailure { e ->
+                binding {
+                    recyclerViewRestaurantDetail.visibility = View.GONE
+                    errorViewRestaurantDetail.apply {
+                        visibility = View.VISIBLE
+                        setErrorMessage(e.message)
+                        setOnRefreshClickListener {
+                            recreate()
+                        }
+                    }
+                }
             }
         }
     }
@@ -65,7 +74,6 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
 
         findViewById<View>(android.R.id.content).transitionName = transitionName
         addEnterMaterialSharedElementCallback()
-
         addMaterialSharedElementEnterTransition {
             addTarget(android.R.id.content)
             scrimColor = ContextCompat.getColor(this@RestaurantDetailActivity, R.color.surface)

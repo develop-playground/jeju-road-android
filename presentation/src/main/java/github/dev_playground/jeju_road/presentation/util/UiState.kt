@@ -1,5 +1,7 @@
 package github.dev_playground.jeju_road.presentation.util
 
+import kotlinx.coroutines.flow.MutableStateFlow
+
 data class UiState<T>(
     val loading: Boolean = false,
     val exception: Throwable? = null,
@@ -28,6 +30,7 @@ data class UiState<T>(
 
         fun <T> failure(exception: Throwable?): UiState<T> = UiState(exception = exception)
     }
+
 }
 
 inline fun <T> UiState<T>.onSuccess(action: (T) -> Unit) = apply {
