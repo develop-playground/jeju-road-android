@@ -3,7 +3,6 @@ package github.dev_playground.jeju_road.presentation.ui.page
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
 import com.google.android.material.shape.ShapeAppearanceModel
 import github.dev_playground.jeju_road.presentation.R
 import github.dev_playground.jeju_road.presentation.databinding.ActivityRestaurantDetailBinding
