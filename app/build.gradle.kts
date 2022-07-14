@@ -83,13 +83,11 @@ dependencies {
 
     testImplementation(Dep.Test.junit)
     testImplementation(Dep.Test.json)
-
     testImplementation(Dep.Test.mockitoInline)
     testImplementation(Dep.Kotlin.Test.coroutine)
     testImplementation(Dep.Test.archTest)
     testImplementation(Dep.Test.mockitoKotlin)
-    testImplementation(Dep.Test.mockk)
-    
+
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.testRunner)
     androidTestImplementation(Dep.Test.testRules)
