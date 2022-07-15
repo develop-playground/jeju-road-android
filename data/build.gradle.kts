@@ -17,4 +17,9 @@ dependencies {
     implementation(Dep.gson)
     implementation(Dep.Test.junitExt)
     implementation(Dep.Test.espresso)
+
+    testImplementation(Dep.Test.junit)
+    testImplementation(Dep.Kotlin.Test.coroutine)
+    testImplementation(Dep.Test.mockitoKotlin)
+    testImplementation(Dep.Test.mockitoInline)
 }
