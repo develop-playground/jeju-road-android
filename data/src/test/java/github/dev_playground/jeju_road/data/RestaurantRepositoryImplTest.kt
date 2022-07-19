@@ -1,11 +1,7 @@
 package github.dev_playground.jeju_road.data
 
 import github.dev_playground.jeju_road.data.api.RestaurantApi
-import github.dev_playground.jeju_road.data.api.mock.MockRestaurantApi
-import github.dev_playground.jeju_road.data.model.ContentData
-import github.dev_playground.jeju_road.data.model.InformationData
-import github.dev_playground.jeju_road.data.model.RestaurantData
-import github.dev_playground.jeju_road.data.model.toDomain
+import github.dev_playground.jeju_road.data.model.*
 import github.dev_playground.jeju_road.data.repository.RestaurantRepositoryImpl
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -18,11 +14,12 @@ import org.mockito.kotlin.whenever
 @ExperimentalCoroutinesApi
 class RestaurantRepositoryImplTest {
 
-    private val id: Int = 0
+    private val page: Int = 0
+    private val id: Long = 0L
     private lateinit var restaurantRepositoryImpl: RestaurantRepositoryImpl
     private lateinit var restaurantApi: RestaurantApi
 
-    private val contListData = RestaurantData(
+    private val restaurantContentData = RestaurantData(
         message = "",
         information = InformationData(
             listOf(
@@ -38,6 +35,22 @@ class RestaurantRepositoryImplTest {
         )
     )
 
+    private val restaurantDetailData = RestaurantDetailData(
+        message = "",
+        detailInformation = DetailInformationData(
+            id = 0L,
+            name = "name",
+            images = null,
+            menus = listOf<MenuData>(),
+            wayToGo = "wayToGo",
+            simpleAddress = "simpleAddress",
+            detailAddress = "detailAddress",
+            openTimes = listOf<OpenTimeData>(),
+            introduction = "intro",
+            tips = listOf()
+        )
+    )
+
     @Before
     fun setUp() {
         restaurantApi = mock()
@@ -48,23 +61,30 @@ class RestaurantRepositoryImplTest {
 
     @Test
     fun `요청한_리스트_페이지의_데이터를_잘_가져오는지에_대한_테스트`() = runBlockingTest {
+
         //given
-        whenever(restaurantApi.getRestaurantList(id))
-            .thenReturn(contListData)
+        whenever(restaurantApi.getRestaurantList(page))
+            .thenReturn(restaurantContentData)
 
         //when
-        val result = restaurantApi.getRestaurantList(id).information.content.map { it.toDomain() }
+        val result = restaurantApi.getRestaurantList(page).information.content.map { it.toDomain() }
 
         //then
-        assertEquals(result, restaurantRepositoryImpl.getRestaurantList(id))
+        assertEquals(result, restaurantRepositoryImpl.getRestaurantList(page))
     }
 
     @Test
-    fun `리스트_페이지의_아이디에_대한_상세_페이지_데이터를_잘_가져오는지에_대한_테스트`() {
+    fun `리스트_페이지의_아이디에_대한_상세_페이지_데이터를_잘_가져오는지에_대한_테스트`() = runBlockingTest {
+
         //given
+        whenever(restaurantApi.getRestaurantDetail(id))
+            .thenReturn(restaurantDetailData)
 
         //when
+        val result = restaurantApi.getRestaurantDetail(id).detailInformation.toDomain()
 
         //then
+        assertEquals(result, restaurantRepositoryImpl.getRestaurantDetail(id))
+
     }
 }
