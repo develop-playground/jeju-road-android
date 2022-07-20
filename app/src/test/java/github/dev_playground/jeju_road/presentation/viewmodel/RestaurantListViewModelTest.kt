@@ -13,13 +13,17 @@ import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class RestaurantListViewModelTest : BaseTest() {
+
     private lateinit var restaurantListViewModel: RestaurantListViewModel
+
     private val getRestaurantListUseCase: GetRestaurantListUseCase = mock()
+
     private val pageIndex = 0
     private val contentList = listOf(
         Content(
@@ -40,40 +44,51 @@ class RestaurantListViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `새로고침하면_로딩_표시_후_콘텐츠_리스트가_잘_표시되는지_검증`() = runBlockingTest {
+    fun `새로고침 이후 데이터 상태 검증`() = coroutineRule.runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenReturn(Result.success(contentList))
 
         //when
-        coroutineRule.testDispatcher.pauseDispatcher()
+        pauseDispatcher()
         restaurantListViewModel.refreshContentList()
 
         //then
         assertEquals(
-            restaurantListViewModel.contentListState.getOrAwaitValue(),
-            UiState.loading<List<Content>>()
+            UiState.loading<List<Content>>(),
+            restaurantListViewModel.contentListState.getOrAwaitValue()
         )
-        coroutineRule.resumeDispatcher()
+        resumeDispatcher()
 
         assertEquals(
-            restaurantListViewModel.contentListState.getOrAwaitValue(),
-            UiState(data = contentList)
+            UiState(data = contentList),
+            restaurantListViewModel.contentListState.getOrAwaitValue()
         )
     }
 
     @Test
-    fun `새로고침_했을때_예외가_생길때_실패_검증`() = runBlockingTest {
+    fun `새로고침 이후 빈 리스트를 받을 경우 데이터 상태 검증`() = coroutineRule.runBlockingTest {
+        whenever(getRestaurantListUseCase.invoke(any()))
+            .thenReturn(Result.success(emptyList()))
+
+        pauseDispatcher()
+        restaurantListViewModel.refreshContentList()
+
+        assertEquals(UiState.loading<List<Content>>(), restaurantListViewModel.contentListState.getOrAwaitValue())
+        resumeDispatcher()
+
+        assertEquals(UiState<List<Content>>(data = emptyList()), restaurantListViewModel.contentListState.getOrAwaitValue())
+    }
+
+    @Test
+    fun `새로고침 이후 예외 발생 시 상태 검증`() = coroutineRule.runBlockingTest {
         whenever(getRestaurantListUseCase.invoke(pageIndex))
             .thenReturn(Result.failure(exception))
-
 
         //when
         restaurantListViewModel.refreshContentList()
 
         //then
-        assertThat(
-            restaurantListViewModel.contentListState.getOrAwaitValue(),
-            `is`(UiState<List<Content>>(exception = exception))
-        )
+        assertThat(restaurantListViewModel.contentListState.getOrAwaitValue(), `is`(UiState(exception = exception)))
     }
+
 }

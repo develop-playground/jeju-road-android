@@ -9,17 +9,24 @@ import github.dev_playground.jeju_road.domain.usecase.GetRestaurantDetailUseCase
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailViewModel
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
+import github.dev_playground.jeju_road.runBlockingTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.core.Is
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class RestaurantDetailViewModelTest : BaseTest() {
+
     private lateinit var getRestaurantPageUseCase: GetRestaurantDetailUseCase
     private lateinit var restaurantDetailViewModel: RestaurantDetailViewModel
 
@@ -52,11 +59,10 @@ class RestaurantDetailViewModelTest : BaseTest() {
                 )
             ),
             introduction = "소개글",
-            tips = listOf(
-                ""
-            )
+            tips = listOf("")
+        )
 
-    )
+    private val exception = NullPointerException()
 
     @Before
     fun setUp() {
@@ -65,18 +71,33 @@ class RestaurantDetailViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `상세 정보 데이터를 가져올 때 로딩 후 상세 정보 데이터가 잘 들어왔는지 검증`() = runBlocking {
+    fun `상세 정보 가져올 때 로딩 및 데이터 상태 검증`() = coroutineRule.runBlockingTest {
         //when
         whenever(getRestaurantPageUseCase.invoke(id))
             .thenReturn(Result.success(detailInformation))
 
-        //then -> loading
+        // then -> loading
         assertTrue(restaurantDetailViewModel.detailInformationState.getOrAwaitValue().loading)
 
-        //then
+        // then
         assertEquals(
             restaurantDetailViewModel.detailInformationState.getOrAwaitValue(),
             UiState(data = detailInformation)
         )
     }
+
+    @Test
+    fun `상세 정보 가져올 때 에러 발생 시 상태 검증`() = coroutineRule.runBlockingTest {
+        //when
+        whenever(getRestaurantPageUseCase.invoke(any()))
+            .thenReturn(Result.failure(exception))
+
+        // then
+        assertTrue(restaurantDetailViewModel.detailInformationState.getOrAwaitValue().loading)
+        assertEquals(
+            UiState<DetailInformation>(exception = exception),
+            restaurantDetailViewModel.detailInformationState.getOrAwaitValue()
+        )
+    }
+
 }
