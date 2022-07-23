@@ -21,9 +21,10 @@ class ContentTest {
     @Test
     fun `카테고리_리스트가_올바르게_완성되는지에_대한_테스트`() {
         //given
-        val expectedCategoryList = listOf<String>(
+        val expectedCategoryList = listOf(
             "피시방", "음식점", "한밭대학교"
         )
+
         //when
         val actualCategoryList = content.getCategoryList()
 

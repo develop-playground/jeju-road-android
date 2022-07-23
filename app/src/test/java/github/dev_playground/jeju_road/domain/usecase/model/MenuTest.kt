@@ -1,8 +1,7 @@
 package github.dev_playground.jeju_road.domain.usecase.model
 
 import github.dev_playground.jeju_road.domain.model.Menu
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.core.Is.`is`
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class MenuTest {
@@ -23,6 +22,6 @@ class MenuTest {
         val actualFormatPrice = menu.formatPrice()
 
         //then
-        assertThat(actualFormatPrice, `is`(expectFormatPrice))
+        assertEquals(expectFormatPrice, actualFormatPrice)
     }
 }

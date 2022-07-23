@@ -22,18 +22,18 @@ class OpenTimeTest {
         "",
     )
 
-    private lateinit var instance: MockedStatic<Calendar>
+    private lateinit var mockedStaticInstance: MockedStatic<Calendar>
 
     @After
     fun tearDown() {
-        instance.close()
+        mockedStaticInstance.close()
     }
 
     @Test
     fun `현재_날짜의_요일을_제대로_계산하는지에_대한_검증_테스트`() {
 
         // given
-        instance = mockStatic(Calendar::class.java)
+        mockedStaticInstance = mockStatic(Calendar::class.java)
         val calenderMock = mock<Calendar>()
 
         // when

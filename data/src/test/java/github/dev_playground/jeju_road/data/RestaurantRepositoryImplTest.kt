@@ -41,11 +41,11 @@ class RestaurantRepositoryImplTest {
             id = 0L,
             name = "name",
             images = null,
-            menus = listOf<MenuData>(),
+            menus = listOf(),
             wayToGo = "wayToGo",
             simpleAddress = "simpleAddress",
             detailAddress = "detailAddress",
-            openTimes = listOf<OpenTimeData>(),
+            openTimes = listOf(),
             introduction = "intro",
             tips = listOf()
         )
@@ -70,7 +70,7 @@ class RestaurantRepositoryImplTest {
         val result = restaurantApi.getRestaurantList(page).information.content.map { it.toDomain() }
 
         //then
-        assertEquals(result, restaurantRepositoryImpl.getRestaurantList(page))
+        assertEquals(restaurantRepositoryImpl.getRestaurantList(page), result)
     }
 
     @Test
@@ -84,7 +84,7 @@ class RestaurantRepositoryImplTest {
         val result = restaurantApi.getRestaurantDetail(id).detailInformation.toDomain()
 
         //then
-        assertEquals(result, restaurantRepositoryImpl.getRestaurantDetail(id))
+        assertEquals(restaurantRepositoryImpl.getRestaurantDetail(id), result)
 
     }
 }
