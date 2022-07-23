@@ -1,5 +1,6 @@
 package github.dev_playground.jeju_road.data
 
+import com.example.test_util.MainCoroutineRule
 import github.dev_playground.jeju_road.data.api.RestaurantApi
 import github.dev_playground.jeju_road.data.model.*
 import github.dev_playground.jeju_road.data.repository.RestaurantRepositoryImpl
@@ -7,12 +8,16 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class RestaurantRepositoryImplTest {
+
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
 
     private val page: Int = 0
     private val id: Long = 0L
@@ -60,7 +65,7 @@ class RestaurantRepositoryImplTest {
     }
 
     @Test
-    fun `요청한_리스트_페이지의_데이터를_잘_가져오는지에_대한_테스트`() = runBlockingTest {
+    fun `요청한_리스트_페이지의_데이터를_잘_가져오는지에_대한_테스트`() = coroutineRule.runBlockingTest {
 
         //given
         whenever(restaurantApi.getRestaurantList(page))
@@ -74,7 +79,7 @@ class RestaurantRepositoryImplTest {
     }
 
     @Test
-    fun `리스트_페이지의_아이디에_대한_상세_페이지_데이터를_잘_가져오는지에_대한_테스트`() = runBlockingTest {
+    fun `리스트_페이지의_아이디에_대한_상세_페이지_데이터를_잘_가져오는지에_대한_테스트`() = coroutineRule.runBlockingTest {
 
         //given
         whenever(restaurantApi.getRestaurantDetail(id))

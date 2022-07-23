@@ -67,6 +67,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":presentation"))
+    implementation(project(":test-util"))
 
     implementation(Dep.Kotlin.kotlinStdlib)
     implementation(Dep.AndroidX.coreKtx)

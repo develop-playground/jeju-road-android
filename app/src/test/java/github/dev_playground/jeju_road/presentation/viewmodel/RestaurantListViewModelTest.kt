@@ -1,5 +1,6 @@
 package github.dev_playground.jeju_road.presentation.viewmodel
 
+import com.example.test_util.runBlockingTest
 import github.dev_playground.jeju_road.BaseTest
 import github.dev_playground.jeju_road.domain.model.Content
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantListUseCase
@@ -7,7 +8,6 @@ import github.dev_playground.jeju_road.presentation.ui.list.RestaurantListViewMo
 import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

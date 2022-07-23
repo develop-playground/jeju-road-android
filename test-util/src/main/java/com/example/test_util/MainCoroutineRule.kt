@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road
+package com.example.test_util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

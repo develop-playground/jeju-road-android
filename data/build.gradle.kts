@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":test-util"))
     implementation(Dep.Koin.koinCore)
     implementation(Dep.Koin.koinAndroid)
     implementation(Dep.Square.retrofit)
@@ -17,7 +18,6 @@ dependencies {
     implementation(Dep.gson)
     implementation(Dep.Test.junitExt)
     implementation(Dep.Test.espresso)
-
     testImplementation(Dep.Test.junit)
     testImplementation(Dep.Kotlin.Test.coroutine)
     testImplementation(Dep.Test.mockitoKotlin)
