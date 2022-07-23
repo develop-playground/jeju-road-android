@@ -8,8 +8,6 @@ import github.dev_playground.jeju_road.presentation.util.UiState
 import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -73,10 +71,16 @@ class RestaurantListViewModelTest : BaseTest() {
         pauseDispatcher()
         restaurantListViewModel.refreshContentList()
 
-        assertEquals(UiState.loading<List<Content>>(), restaurantListViewModel.contentListState.getOrAwaitValue())
+        assertEquals(
+            UiState.loading<List<Content>>(),
+            restaurantListViewModel.contentListState.getOrAwaitValue()
+        )
         resumeDispatcher()
 
-        assertEquals(UiState<List<Content>>(data = emptyList()), restaurantListViewModel.contentListState.getOrAwaitValue())
+        assertEquals(
+            UiState<List<Content>>(data = emptyList()),
+            restaurantListViewModel.contentListState.getOrAwaitValue()
+        )
     }
 
     @Test
@@ -88,7 +92,10 @@ class RestaurantListViewModelTest : BaseTest() {
         restaurantListViewModel.refreshContentList()
 
         //then
-        assertThat(restaurantListViewModel.contentListState.getOrAwaitValue(), `is`(UiState(exception = exception)))
+        assertEquals(
+            UiState<List<Content>>(exception = exception),
+            restaurantListViewModel.contentListState.getOrAwaitValue()
+        )
     }
 
 }
