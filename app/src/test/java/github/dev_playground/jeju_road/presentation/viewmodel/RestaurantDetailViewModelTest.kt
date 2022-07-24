@@ -1,6 +1,5 @@
 package github.dev_playground.jeju_road.presentation.viewmodel
 
-import com.example.test_util.runBlockingTest
 import github.dev_playground.jeju_road.BaseTest
 import github.dev_playground.jeju_road.domain.model.DayKor
 import github.dev_playground.jeju_road.domain.model.DetailInformation
@@ -9,7 +8,8 @@ import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantDetailUseCase
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailViewModel
 import github.dev_playground.jeju_road.presentation.util.UiState
-import com.example.test_util.getOrAwaitValue
+import github.dev_playground.jeju_road.test_module.getOrAwaitValue
+import github.dev_playground.jeju_road.test_module.runBlockingTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

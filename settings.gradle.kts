@@ -1,2 +1,2 @@
-include(":app", ":domain", ":data", ":presentation", ":test-util")
+include(":app", ":domain", ":data", ":presentation", ":test-module")
 rootProject.name = "jeju-road"

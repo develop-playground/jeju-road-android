@@ -9,7 +9,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":test-util"))
+    implementation(project(":test-module"))
     implementation(Dep.Koin.koinCore)
     implementation(Dep.Koin.koinAndroid)
     implementation(Dep.Square.retrofit)

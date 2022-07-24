@@ -1,9 +1,9 @@
 package github.dev_playground.jeju_road.data
 
-import com.example.test_util.MainCoroutineRule
 import github.dev_playground.jeju_road.data.api.RestaurantApi
 import github.dev_playground.jeju_road.data.model.*
 import github.dev_playground.jeju_road.data.repository.RestaurantRepositoryImpl
+import github.dev_playground.jeju_road.test_module.MainCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
