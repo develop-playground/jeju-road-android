@@ -9,7 +9,7 @@ import github.dev_playground.jeju_road.domain.model.OpenTime
 import github.dev_playground.jeju_road.domain.usecase.GetRestaurantDetailUseCase
 import github.dev_playground.jeju_road.presentation.ui.page.RestaurantDetailViewModel
 import github.dev_playground.jeju_road.presentation.util.UiState
-import github.dev_playground.jeju_road.presentation.util.getOrAwaitValue
+import com.example.test_util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
