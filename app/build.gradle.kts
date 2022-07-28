@@ -67,6 +67,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":presentation"))
+    implementation(project(":test-module"))
 
     implementation(Dep.Kotlin.kotlinStdlib)
     implementation(Dep.AndroidX.coreKtx)
@@ -83,8 +84,10 @@ dependencies {
 
     testImplementation(Dep.Test.junit)
     testImplementation(Dep.Test.json)
-    testImplementation(Dep.Test.mockitoKotlin)
+    testImplementation(Dep.Test.mockitoInline)
     testImplementation(Dep.Kotlin.Test.coroutine)
+    testImplementation(Dep.Test.archTest)
+    testImplementation(Dep.Test.mockitoKotlin)
 
     androidTestImplementation(Dep.Test.junitExt)
     androidTestImplementation(Dep.Test.testRunner)

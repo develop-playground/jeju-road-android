@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.data
+package github.dev_playground.jeju_road.test_module
 
 import org.junit.Test
 

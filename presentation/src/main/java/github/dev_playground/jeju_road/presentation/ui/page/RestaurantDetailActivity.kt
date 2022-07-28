@@ -103,3 +103,4 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>(
     }
 
 }
+
