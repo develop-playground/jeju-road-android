@@ -70,9 +70,13 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          arch: x86_64
+          arch: x86
           target: google_apis
-          profile: Nexus 6
+          ram-size: 2048M
+          cores: 2
+          avd-name: test avd
           disable-animations: true
-          emulator-build: 6061023
-          script: ./gradlew connectedCheck
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: |
+            adb devices
+            ./gradlew connectedDebugAndroidTest
