@@ -62,10 +62,6 @@ jobs:
       - name: Run Unit Test
         run: ./gradlew testDebugUnitTest
         
-      - name: Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }}
-        
       - name: Run UI Test
         uses: reactivecircus/android-emulator-runner@v2
         with:
