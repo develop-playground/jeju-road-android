@@ -38,7 +38,7 @@ jobs:
         run: ./gradlew assembleDebug
         
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: build
     
     steps:
@@ -70,7 +70,9 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          arch: x86
+          arch: x86_64
+          target: google_apis
+          profile: Nexus 6
           disable-animations: true
-          emulator-build: 7425822
+          emulator-build: 6061023
           script: ./gradlew connectedCheck
