@@ -35,10 +35,8 @@ class GetRestaurantDetailUseCaseTest : BaseUseCaseTest() {
             OpenTime(
                 id = 1L,
                 day = DayKor.MON,
-                operationStart = "",
-                operationEnd = "",
-                breakStart = "???",
-                breakEnd = "???"
+                servingTime = "09:00-21:00",
+                breakTime = "14:00-16:00",
             )
         ),
         introduction = "소개글",

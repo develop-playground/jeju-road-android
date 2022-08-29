@@ -5,10 +5,8 @@ import java.util.*
 data class OpenTime(
     val id: Long,
     val day: DayKor,
-    val operationStart: String,
-    val operationEnd: String,
-    val breakStart: String,
-    val breakEnd: String
+    val servingTime: String,
+    val breakTime: String,
 ) {
 
     fun currentDayOfWeek(): DayKor {
