@@ -68,6 +68,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
+    implementation(Dep.Logger.logger)
     implementation(Dep.Kotlin.kotlinStdlib)
     implementation(Dep.AndroidX.coreKtx)
     implementation(Dep.AndroidX.appCompat)

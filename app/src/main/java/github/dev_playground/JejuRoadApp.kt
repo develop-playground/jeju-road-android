@@ -1,6 +1,8 @@
 package github.dev_playground
 
 import android.app.Application
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 import github.dev_playground.jeju_road.data.di.networkModule
 import github.dev_playground.jeju_road.data.di.repositoryModule
 import github.dev_playground.jeju_road.di.appModule
@@ -15,6 +17,7 @@ open class JejuRoadApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Logger.addLogAdapter(AndroidLogAdapter())
         startKoin {
             modules(
                 appModule,
