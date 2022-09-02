@@ -10,14 +10,13 @@ data class OpenTime(
 ) {
 
     fun currentDayOfWeek(): DayKor {
-        val date = Date(System.currentTimeMillis())
         val cal = Calendar.getInstance()
+        val date = Date(System.currentTimeMillis())
         cal.time = date
         val dayOfWeekIndex = cal.get(Calendar.DAY_OF_WEEK)
 
         return DayKor.values()[dayOfWeekIndex - 1]
     }
-
 }
 
 enum class DayKor(val dayOfWeek: String) {

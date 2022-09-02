@@ -1,4 +1,4 @@
-package github.dev_playground.jeju_road.presentation.util
+package github.dev_playground.jeju_road.test_module
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

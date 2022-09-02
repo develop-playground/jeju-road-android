@@ -13,6 +13,7 @@ buildscript {
         classpath(Dep.androidGradlePlugin)
         classpath(Dep.googleService)
         classpath(Dep.Kotlin.gradlePlugin)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
     }
 }
 
