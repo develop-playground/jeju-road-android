@@ -18,6 +18,8 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+
+    implementation(Dep.Logger.logger)
     implementation(Dep.material)
     implementation(Dep.AndroidX.appCompat)
 

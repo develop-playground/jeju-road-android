@@ -103,6 +103,11 @@ object Dep {
         const val analytics = "com.google.firebase:firebase-analytics-ktx"
     }
 
+    object Logger {
+        private const val version = "2.2.0"
+        const val logger = "com.orhanobut:logger:$version"
+    }
+
     const val lottie = "com.airbnb.android:lottie:5.0.3"
     const val gson = "com.google.code.gson:gson:2.8.7"
     const val photoView = "com.github.chrisbanes:PhotoView:2.3.0"

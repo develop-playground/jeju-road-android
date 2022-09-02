@@ -17,4 +17,5 @@ dependencies {
     implementation(Dep.gson)
     implementation(Dep.Test.junitExt)
     implementation(Dep.Test.espresso)
+    implementation(Dep.Logger.logger)
 }
