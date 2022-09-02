@@ -27,35 +27,15 @@
             tools:text="수" />
 
         <TextView
-            android:id="@+id/textView_item_restaurant_default_information_start_time"
+            android:id="@+id/textView_item_restaurant_default_information_serving_time"
             style="@style/JejuLoadTextStyle.Content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/restaurant_default_information_start_time_margin_horizontal"
-            android:text="@{openTime.operationStart.substring(0,5)}"
+            android:text="@{openTime.servingTime}"
             app:layout_constraintStart_toEndOf="@id/textView_item_restaurant_default_information_day"
             app:layout_constraintTop_toTopOf="@id/textView_item_restaurant_default_information_day"
-            tools:text="09:00" />
+            tools:text="09:00-18:00" />
 
-        <TextView
-            android:id="@+id/textView_item_restaurant_default_information_middle_line"
-            style="@style/JejuLoadTextStyle.Content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/restaurant_default_information_middle_line_margin_horizontal"
-            android:text="-"
-            app:layout_constraintStart_toEndOf="@id/textView_item_restaurant_default_information_start_time"
-            app:layout_constraintTop_toTopOf="@id/textView_item_restaurant_default_information_start_time" />
-
-        <TextView
-            android:id="@+id/textView_item_restaurant_default_information_end_time"
-            style="@style/JejuLoadTextStyle.Content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/restaurant_default_information_end_time_margin_horizontal"
-            android:text="@{openTime.operationEnd.substring(0,5)}"
-            app:layout_constraintStart_toEndOf="@id/textView_item_restaurant_default_information_middle_line"
-            app:layout_constraintTop_toTopOf="@id/textView_item_restaurant_default_information_start_time"
-            tools:text="20:00" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
