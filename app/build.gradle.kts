@@ -69,6 +69,7 @@ dependencies {
     implementation(project(":presentation"))
     implementation(project(":test-module"))
 
+    implementation(Dep.Logger.logger)
     implementation(Dep.Kotlin.kotlinStdlib)
     implementation(Dep.AndroidX.coreKtx)
     implementation(Dep.AndroidX.appCompat)

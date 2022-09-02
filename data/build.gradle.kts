@@ -26,4 +26,5 @@ dependencies {
     testImplementation(Dep.Kotlin.Test.coroutine)
     testImplementation(Dep.Test.mockitoKotlin)
     testImplementation(Dep.Test.mockitoInline)
+    implementation(Dep.Logger.logger)
 }

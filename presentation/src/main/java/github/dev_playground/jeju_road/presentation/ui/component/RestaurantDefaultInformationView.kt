@@ -20,7 +20,7 @@ class RestaurantDefaultInformationView
 constructor(
     context: Context,
     attr: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : BaseCustomView<ViewRestaurantDefaultInformationBinding>(context, attr, defStyleAttr) {
 
     override fun getLayoutId() = R.layout.view_restaurant_default_information
@@ -47,8 +47,7 @@ constructor(
                 textViewRestaurantDefaultInformationServingTime.text = resources.getString(
                     R.string.text_restaurant_default_information_serving_time_format,
                     it.day.dayOfWeek,
-                    it.operationStart.substring(OPEN_TIME_SPLIT_START_INDEX, OPEN_TIME_SPLIT_END_INDEX),
-                    it.operationEnd.substring(OPEN_TIME_SPLIT_START_INDEX, OPEN_TIME_SPLIT_END_INDEX)
+                    it.servingTime,
                 )
             }
             val adapter = ContentOpenTimesListAdapter()
@@ -98,15 +97,7 @@ constructor(
                             R.style.JejuLoadTextStyle_Focus
                         )
                         TextViewCompat.setTextAppearance(
-                            textViewItemRestaurantDefaultInformationStartTime,
-                            R.style.JejuLoadTextStyle_Focus
-                        )
-                        TextViewCompat.setTextAppearance(
-                            textViewItemRestaurantDefaultInformationMiddleLine,
-                            R.style.JejuLoadTextStyle_Focus
-                        )
-                        TextViewCompat.setTextAppearance(
-                            textViewItemRestaurantDefaultInformationEndTime,
+                            textViewItemRestaurantDefaultInformationServingTime,
                             R.style.JejuLoadTextStyle_Focus
                         )
                     }
@@ -142,8 +133,6 @@ constructor(
     }
 
     companion object {
-        private const val OPEN_TIME_SPLIT_START_INDEX = 0
-        private const val OPEN_TIME_SPLIT_END_INDEX = 5
         private val OPEN_TIME_DIFF_CALLBACK = object : DiffUtil.ItemCallback<OpenTime>() {
             override fun areItemsTheSame(oldItem: OpenTime, newItem: OpenTime) =
                 oldItem.id == newItem.id
