@@ -7,9 +7,8 @@
         <variable
             name="isMoreThanImageCountOne"
             type="Boolean" />
-
         <variable
-            name="isExpand"
+            name="isEmptyMenu"
             type="Boolean" />
 
         <import type="android.view.View" />
@@ -77,6 +76,7 @@
                 style="@style/JejuLoadTextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="@{isEmptyMenu ? View.GONE : View.VISIBLE}"
                 android:layout_marginHorizontal="@dimen/restaurant_introduction_menu_margin_horizontal"
                 android:layout_marginTop="@dimen/restaurant_introduction_menu_margin_top"
                 android:text="@string/text_restaurant_introduction_menu"
