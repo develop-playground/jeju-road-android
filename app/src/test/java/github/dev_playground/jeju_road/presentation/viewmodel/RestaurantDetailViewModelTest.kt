@@ -47,10 +47,8 @@ class RestaurantDetailViewModelTest : BaseTest() {
                 OpenTime(
                     id = 1L,
                     day = DayKor.MON,
-                    operationStart = "",
-                    operationEnd = "",
-                    breakStart = "???",
-                    breakEnd = "???"
+                    servingTime = "",
+                    breakTime = "",
                 )
             ),
             introduction = "소개글",

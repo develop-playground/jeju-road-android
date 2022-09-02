@@ -18,8 +18,6 @@ class OpenTimeTest {
         DayKor.WED,
         "",
         "",
-        "",
-        "",
     )
 
     private lateinit var mockedStaticInstance: MockedStatic<Calendar>

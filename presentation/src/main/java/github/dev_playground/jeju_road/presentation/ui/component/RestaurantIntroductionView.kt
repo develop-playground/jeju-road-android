@@ -27,7 +27,7 @@ class RestaurantIntroductionView
 constructor(
     context: Context,
     attr: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : BaseCustomView<ViewRestaurantIntroductionBinding>(context, attr, defStyleAttr) {
 
     override fun getLayoutId() = R.layout.view_restaurant_introduction
@@ -80,14 +80,14 @@ constructor(
         }
     }
 
-    private fun setMenuList(menus: List<Menu>) {
+    private fun setMenuList(menus: List<Menu>) =
         with(binding.recyclerViewRestaurantIntroductionMenu) {
+            binding.isEmptyMenu = menus.isEmpty()
             adapter = ContentMenuListAdapter().apply {
                 submitList(menus)
             }
             addItemDecoration(IntroductionMenuItemDecoration())
         }
-    }
 
     private inner class ContentImageListAdapter : BaseListAdapter<String>(IMAGE_DIFF_CALLBACK) {
 
@@ -143,7 +143,7 @@ constructor(
         }
 
         private inner class ContentMenuViewHolder(
-            val binding: ItemRestaurantIntroductionMenuBinding
+            val binding: ItemRestaurantIntroductionMenuBinding,
         ) : BaseViewHolder(binding.root) {
             init {
                 with(binding.imageViewItemRestaurantIntroductionMenu) {
@@ -171,11 +171,12 @@ constructor(
             outRect: Rect,
             view: View,
             parent: RecyclerView,
-            state: RecyclerView.State
+            state: RecyclerView.State,
         ) {
             val count = parent.adapter?.itemCount ?: 0
             val position = parent.getChildAdapterPosition(view)
-            val space = view.context.resources.getDimensionPixelSize(R.dimen.restaurant_introduction_menu_space)
+            val space =
+                view.context.resources.getDimensionPixelSize(R.dimen.restaurant_introduction_menu_space)
 
             when (position) {
                 0 -> outRect.right = space
